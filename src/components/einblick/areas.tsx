@@ -724,7 +724,7 @@ export function AreaSeating({
         ),
       };
     });
-    notify("Übernommen · Beispiel");
+    notify("Taken over · example");
   }
 
   return (

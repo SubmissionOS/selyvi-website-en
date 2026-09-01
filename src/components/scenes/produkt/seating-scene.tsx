@@ -71,7 +71,7 @@ export function SeatingScene() {
             {/* Tafel-Kante: gibt dem Raster oben eine Richtung, damit es als
                 Klassenzimmer lesbar ist und nicht als Tabelle. */}
             <p className="mt-3 rounded-[var(--app-radius-control)] bg-[var(--app-surface-muted)] py-1 text-center text-[10px] tracking-wide text-[var(--app-text-muted)] uppercase">
-              Tafel
+              Board
             </p>
 
             <div className="mt-3 grid grid-cols-3 gap-2">

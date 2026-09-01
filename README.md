@@ -53,13 +53,21 @@ npm run format:check  # Prettier prüft nur
 npm run check         # lint + build (Torwächter vor jedem Commit)
 npm run smoke <url>   # Smoke-Test gegen ein Deployment
 npm run smoke -- --gegenprobe   # beweist, dass die Ton-Muster leben
-npm run check:german <url>      # Deutsch-Detektor: muss 0 melden
+npm run check:german <url>      # Deutsch-Detektor im HTML: muss 0 melden
+npm run check:animation <url>   # Deutsch-Detektor in Animationen und Klick-Zuständen
 npm run qa:en <url>             # Überlauf, Kontrast, CLS, rAF, Tastatur, Screenshots
 ```
 
 **Drei dieser Befehle gibt es nur hier.** Sie sichern genau das ab, was beim
 Übersetzen kaputtgeht:
 
+- `check:animation` prüft, was der HTML-Detektor **nicht sehen kann**: den Text,
+  der erst durch Zeit (Animationsschritte) oder durch Klicks (/preview)
+  entsteht. Ein deutscher Chip, der nach neun Sekunden aufpoppt, steht zum
+  Ladezeitpunkt nirgends. Beide Skripte teilen sich die Muster
+  ([scripts/lib/deutsch-muster.mjs](scripts/lib/deutsch-muster.mjs)) — eine
+  Kopie wäre die Stelle, an der eine ergänzte Wortliste nur in einem von
+  beiden wirkt.
 - `check:german` prüft das **gerenderte HTML** aller Seiten auf Umlaute, ß und
   häufige deutsche Wörter. Ausnahmen sind abschließend drei Eigennamen
   (Selyvi, Waldstetten, Robert Bosch Stiftung); alles andere, was deutsch

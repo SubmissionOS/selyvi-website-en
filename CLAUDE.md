@@ -11,6 +11,8 @@ Es gibt keinen Merge und keine gemeinsame Sprachschicht. Wer auf selyvi.de einen
 
 **Der Deutsch-Detektor muss 0 melden:** `npm run check:german <url>`. Er prüft das gerenderte HTML aller Seiten. Ausnahmen sind abschließend drei Eigennamen (Selyvi, Waldstetten, Robert Bosch Stiftung); alles andere, was deutsch bleiben muss, trägt `lang="de"` — das ist zugleich WCAG 3.1.2.
 
+**Und der HTML-Detektor allein reicht nicht:** `npm run check:animation <url>` prüft den Text, der erst durch Zeit (Animationsschritte, ohne reduced motion) oder durch Klicks (/preview) entsteht. Beide Skripte teilen sich die Muster in `scripts/lib/deutsch-muster.mjs`.
+
 **Eine einzige SEITEN-Ausnahme: /impressum.** Sie wird nicht übersprungen, sondern umgekehrt geprüft — der englische Sprachhinweis muss dort stehen. Der Unterschied zur Wort-Ausnahme ist der ganze Punkt: Eine Seite, die deutsch sein SOLL, mit einer wachsenden Liste erlaubter Wörter durchzuwinken, wäre die Bauweise, bei der irgendwann versehentlich auch anderswo Deutsch durchrutscht.
 
 ## Projekt
@@ -134,4 +136,4 @@ Alle Ton-Regeln werden bei jedem Deployment gegen das ausgelieferte HTML geprüf
 Englisch im Ausgelieferten (internationales Englisch, britische Rechtschreibung — siehe docs/glossar-en.md), präzise, keine Emojis im UI, keine Gradients, keine Superlative im Copy, viel Weißraum. Messlatte: behördentauglich. Icons: lucide-react (Brand-Icons: lokale SVGs in brand-icons.tsx).
 
 ## ARBEITSWEISE
-Ein Prompt = ein abgeschlossener Schritt. Jeder Schritt endet mit fehlerfreiem npm run build UND — sobald Text berührt wurde — mit `npm run check:german <url>` auf 0. UI-Änderungen enden mit Screenshot. Bestehende Tokens/Komponenten wiederverwenden statt neu erfinden. Nichts bauen, was nicht beauftragt wurde.
+Ein Prompt = ein abgeschlossener Schritt. Jeder Schritt endet mit fehlerfreiem npm run build UND — sobald Text berührt wurde — mit `npm run check:german <url>` auf 0. Wurde SZENEN- oder /preview-Text berührt, zusätzlich `npm run check:animation <url>`: Der Sitzplan-Tausch auf /preview hat seine deutsche Bestätigung („Übernommen · Beispiel") genau deshalb eine Runde lang überlebt — sie erscheint erst nach zwei Klicks. UI-Änderungen enden mit Screenshot. Bestehende Tokens/Komponenten wiederverwenden statt neu erfinden. Nichts bauen, was nicht beauftragt wurde.

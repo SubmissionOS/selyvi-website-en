@@ -73,6 +73,8 @@
  * dass geprueft wurde. Ein Treffer laesst das Skript mit Status 1 enden.
  */
 
+import { EIGENNAMEN, findeDeutsch } from "./lib/deutsch-muster.mjs";
+
 const base = (process.argv[2] || "").replace(/\/$/, "");
 if (!base) {
   console.error("Aufruf: node scripts/german-check.mjs <basis-url>");
@@ -125,55 +127,12 @@ const DEUTSCHE_SEITEN = new Map([
   ],
 ]);
 
-/**
- * Eigennamen. ABSCHLIESSEND – wer hier etwas ergaenzt, begruendet es im
- * Kopfkommentar. Alles andere gehoert in ein lang-Attribut.
- */
-const EIGENNAMEN = ["Selyvi", "Waldstetten", "Robert Bosch Stiftung"];
-
-/**
- * Haeufige deutsche Woerter. Als GANZE Woerter geprueft (\b…\b), damit
- * „die" nicht in „diet" anschlaegt.
- *
- * Bewusst NICHT in der Liste, obwohl deutsch: „in", „so", „was", „man",
- * „an", „am", „um", „bin", „hat", „will", „fast", „gift", „hell", „rot" –
- * das sind alles englische Woerter oder Wortteile.
- */
-const WOERTER = [
-  "der","die","das","dem","den","des","ein","eine","einen","einem","einer","eines",
-  "und","oder","aber","nicht","kein","keine","keinen","keiner","nichts",
-  "ist","sind","waren","wird","werden","wurde","wurden","haben","hatte","hatten",
-  "sein","seine","ihre","ihren","ihrem","unser","unsere","unseren",
-  "mit","von","vom","aus","auf","bei","beim","zum","zur","nach","vor","ueber","unter",
-  "durch","gegen","ohne","seit","bis","zwischen",
-  "sich","sie","ihnen","wir","uns","euch","dich",
-  "auch","noch","schon","nur","sehr","mehr","immer","wieder","dann","wenn","weil",
-  "damit","dass","als","wie","wo","warum","wer","welche","welcher",
-  "jede","jeder","jedes","alle","allen","viele","wenig","genau","bereits","statt",
-  "Lehrkraft","Lehrkraefte","Schule","Schulen","Schulleitung","Kollegium","Klasse",
-  "Unterricht","Beobachtung","Beobachtungen","Zeugnis","Zeugnisse","Eltern",
-  "Elternmail","Stunden","Woche","Monat","Jahr","Kinder","Schueler",
-  "Datenschutz","Sicherheit","Anfrage","Kennenlernen","Einblick","Mitgestalten",
-  "Impressum","Datenschutzerklaerung","Startseite","Seite","Bericht","Entwurf",
-  "Sprache","Quelle","Quellen","Thema","Fach","Faecher","Material","Vorschlag",
-  "Antwort","Frage","Fragen","Hinweis","Beispiel","Beispieldaten","Ausschnitt",
-  "gesperrt","offen","erfunden","gespeichert","abgesendet","Pflichtfeld",
-  // Oberflaechen-Beschriftungen der nachgebauten Anwendung. Sie tragen keine
-  // Umlaute und wuerden sonst durchrutschen – genau hier ist im ersten
-  // Durchlauf „Alle Klassen" haengen geblieben.
-  "Meine","Alle","Neu","Klassen","Dokumente","Stundenplan","Sitzplan",
-  "Bearbeiten","Speichern","Heute","Leitung","Betreff","Suchen","Weiter",
-  "Zeit","Stunde","Fach","Uebersicht","Entwicklung","Elternpost",
-];
-
 /*
- * BEWUSST NICHT IN DER LISTE, obwohl deutsch: „war". Es ist zugleich ein
- * englisches Wort, und ein Fehlalarm auf einer Pruefung, die 0 melden MUSS,
- * kostet mehr als der eine Fall, den es faengt. „waren" steht dafuer drin.
+ * Eigennamen, Wortliste und Muster stehen in scripts/lib/deutsch-muster.mjs
+ * – EINE Quelle fuer diesen Detektor UND fuer scripts/animation-check.mjs.
+ * Eine Kopie waere die Stelle, an der eine ergaenzte Wortliste nur in einem
+ * der beiden Skripte wirkt, und dann bedeutet die 0 des anderen nichts.
  */
-
-const WORT_MUSTER = new RegExp(`\\b(${WOERTER.join("|")})\\b`, "i");
-const UMLAUT_MUSTER = /[äöüÄÖÜß]/;
 
 let probleme = 0;
 let langBloecke = 0;
@@ -269,13 +228,6 @@ function pruefbarerText(html) {
     .replace(/&[a-z]+;|&#x?[0-9a-f]+;/gi, " ");
 }
 
-/** Entfernt die erlaubten Eigennamen, bevor die Muster laufen. */
-function ohneEigennamen(text) {
-  let rest = text;
-  for (const name of EIGENNAMEN) rest = rest.split(name).join(" ");
-  return rest;
-}
-
 console.log("Deutsch-Detektor gegen " + base + "\n");
 console.log("Erlaubte Eigennamen: " + EIGENNAMEN.join(", "));
 console.log(
@@ -316,28 +268,10 @@ for (const path of PAGES) {
     continue;
   }
 
-  const text = ohneEigennamen(pruefbarerText(body));
-
-  /**
-   * Zeilenweise melden, nicht seitenweise: Eine Meldung „auf / steht Deutsch"
-   * hilft niemandem beim Suchen. Der Bericht nennt die Fundstelle im Text.
-   */
-  const zeilen = text
-    .split(/\n|(?<=[.!?])\s{2,}/)
-    .map((z) => z.replace(/\s+/g, " ").trim())
-    .filter((z) => z.length > 0);
-
-  const treffer = [];
-  for (const zeile of zeilen) {
-    const umlaut = zeile.match(UMLAUT_MUSTER);
-    const wort = zeile.match(WORT_MUSTER);
-    if (!umlaut && !wort) continue;
-
-    treffer.push({
-      grund: umlaut ? `Umlaut/ß „${umlaut[0]}"` : `deutsches Wort „${wort[0]}"`,
-      text: zeile.length > 120 ? zeile.slice(0, 117) + "…" : zeile,
-    });
-  }
+  // Zeilenweise melden, nicht seitenweise: Eine Meldung „auf / steht Deutsch"
+  // hilft niemandem beim Suchen. findeDeutsch() nennt die Fundstelle – und es
+  // ist dieselbe Funktion, die scripts/animation-check.mjs benutzt.
+  const treffer = findeDeutsch(pruefbarerText(body));
 
   if (treffer.length === 0) {
     console.log(`  ${path.padEnd(26)} sauber`);
