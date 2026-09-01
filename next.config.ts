@@ -82,7 +82,11 @@ const nextConfig: NextConfig = {
       ["/demo", "/meet"],
       ["/mitgestalten", "/co-create"],
       ["/einblick", "/preview"],
-      ["/impressum", "/legal-notice"],
+      // /impressum ist KEINE Umleitung mehr, sondern die Seite selbst: Das
+      // Impressum ist deutsch geblieben (src/config/legal.ts). Umgekehrt
+      // leitet jetzt die englische Adresse dorthin – sie stand eine Runde lang
+      // in der Sitemap und darf nicht ins Leere laufen.
+      ["/legal-notice", "/impressum"],
       ["/datenschutz", "/privacy"],
     ];
 

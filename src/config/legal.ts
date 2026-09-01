@@ -2,30 +2,35 @@
  * Zentrale Ablage der rechtlichen Angaben.
  *
  * ==========================================================================
- * FREIGABE IST GETEILT: Legal notice und Privacy policy haben getrennte
+ * ZWEI SEITEN, ZWEI SPRACHEN – UND ZWAR MIT ABSICHT.
+ * ==========================================================================
+ * /impressum IST DEUTSCH, wortgleich mit selyvi.de. Die Pflichtangaben
+ * nach § 5 DDG und § 18 Abs. 2 MStV sind die Angaben eines deutschen
+ * Unternehmens und gelten im deutschen Wortlaut. Eine englische Fassung
+ * daneben waere im besten Fall ueberfluessig und im schlechtesten die
+ * Version, auf die sich im Zweifel jemand beruft.
+ *
+ * Es gab zwischenzeitlich ein uebersetztes /legal-notice. Das ist
+ * zurueckgenommen; die Route leitet mit 308 auf /impressum um. Uebrig bleibt
+ * genau EIN englischer Satz – IMPRINT_LANGUAGE_NOTE. Er sagt einer englischen
+ * Leserin, warum die Seite darunter deutsch ist, und beansprucht selbst keine
+ * Rechtswirkung.
+ *
+ * /privacy IST ENGLISCH. Sie beschreibt, was DIESE Website mit den Daten
+ * ihrer Besucherinnen tut – das ist eine Auskunft an die Leserin, und die
+ * liest hier englisch. Anwaltlich geprueft ist sie nicht.
+ *
+ * ==========================================================================
+ * FREIGABE IST GETEILT: Impressum und Privacy policy haben getrennte
  * Schalter, weil sie unterschiedlich weit sind.
  * ==========================================================================
- *
- * ANWALTSPRUEFUNG DER ENGLISCHEN FASSUNG STEHT AUS.
- *
- * Diese Datei traegt die UEBERSETZUNG der deutschen Rechtstexte. Die
- * Pflichtangaben nach § 5 DDG und § 18 Abs. 2 MStV sind unveraendert dieselben
- * – Anschrift, Vertretung, Umsatzsteuer-ID, Verantwortlicher. Uebersetzt sind
- * die Beschriftungen und der Fliesstext, nicht der Inhalt.
- *
- * Massgeblich bleibt die deutsche Fassung auf selyvi.de. Genau das sagt
- * TRANSLATION_NOTE unten auf der Seite, und genau deshalb steht es dort und
- * nicht nur hier im Kommentar: Wer die englische Seite liest, muss wissen,
- * welche Fassung im Streitfall gilt.
- *
- * Siehe README, NACH-LAUNCH-LISTE: „EN-Rechtstexte vom Anwalt pruefen lassen".
  */
 
 /**
- * Legal notice freigegeben.
+ * Impressum freigegeben.
  *
  * true, seit die Angaben echt sind: Entwurfs-Balken und noindex entfallen auf
- * /legal-notice, die Seite steht wieder in der Sitemap.
+ * /impressum, die Seite steht wieder in der Sitemap.
  *
  * Offen bleibt der Betreiber-Hinweis (siehe OPERATOR_NOTE unten) – der betrifft
  * aber nicht die Richtigkeit der Angaben, sondern ihre Vorläufigkeit.
@@ -49,19 +54,25 @@ export const IMPRINT_READY = true;
 export const PRIVACY_APPROVED = false;
 
 /**
- * Hinweis auf die Uebersetzung – steht auf /legal-notice und /privacy.
+ * Der EINE englische Satz auf /impressum.
+ *
+ * Er steht ueber den Pflichtangaben, nicht darunter: Wer die Seite auf einer
+ * englischen Website oeffnet und Deutsch vorfindet, soll den Grund lesen,
+ * bevor er sich fragt, ob er falsch abgebogen ist.
+ *
+ * Mehr Englisch gibt es auf dieser Seite nicht. Jeder weitere Satz waere der
+ * Anfang einer zweiten Fassung.
+ */
+export const IMPRINT_LANGUAGE_NOTE =
+  "This legal notice is provided in German, as required by German law.";
+
+/**
+ * Hinweis auf die Uebersetzung – steht auf /privacy.
  *
  * Eine englische Rechtsseite ohne diesen Satz erweckt den Eindruck, hier gaebe
  * es eine eigene, englischsprachige Rechtslage. Die gibt es nicht: Betreiber,
- * Sitz und anwendbares Recht sind deutsch, und die Pflichtangaben stehen hier,
- * weil § 5 DDG sie verlangt – nicht, weil eine andere Rechtsordnung sie kennt.
- *
- * Der Satz ist bewusst kurz und steht nicht im Kleingedruckten.
+ * Sitz und anwendbares Recht sind deutsch.
  */
-export const TRANSLATION_NOTE =
-  "German law applies; this is a translation of the German legal notice.";
-
-/** Dieselbe Feststellung fuer die Privacy policy. */
 export const PRIVACY_TRANSLATION_NOTE =
   "German law applies; this is a translation of the German privacy policy.";
 
@@ -70,8 +81,8 @@ export const PRIVACY_TRANSLATION_NOTE =
  *
  * Selyvi wird derzeit als Angebot eines Einzelunternehmens geführt. Sobald eine
  * Betreibergesellschaft gegründet ist, ändern sich Firmierung, Rechtsform,
- * Vertretung und Registereintrag – und damit sowohl das Legal notice als auch
- * der Verantwortliche in der Privacy policy.
+ * Vertretung und Registereintrag – und damit sowohl das Impressum als auch der
+ * Verantwortliche in der Privacy policy.
  */
 /*
  * OPERATOR_NOTE (bewusst keine exportierte Konstante, damit nichts sie rendert):
@@ -85,7 +96,6 @@ export type Imprint = {
   companyName: string;
   street: string;
   zipCity: string;
-  /** Land, englisch geschrieben – die Anschrift selbst bleibt unveraendert. */
   country: string;
   email: string;
   phone: string;
@@ -101,14 +111,12 @@ export type Imprint = {
 /**
  * ANGABEN NACH § 5 DDG.
  *
- * IDENTISCH MIT DER DEUTSCHEN SEITE. Uebersetzt ist ausschliesslich das Wort
- * „Deutschland" im Feld `country` – Strasse, Ort und Postleitzahl sind eine
- * deutsche Anschrift und werden nicht uebersetzt, sonst findet sie niemand.
+ * IDENTISCH MIT DER DEUTSCHEN SEITE – Feld für Feld, auch `country`.
  *
  * KEIN REGISTEREINTRAG: Rafael Gutmann betreibt Selyvi als Einzelunternehmen.
  * Einzelunternehmen ohne Kaufmannseigenschaft sind nicht im Handelsregister
  * eingetragen; `registerCourt` und `registerNumber` gibt es hier deshalb nicht
- * als Felder. Die Sektion „Register entry" wird auf der Seite ausgeblendet
+ * als Felder. Die Sektion „Registereintrag" wird auf der Seite ausgeblendet
  * statt leer angezeigt – eine leere Rubrik sieht nach einer fehlenden Angabe
  * aus, obwohl schlicht keine existiert.
  *
@@ -119,31 +127,31 @@ export const imprint: Imprint = {
   companyName: "Rafael Gutmann",
   street: "Hauptstraße 33",
   zipCity: "73550 Waldstetten",
-  country: "Germany",
+  country: "Deutschland",
   // Übergangsadresse. Nach dem Domainkauf auf kontakt@selyvi.com umstellen –
   // eine Adresse auf der eigenen Domain wirkt in der Beschaffung seriöser.
   // Siehe README, NACH-LAUNCH-LISTE.
   //
-  // Diese eine Zeile speist Legal notice, Privacy policy (Verantwortlicher und
+  // Diese eine Zeile speist Impressum, Privacy policy (Verantwortlicher und
   // Betroffenenrechte), Footer-Kontaktspalte und die Fallback-Zeile im
   // Fehlerfall des Anfrageformulars.
   email: "selyvi.app@gmail.com",
   phone: "+49 (0)176 30136988",
   vatId: "DE455168590",
-  contentResponsible: "Rafael Gutmann, Hauptstraße 33, 73550 Waldstetten, Germany",
+  contentResponsible: "Rafael Gutmann, Hauptstraße 33, 73550 Waldstetten, Deutschland",
 };
 
 /**
- * Rechtstexte des Legal notice.
+ * Rechtstexte des Impressums.
  *
- * UEBERSETZUNG DER VORLAGE, nicht Neuformulierung. Diese Abschnitte sind
- * juristische Standardtexte, deren Formulierung Bedeutung hat – wer sie
- * anpasst, sollte das nicht nach Sprachgefühl tun, sondern nach Rücksprache.
+ * DER WORTLAUT IST UNVERÄNDERT AUS DER VORLAGE ÜBERNOMMEN und deutsch. Diese
+ * Abschnitte sind juristische Standardtexte, deren Formulierung Bedeutung hat –
+ * wer sie anpasst, sollte das nicht nach Sprachgefühl tun, sondern nach
+ * Rücksprache.
  *
- * Die Paragrafenverweise bleiben deutsch (§ 5 DDG), weil sie deutsche Normen
- * bezeichnen. Ein Verweis, den man nicht nachschlagen kann, weil er uebersetzt
- * wurde, ist wertlos. Beim ersten Vorkommen steht die Einordnung dabei:
- * „German Digital Services Act".
+ * Sie standen zwischenzeitlich übersetzt hier. Das ist zurückgenommen: Eine
+ * englische Haftungsklausel neben einer deutschen Rechtslage ist keine
+ * Serviceleistung, sondern eine zweite Fassung derselben Aussage.
  *
  * Alle vier Abschnitte sind gefüllt. Kommt ein weiterer dazu, gehört der
  * Wortlaut gleich mit hinein – ein Abschnitt mit leerem `body` würde nur eine
@@ -151,33 +159,33 @@ export const imprint: Imprint = {
  */
 export type LegalTextSection = {
   title: string;
-  /** Wortlaut aus der Vorlage. Leer = noch nicht übernommen. */
+  /** Wortlaut aus der Vorlage, deutsch. Leer = noch nicht übernommen. */
   body: string[];
 };
 
 export const imprintTextSections: LegalTextSection[] = [
   {
-    title: "Liability for content",
+    title: "Haftung für Inhalte",
     body: [
-      "As a service provider we are responsible for our own content on these pages under the general laws, in accordance with § 5 DDG (German Digital Services Act). We are not, however, obliged to monitor transmitted or stored third-party information, or to investigate circumstances that indicate unlawful activity. Where we become aware of such infringements, we will remove the content concerned without delay.",
+      "Als Diensteanbieter sind wir gemäß § 5 DDG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.",
     ],
   },
   {
-    title: "Liability for links",
+    title: "Haftung für Links",
     body: [
-      "Our website contains links to external third-party websites over whose content we have no influence. For that reason we cannot accept any liability for this third-party content. Where we become aware of legal infringements, we will remove such links without delay.",
+      "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links umgehend entfernen.",
     ],
   },
   {
-    title: "Copyright",
+    title: "Urheberrecht",
     body: [
-      "The content and works created by the site operators on these pages are subject to German copyright law. Downloads and copies of this site are permitted for private, non-commercial use only.",
+      "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.",
     ],
   },
   {
-    title: "Consumer dispute resolution / universal arbitration board",
+    title: "Verbraucherstreitbeilegung / Universalschlichtungsstelle",
     body: [
-      "We are neither willing nor obliged to take part in dispute resolution proceedings before a consumer arbitration board.",
+      "Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
     ],
   },
 ];

@@ -19,7 +19,9 @@
 > | `<html lang>` | `de` | `en` |
 > | `og:locale` | `de_DE` | `en_GB` (Begründung in [seo.ts](src/config/seo.ts)) |
 > | Routen | `/fuer-lehrkraefte` … | `/for-teachers` … (deutsche Pfade → 308) |
-> | Ausgelieferter Text | deutsch | englisch |
+> | Ausgelieferter Text | deutsch | englisch — **außer /impressum** |
+> | Impressum | deutsch | **deutsch**, plus ein englischer Sprachhinweis |
+> | Datenschutzerklärung | deutsch | englisch (`/privacy`) |
 > | Kommentare, `docs/`, CLAUDE.md | deutsch | **weiterhin deutsch** |
 >
 > Die Kommentare bleiben deutsch, weil die Wahrheitsquelle
@@ -841,7 +843,7 @@ Originals nicht.
 
 | #    | Punkt                                                                                                                                                                                                                                                                                                        | Wo einzutragen                                                | Zuständigkeit |
 | ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------- |
-| E1   | **EN-Rechtstexte vom Anwalt prüfen lassen.** /legal-notice und /privacy sind Übersetzungen der deutschen Vorlagen. Die Pflichtangaben sind identisch, der Fließtext ist übersetzt — geprüft ist er nicht. Beide Seiten tragen den Satz „German law applies; this is a translation…"; das ersetzt keine Prüfung | [legal.ts](src/config/legal.ts), danach `PRIVACY_APPROVED`     | Anwalt        |
+| E1   | **EN-Datenschutzerklärung vom Anwalt prüfen lassen.** /privacy ist die Übersetzung der deutschen Vorlage und trägt den Satz „German law applies; this is a translation…" — das ersetzt keine Prüfung. **/impressum ist seit dieser Runde wieder deutsch** und braucht keine EN-Prüfung mehr | [legal.ts](src/config/legal.ts), danach `PRIVACY_APPROVED`     | Anwalt        |
 | E2   | **hreflang von selyvi.de zurück auf selyvi.com setzen.** hreflang wirkt nur beidseitig. Diese Seite zeigt vollständig auf die deutsche (en, de, x-default); solange die deutsche nicht zurückzeigt, ist die Auszeichnung einseitig und wirkungslos                                                            | selyvi.de, `src/config/seo.ts` dort                           | SEO           |
 | E3   | **Freigabe der offenen Punkte in [docs/en-review.md](docs/en-review.md).** Wirkungszeile, Serverstandort-Wortlaut, Manifest-Schwüre und die drei Erzähl-Zeilen liegen dort mit Vorschlag und Alternative                                                                                                       | docs/en-review.md, danach der jeweilige Quellort               | CEO + CMO     |
 | E4   | **Der Satz fürs Verkaufsgespräch.** Die gezeigte Oberfläche ist englisch, die echte Anwendung ist deutsch (en-review.md, Punkt 9). Wer nach dieser Seite eine Demo zeigt, sagt das — sonst sagt es die Demo                                                                                                    | Verkaufsleitfaden, nicht die Website                          | Vertrieb      |

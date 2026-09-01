@@ -31,6 +31,8 @@ export function SiteFooter() {
                   <li key={`${column.title}-${item.label}`}>
                     <Link
                       href={item.href}
+                      // Nur der Impressum-Eintrag traegt eines – siehe NavItem.
+                      lang={item.lang}
                       className="text-sm text-brand-100 transition-colors hover:text-surface"
                     >
                       {item.label}

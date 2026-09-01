@@ -90,11 +90,40 @@ const PAGES = [
   "/preview",
   "/co-create",
   "/meet",
-  "/legal-notice",
+  "/impressum",
   "/privacy",
   // Die 404-Seite wird ueber einen Pfad geprueft, den es nicht gibt.
   "/diese-seite-gibt-es-nicht",
 ];
+
+/**
+ * ==========================================================================
+ * SEITEN, DIE DEUTSCH SEIN SOLLEN – ABSCHLIESSEND
+ * ==========================================================================
+ * Genau eine: /impressum.
+ *
+ * Die Pflichtangaben nach § 5 DDG und § 18 Abs. 2 MStV sind die Angaben eines
+ * deutschen Unternehmens und gelten im deutschen Wortlaut. Eine englische
+ * Fassung daneben waere im besten Fall ueberfluessig und im schlechtesten die
+ * Version, auf die sich im Zweifel jemand beruft. Begruendung in
+ * src/config/legal.ts und src/app/impressum/page.tsx.
+ *
+ * DAS IST EINE SEITEN-AUSNAHME, KEINE WORT-AUSNAHME, und der Unterschied ist
+ * der ganze Punkt: Eine Seite, die deutsch sein SOLL, mit einer wachsenden
+ * Liste erlaubter Woerter durchzuwinken, waere die Bauweise, bei der
+ * irgendwann versehentlich auch anderswo Deutsch durchrutscht. Die Liste der
+ * Eigennamen unten bleibt deshalb bei drei Eintraegen.
+ *
+ * Geprueft wird die Seite trotzdem – nur umgekehrt: Der EINE englische Satz
+ * muss dastehen. Eine deutsche Seite ohne Sprachhinweis ist auf einer
+ * englischen Website ein Fehler, und dieser Fehler faellt sonst niemandem auf.
+ */
+const DEUTSCHE_SEITEN = new Map([
+  [
+    "/impressum",
+    "This legal notice is provided in German, as required by German law.",
+  ],
+]);
 
 /**
  * Eigennamen. ABSCHLIESSEND – wer hier etwas ergaenzt, begruendet es im
@@ -148,6 +177,7 @@ const UMLAUT_MUSTER = /[äöüÄÖÜß]/;
 
 let probleme = 0;
 let langBloecke = 0;
+let ausnahmeSeiten = 0;
 const fail = (msg) => {
   probleme++;
   console.log("   TREFFER: " + msg);
@@ -248,6 +278,10 @@ function ohneEigennamen(text) {
 
 console.log("Deutsch-Detektor gegen " + base + "\n");
 console.log("Erlaubte Eigennamen: " + EIGENNAMEN.join(", "));
+console.log(
+  "Deutsche Seiten (Ausnahme, dokumentiert): " +
+    [...DEUTSCHE_SEITEN.keys()].join(", "),
+);
 console.log("Fremdsprachige Bloecke (lang != en) werden uebersprungen.\n");
 
 for (const path of PAGES) {
@@ -257,6 +291,28 @@ for (const path of PAGES) {
   const erwartet = path === "/diese-seite-gibt-es-nicht" ? 404 : 200;
   if (res.status !== erwartet) {
     fail(`${path}: Status ${res.status} statt ${erwartet} – Seite nicht geprueft`);
+    continue;
+  }
+
+  /**
+   * Dokumentierte Seiten-Ausnahme: Diese Seite SOLL deutsch sein.
+   *
+   * Sie wird nicht uebersprungen, sondern umgekehrt geprueft – der eine
+   * englische Sprachhinweis muss dastehen. Eine deutsche Seite ohne ihn ist
+   * auf einer englischen Website ein Fehler.
+   */
+  if (DEUTSCHE_SEITEN.has(path)) {
+    const satz = DEUTSCHE_SEITEN.get(path);
+    // Gegen den ROHEN Body, nicht gegen pruefbarerText(): Die Seite traegt
+    // lang="de" auf der Sektion, und der Sprachhinweis darin sein eigenes
+    // lang="en". schneideFremdsprachiges() nimmt die ganze deutsche Sektion
+    // heraus – samt des englischen Satzes, den wir hier gerade suchen.
+    if (!body.includes(satz)) {
+      fail(`${path}: deutsche Seite OHNE englischen Sprachhinweis („${satz}")`);
+      continue;
+    }
+    ausnahmeSeiten++;
+    console.log(`  ${path.padEnd(26)} deutsch (Ausnahme), Sprachhinweis vorhanden`);
     continue;
   }
 
@@ -295,6 +351,9 @@ for (const path of PAGES) {
 console.log("\n==========================================================");
 console.log(`DEUTSCHE FUNDSTELLEN: ${probleme}`);
 console.log(`Uebersprungene fremdsprachige Bloecke (lang != en): ${langBloecke}`);
+console.log(
+  `Deutsche Seiten (Ausnahme, Sprachhinweis geprueft): ${ausnahmeSeiten} von ${DEUTSCHE_SEITEN.size}`,
+);
 console.log("==========================================================");
 console.log(
   probleme === 0

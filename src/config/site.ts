@@ -3,13 +3,28 @@ import { imprint } from "@/config/legal";
 /**
  * Navigations- und Footer-Struktur.
  *
- * Kontaktangaben kommen aus src/config/legal.ts, damit Footer, Legal notice und
+ * Kontaktangaben kommen aus src/config/legal.ts, damit Footer, Impressum und
  * Privacy policy nicht auseinanderlaufen.
  */
 
 export type NavItem = {
   label: string;
   href: string;
+  /**
+   * Sprache der BESCHRIFTUNG, wenn sie nicht englisch ist.
+   *
+   * Genau ein Eintrag braucht das: „Impressum" in der Fusszeile. Das Ziel ist
+   * eine deutsche Seite (siehe src/config/legal.ts), und ein Link, der
+   * „Legal notice" verspricht und „Impressum" liefert, waere eine
+   * Irrefuehrung – also bleibt die Beschriftung deutsch.
+   *
+   * Damit ist sie ein deutsches Wort auf einer englischen Seite, und genau
+   * dafuer gibt es lang: WCAG 3.1.2 (Language of Parts). Ein Screenreader
+   * spricht es deutsch aus, statt es englisch zu buchstabieren. Dasselbe
+   * Attribut sagt scripts/german-check.mjs, dass dieses Wort nicht englisch
+   * sein soll – ohne dass die Liste erlaubter Woerter dort waechst.
+   */
+  lang?: string;
 };
 
 /** Hauptnavigation im Header (Desktop und Burger-Menue nutzen dieselbe Liste). */
@@ -83,10 +98,13 @@ export const footerColumns: FooterColumn[] = [
   {
     title: "Legal",
     items: [
-      { label: "Legal notice", href: "/legal-notice" },
+      // Beschriftung DEUTSCH, weil das Ziel deutsch ist. „Legal notice" auf
+      // einem Link, hinter dem „Impressum" steht, waere ein Versprechen, das
+      // die Seite nicht einloest. lang="de" siehe NavItem oben.
+      { label: "Impressum", href: "/impressum", lang: "de" },
       { label: "Privacy policy", href: "/privacy" },
       // "Terms" und "Accessibility" standen hier als Platzhalter und zeigten
-      // beide auf /legal-notice. Ein Link, der etwas anderes verspricht als das
+      // beide auf /impressum. Ein Link, der etwas anderes verspricht als das
       // Ziel liefert, ist auf einer Seite mit Rechtsbezug besonders unguenstig
       // – deshalb entfernt, bis die Seiten existieren. Siehe README,
       // "Rechtliches – Launch-Blocker".
@@ -97,12 +115,12 @@ export const footerColumns: FooterColumn[] = [
     /**
      * Bewusst reduziert: nur die E-Mail-Adresse, kein Telefon, keine Anschrift.
      *
-     * Die vollständigen Angaben stehen im Legal notice – dort gehören sie hin,
+     * Die vollständigen Angaben stehen im Impressum – dort gehören sie hin,
      * und dorthin führt der Link in der Spalte „Legal". Eine private
      * Mobilnummer auf jeder einzelnen Seite auszugeben, ist etwas anderes als
      * sie im Impressum bereitzuhalten.
      *
-     * Die Adresse kommt aus src/config/legal.ts – eine Quelle mit Legal notice
+     * Die Adresse kommt aus src/config/legal.ts – eine Quelle mit Impressum
      * und Privacy policy. Sonst stehen auf derselben Website zwei verschiedene
      * Kontaktadressen.
      */

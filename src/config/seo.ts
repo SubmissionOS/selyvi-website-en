@@ -115,6 +115,20 @@ export type RouteMeta = {
    * Nicht freigegeben bedeutet: noindex und kein Sitemap-Eintrag.
    */
   legalGate?: "imprint" | "privacy";
+  /**
+   * Keine hreflang-Auszeichnung fuer diese Route.
+   *
+   * NUR /impressum. Der Grund ist nicht Bequemlichkeit, sondern Bedeutung:
+   * hreflang sagt „dieselbe Seite in einer ANDEREN Sprache". Das Impressum
+   * auf selyvi.com ist aber deutsch – es waere dieselbe Seite in DERSELBEN
+   * Sprache, und ein `hreflang="en"` auf einer deutschen Seite ist schlicht
+   * eine Falschangabe.
+   *
+   * Beide Domains muessen ihr eigenes Impressum tragen (§ 5 DDG verlangt es
+   * auf dem Dienst selbst), ein Canonical von der einen auf die andere
+   * scheidet also aus. Uebrig bleibt: Selbst-Canonical, keine Alternates.
+   */
+  noAlternates?: boolean;
   priority: number;
 };
 
@@ -195,10 +209,19 @@ export const routes: RouteMeta[] = [
     priority: 0.9,
   },
   {
-    path: "/legal-notice",
+    // DEUTSCH, auch hier. Die Pflichtangaben nach § 5 DDG sind die Angaben
+    // eines deutschen Unternehmens und gelten im deutschen Wortlaut – siehe
+    // src/config/legal.ts. /legal-notice leitet mit 308 hierher.
+    //
+    // Titel und Beschreibung sind deshalb ebenfalls deutsch: Was in der
+    // Suchergebnisliste steht, muss die Seite einloesen, und die Seite ist
+    // deutsch. Ein englischer Titel ueber einer deutschen Seite waere genau
+    // die Irrefuehrung, die der Sprachhinweis oben auf der Seite vermeidet.
+    path: "/impressum",
     germanPath: "/impressum",
-    title: "Legal notice",
-    description: `Information required under section 5 DDG (German Digital Services Act) for ${PRODUCT_NAME}.`,
+    noAlternates: true,
+    title: "Impressum",
+    description: `Angaben gemäß § 5 DDG zu ${PRODUCT_NAME}. Diese Seite ist deutsch, wie es das deutsche Recht verlangt.`,
     legalGate: "imprint",
     priority: 0.1,
   },
@@ -290,7 +313,8 @@ export function pageMetadata(path: string): Metadata {
     description: route.description,
     alternates: {
       canonical: absoluteUrl(route.path),
-      languages: alternateLanguages(route),
+      // /impressum bekommt keine – es ist deutsch, siehe noAlternates.
+      ...(route.noAlternates ? {} : { languages: alternateLanguages(route) }),
     },
     openGraph: {
       type: "website",

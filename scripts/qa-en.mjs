@@ -79,7 +79,7 @@ const PAGES = [
   "/preview",
   "/co-create",
   "/meet",
-  "/legal-notice",
+  "/impressum",
   "/privacy",
 ];
 

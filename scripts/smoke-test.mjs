@@ -43,7 +43,7 @@ const PAGES = [
   "/preview",
   "/co-create",
   "/meet",
-  "/legal-notice",
+  "/impressum",
   "/privacy",
 ];
 
@@ -64,7 +64,9 @@ const REDIRECTS = [
   ["/demo", "/meet"],
   ["/mitgestalten", "/co-create"],
   ["/einblick", "/preview"],
-  ["/impressum", "/legal-notice"],
+  // Umgekehrte Richtung als in der ersten Runde: /impressum IST die Seite,
+  // /legal-notice leitet dorthin.
+  ["/legal-notice", "/impressum"],
   ["/datenschutz", "/privacy"],
 ];
 
@@ -559,8 +561,20 @@ console.log("\n=== <html lang> und og:locale ===");
 // Entsprechung auf selyvi.de) und x-default. Fehlt eine, wertet Google die
 // Auszeichnung als unvollstaendig und ignoriert sie – dann konkurrieren
 // selyvi.com und selyvi.de um dieselbe Suchanfrage, statt sich zu ergaenzen.
+//
+// /impressum ist ausgenommen und traegt bewusst KEINE Alternates: Die Seite ist
+// deutsch (siehe src/config/legal.ts), und hreflang="en" auf einer deutschen
+// Seite waere eine Falschangabe. Geprueft wird stattdessen, dass dort wirklich
+// keine stehen.
 console.log("\n=== hreflang ===");
-for (const path of PAGES) {
+const HREFLANG_PAGES = PAGES.filter((p) => p !== "/impressum");
+{
+  const { body } = await get("/impressum");
+  if (/<link rel="alternate" hrefLang=/i.test(body)) {
+    fail("/impressum trägt hreflang, obwohl die Seite deutsch ist");
+  }
+}
+for (const path of HREFLANG_PAGES) {
   const { body } = await get(path);
   const alternates = Object.fromEntries(
     [...body.matchAll(/<link rel="alternate" hrefLang="([^"]*)" href="([^"]*)"/gi)].map(
@@ -584,7 +598,10 @@ for (const path of PAGES) {
     fail(`${path}: x-default weicht von en ab`);
   }
 }
-console.log(`  ${PAGES.length} Seiten geprüft: en, de und x-default vorhanden`);
+console.log(
+  `  ${HREFLANG_PAGES.length} Seiten geprüft: en, de und x-default vorhanden`,
+);
+console.log("  /impressum: bewusst ohne hreflang (deutsche Seite)");
 
 // --- 9: Umleitungen der deutschen Pfade ---
 console.log("\n=== Umleitungen der deutschen Pfade ===");
@@ -639,7 +656,7 @@ console.log("\n=== Sitemap und robots.txt ===");
   const paths = locs.map((u) => new URL(u).pathname);
   console.log("  Sitemap: " + paths.join(", "));
   if (paths.includes("/privacy")) fail("/privacy steht in der Sitemap");
-  if (!paths.includes("/legal-notice")) fail("/legal-notice fehlt in der Sitemap");
+  if (!paths.includes("/impressum")) fail("/impressum fehlt in der Sitemap");
   // Kein deutscher Pfad darf in die Sitemap geraten – sie sind Umleitungen,
   // keine Seiten.
   const deutsche = paths.filter((p) => REDIRECTS.some(([von]) => von === p));
@@ -678,8 +695,9 @@ console.log("\n=== Ausgabe-Hygiene ===");
 console.log("\n=== Ton-Regeln A bis D (englisch) ===");
 {
   // Die Rechtstexte sind Vorlagentexte nach § 5 DDG und Art. 13 DSGVO und
-  // werden nicht nach Marketing-Ton umgeschrieben.
-  const TON_PAGES = PAGES.filter((p) => p !== "/privacy" && p !== "/legal-notice");
+  // werden nicht nach Marketing-Ton umgeschrieben. /impressum ist ausserdem
+  // deutsch – die englischen Muster haetten dort ohnehin nichts zu suchen.
+  const TON_PAGES = PAGES.filter((p) => p !== "/privacy" && p !== "/impressum");
 
   let hits = 0;
   for (const path of TON_PAGES) {

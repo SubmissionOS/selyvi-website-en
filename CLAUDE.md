@@ -11,8 +11,12 @@ Es gibt keinen Merge und keine gemeinsame Sprachschicht. Wer auf selyvi.de einen
 
 **Der Deutsch-Detektor muss 0 melden:** `npm run check:german <url>`. Er prüft das gerenderte HTML aller Seiten. Ausnahmen sind abschließend drei Eigennamen (Selyvi, Waldstetten, Robert Bosch Stiftung); alles andere, was deutsch bleiben muss, trägt `lang="de"` — das ist zugleich WCAG 3.1.2.
 
+**Eine einzige SEITEN-Ausnahme: /impressum.** Sie wird nicht übersprungen, sondern umgekehrt geprüft — der englische Sprachhinweis muss dort stehen. Der Unterschied zur Wort-Ausnahme ist der ganze Punkt: Eine Seite, die deutsch sein SOLL, mit einer wachsenden Liste erlaubter Wörter durchzuwinken, wäre die Bauweise, bei der irgendwann versehentlich auch anderswo Deutsch durchrutscht.
+
 ## Projekt
-Marketing-Website für eine B2B-SaaS-Plattform für Schulen (Zielgruppen: Lehrkräfte, Schulleitungen & Forschende, **Sprache der Auslieferung: Englisch**). Seiten: /, /for-teachers, /for-school-leadership, /research, /security, /our-story, /preview, /co-create, /meet, /legal-notice, /privacy. Die deutschen Pfade von selyvi.de leiten alle permanent (308) auf ihr englisches Ziel um — die Liste steht in `next.config.ts` und wortgleich in `scripts/smoke-test.mjs`.
+Marketing-Website für eine B2B-SaaS-Plattform für Schulen (Zielgruppen: Lehrkräfte, Schulleitungen & Forschende, **Sprache der Auslieferung: Englisch**). Seiten: /, /for-teachers, /for-school-leadership, /research, /security, /our-story, /preview, /co-create, /meet, /impressum, /privacy.
+
+**/impressum IST DEUTSCH.** Die Pflichtangaben nach § 5 DDG und § 18 Abs. 2 MStV gelten im deutschen Wortlaut; eine englische Fassung daneben waere die Version, auf die sich im Zweifel jemand beruft. Darauf steht genau EIN englischer Satz (`IMPRINT_LANGUAGE_NOTE`). /legal-notice leitet mit 308 dorthin. /privacy bleibt englisch — sie ist eine Auskunft an die Leserin, keine Pflichtangabe gegenueber einer Behoerde. Die deutschen Pfade von selyvi.de leiten alle permanent (308) auf ihr englisches Ziel um — die Liste steht in `next.config.ts` und wortgleich in `scripts/smoke-test.mjs`.
 
 ## SICHERHEIT – PFLICHT VOR JEDER PAKET-INSTALLATION (keine Ausnahme)
 1. WEBSUCHE nach "<paketname> compromised / supply chain / malware" – npm-Lieferketten-Angriffe (TanStack-Hack, Shai-Hulud, keyv/cacheable, node-gyp) sind Standard-Bedrohung, nicht Ausnahme. Bei irgendeinem Treffer: STOPP und nachfragen.
@@ -111,7 +115,7 @@ Eine definitive Aussage über eine gewollte Produktgrenze bleibt: "There is deli
 **DREI AUSNAHMEN, abschließend** — dieselben wie im Deutschen:
 - `PRODUCT_HOSTING_NOTE` — enthält "in preparation". Unverändert im Wortlaut.
 - `SCHOOL_TYPE_ANSWER` — "More school types follow."
-- Rechtstexte (/legal-notice, /privacy).
+- Rechtstexte (/impressum, /privacy).
 Beide Sätze stehen wortgleich in der Ausnahmeliste von `scripts/smoke-test.mjs`. Wer sie in `product.ts` bzw. `brand.ts` ändert, ändert sie dort mit.
 Ein temporales "follows" ist verboten, ein logisches nicht ("the analysis follows a codebook", "a mark in German does not tell you whether a child reads fluently"). "Selyvi is being built in the middle of everyday school life" auf /research beschreibt die ENTSTEHUNG und ist ausgenommen.
 
