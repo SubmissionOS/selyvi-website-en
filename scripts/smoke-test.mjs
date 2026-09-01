@@ -439,7 +439,7 @@ const RULES = [
  * src/config/product.ts bzw. src/config/brand.ts aendert, aendert ihn hier mit.
  */
 const AUSNAHMEN = [
-  "Before we work with real pupil data, the product servers move to Germany and every school has a data processing agreement in place — both are in preparation.",
+  "Before Selyvi is used with real pupil data, the product servers move to Germany and every school has a data processing agreement in place — both are in preparation.",
   "More school types follow.",
 ];
 

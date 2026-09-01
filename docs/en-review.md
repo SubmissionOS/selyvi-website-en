@@ -74,126 +74,101 @@ selyvi.com nicht live (README, NACH-LAUNCH-LISTE, Punkt E1).
       Der Studienname steht englisch als „German School Barometer" — so nennt
       ihn die Robert Bosch Stiftung in eigenen englischen Veröffentlichungen.
       Der Link zeigt unverändert auf die deutsche Projektseite.
-- [x] **11 · Rechtstexte** → gebaut. /legal-notice und /privacy stehen,
-      Pflichtangaben identisch, `noindex` und Prüfungs-Zeile auf /privacy
-      unverändert. Beide tragen sichtbar „German law applies; this is a
-      translation of the German legal notice / privacy policy."
-      **Die anwaltliche Prüfung steht aus** (E1).
+- [x] **11 · Rechtstexte** → gebaut, aber ANDERS als hier vorgeschlagen.
+
+      Der Vorschlag lautete „Impressum → Legal notice, nur die Beschriftungen
+      englisch". Genau das stand eine Runde lang so da und ist
+      **zurückgenommen**: Das Impressum ist wieder deutsch, wortgleich mit
+      selyvi.de, unter /impressum. /legal-notice leitet mit 308 dorthin.
+
+      Der Grund ist nicht Bequemlichkeit. Die Pflichtangaben nach § 5 DDG und
+      § 18 Abs. 2 MStV sind die Angaben eines deutschen Unternehmens und
+      gelten im deutschen Wortlaut. Eine englische Haftungsklausel daneben ist
+      keine Serviceleistung, sondern eine zweite Fassung derselben Aussage —
+      und im Zweifel die, auf die sich jemand beruft.
+
+      Übrig bleibt genau EIN englischer Satz, ganz oben:
+      „This legal notice is provided in German, as required by German law."
+
+      **/privacy bleibt englisch**, mit `noindex` und Prüfungs-Zeile. Sie
+      beschreibt, was diese Website mit den Daten ihrer Besucherinnen tut —
+      eine Auskunft an die Leserin, keine Pflichtangabe gegenüber einer
+      Behörde. **Die anwaltliche Prüfung steht aus** (E1).
 
 ---
 
-## Offen — bitte entscheiden
+## Entschieden in dieser Runde
 
-### 3 · Die Wirkungszeile
+Alle vier offenen Sprachfragen sind beantwortet. Die Entscheidungen sind im
+Code, nicht nur hier.
 
-**Deutsch:** „Jeder Entlastungsbericht trägt direkt unter den Zahlen eine
-Einordnung: Gemessenes steht als Messwert, Geschätztes als Schätzwert – und
-keine dieser Kennzeichnungen lässt sich ausblenden, auch von uns nicht."
+- [x] **3 · Die Wirkungszeile** → der gesetzte Vorschlag bleibt:
+      „… **measured values are labelled as measured, estimates as estimates**
+      — and neither label can be switched off, not even by us."
+      Die Alternative („as a measured value / as an estimate") ist damit
+      verworfen: eindeutiger, aber schwerfälliger, und der Satz muss sich laut
+      lesen lassen. Steht in `IMPACT_LINE_PRINCIPLE` und wirkt dadurch auf
+      /research und /for-school-leadership gleichzeitig.
 
-|                    | Fassung                                                                                                                                                                                                            |
-| ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Vorschlag (im Code)** | „Every workload relief report carries a note directly beneath the figures: **measured values are labelled as measured, estimates as estimates** — and neither label can be switched off, not even by us."       |
-| Alternative        | „… **measured values are labelled as a measured value, estimates as an estimate** — …"                                                                                                                              |
+- [x] **8 · Der Serverstandort** → **geändert**, als einzige der vier:
 
-Das Deutsche spielt mit „Messwert / Schätzwert" als **Substantiven**. Dieses
-knappe Paar gibt es im Englischen nicht; der Vorschlag löst es über das Verb.
-**Die Frage ist, ob das für eine Forscherin präzise genug ist.** Die
-Alternative ist eindeutiger und schwerfälliger.
+      | | |
+      | --- | --- |
+      | vorher | „**Before we work with** real pupil data, …" |
+      | **jetzt** | „**Before Selyvi is used with** real pupil data, …" |
 
-Der Satz steht in `IMPACT_LINE_PRINCIPLE` und erscheint auf /research (als
-Zitat-Band) und /for-school-leadership — eine Änderung wirkt auf beiden Seiten
-gleichzeitig.
+      Das deutsche Original sagt „Vor dem **Betrieb** mit echten
+      Schülerdaten". „we work with" beschrieb, was WIR tun; das Deutsche
+      beschreibt, wann das PRODUKT eingesetzt wird. Genau darauf kommt es
+      einer Datenschutzbeauftragten an — der Zeitpunkt hängt am Einsatz, nicht
+      an unserer Tätigkeit.
 
-### 8 · Der Serverstandort
+      Der Wortlaut steht in `PRODUCT_HOSTING_NOTE` **und** in der
+      Ausnahmeliste von `scripts/smoke-test.mjs` (Regel D, „in preparation").
+      Beide sind mitgezogen.
 
-**Im Code steht die Fassung aus der letzten Runde, unverändert:**
+- [x] **N1 · Die Manifest-Schwüre** → Vorschlagsspalte, alle fünf. Sie hält
+      die Kürze, von der die Sektion lebt: Fünf Sätze ohne Gestaltung tragen
+      nur, wenn jeder einzeln steht.
 
-> „Before we work with real pupil data, the product servers move to Germany and
-> every school has a data processing agreement in place — both are in
-> preparation."
+- [x] **N2 · Die drei Erzähl-Zeilen** → Vorschlagsspalte, alle drei.
+      Insbesondere Zeile 3: „who **stayed late** for us back then", nicht
+      „stayed behind" — Letzteres heißt im Englischen auch
+      „zurückgeblieben".
 
-**Alternative:** „**Before we operate with** real pupil data, …"
+- [x] **N3 · Elternpost mit drei Sprachen** (EN, TR, AR) statt vier. Eine
+      vierte kommt zurück, sobald jemand sie gegenliest (E6).
 
-Das Deutsche sagt „Vor dem **Betrieb** mit echten Schülerdaten". „work with"
-ist weicher als „operate with". **Rechtlich erhebliche Zeile** — sie wurde
-bewusst NICHT eigenmächtig geändert, weil sie hier zur Freigabe vorliegt.
+- [x] **N4 · „Sachunterricht" → „General studies".**
 
-Sie ist die einzige erlaubte Einschränkung der ganzen Website und steht
-wortgleich in der Ausnahmeliste des Smoke-Tests (Regel D, „in preparation").
-Wer den Wortlaut ändert, ändert ihn in `product.ts` **und** in
-`scripts/smoke-test.mjs`.
-
-### N1 · Die Manifest-Schwüre (/our-story)
-
-Fünf Sätze, untereinander, ohne Karten und ohne Icons. Der erste kommt aus
-`DECISION_PROMISE` und ist gesetzt (Punkt 4); die übrigen vier sind neu
-übersetzt.
-
-| Deutsch                                                                                                | **Vorschlag (im Code)**                                                                                       | Alternative                                                                                     |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| „Selyvi schlägt vor. Sie entscheiden. **Immer.**"                                                      | „Selyvi suggests. You decide. **Always.**"                                                                    | — (gesetzt)                                                                                     |
-| „Nutzung zeigen wir als Verteilung – nie als Rangliste. **Niemand wird vorgeführt.**"                   | „We show usage as a distribution – never as a ranking. **Nobody is put on the spot.**"                        | „… **Nobody is singled out.**" — kühler, dafür eindeutiger                                      |
-| „Offene Punkte **kennzeichnen** wir, statt sie zu überspielen."                                        | „Open points we **mark**, instead of glossing over them."                                                     | „We **flag** open points instead of glossing over them." — flüssiger, verliert die Voranstellung |
-| „**Beispieldaten heißen bei uns Beispieldaten.**"                                                      | „**Sample data is called sample data here.**"                                                                 | „**We call sample data what it is: sample data.**" — deutlicher, länger                          |
-| „Kein Kind wird **bloßgestellt** – nicht in der Software, nicht in unserem Marketing, auch kein erfundenes." | „No child is **exposed** – not in the software, not in our marketing, not even an invented one."         | „No child is **held up as an example** – …" — näher am Deutschen, sperriger                     |
-
-**Empfehlung: Vorschlagsspalte.** Sie hält die Kürze, von der die Sektion lebt
-— fünf Sätze ohne Gestaltung tragen nur, wenn jeder einzeln steht.
-
-### N2 · Die drei Erzähl-Zeilen (Startseite)
-
-Der empfindlichste Text der Website: kursiv, mittig, zwischen den Sektionen.
-Sie behaupten nichts und nennen keine Funktion — sie leben von Rhythmus.
-
-| # | Deutsch                                                                                                                                            | **Vorschlag (im Code)**                                                                                                                       | Alternative                                                                    |
-| - | -------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| 1 | „Wir kennen diese Abende nicht aus einem Marktreport. Wir kennen sie vom Küchentisch – von einer angehenden Grundschullehrerin, die uns gezeigt hat, wo die Zeit wirklich bleibt." | „We do not know those evenings from a market report. We know them from the kitchen table – from a trainee primary school teacher who showed us where the time actually goes." | „… **where the time really goes.**" — wärmer, minimal weniger präzise           |
-| 2 | „Alles hier drin geht auf einen Hinweis aus einem echten Lehrerzimmer zurück. Manches haben wir gebaut, weil eine einzige Lehrkraft nicht lockergelassen hat." | „Everything in here goes back to a remark from a real staffroom. Some of it we built because one single teacher would not let it go."          | „… **because one teacher kept asking.**" — freundlicher, verliert die Hartnäckigkeit |
-| 3 | „Wir waren selbst lange genug Schüler. Jetzt bauen wir für die Menschen, die damals für uns dageblieben sind."                                      | „We were pupils ourselves for long enough. Now we build for the people who **stayed late** for us back then."                                  | „… who **stayed behind** for us back then." — wörtlicher, im Englischen mehrdeutig |
-
-**Zu Zeile 3:** „dageblieben" meint die Lehrkraft, die nach der Stunde noch da
-war. „stayed behind" heißt im Englischen auch „zurückgeblieben" — deshalb
-„stayed late". Das ist die einzige der drei Zeilen, bei der die wörtliche
-Übersetzung schadet.
-
-**Empfehlung: Vorschlagsspalte.**
-
-### N3 · Die Elternpost zeigt drei Sprachen statt vier
-
-Die deutsche Fassung schaltet zwischen **DE, EN, TR, AR**. Auf selyvi.com ist
-die gezeigte Oberfläche englisch (Punkt 9) — die Ausgangssprache der Mail ist
-damit EN, und übrig bleiben **EN, TR, AR**.
-
-**Vorschlag: bei drei bleiben.** Eine ukrainische oder polnische Zeile müsste
-jemand gegenlesen, und ein Fehler darin fiele ausgerechnet der Zielgruppe auf.
-Drei belegte Sprachen sind mehr wert als vier, von denen eine ungeprüft ist.
-
-**Alternative:** eine vierte Sprache ergänzen, sobald jemand sie gegenliest
-(steht als E6 in der NACH-LAUNCH-LISTE).
-
-Die Auswahlliste im Produkt nennt weiterhin **neun** Zielsprachen; die Zahl
-kommt aus `TRANSLATION_LANGUAGE_COUNT` und nicht aus dieser Anzeige.
-
-### N4 · „Sachunterricht" heißt „General studies"
-
-Kein deutsches Schulfach hat eine saubere englische Entsprechung.
-„General studies" ist die neutrale Beschreibung; „science and social studies"
-wäre genauer und passt in keine Karte.
-
-**Vorschlag: General studies.** **Alternative:** „Science & society".
-Betrifft die Demo-Daten, nicht den Fließtext — der Begriff steht nur in den
-nachgebauten Fenstern.
-
-### N5 · „Deutsch" als Unterrichtsfach bleibt „German"
-
-`DEMO_SUBJECT = "German"`. Das Fach ist der Deutschunterricht einer deutschen
-Grundschule. Es zum Englischunterricht zu machen, weil die Website englisch
-ist, wäre eine Aussage über ein Schulsystem, in dem das Produkt nicht läuft.
-
-**Keine Alternative vorgesehen** — hier steht nur, dass die Entscheidung
-bewusst getroffen wurde.
+- [x] **N5 · „Deutsch" als Unterrichtsfach bleibt „German".**
 
 ---
+
+## Was jetzt noch offen ist
+
+Genau ein Punkt, und er ist kein Sprachthema:
+
+### E1 · Anwaltsprüfung der englischen Datenschutzerklärung
+
+/privacy ist die Übersetzung der vorläufigen deutschen Erklärung. Weder das
+Original noch die Übersetzung sind anwaltlich geprüft. `PRIVACY_APPROVED`
+steht deshalb auf `false`: noindex, kein Sitemap-Eintrag, sichtbare
+Prüfungs-Zeile.
+
+**Vorschlag:** Die englische Fassung zusammen mit der deutschen prüfen lassen —
+es ist derselbe Sachverhalt, und zwei getrennte Mandate kosten doppelt.
+**Alternative:** erst die deutsche freigeben, die englische danach; dann geht
+selyvi.de früher live und selyvi.com später.
+
+**/impressum braucht diese Prüfung nicht mehr** — es ist seit dieser Runde
+wieder deutsch und wortgleich mit selyvi.de.
+
+Zwei weitere Punkte hängen nicht an einer Entscheidung, sondern an einer
+Handlung, und stehen als E2 und E4 in der NACH-LAUNCH-LISTE der README:
+das hreflang der Gegenrichtung auf selyvi.de, und der Satz fürs
+Verkaufsgespräch zur englischen Oberfläche.
+
 
 ## Was nebenbei aufgefallen ist
 

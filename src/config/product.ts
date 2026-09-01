@@ -54,19 +54,25 @@ export const AUDIENCE_SHORT = "For primary school teachers, years 1–4";
  * belegt (Region fra1 in vercel.json) und darf so stehen – aber nur als
  * Aussage ueber die Website, nie als Aussage ueber das Produkt.
  *
- * OFFENER PUNKT DER UEBERSETZUNG (docs/en-review.md, Punkt 8): Das deutsche
- * Original sagt „Vor dem Betrieb mit echten Schuelerdaten". „Before we work
- * with" ist etwas weicher als „before we operate with". Der Satz ist
- * rechtlich erheblich – er steht deshalb unveraendert so, wie er in
- * en-review.md zur Freigabe vorliegt, und wird erst nach der Rueckmeldung
- * angefasst.
+ * WORTLAUT ENTSCHIEDEN (docs/en-review.md, Punkt 8 – abgehakt):
+ * „Before Selyvi is used with real pupil data, …"
+ *
+ * Das deutsche Original sagt „Vor dem BETRIEB mit echten Schuelerdaten". Die
+ * erste Uebersetzung lautete „Before we work with" und war damit weicher als
+ * die Vorlage: „we work with" beschreibt, was WIR tun; das Deutsche
+ * beschreibt, wann das PRODUKT eingesetzt wird. „Before Selyvi is used with"
+ * trifft das – der Zeitpunkt haengt am Einsatz, nicht an unserer Taetigkeit,
+ * und genau darauf kommt es einer Datenschutzbeauftragten an.
+ *
+ * Rechtlich erhebliche Zeile. Wer sie aendert, aendert sie mit Rueckmeldung
+ * von CEO und CMO – nicht nach Sprachgefuehl.
  *
  * Der Wortlaut steht ausserdem in der Ausnahmeliste von
  * scripts/smoke-test.mjs (Regel D, „in preparation"). Wer ihn hier aendert,
  * aendert ihn dort mit.
  */
 export const PRODUCT_HOSTING_NOTE =
-  "Before we work with real pupil data, the product servers move to Germany and every school has a data processing agreement in place — both are in preparation.";
+  "Before Selyvi is used with real pupil data, the product servers move to Germany and every school has a data processing agreement in place — both are in preparation.";
 
 /** Hosting DIESER WEBSITE. Belegt durch die Serverregion fra1 in vercel.json. */
 export const WEBSITE_HOSTING_NOTE =
