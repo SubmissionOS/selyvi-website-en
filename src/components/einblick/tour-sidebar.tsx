@@ -125,8 +125,41 @@ export function TourSidebar({
                    <span>: Unter 640 px ist der ausgeblendet, und das Symbol
                    ist aria-hidden – ohne dieses Attribut waere der Schalter
                    dort namenlos. Gemessen, nicht vermutet: Lighthouse prueft
-                   in Mobilbreite und hat genau das gemeldet. */
-                aria-label={isLocked ? `${entry.label}, locked` : entry.label}
+                   in Mobilbreite und hat genau das gemeldet.
+
+                   DER ZAEHLER GEHOERT MIT HINEIN, und auch das ist gemessen.
+                   „Live lesson" trug sichtbar die Zahl der Beobachtungen als
+                   Badge, das aria-label nannte sie nicht. Zwei Folgen:
+
+                     1. Wer vorlesen laesst, erfuhr die Zahl ueberhaupt nicht.
+                     2. Sichtbarer Text und zugaenglicher Name gingen
+                        auseinander – Lighthouse meldet das als
+                        `label-content-name-mismatch` (WCAG 2.5.3, Label in
+                        Name). Betroffen war nur die DESKTOP-Ansicht: unter
+                        640 px sind Beschriftung und Badge beide
+                        ausgeblendet, dort gibt es keinen sichtbaren Text, der
+                        abweichen koennte.
+
+                   Der Befund lag eine Runde lang unentdeckt, weil der
+                   Accessibility-Wert trotzdem auf 100 rundet. Gefunden hat
+                   ihn erst die Auflistung JEDES gefallenen Audits in
+                   scripts/audit-en.mjs.
+
+                   Die Zahl steht ohne Komma direkt hinter der Beschriftung:
+                   Der sichtbare Text („Live lesson 3") ist damit woertlicher
+                   Anfang des zugaenglichen Namens („Live lesson 3
+                   observations"). Eine Fassung mit Komma haenge davon ab, wie
+                   das Pruefwerkzeug Satzzeichen behandelt – und darauf soll
+                   sich niemand verlassen muessen. */
+                aria-label={
+                  isLocked
+                    ? `${entry.label}, locked`
+                    : entry.key === "live-unterricht"
+                      ? `${entry.label} ${observationCount} ${
+                          observationCount === 1 ? "observation" : "observations"
+                        }`
+                      : entry.label
+                }
                 className={cn(
                   "relative flex w-full items-center justify-center gap-2 rounded-[var(--app-radius-nav)] px-2 py-1.5 text-left sm:justify-start",
                   isActive &&
@@ -158,9 +191,42 @@ export function TourSidebar({
                 </span>
 
                 {entry.key === "live-unterricht" ? (
-                  <span className="ml-auto hidden rounded-full bg-[var(--app-surface-muted)] px-1.5 text-[10px] text-[var(--app-text-muted)] sm:inline">
-                    {observationCount}
-                  </span>
+                  <>
+                    {/* ==================================================
+                        DAS LEERZEICHEN IST DER FIX – NACHGELESEN, NICHT
+                        GERATEN
+                        ==================================================
+                        Ohne es steht im DOM „Live lesson" direkt neben „3",
+                        und der sichtbare Text lautet „Live lesson3". Der
+                        zugaengliche Name ist „Live lesson 3 observations" –
+                        und „live lesson3" kommt darin nicht vor.
+
+                        axe prueft genau das als schlichten Teilstring-
+                        Vergleich (`isStringContained`), nachdem es
+                        Satzzeichen entfernt und Leerraum normalisiert hat.
+                        Das Leerzeichen macht aus „Live lesson3" ein
+                        „Live lesson 3", und das IST im Namen enthalten.
+
+                        ZWEI IRRWEGE VORHER, beide gemessen und beide
+                        gescheitert:
+                          1. Die Zahl nur ins aria-label nehmen. Reicht
+                             nicht – der sichtbare Text bleibt „Live lesson3".
+                          2. Den Badge auf `aria-hidden` setzen. Reicht
+                             ebenfalls nicht: axe ruft
+                             `visibleVirtual(node, screenReader = false)` auf
+                             und uebergeht aria-hidden bei der Frage, was
+                             sichtbar ist.
+
+                        `aria-hidden` steht trotzdem – aber aus dem anderen
+                        Grund: Die Zahl steht bereits im Namen des Schalters,
+                        und zweimal dieselbe Auskunft ist eine zu viel. */}{" "}
+                    <span
+                      aria-hidden="true"
+                      className="ml-auto hidden rounded-full bg-[var(--app-surface-muted)] px-1.5 text-[10px] text-[var(--app-text-muted)] sm:inline"
+                    >
+                      {observationCount}
+                    </span>
+                  </>
                 ) : null}
 
                 {isLocked ? (

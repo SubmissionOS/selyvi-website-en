@@ -7,8 +7,8 @@ german-check.mjs im ausgelieferten HTML nicht sehen kann.
 Ohne prefers-reduced-motion: die Zwischenschritte sind der Zweck.
 Dieselben Muster wie der HTML-Detektor (scripts/lib/deutsch-muster.mjs).
 
-Textzeilen aus Animationsschritten: 87
+Textzeilen aus Animationsschritten: 86
 Bedienbare Zustände auf /preview:   88
-Verschiedene Textzeilen /preview:   105
+Verschiedene Textzeilen /preview:   106
 Übersprungene Schritte:             0
 DEUTSCHE FUNDSTELLEN:               0

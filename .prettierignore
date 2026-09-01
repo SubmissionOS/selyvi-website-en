@@ -29,3 +29,14 @@ docs/selyvi-kompakt.md
 # Referenz-Dokumentation: Tabellen sind auf Lesbarkeit gesetzt, nicht auf
 # Prettier-Spaltenbreite.
 docs/app-referenz/ABWEICHUNGEN.md
+
+# ERZEUGTE MESSBERICHTE – nicht von Hand anfassen.
+#
+# Beide entstehen aus `npm run audit:en` bzw. `npm run redundanz:en`. Prettier
+# wuerde die Spaltenbreiten der Tabellen umbrechen, und beim naechsten Lauf
+# schriebe das Skript sie zurueck – ein Hin und Her im Diff, das niemandem
+# hilft. Wer die Darstellung aendern will, aendert das Skript und laesst
+# `npm run audit:en -- --nur-bericht` laufen.
+docs/mess-basis-en.md
+docs/mess-basis-en.json
+docs/redundanz-en.md

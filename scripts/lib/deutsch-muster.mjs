@@ -53,7 +53,7 @@ export const WOERTER = [
   "Elternmail","Stunden","Woche","Monat","Jahr","Kinder","Schueler",
   "Datenschutz","Sicherheit","Anfrage","Kennenlernen","Einblick","Mitgestalten",
   "Impressum","Datenschutzerklaerung","Startseite","Seite","Bericht","Entwurf",
-  "Sprache","Quelle","Quellen","Thema","Fach","Faecher","Material","Vorschlag",
+  "Sprache","Quelle","Quellen","Thema","Fach","Faecher","Vorschlag",
   "Antwort","Frage","Fragen","Hinweis","Beispiel","Beispieldaten","Ausschnitt",
   "gesperrt","offen","erfunden","gespeichert","abgesendet","Pflichtfeld",
   // Oberflaechen-Beschriftungen der nachgebauten Anwendung. Sie tragen keine
@@ -71,9 +71,18 @@ export const WOERTER = [
 ];
 
 /*
- * BEWUSST NICHT IN DER LISTE, obwohl deutsch: „war". Es ist zugleich ein
- * englisches Wort, und ein Fehlalarm auf einer Pruefung, die 0 melden MUSS,
- * kostet mehr als der eine Fall, den es faengt. „waren" steht dafuer drin.
+ * ==========================================================================
+ * BEWUSST NICHT IN DER LISTE, obwohl deutsch
+ * ==========================================================================
+ * „war"       – zugleich ein englisches Wort. Ein Fehlalarm auf einer
+ *               Pruefung, die 0 melden MUSS, kostet mehr als der eine Fall,
+ *               den es faengt. „waren" steht dafuer drin.
+ * „Material"  – in beiden Sprachen dasselbe Wort. Es kann per Bauart nichts
+ *               unterscheiden und waere reines Fehlalarm-Risiko: Die Seite
+ *               sagt „teaching materials", und ein Satz mit dem Singular
+ *               haette den Lauf grundlos rot gemacht. Der Bereich heisst auf
+ *               der Oberflaeche ohnehin „Materials" – ein deutsches
+ *               „Material" dort faellt ueber die Nachbarwoerter auf.
  */
 
 export const WORT_MUSTER = new RegExp(`\\b(${WOERTER.join("|")})\\b`, "i");

@@ -12,7 +12,7 @@ Reihenfolge der fokussierbaren Elemente, 1440 px
   9. <button> Reset
  10. <button> Today, locked
  11. <button> My classes
- 12. <button> Live lesson
+ 12. <button> Live lesson 3 observations
  13. <button> Timeline
  14. <button> Review, locked
  15. <button> Support plans, locked
@@ -44,7 +44,7 @@ Reihenfolge der fokussierbaren Elemente, 1440 px
  41. <a> Our story
  42. <a> Co-create
  43. <a> Meet Selyvi
- 44. <a> Legal notice
+ 44. <a> Impressum
  45. <a> Privacy policy
  46. <a> selyvi.app@gmail.com
  47. <a> Meet Selyvi

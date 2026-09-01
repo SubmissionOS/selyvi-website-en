@@ -11,27 +11,55 @@ das zweite Vercel-Projekt ohne Domain.
 
 ## Stand
 
-**Die Seite ist vollständig übersetzt.** Es gibt keine Sprachschicht mehr und
-keinen deutschen Rest: Der Deutsch-Detektor (`npm run check:german <url>`)
-meldet über alle elf Seiten plus 404 **0 Fundstellen**. Gemessen gegen den
-Produktionsbuild, nicht gegen den Quelltext.
+**Die Seite ist vollständig übersetzt und durchgemessen.** Es gibt keine
+Sprachschicht und keinen deutschen Rest — mit einer Ausnahme, und die ist
+gewollt: **/impressum ist deutsch.**
 
-Die frühere Migrationsliste („290 Fundstellen in 54 Dateien") ist damit
-erledigt und unten gestrichen.
+Alle Zahlen sind gegen den Produktionsbuild gemessen, nicht gegen den
+Quelltext und nicht geschätzt.
 
-| Prüfung                                   | Ergebnis                                       |
-| ----------------------------------------- | ---------------------------------------------- |
-| Deutsch-Detektor                          | **0** Fundstellen, 8 übersprungene `lang`-Blöcke |
-| Smoke-Test (Ton A–D, Verkaufssprache)     | **0** Treffer, 61 Muster × 9 Seiten            |
-| Gegenprobe der Muster                     | **0** tote Regeln, **0** Fehlalarme            |
-| Überlaufende Kästen (1440 und 390)        | **0**                                          |
-| Kontrast in den App-Fenstern (WCAG 2.1 AA) | **0** Verstöße                                 |
-| CLS                                       | 0,002 auf `/`, sonst 0                         |
-| reduced motion                            | alle geprüften Seiten stehen still             |
-| Tastatur `/preview`                       | 49 Ziele, **0** ohne Namen                     |
+### Sprache
 
-Offen bleibt die **Anwaltsprüfung der englischen Rechtstexte** — ohne sie geht
-selyvi.com nicht live (README, NACH-LAUNCH-LISTE, Punkt E1).
+| Prüfung | Ergebnis |
+| --- | --- |
+| Deutsch-Detektor im HTML | **0** Fundstellen über 11 Seiten plus 404 |
+| … davon übersprungen | 16 fremdsprachige Blöcke (`lang != en`), 1 deutsche Seite mit geprüftem Sprachhinweis |
+| Deutsch in **Animationsschritten** | **0** — 86 Textzeilen aus 409 Aufnahmen über vier Seiten, ohne reduced motion |
+| Deutsch in **Klick-Zuständen** (/preview) | **0** — 88 Zustände, 105 verschiedene Textzeilen, 0 übersprungene Schritte |
+| Ton-Regeln A–D und Verkaufssprache | **0** Treffer, 61 Muster × 9 Seiten |
+| Gegenprobe der Muster | **0** tote Regeln, **0** Fehlalarme |
+
+### Technik
+
+| Prüfung | Ergebnis |
+| --- | --- |
+| Lighthouse mobil (Median aus 5) | Performance **95–97**, Accessibility **100**, Best Practices **100**, SEO **100** |
+| Lighthouse Desktop, Accessibility | **100** auf allen Seiten |
+| axe-core @ 390 und @ 1440 | **0** Verstöße auf allen 12 Seiten |
+| CLS | **0** auf allen Seiten |
+| Überlaufende Kästen (1440 und 390) | **0** |
+| Kontrast in den App-Fenstern (WCAG 2.1 AA) | **0** Verstöße |
+| reduced motion | alle geprüften Seiten stehen still |
+| Tastatur /preview | 49 Ziele, **0** ohne Namen |
+| Formular-Pfad (CRM erreichbar und tot) | bestanden, inkl. `locale: "en"` |
+
+**Eine Abweichung, und sie ist beabsichtigt:** /privacy hat SEO 66 statt 100.
+Gemessen ist der Grund, nicht vermutet — das einzige fallende Audit heißt
+`is-crawlable` („Page is blocked from indexing"). Die Seite trägt `noindex`,
+solange `PRIVACY_APPROVED` auf `false` steht. Der Wert steigt auf 100, sobald
+die Anwaltsprüfung vorliegt.
+
+**Zwei Dinge, die erst die neuen Prüfungen gefunden haben** — beide behoben:
+
+- Die Bestätigung des Sitzplan-Tauschs hieß noch „Übernommen · Beispiel". Sie
+  erscheint erst nach ZWEI Klicks und war für jede HTML-Prüfung unsichtbar.
+- Der CLS von 0,002 auf der Startseite war **nicht** der Schriftwechsel
+  (mit blockierter Webschrift blieb der Wert gleich), sondern die Hydration:
+  Der reservierte Platz für den Zeugnisentwurf stammte aus der deutschen
+  Fassung und war für den längeren englischen Text an neun von dreizehn
+  gemessenen Breiten zu klein. Die Höhe kommt jetzt vom Text selbst.
+
+Die frühere Migrationsliste („290 Fundstellen in 54 Dateien") ist erledigt.
 
 ---
 
@@ -204,3 +232,17 @@ Sie stehen hier, damit niemand sie für Zufall hält:
 - **Stundenplan-Spalten heißen `P1` bis `P4`, nicht `Period 1`.** In der
   Kopfspalte eines Fünf-Spalten-Rasters bleiben bei 390 px rund 40 px; die
   Langform bricht dort um. Die Langform steht im `aria-label` der Zelle.
+- **Der Footer-Link heißt „Impressum", nicht „Legal notice"**, und trägt
+  `lang="de"`. Ein Link, der „Legal notice" verspricht und „Impressum"
+  liefert, wäre eine Irreführung; ein deutsches Wort auf einer englischen
+  Seite ist genau der Fall, für den es `lang` gibt.
+- **/impressum trägt kein hreflang.** hreflang bedeutet „dieselbe Seite in
+  einer ANDEREN Sprache" — hier ist es dieselbe. Beide Domains müssen ihr
+  eigenes Impressum tragen (§ 5 DDG verlangt es auf dem Dienst selbst), ein
+  Canonical von der einen auf die andere scheidet also aus. Der Smoke-Test
+  prüft, dass dort wirklich keine Alternates stehen.
+- **Die Höhe des Zeugnisentwurfs in der Hero-Szene kommt vom Text**, nicht von
+  einer gemessenen Zahl: Eine unsichtbare Kopie des vollständigen Entwurfs
+  trägt die Höhe, der getippte Text liegt darüber. Feste Werte hätten für
+  genau diesen Satz gestimmt und beim nächsten gebrochen — genau das ist beim
+  Übersetzen passiert.

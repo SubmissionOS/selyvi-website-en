@@ -5,5 +5,5 @@ waren zeichengleich – die Seiten stehen still.
 /                          146fa1f4dfd0a092
 /for-teachers              85756b8406acf971
 /for-school-leadership     7e82b96d469bfe6b
-/security                  6eb2845ccf3f6f38
+/security                  acec78e88e348cbf
 /preview                   b5d2db3cc7b2cbfb

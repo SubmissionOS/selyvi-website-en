@@ -56,6 +56,9 @@ npm run smoke -- --gegenprobe   # beweist, dass die Ton-Muster leben
 npm run check:german <url>      # Deutsch-Detektor im HTML: muss 0 melden
 npm run check:animation <url>   # Deutsch-Detektor in Animationen und Klick-Zuständen
 npm run qa:en <url>             # Überlauf, Kontrast, CLS, rAF, Tastatur, Screenshots
+AUDIT_TOOLS=<pfad> npm run audit:en <url>   # Lighthouse (Median/5) und axe
+npm run audit:en -- --nur-bericht           # Bericht neu bauen, ohne neu zu messen
+npm run redundanz:en <url>      # Redundanz-Tabelle
 ```
 
 **Drei dieser Befehle gibt es nur hier.** Sie sichern genau das ab, was beim
@@ -76,6 +79,27 @@ npm run qa:en <url>             # Überlauf, Kontrast, CLS, rAF, Tastatur, Scree
 - `smoke -- --gegenprobe` prüft die Ton-Regeln gegen sich selbst: Zu jedem
   Muster steht ein Satz, den es fangen muss, und fünf erlaubte Sätze, die es
   nicht auslösen dürfen. Ein Ton-Test mit 0 Treffern beweist sonst nichts.
+- `audit:en` fährt die volle Mess-Basis: Lighthouse mobil über alle vier
+  Kategorien als **Median aus fünf Läufen** je Seite, Lighthouse Desktop für
+  Accessibility, und axe-core bei 390 und 1440. Ergebnis:
+  [docs/mess-basis-en.md](docs/mess-basis-en.md).
+
+  **Die Werkzeuge liegen außerhalb des Projekts** und stehen nicht in der
+  package.json — `lighthouse` 13.4.1 und `axe-core` 4.13.0, exakt die
+  Versionen aus dem AUDIT.md des deutschen Repos. Ein einmaliges
+  Audit-Werkzeug gehört nicht dauerhaft in den Abhängigkeitsbaum einer
+  Marketing-Website; Lighthouse allein bringt über 100 Pakete mit. Einmalig:
+
+  ```bash
+  mkdir audit-tools && cd audit-tools && npm init -y
+  npm install --ignore-scripts --save-exact lighthouse@13.4.1 axe-core@4.13.0
+  ```
+
+  Der Lauf dauert rund 40 Minuten (110 Lighthouse-Durchgänge, 24 axe-Läufe).
+  Die Messwerte landen roh als `docs/mess-basis-en.json` daneben —
+  `--nur-bericht` baut das Markdown allein daraus neu. Wer die **Darstellung**
+  ändert, muss also nicht neu messen; und wer sie ändert, kommt nicht in
+  Versuchung, die Zahlen dabei von Hand anzupassen.
 - `qa:en` misst, was englische Beschriftungen kaputt machen: überlaufende
   Kästen bei 390 und 1440, Kontrast **innerhalb** der nachgebauten
   App-Fenster (dorthin kommt axe nicht, siehe CLAUDE.md), CLS, laufende
@@ -855,7 +879,7 @@ Originals nicht.
 | E2   | **hreflang von selyvi.de zurück auf selyvi.com setzen.** hreflang wirkt nur beidseitig. Diese Seite zeigt vollständig auf die deutsche (en, de, x-default); solange die deutsche nicht zurückzeigt, ist die Auszeichnung einseitig und wirkungslos                                                            | selyvi.de, `src/config/seo.ts` dort                           | SEO           |
 | E3   | **Freigabe der offenen Punkte in [docs/en-review.md](docs/en-review.md).** Wirkungszeile, Serverstandort-Wortlaut, Manifest-Schwüre und die drei Erzähl-Zeilen liegen dort mit Vorschlag und Alternative                                                                                                       | docs/en-review.md, danach der jeweilige Quellort               | CEO + CMO     |
 | E4   | **Der Satz fürs Verkaufsgespräch.** Die gezeigte Oberfläche ist englisch, die echte Anwendung ist deutsch (en-review.md, Punkt 9). Wer nach dieser Seite eine Demo zeigt, sagt das — sonst sagt es die Demo                                                                                                    | Verkaufsleitfaden, nicht die Website                          | Vertrieb      |
-| E5   | **Lighthouse und axe für die englische Fassung.** Beide brauchen neue Pakete (`lighthouse`, `axe-core`), und CLAUDE.md verlangt davor Websuche, Paket-Inspektion und 14 Tage Cooldown. `npm run qa:en` deckt Überlauf, Kontrast in den App-Fenstern, CLS, rAF, Tastatur und reduced motion bereits ab      | nach der Sicherheitsprüfung als `npm run a11y`                | Technik       |
+| ~~E5~~ | ~~**Lighthouse und axe für die englische Fassung.**~~ **Erledigt:** `npm run audit:en` liefert Lighthouse-Median aus 5 Läufen (mobil, alle Kategorien; Desktop, Accessibility) und axe bei 390 und 1440. Werkzeuge außerhalb des Projekts, exakt die Versionen aus dem deutschen AUDIT.md — keine neue Paket-Entscheidung. Ergebnis: [docs/mess-basis-en.md](docs/mess-basis-en.md) | —                                                             | erledigt      |
 | E6   | **Vierte Sprache in der Elternpost.** Die deutsche Fassung zeigt vier Sprachen (DE, EN, TR, AR), die englische drei (EN, TR, AR) — eine ukrainische oder polnische Zeile müsste jemand gegenlesen. Sobald jemand das tut, kommt sie zurück                                                                     | `DEMO_TOUR_OBSERVATIONS` in [demo-data.ts](src/config/demo-data.ts) | Team          |
 | E7   | **„Drei Bereiche sind offen" auf der deutschen Seite korrigieren.** Offen sind VIER (workspace.tsx). Die englische Fassung sagt vier; auf selyvi.de steht in `take-a-look.tsx` noch drei                                                                                                                      | selyvi.de, `take-a-look.tsx`                                  | Inhalt        |
 

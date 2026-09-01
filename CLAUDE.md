@@ -128,6 +128,13 @@ Der Grund ist derselbe wie im Deutschen: Wir sprechen mit Menschen in einem sozi
 
 **Dazu vier US-Begriffe, die das Glossar ausschließt** — kein Ton-Verstoß, sondern ein Übersetzungsfehler, aber der Smoke-Test fängt sie an derselben Stelle: *elementary school* (→ primary school), *principal* (→ head teacher), *faculty* (→ staff), *report card comment* (→ report comment).
 
+## MESS-BASIS
+`npm run audit:en <url>` — Lighthouse (Median aus 5 Läufen, mobil alle Kategorien plus Desktop-Accessibility) und axe-core bei 390 und 1440. Ergebnis in `docs/mess-basis-en.md`.
+
+**Die Werkzeuge stehen NICHT in der package.json.** `lighthouse` 13.4.1 und `axe-core` 4.13.0 liegen außerhalb des Projekts, in den exakten Versionen aus dem AUDIT.md des deutschen Repos — dort bereits nach dem Ablauf oben geprüft. Ein einmaliges Audit-Werkzeug gehört nicht dauerhaft in den Abhängigkeitsbaum einer Marketing-Website; Lighthouse allein bringt über 100 Pakete mit. Der Pfad kommt über `AUDIT_TOOLS`.
+
+**Was Lighthouse und axe NICHT erreichen:** den Inhalt der nachgebauten Anwendungsfenster — er liegt unter `aria-hidden`. Die Kontraste dort misst `npm run qa:en` selbst.
+
 Alle Ton-Regeln werden bei jedem Deployment gegen das ausgelieferte HTML geprüft: `npm run smoke <url>`, Abschnitt "Ton-Regeln A bis D". Ein Treffer lässt den Smoke-Test fehlschlagen.
 
 **UND DIE MUSTER WERDEN SELBST GEPRÜFT:** `npm run smoke -- --gegenprobe`. Zu jedem Muster steht ein Satz, den es fangen MUSS, dazu fünf erlaubte Sätze, die es NICHT auslösen dürfen. Ein Ton-Test mit 0 Treffern beweist sonst nur, dass er lief — nicht, dass er etwas kann. Die Gegenprobe hat im ersten Lauf eine tote Regel gefunden.

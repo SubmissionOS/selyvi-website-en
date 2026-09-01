@@ -197,17 +197,62 @@ export function HeroScene() {
                   ) : null}
                 </div>
 
-                <p className="mt-3 min-h-28 text-sm leading-relaxed text-[var(--app-text)] sm:min-h-20">
-                  {drafting ? (
-                    <TypingText
-                      key={`entwurf-${scene.cycle}`}
-                      text={DEMO_READING.reportDraft}
-                      durationMs={HERO_STEPS[3].duration}
-                      animate={moving}
-                      paused={paused}
-                    />
-                  ) : null}
-                </p>
+                {/* ==================================================
+                    DIE HÖHE KOMMT VOM TEXT, NICHT VON EINER ZAHL
+                    ==================================================
+                    Hier stand `min-h-28 sm:min-h-20` – zwei gemessene Werte,
+                    die den fertigen Entwurf tragen sollten, damit das Fenster
+                    beim Tippen nicht wächst.
+
+                    In der deutschen Fassung passten sie. In der englischen
+                    NICHT: Der übersetzte Zeugnistext ist länger, und gemessen
+                    über dreizehn Breiten reichte die Reservierung an neun
+                    davon nicht.
+
+                      Breite   Text braucht   reserviert
+                      360–390      114 px        112 px   ← 2 px zu wenig
+                      1024–1100    114 px         80 px   ← 34 px zu wenig
+                      1280+         91 px         80 px   ← 11 px zu wenig
+
+                    Folge: Der Server rendert den fertigen Entwurf (so sieht
+                    ihn, wer kein JavaScript hat), die Hydration setzt die
+                    Szene auf Schritt 0 zurück, der Absatz wird leer – und das
+                    Fenster schrumpfte um 11 px. Das war der gesamte CLS der
+                    Startseite: 0,002. Gemessen, nicht vermutet – mit
+                    blockierter Webschrift blieb der Wert gleich, mit
+                    abgeschaltetem JavaScript verschwand er.
+
+                    VIER NEUE MAGIE-ZAHLEN WÄREN DIE FALSCHE ANTWORT: Sie
+                    gelten für genau diesen Text und brechen beim nächsten
+                    Wort. Stattdessen trägt jetzt eine unsichtbare Kopie des
+                    VOLLSTÄNDIGEN Entwurfs die Höhe, und der getippte Text
+                    liegt darüber. Damit ist die Reservierung per Bauart
+                    richtig – bei jeder Breite, in jeder Sprache und für jeden
+                    künftigen Text.
+
+                    `aria-hidden` ist streng genommen doppelt gemoppelt (die
+                    ganze Szene liegt schon darunter), steht aber bewusst da:
+                    Wer den Baustein irgendwann herauslöst, nimmt es mit. */}
+                <div className="relative mt-3">
+                  <p
+                    aria-hidden="true"
+                    className="invisible text-sm leading-relaxed select-none"
+                  >
+                    {DEMO_READING.reportDraft}
+                  </p>
+
+                  <p className="absolute inset-0 text-sm leading-relaxed text-[var(--app-text)]">
+                    {drafting ? (
+                      <TypingText
+                        key={`entwurf-${scene.cycle}`}
+                        text={DEMO_READING.reportDraft}
+                        durationMs={HERO_STEPS[3].duration}
+                        animate={moving}
+                        paused={paused}
+                      />
+                    ) : null}
+                  </p>
+                </div>
               </div>
 
               {/* ---------- Zeiger ---------- */}

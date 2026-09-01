@@ -1,0 +1,673 @@
+{
+  "gemessenAm": "2026-09-01T17:41:09.554Z",
+  "base": "http://127.0.0.1:3424",
+  "laeufe": 5,
+  "mobil": [
+    {
+      "pfad": "/",
+      "laeufe": 5,
+      "durchgefallen": [
+        {
+          "kategorie": "performance",
+          "id": "legacy-javascript-insight",
+          "titel": "Legacy JavaScript"
+        },
+        {
+          "kategorie": "performance",
+          "id": "network-dependency-tree-insight",
+          "titel": "Network dependency tree"
+        },
+        {
+          "kategorie": "performance",
+          "id": "render-blocking-insight",
+          "titel": "Render-blocking requests"
+        },
+        {
+          "kategorie": "performance",
+          "id": "interactive",
+          "titel": "Time to Interactive"
+        },
+        {
+          "kategorie": "performance",
+          "id": "max-potential-fid",
+          "titel": "Max Potential First Input Delay"
+        },
+        {
+          "kategorie": "performance",
+          "id": "unused-javascript",
+          "titel": "Reduce unused JavaScript"
+        }
+      ],
+      "performance": 95,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "agentic-browsing": 100,
+      "cls": 0
+    },
+    {
+      "pfad": "/for-teachers",
+      "laeufe": 5,
+      "durchgefallen": [
+        {
+          "kategorie": "performance",
+          "id": "largest-contentful-paint",
+          "titel": "Largest Contentful Paint"
+        },
+        {
+          "kategorie": "performance",
+          "id": "legacy-javascript-insight",
+          "titel": "Legacy JavaScript"
+        },
+        {
+          "kategorie": "performance",
+          "id": "network-dependency-tree-insight",
+          "titel": "Network dependency tree"
+        },
+        {
+          "kategorie": "performance",
+          "id": "render-blocking-insight",
+          "titel": "Render-blocking requests"
+        },
+        {
+          "kategorie": "performance",
+          "id": "interactive",
+          "titel": "Time to Interactive"
+        },
+        {
+          "kategorie": "performance",
+          "id": "max-potential-fid",
+          "titel": "Max Potential First Input Delay"
+        },
+        {
+          "kategorie": "performance",
+          "id": "unused-javascript",
+          "titel": "Reduce unused JavaScript"
+        }
+      ],
+      "performance": 95,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "agentic-browsing": 100,
+      "cls": 0
+    },
+    {
+      "pfad": "/for-school-leadership",
+      "laeufe": 5,
+      "durchgefallen": [
+        {
+          "kategorie": "performance",
+          "id": "largest-contentful-paint",
+          "titel": "Largest Contentful Paint"
+        },
+        {
+          "kategorie": "performance",
+          "id": "legacy-javascript-insight",
+          "titel": "Legacy JavaScript"
+        },
+        {
+          "kategorie": "performance",
+          "id": "network-dependency-tree-insight",
+          "titel": "Network dependency tree"
+        },
+        {
+          "kategorie": "performance",
+          "id": "render-blocking-insight",
+          "titel": "Render-blocking requests"
+        },
+        {
+          "kategorie": "performance",
+          "id": "interactive",
+          "titel": "Time to Interactive"
+        },
+        {
+          "kategorie": "performance",
+          "id": "unused-javascript",
+          "titel": "Reduce unused JavaScript"
+        }
+      ],
+      "performance": 96,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "agentic-browsing": 100,
+      "cls": 0
+    },
+    {
+      "pfad": "/research",
+      "laeufe": 5,
+      "durchgefallen": [
+        {
+          "kategorie": "performance",
+          "id": "largest-contentful-paint",
+          "titel": "Largest Contentful Paint"
+        },
+        {
+          "kategorie": "performance",
+          "id": "legacy-javascript-insight",
+          "titel": "Legacy JavaScript"
+        },
+        {
+          "kategorie": "performance",
+          "id": "network-dependency-tree-insight",
+          "titel": "Network dependency tree"
+        },
+        {
+          "kategorie": "performance",
+          "id": "render-blocking-insight",
+          "titel": "Render-blocking requests"
+        },
+        {
+          "kategorie": "performance",
+          "id": "interactive",
+          "titel": "Time to Interactive"
+        },
+        {
+          "kategorie": "performance",
+          "id": "unused-javascript",
+          "titel": "Reduce unused JavaScript"
+        }
+      ],
+      "performance": 96,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "agentic-browsing": 100,
+      "cls": 0
+    },
+    {
+      "pfad": "/security",
+      "laeufe": 5,
+      "durchgefallen": [
+        {
+          "kategorie": "performance",
+          "id": "largest-contentful-paint",
+          "titel": "Largest Contentful Paint"
+        },
+        {
+          "kategorie": "performance",
+          "id": "legacy-javascript-insight",
+          "titel": "Legacy JavaScript"
+        },
+        {
+          "kategorie": "performance",
+          "id": "network-dependency-tree-insight",
+          "titel": "Network dependency tree"
+        },
+        {
+          "kategorie": "performance",
+          "id": "render-blocking-insight",
+          "titel": "Render-blocking requests"
+        },
+        {
+          "kategorie": "performance",
+          "id": "interactive",
+          "titel": "Time to Interactive"
+        },
+        {
+          "kategorie": "performance",
+          "id": "max-potential-fid",
+          "titel": "Max Potential First Input Delay"
+        },
+        {
+          "kategorie": "performance",
+          "id": "unused-javascript",
+          "titel": "Reduce unused JavaScript"
+        }
+      ],
+      "performance": 96,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "agentic-browsing": 100,
+      "cls": 0
+    },
+    {
+      "pfad": "/our-story",
+      "laeufe": 5,
+      "durchgefallen": [
+        {
+          "kategorie": "performance",
+          "id": "largest-contentful-paint",
+          "titel": "Largest Contentful Paint"
+        },
+        {
+          "kategorie": "performance",
+          "id": "legacy-javascript-insight",
+          "titel": "Legacy JavaScript"
+        },
+        {
+          "kategorie": "performance",
+          "id": "network-dependency-tree-insight",
+          "titel": "Network dependency tree"
+        },
+        {
+          "kategorie": "performance",
+          "id": "render-blocking-insight",
+          "titel": "Render-blocking requests"
+        },
+        {
+          "kategorie": "performance",
+          "id": "interactive",
+          "titel": "Time to Interactive"
+        },
+        {
+          "kategorie": "performance",
+          "id": "unused-javascript",
+          "titel": "Reduce unused JavaScript"
+        }
+      ],
+      "performance": 96,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "agentic-browsing": 100,
+      "cls": 0
+    },
+    {
+      "pfad": "/preview",
+      "laeufe": 5,
+      "durchgefallen": [
+        {
+          "kategorie": "performance",
+          "id": "largest-contentful-paint",
+          "titel": "Largest Contentful Paint"
+        },
+        {
+          "kategorie": "performance",
+          "id": "forced-reflow-insight",
+          "titel": "Forced reflow"
+        },
+        {
+          "kategorie": "performance",
+          "id": "legacy-javascript-insight",
+          "titel": "Legacy JavaScript"
+        },
+        {
+          "kategorie": "performance",
+          "id": "network-dependency-tree-insight",
+          "titel": "Network dependency tree"
+        },
+        {
+          "kategorie": "performance",
+          "id": "render-blocking-insight",
+          "titel": "Render-blocking requests"
+        },
+        {
+          "kategorie": "performance",
+          "id": "interactive",
+          "titel": "Time to Interactive"
+        },
+        {
+          "kategorie": "performance",
+          "id": "max-potential-fid",
+          "titel": "Max Potential First Input Delay"
+        },
+        {
+          "kategorie": "performance",
+          "id": "unused-javascript",
+          "titel": "Reduce unused JavaScript"
+        }
+      ],
+      "performance": 96,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "agentic-browsing": 100,
+      "cls": 0
+    },
+    {
+      "pfad": "/co-create",
+      "laeufe": 5,
+      "durchgefallen": [
+        {
+          "kategorie": "performance",
+          "id": "largest-contentful-paint",
+          "titel": "Largest Contentful Paint"
+        },
+        {
+          "kategorie": "performance",
+          "id": "legacy-javascript-insight",
+          "titel": "Legacy JavaScript"
+        },
+        {
+          "kategorie": "performance",
+          "id": "network-dependency-tree-insight",
+          "titel": "Network dependency tree"
+        },
+        {
+          "kategorie": "performance",
+          "id": "render-blocking-insight",
+          "titel": "Render-blocking requests"
+        },
+        {
+          "kategorie": "performance",
+          "id": "interactive",
+          "titel": "Time to Interactive"
+        },
+        {
+          "kategorie": "performance",
+          "id": "unused-javascript",
+          "titel": "Reduce unused JavaScript"
+        }
+      ],
+      "performance": 96,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "agentic-browsing": 100,
+      "cls": 0
+    },
+    {
+      "pfad": "/meet",
+      "laeufe": 5,
+      "durchgefallen": [
+        {
+          "kategorie": "performance",
+          "id": "largest-contentful-paint",
+          "titel": "Largest Contentful Paint"
+        },
+        {
+          "kategorie": "performance",
+          "id": "legacy-javascript-insight",
+          "titel": "Legacy JavaScript"
+        },
+        {
+          "kategorie": "performance",
+          "id": "network-dependency-tree-insight",
+          "titel": "Network dependency tree"
+        },
+        {
+          "kategorie": "performance",
+          "id": "render-blocking-insight",
+          "titel": "Render-blocking requests"
+        },
+        {
+          "kategorie": "performance",
+          "id": "interactive",
+          "titel": "Time to Interactive"
+        },
+        {
+          "kategorie": "performance",
+          "id": "unused-javascript",
+          "titel": "Reduce unused JavaScript"
+        }
+      ],
+      "performance": 96,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "agentic-browsing": 100,
+      "cls": 0
+    },
+    {
+      "pfad": "/impressum",
+      "laeufe": 5,
+      "durchgefallen": [
+        {
+          "kategorie": "performance",
+          "id": "largest-contentful-paint",
+          "titel": "Largest Contentful Paint"
+        },
+        {
+          "kategorie": "performance",
+          "id": "legacy-javascript-insight",
+          "titel": "Legacy JavaScript"
+        },
+        {
+          "kategorie": "performance",
+          "id": "network-dependency-tree-insight",
+          "titel": "Network dependency tree"
+        },
+        {
+          "kategorie": "performance",
+          "id": "render-blocking-insight",
+          "titel": "Render-blocking requests"
+        },
+        {
+          "kategorie": "performance",
+          "id": "interactive",
+          "titel": "Time to Interactive"
+        },
+        {
+          "kategorie": "performance",
+          "id": "unused-javascript",
+          "titel": "Reduce unused JavaScript"
+        }
+      ],
+      "performance": 97,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 100,
+      "agentic-browsing": 100,
+      "cls": 0
+    },
+    {
+      "pfad": "/privacy",
+      "laeufe": 5,
+      "durchgefallen": [
+        {
+          "kategorie": "performance",
+          "id": "largest-contentful-paint",
+          "titel": "Largest Contentful Paint"
+        },
+        {
+          "kategorie": "performance",
+          "id": "legacy-javascript-insight",
+          "titel": "Legacy JavaScript"
+        },
+        {
+          "kategorie": "performance",
+          "id": "network-dependency-tree-insight",
+          "titel": "Network dependency tree"
+        },
+        {
+          "kategorie": "performance",
+          "id": "render-blocking-insight",
+          "titel": "Render-blocking requests"
+        },
+        {
+          "kategorie": "performance",
+          "id": "interactive",
+          "titel": "Time to Interactive"
+        },
+        {
+          "kategorie": "performance",
+          "id": "unused-javascript",
+          "titel": "Reduce unused JavaScript"
+        },
+        {
+          "kategorie": "seo",
+          "id": "is-crawlable",
+          "titel": "Page is blocked from indexing"
+        }
+      ],
+      "performance": 97,
+      "accessibility": 100,
+      "best-practices": 100,
+      "seo": 66,
+      "agentic-browsing": 100,
+      "cls": 0
+    }
+  ],
+  "desktopA11y": [
+    {
+      "pfad": "/",
+      "laeufe": 5,
+      "durchgefallen": [],
+      "accessibility": 100,
+      "cls": null
+    },
+    {
+      "pfad": "/for-teachers",
+      "laeufe": 5,
+      "durchgefallen": [],
+      "accessibility": 100,
+      "cls": null
+    },
+    {
+      "pfad": "/for-school-leadership",
+      "laeufe": 5,
+      "durchgefallen": [],
+      "accessibility": 100,
+      "cls": null
+    },
+    {
+      "pfad": "/research",
+      "laeufe": 5,
+      "durchgefallen": [],
+      "accessibility": 100,
+      "cls": null
+    },
+    {
+      "pfad": "/security",
+      "laeufe": 5,
+      "durchgefallen": [],
+      "accessibility": 100,
+      "cls": null
+    },
+    {
+      "pfad": "/our-story",
+      "laeufe": 5,
+      "durchgefallen": [],
+      "accessibility": 100,
+      "cls": null
+    },
+    {
+      "pfad": "/preview",
+      "laeufe": 5,
+      "durchgefallen": [],
+      "accessibility": 100,
+      "cls": null
+    },
+    {
+      "pfad": "/co-create",
+      "laeufe": 5,
+      "durchgefallen": [],
+      "accessibility": 100,
+      "cls": null
+    },
+    {
+      "pfad": "/meet",
+      "laeufe": 5,
+      "durchgefallen": [],
+      "accessibility": 100,
+      "cls": null
+    },
+    {
+      "pfad": "/impressum",
+      "laeufe": 5,
+      "durchgefallen": [],
+      "accessibility": 100,
+      "cls": null
+    },
+    {
+      "pfad": "/privacy",
+      "laeufe": 5,
+      "durchgefallen": [],
+      "accessibility": 100,
+      "cls": null
+    }
+  ],
+  "axe390": [
+    {
+      "pfad": "/",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/for-teachers",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/for-school-leadership",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/research",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/security",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/our-story",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/preview",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/co-create",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/meet",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/impressum",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/privacy",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/diese-seite-gibt-es-nicht",
+      "verstoesse": []
+    }
+  ],
+  "axe1440": [
+    {
+      "pfad": "/",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/for-teachers",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/for-school-leadership",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/research",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/security",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/our-story",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/preview",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/co-create",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/meet",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/impressum",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/privacy",
+      "verstoesse": []
+    },
+    {
+      "pfad": "/diese-seite-gibt-es-nicht",
+      "verstoesse": []
+    }
+  ]
+}

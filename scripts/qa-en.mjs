@@ -24,14 +24,16 @@
  * `fetch` und `WebSocket`, Edge als Browser. Kein Playwright, kein Puppeteer,
  * kein axe-core.
  *
- * DAS IST EINE GRENZE, KEINE VOLLSTAENDIGKEIT. Was dieses Skript NICHT kann:
- *   - Lighthouse (braucht das lighthouse-Paket)
- *   - axe (braucht axe-core)
- * Beide sind neue Abhaengigkeiten, und CLAUDE.md verlangt vor jeder
- * Installation eine Websuche nach Lieferketten-Angriffen, eine
- * Paket-Inspektion und 14 Tage Cooldown. Das ist kein Schritt, den ein
- * Uebersetzungslauf nebenbei mitnimmt – die beiden Punkte stehen deshalb in
- * der NACH-LAUNCH-LISTE der README.
+ * DAS IST EINE GRENZE, KEINE VOLLSTAENDIGKEIT. Lighthouse und axe laufen in
+ * einem EIGENEN Skript, das die Werkzeuge ausserhalb des Projekts erwartet:
+ * scripts/audit-en.mjs (npm run audit:en). Beide gehoeren nicht in die
+ * package.json einer Marketing-Website – Lighthouse allein bringt ueber 100
+ * Pakete mit.
+ *
+ * Umgekehrt erreichen Lighthouse und axe das hier NICHT: den Kontrast
+ * INNERHALB der nachgebauten App-Fenster. Ihr Inhalt liegt unter
+ * aria-hidden, und ein Werkzeug, das den Barrierefreiheits-Baum liest, sieht
+ * dort nichts. Die beiden Skripte ergaenzen sich, sie ersetzen sich nicht.
  *
  * ==========================================================================
  * WAS ES PRUEFT
@@ -340,12 +342,35 @@ const KONTRAST = `(() => {
   return { geprueft: wurzeln.length, treffer };
 })()`;
 
-/** CLS über einen PerformanceObserver. Muss VOR dem Laden gesetzt werden. */
+/**
+ * CLS über einen PerformanceObserver – mit VERURSACHER.
+ *
+ * Eine nackte Zahl beantwortet die einzige Frage nicht, die zählt: WAS
+ * verschiebt sich? `entry.sources` nennt den Knoten, und der Knoten sagt, ob
+ * es ein Fehler ist oder eine Messgrenze. Ohne diese Angabe bleibt jede
+ * Verbesserung Raten.
+ */
 const CLS_SETZEN = `(() => {
   window.__cls = 0;
+  window.__clsQuellen = [];
   new PerformanceObserver((liste) => {
     for (const e of liste.getEntries()) {
-      if (!e.hadRecentInput) window.__cls += e.value;
+      if (e.hadRecentInput) continue;
+      window.__cls += e.value;
+      for (const q of (e.sources || [])) {
+        const el = q.node;
+        if (!el || !el.tagName) continue;
+        window.__clsQuellen.push({
+          wert: Math.round(e.value * 100000) / 100000,
+          marke: el.tagName.toLowerCase() +
+            (typeof el.className === 'string' && el.className
+              ? '.' + el.className.split(' ').slice(0, 3).join('.')
+              : ''),
+          text: (el.textContent || '').replace(/\\s+/g, ' ').trim().slice(0, 50),
+          vorher: Math.round(q.previousRect.y) + 'x' + Math.round(q.previousRect.height),
+          nachher: Math.round(q.currentRect.y) + 'x' + Math.round(q.currentRect.height),
+        });
+      }
     }
   }).observe({ type: 'layout-shift', buffered: true });
   return true;
@@ -459,7 +484,17 @@ try {
     const cls = await lies("window.__cls ?? -1");
     const wert = Math.round((cls ?? 0) * 1000) / 1000;
     if (wert > 0.1) fail(`${pfad}: CLS ${wert} über der Schwelle 0,1`);
+
+    // Jede Verschiebung ueber null wird benannt – auch eine, die weit unter
+    // der Schwelle liegt. „0,002" ohne Verursacher ist eine Zahl, die man
+    // nicht verbessern kann, weil niemand weiss, woher sie kommt.
+    const quellen = wert > 0 ? ((await lies("window.__clsQuellen ?? []")) ?? []) : [];
     console.log(`  ${pfad.padEnd(26)} CLS ${wert}`);
+    for (const q of quellen.slice(0, 4)) {
+      console.log(
+        `      ↳ ${q.wert}  ${q.marke}  „${q.text}"  ${q.vorher} → ${q.nachher}`,
+      );
+    }
   }
 
   /* --- 5: rAF im Ruhezustand ---------------------------------------------- */
@@ -598,7 +633,9 @@ console.log("==========================================================");
 console.log(
   probleme === 0 ? "QUALITÄTSLAUF BESTANDEN" : "QUALITÄTSLAUF: siehe Meldungen oben",
 );
-console.log("\nNICHT abgedeckt (neue Pakete nötig, siehe Kopfkommentar):");
-console.log("  – Lighthouse");
-console.log("  – axe");
+console.log("\nHIER NICHT abgedeckt – dafür `npm run audit:en <url>`:");
+console.log("  – Lighthouse (Median aus 5 Läufen, mobil und Desktop)");
+console.log("  – axe-core (390 und 1440)");
+console.log("\nUmgekehrt erreichen die beiden das hier NICHT: den Kontrast");
+console.log("INNERHALB der App-Fenster – ihr Inhalt liegt unter aria-hidden.");
 process.exit(probleme === 0 ? 0 : 1);
