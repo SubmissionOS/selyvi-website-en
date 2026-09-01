@@ -333,7 +333,11 @@ try {
     pruefe(b.name === "Testerin Formularpfad", "A: name übergeben");
     pruefe(b.email === "formularpfad@example.org", "A: email übergeben");
     pruefe(b.organisation === "Musterschule Formularpfad", "A: organisation übergeben");
-    pruefe(b.role === "Schulleitung", `A: role übergeben (${b.role})`);
+    pruefe(b.role === "School leadership", `A: role übergeben (${b.role})`);
+    // Die Rollen sind uebersetzt (ROLE_OPTIONS in schema.ts) – anders als die
+    // Quell-Werte, die das CRM zum Einsortieren braucht und die deshalb
+    // deutsch bleiben. Genau diese Trennung prueft die Zeile darueber mit.
+    pruefe(b.locale === "en", `A: locale = en (${b.locale})`);
     pruefe(typeof b.message === "string" && b.message.length > 0, "A: message übergeben");
     pruefe(b.page_path === "/meet", `A: page_path (${b.page_path})`);
     pruefe(b.utm_source === "newsletter", `A: utm_source (${b.utm_source})`);
