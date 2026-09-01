@@ -336,15 +336,23 @@ async function teilB(browser) {
   await gehe("/preview", 2000);
   await aufnehmen("Startzustand (My classes)");
 
-  /* ---- Die vier offenen Bereiche und die vier Schlösser ---- */
-  const BEREICHE = [
-    "My classes",
-    "Live lesson",
-    "Timeline",
-    "Materials",
-  ];
-  const SCHLOESSER = ["Today, locked", "Review, locked", "Support plans, locked", "Class analysis, locked"];
+  /* ---- Die vier offenen Bereiche, einmal jeder für sich ----
+     Erst reihum ansteuern, danach folgen die Bereiche noch einmal einzeln
+     mit ihren Interaktionen. Der erste Durchgang faengt den LEEREN Zustand
+     jedes Bereichs – etwa „First choose an entry under Observations", der
+     nur zu sehen ist, solange nichts gewaehlt wurde. */
+  const BEREICHE = ["My classes", "Live lesson", "Timeline", "Materials"];
+  for (const bereich of BEREICHE) {
+    await schritt(`Bereich ${bereich} (Leerzustand)`, klickText(bereich));
+  }
 
+  /* ---- Die vier Schlösser ---- */
+  const SCHLOESSER = [
+    "Today, locked",
+    "Review, locked",
+    "Support plans, locked",
+    "Class analysis, locked",
+  ];
   for (const name of SCHLOESSER) {
     await schritt(`Schloss-Hinweis: ${name}`, klickText(name));
   }

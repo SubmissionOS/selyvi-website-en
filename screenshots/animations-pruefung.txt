@@ -8,7 +8,7 @@ Ohne prefers-reduced-motion: die Zwischenschritte sind der Zweck.
 Dieselben Muster wie der HTML-Detektor (scripts/lib/deutsch-muster.mjs).
 
 Textzeilen aus Animationsschritten: 87
-Bedienbare Zustände auf /preview:   84
-Verschiedene Textzeilen /preview:   103
+Bedienbare Zustände auf /preview:   88
+Verschiedene Textzeilen /preview:   105
 Übersprungene Schritte:             0
 DEUTSCHE FUNDSTELLEN:               0
