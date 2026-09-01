@@ -15,13 +15,13 @@ export function SchoolIntro() {
           id="schulen-intro-titel"
           className="max-w-3xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl"
         >
-          {PRODUCT_NAME} an Ihrer Schule einführen.
+          Bringing {PRODUCT_NAME} into your school.
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          {PRODUCT_NAME} nimmt Ihrem Kollegium die Schreibarbeit ab, die sich am
-          Zeugnistag und an den Elternabenden stapelt – und zeigt Ihnen am Monatsende, wie
-          viele Stunden das war.
+          {PRODUCT_NAME} takes off your staff the writing that piles up on report day and
+          before parents’ evenings – and shows you at the end of the month how many hours
+          that was.
         </p>
       </div>
     </section>

@@ -9,7 +9,7 @@ import {
  * Gemeinsames FAQ-Rendering.
  *
  * Wird von mehreren Seiten mit unterschiedlichen Fragen genutzt (Startseite,
- * /schulen). Die Darstellung liegt deshalb hier, die Inhalte bleiben in der
+ * /for-school-leadership). Die Darstellung liegt deshalb hier, die Inhalte bleiben in der
  * jeweiligen Sektion – so weichen die FAQ-Bloecke optisch nicht auseinander.
  */
 export type FaqItem = {

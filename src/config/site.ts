@@ -3,8 +3,8 @@ import { imprint } from "@/config/legal";
 /**
  * Navigations- und Footer-Struktur.
  *
- * Kontaktangaben kommen aus src/config/legal.ts, damit Footer, Impressum und
- * Datenschutzerklaerung nicht auseinanderlaufen.
+ * Kontaktangaben kommen aus src/config/legal.ts, damit Footer, Legal notice und
+ * Privacy policy nicht auseinanderlaufen.
  */
 
 export type NavItem = {
@@ -14,29 +14,33 @@ export type NavItem = {
 
 /** Hauptnavigation im Header (Desktop und Burger-Menue nutzen dieselbe Liste). */
 export const mainNav: NavItem[] = [
-  { label: "Für Lehrkräfte", href: "/fuer-lehrkraefte" },
-  { label: "Für Schulleitungen", href: "/schulen" },
-  { label: "Forschung", href: "/forschung" },
-  { label: "Sicherheit", href: "/datenschutz-sicherheit" },
-  { label: "Unsere Geschichte", href: "/ueber-uns" },
+  { label: "For teachers", href: "/for-teachers" },
+  { label: "For school leadership", href: "/for-school-leadership" },
+  { label: "Research", href: "/research" },
+  { label: "Security", href: "/security" },
+  { label: "Our story", href: "/our-story" },
 ];
 
 /** Primaerer Call-to-Action – die einzige Stelle, an der --cta zum Einsatz kommt. */
 export const primaryCta: NavItem = {
   /**
-   * „Selyvi kennenlernen" statt „Demo buchen".
+   * „Meet Selyvi" statt „Book a demo".
    *
-   * Auf /demo wird nichts gebucht – es wird ein Erstgespraech angefragt, auf
-   * das wir uns melden. „Buchen" versprach einen Kalender, den es nicht gibt,
+   * Auf /meet wird nichts gebucht – es wird ein Erstgespraech angefragt, auf
+   * das wir uns melden. „Book" versprach einen Kalender, den es nicht gibt,
    * und setzte die Huerde hoeher als noetig: Wer nur schauen will, bucht
-   * nichts. „Kennenlernen" liegt zwischen locker und foermlich und beschreibt,
-   * was tatsaechlich passiert.
+   * nichts.
+   *
+   * „Book a demo" waere ausserdem genau die Verkaufssprache, die die deutsche
+   * Seite bewusst vermeidet (docs/en-review.md, Punkt 2). „Meet Selyvi" haelt
+   * die Einladung. Die woertlichere Alternative „Get to know Selyvi" ist
+   * korrekt, aber sperrig fuer einen Knopf.
    *
    * Der Knopf bleibt an allen bisherigen Stellen stehen – die staendige
    * Erreichbarkeit oben rechts ist Absicht, nicht Zufall.
    */
-  label: "Selyvi kennenlernen",
-  href: "/demo",
+  label: "Meet Selyvi",
+  href: "/meet",
 };
 
 export type FooterColumn = {
@@ -44,24 +48,24 @@ export type FooterColumn = {
   items: NavItem[];
 };
 
-/** Vier Footer-Spalten mit Platzhalter-Links. */
+/** Vier Footer-Spalten. */
 export const footerColumns: FooterColumn[] = [
   {
     title: "Selyvi",
     items: [
-      { label: "Einblick", href: "/einblick" },
-      { label: "Für Lehrkräfte", href: "/fuer-lehrkraefte" },
-      { label: "Für Schulleitungen", href: "/schulen" },
-      { label: "Forschung & Wirkung", href: "/forschung" },
-      { label: "Datenschutz & Sicherheit", href: "/datenschutz-sicherheit" },
-      { label: "Selyvi kennenlernen", href: "/demo" },
+      { label: "Take a look", href: "/preview" },
+      { label: "For teachers", href: "/for-teachers" },
+      { label: "For school leadership", href: "/for-school-leadership" },
+      { label: "Research & impact", href: "/research" },
+      { label: "Data protection & security", href: "/security" },
+      { label: "Meet Selyvi", href: "/meet" },
     ],
   },
   {
-    title: "Unternehmen",
+    title: "Company",
     /**
-     * „Karriere", „Presse" und „Blog" standen hier als Platzhalter und zeigten
-     * alle auf /ueber-uns. Ein Link, der etwas anderes verspricht als das Ziel
+     * „Careers", „Press" und „Blog" standen hier als Platzhalter und zeigten
+     * alle auf /our-story. Ein Link, der etwas anderes verspricht als das Ziel
      * liefert, kostet mehr Vertrauen, als eine kurze Spalte kostet – deshalb
      * ersatzlos entfernt.
      *
@@ -69,42 +73,42 @@ export const footerColumns: FooterColumn[] = [
      * Eintrag mit eigener Route ergänzen.
      */
     items: [
-      { label: "Unsere Geschichte", href: "/ueber-uns" },
-      { label: "Mitgestalten", href: "/mitgestalten" },
+      { label: "Our story", href: "/our-story" },
+      { label: "Co-create", href: "/co-create" },
       // Als gewöhnlicher Link, nicht als Button: Der primäre CTA steht bereits
       // in der Kopfzeile, und --cta bleibt genau ihm vorbehalten.
-      { label: "Selyvi kennenlernen", href: "/demo" },
+      { label: "Meet Selyvi", href: "/meet" },
     ],
   },
   {
-    title: "Rechtliches",
+    title: "Legal",
     items: [
-      { label: "Impressum", href: "/impressum" },
-      { label: "Datenschutzerklärung", href: "/datenschutz" },
-      // "AGB" und "Barrierefreiheit" standen hier als Platzhalter und zeigten
-      // beide auf /impressum. Ein Link, der etwas anderes verspricht als das
+      { label: "Legal notice", href: "/legal-notice" },
+      { label: "Privacy policy", href: "/privacy" },
+      // "Terms" und "Accessibility" standen hier als Platzhalter und zeigten
+      // beide auf /legal-notice. Ein Link, der etwas anderes verspricht als das
       // Ziel liefert, ist auf einer Seite mit Rechtsbezug besonders unguenstig
       // – deshalb entfernt, bis die Seiten existieren. Siehe README,
       // "Rechtliches – Launch-Blocker".
     ],
   },
   {
-    title: "Kontakt",
+    title: "Contact",
     /**
      * Bewusst reduziert: nur die E-Mail-Adresse, kein Telefon, keine Anschrift.
      *
-     * Die vollständigen Angaben stehen im Impressum – dort gehören sie hin, und
-     * dorthin führt der Link in der Spalte „Rechtliches". Eine private
+     * Die vollständigen Angaben stehen im Legal notice – dort gehören sie hin,
+     * und dorthin führt der Link in der Spalte „Legal". Eine private
      * Mobilnummer auf jeder einzelnen Seite auszugeben, ist etwas anderes als
      * sie im Impressum bereitzuhalten.
      *
-     * Die Adresse kommt aus src/config/legal.ts – eine Quelle mit Impressum und
-     * Datenschutzerklärung. Sonst stehen auf derselben Website zwei
-     * verschiedene Kontaktadressen.
+     * Die Adresse kommt aus src/config/legal.ts – eine Quelle mit Legal notice
+     * und Privacy policy. Sonst stehen auf derselben Website zwei verschiedene
+     * Kontaktadressen.
      */
     items: [
       { label: imprint.email, href: `mailto:${imprint.email}` },
-      { label: "Selyvi kennenlernen", href: "/demo" },
+      { label: "Meet Selyvi", href: "/meet" },
     ],
   },
 ];

@@ -29,12 +29,12 @@ export function ResearchContact() {
             id="forschung-kontakt-titel"
             className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
           >
-            Wir suchen Forschungspartner.
+            We are looking for research partners.
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            Für Fragen zu Schule, Unterricht und der Arbeit von Lehrkräften. Schreiben Sie
-            uns – wir antworten selbst.
+            For questions about schools, teaching and the work of teachers. Write to us –
+            we answer ourselves.
           </p>
 
           {/* Gegenwart, und produktstand-gedeckt: Konten legt die Schulleitung
@@ -43,7 +43,7 @@ export function ResearchContact() {
               verspricht keinen Datenexport; der ist nicht gebaut und steht
               deshalb nirgends. */}
           <p className="mt-4 text-lg text-ink">
-            Zugang für Ihre Forschung richten wir nach einem Kennenlernen ein.
+            Access for your research we set up after we have met.
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
@@ -52,17 +52,17 @@ export function ResearchContact() {
             </Button>
 
             <Link
-              href="/demo"
+              href="/meet"
               className="text-base text-brand-600 underline underline-offset-4"
             >
-              Oder ein Kennenlernen vereinbaren
+              Or arrange to meet
             </Link>
 
             <Link
-              href="/einblick"
+              href="/preview"
               className="text-base text-brand-600 underline underline-offset-4"
             >
-              Selbst ausprobieren
+              Try it yourself
             </Link>
           </div>
         </div>

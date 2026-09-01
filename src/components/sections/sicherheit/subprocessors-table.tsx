@@ -7,7 +7,8 @@
  *
  * KEINE Namen eintragen, bevor die Liste bestaetigt ist – auch keine
  * „wahrscheinlichen“. Eine Subprozessoren-Liste ist eine Rechtsauskunft nach
- * Art. 28 Abs. 2 DSGVO; ein falscher Eintrag ist schlimmer als ein fehlender,
+ * Art. 28 Abs. 2 DSGVO (Article 28(2) GDPR); ein falscher Eintrag ist
+ * schlimmer als ein fehlender,
  * weil Schulen ihre eigenen Verzeichnisse darauf aufbauen.
  *
  * Sobald die Liste steht, gehoert hier wieder eine Tabelle her – siehe README,
@@ -24,13 +25,12 @@ export function SubprocessorsTable() {
           id="dienstleister-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
         >
-          Unsere Dienstleister (Auftragsverarbeiter)
+          Our service providers (processors)
         </h2>
 
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          Wir setzen Dienstleister ein, die in unserem Auftrag personenbezogene Daten
-          verarbeiten. Die vollständige Liste unserer Auftragsverarbeiter veröffentlichen
-          wir hier.
+          We use service providers that process personal data on our behalf. We publish
+          the full list of our processors here.
         </p>
       </div>
     </section>

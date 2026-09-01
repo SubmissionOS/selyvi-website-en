@@ -1,7 +1,18 @@
-# CLAUDE.md – produkt-website
+# CLAUDE.md – selyvi-website-en (selyvi.com)
+
+## FORK – DAS WICHTIGSTE ZUERST
+**Eigenständige englische Seite, kopiert von `SubmissionOS/selyvi-website` bei Commit `382f107`. Änderungen der deutschen Seite werden hier bewusst nachgezogen, nicht automatisch.**
+
+Es gibt keinen Merge und keine gemeinsame Sprachschicht. Wer auf selyvi.de einen Satz ändert, ändert ihn hier von Hand — oder er ändert sich hier nicht.
+
+**AUSGELIEFERT WIRD ENGLISCH, GEARBEITET WIRD DEUTSCH.** Jede Zeichenkette, die im Browser landet, ist englisch. Kommentare, `docs/` und diese Datei bleiben deutsch: Die Wahrheitsquelle `docs/produktstand-2026-08.md` ist deutsch, und wer eine Produktaussage prüft, liest beides nebeneinander.
+
+**Verbindlich für jede Formulierung: `docs/glossar-en.md`.** Wer einen Begriff anders übersetzt, ändert ihn dort mit Begründung. Die bereits getroffenen Entscheidungen stehen in `docs/en-review.md` — sie werden angewendet, nicht neu verhandelt.
+
+**Der Deutsch-Detektor muss 0 melden:** `npm run check:german <url>`. Er prüft das gerenderte HTML aller Seiten. Ausnahmen sind abschließend drei Eigennamen (Selyvi, Waldstetten, Robert Bosch Stiftung); alles andere, was deutsch bleiben muss, trägt `lang="de"` — das ist zugleich WCAG 3.1.2.
 
 ## Projekt
-Marketing-Website für eine B2B-SaaS-Plattform für Schulen (Zielgruppen: Lehrkräfte, Schulleitungen & Forschende, Sprache: Deutsch). Produktname und Logo sind PLATZHALTER (<Wordmark/>-Komponente), bis der finale Name feststeht. Seiten: /, /fuer-lehrkraefte, /schulen, /forschung, /datenschutz-sicherheit, /ueber-uns, /einblick, /mitgestalten, /demo, /impressum, /datenschutz. (/produkt leitet permanent auf /fuer-lehrkraefte um.)
+Marketing-Website für eine B2B-SaaS-Plattform für Schulen (Zielgruppen: Lehrkräfte, Schulleitungen & Forschende, **Sprache der Auslieferung: Englisch**). Seiten: /, /for-teachers, /for-school-leadership, /research, /security, /our-story, /preview, /co-create, /meet, /legal-notice, /privacy. Die deutschen Pfade von selyvi.de leiten alle permanent (308) auf ihr englisches Ziel um — die Liste steht in `next.config.ts` und wortgleich in `scripts/smoke-test.mjs`.
 
 ## SICHERHEIT – PFLICHT VOR JEDER PAKET-INSTALLATION (keine Ausnahme)
 1. WEBSUCHE nach "<paketname> compromised / supply chain / malware" – npm-Lieferketten-Angriffe (TanStack-Hack, Shai-Hulud, keyv/cacheable, node-gyp) sind Standard-Bedrohung, nicht Ausnahme. Bei irgendeinem Treffer: STOPP und nachfragen.
@@ -23,7 +34,7 @@ Die Schrift im Fenster ist der system-ui-Stack (lokal vorhanden, keine Lizenzfra
 
 **WCAG 2.1 AA gilt auch dort.** Zwei Referenz-Werte sind deshalb abgedunkelt (Schrift des aktiven Navigationseintrags, Donut-Bogen); beide Abweichungen stehen in app-reference.ts mit Messwert. Geprüft wird mit `app-kontrast.js` — axe erreicht die Szenen nicht, weil ihr Inhalt unter aria-hidden liegt.
 
-**Die Navigation ist abgeschrieben, nicht hergeleitet.** Acht Einträge in der Reihenfolge des Screenshots. Wer sie ändert, hat einen neuen Screenshot — oder lässt es. Der Leitungsmodus bleibt hergeleitet, bis ein Bild davon vorliegt.
+**Die Navigation ist abgeschrieben, nicht hergeleitet.** Acht Einträge in der Reihenfolge des Screenshots — mit ÜBERSETZTEN Beschriftungen (docs/en-review.md, Punkt 9: Today, My classes, Live lesson, Timeline, Review, Support plans, Materials, Class analysis). Die echte Anwendung ist heute deutsch; dass eine Demo danach Deutsch zeigt, gehört ins Verkaufsgespräch. Die Liste steht zweimal — `DEMO_NAV_TEACHER` in demo-data.ts und `ENTRIES` in tour-sidebar.tsx —, wer eine ändert, ändert beide. Wer sie ändert, hat einen neuen Screenshot — oder lässt es. Der Leitungsmodus bleibt hergeleitet, bis ein Bild davon vorliegt.
 
 ## DSGVO (nicht verhandelbar)
 Zur Laufzeit KEINE Requests an Drittserver (Fonts lokal via next/font – nach jedem Font-Change im Network-Log verifizieren). Kein Google Analytics, keine externen Embeds ohne Zwei-Klick-Lösung. Formulare nur über EU-Dienste (Brevo).
@@ -84,10 +95,39 @@ DIESE REGEL HAT DIE FRÜHERE LEITPLANKE "Zukunfts-Szenen" ERSETZT. Jene erlaubte
 
 Die Wahrheitsquelle bleibt unberührt: Nichts behaupten, was `docs/produktstand-2026-08.md` nicht deckt. Regel D verschärft nur die Richtung — weglassen statt ankündigen.
 
+### DIE REGELN A BIS D IN ENGLISCHER FASSUNG
+Die Regeln oben sind in deutschen Formulierungen gedacht. Sie gelten hier unverändert — aber die verbotenen Muster sind ANDERE, weil eine Übersetzung sie nicht mitbringt. Was auf Deutsch „noch nicht" heißt, heißt auf Englisch „not yet", und wer nur das deutsche Muster prüft, prüft nichts.
+
+**Regel A — niemandem sagen, wer er ist.** Verboten: "you became a teacher to…", "you went into teaching to…", "as a teacher you know…", "you didn't become a teacher for…", "you surely want…", "you lack…", und jede Frage der Form "Do you teach/lead/research…?".
+ERLAUBT bleibt die Zusage an den Leser ("Selyvi suggests. **You decide.**", "What you want to see is up to you") und die Selbstauswahl in der ersten Person ("I teach", "I lead a school", "I do research").
+
+**Regel B — kein Selbstzweifel.** Verboten: "not yet", "nothing yet", "no … yet", "we cannot say", "we don't know whether", "nothing can be said", "we do not claim", "is still undecided/unclear", "has not been decided", "still missing", "remains to be seen".
+ERLAUBT und PFLICHT bleibt das Kennzeichnen: Gemessenes heißt **measured value**, Geschätztes heißt **estimate**. "What is open we mark visibly" ist genau die geforderte Haltung, keine Verletzung — der Smoke-Test hat das im ersten Lauf falsch gemeldet, das Muster ist seither enger (Begründung dort im Quelltext).
+Eine definitive Aussage über eine gewollte Produktgrenze bleibt: "There is deliberately no parent or pupil portal", "There is no role with an overall view — not for school leadership either".
+
+**Regel C — kein Reifegrad-Geständnis.** Verboten: "no pilot schools", "no references", "we have been … only since", "small team", "young company", "early-stage", "not yet certified", "prices are being set with pilot schools".
+
+**Regel D — keine Zukunftsform über die Produktreife.** Verboten: "is planned", "planned feature", "in progress", "in development", "being built", "coming soon", "shortly", "in the near future", "in preparation", "before launch", "rollout pending", "prototype", "follows later/soon", "is pending", "will soon be".
+**DREI AUSNAHMEN, abschließend** — dieselben wie im Deutschen:
+- `PRODUCT_HOSTING_NOTE` — enthält "in preparation". Unverändert im Wortlaut.
+- `SCHOOL_TYPE_ANSWER` — "More school types follow."
+- Rechtstexte (/legal-notice, /privacy).
+Beide Sätze stehen wortgleich in der Ausnahmeliste von `scripts/smoke-test.mjs`. Wer sie in `product.ts` bzw. `brand.ts` ändert, ändert sie dort mit.
+Ein temporales "follows" ist verboten, ein logisches nicht ("the analysis follows a codebook", "a mark in German does not tell you whether a child reads fluently"). "Selyvi is being built in the middle of everyday school life" auf /research beschreibt die ENTSTEHUNG und ist ausgenommen.
+
+### VERKAUFSSPRACHE – ENGLISCHE LISTE (docs/glossar-en.md)
+Nicht verwenden: **unlock, supercharge, game-changer, revolutionise, seamless, effortless, cutting-edge, best-in-class, free trial, sign up now, boost, empower, leverage, delight.**
+
+Der Grund ist derselbe wie im Deutschen: Wir sprechen mit Menschen in einem sozialen Beruf, nicht mit Käufern.
+
+**Dazu vier US-Begriffe, die das Glossar ausschließt** — kein Ton-Verstoß, sondern ein Übersetzungsfehler, aber der Smoke-Test fängt sie an derselben Stelle: *elementary school* (→ primary school), *principal* (→ head teacher), *faculty* (→ staff), *report card comment* (→ report comment).
+
 Alle Ton-Regeln werden bei jedem Deployment gegen das ausgelieferte HTML geprüft: `npm run smoke <url>`, Abschnitt "Ton-Regeln A bis D". Ein Treffer lässt den Smoke-Test fehlschlagen.
 
+**UND DIE MUSTER WERDEN SELBST GEPRÜFT:** `npm run smoke -- --gegenprobe`. Zu jedem Muster steht ein Satz, den es fangen MUSS, dazu fünf erlaubte Sätze, die es NICHT auslösen dürfen. Ein Ton-Test mit 0 Treffern beweist sonst nur, dass er lief — nicht, dass er etwas kann. Die Gegenprobe hat im ersten Lauf eine tote Regel gefunden.
+
 ## STIL (Anti-KI-Slop)
-Deutsch, präzise, keine Emojis im UI, keine Gradients, keine Superlative im Copy, viel Weißraum. Messlatte: behördentauglich. Icons: lucide-react (Brand-Icons: lokale SVGs in brand-icons.tsx).
+Englisch im Ausgelieferten (internationales Englisch, britische Rechtschreibung — siehe docs/glossar-en.md), präzise, keine Emojis im UI, keine Gradients, keine Superlative im Copy, viel Weißraum. Messlatte: behördentauglich. Icons: lucide-react (Brand-Icons: lokale SVGs in brand-icons.tsx).
 
 ## ARBEITSWEISE
-Ein Prompt = ein abgeschlossener Schritt. Jeder Schritt endet mit fehlerfreiem npm run build. UI-Änderungen enden mit Screenshot. Bestehende Tokens/Komponenten wiederverwenden statt neu erfinden. Nichts bauen, was nicht beauftragt wurde.
+Ein Prompt = ein abgeschlossener Schritt. Jeder Schritt endet mit fehlerfreiem npm run build UND — sobald Text berührt wurde — mit `npm run check:german <url>` auf 0. UI-Änderungen enden mit Screenshot. Bestehende Tokens/Komponenten wiederverwenden statt neu erfinden. Nichts bauen, was nicht beauftragt wurde.

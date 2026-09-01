@@ -3,7 +3,7 @@ import type { DemoField } from "@/lib/demo/schema";
 /**
  * Zustand des Demo-Formulars.
  *
- * Liegt bewusst NICHT in src/app/demo/actions.ts: Eine Datei mit der Direktive
+ * Liegt bewusst NICHT in src/app/meet/actions.ts: Eine Datei mit der Direktive
  * "use server" darf ausschliesslich async-Funktionen exportieren. Ein
  * zusaetzlich exportiertes Objekt laesst den Build durchlaufen und die Seite
  * erst zur Laufzeit abstuerzen

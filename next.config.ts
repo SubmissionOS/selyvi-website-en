@@ -50,25 +50,47 @@ const nextConfig: NextConfig = {
   },
 
   /**
-   * Umleitungen für umbenannte Routen.
+   * Umleitungen der deutschen Pfade auf die englischen Routen.
    *
-   * `/produkt` hiess so, solange die Seite nach dem Produkt benannt war. Sie
-   * heisst jetzt nach den Menschen, für die sie geschrieben ist.
+   * Diese Website ist die eigenstaendige englische Fassung (siehe README-Kopf).
+   * Ihre Routen tragen englische Namen, weil eine englische Seite mit deutschen
+   * Adressen an genau der Stelle stolpert, an der jemand den Link vorliest oder
+   * in eine Mail kopiert.
    *
-   * PERMANENT (308), nicht temporär: Die alte Adresse kommt nicht zurück.
-   * Suchmaschinen übertragen damit die Bewertung der alten Adresse auf die
-   * neue, und Links aus Mails, Präsentationen oder einem Pitchdeck laufen
-   * weiter – eine Marketing-Adresse ist nach dem Versenden nicht mehr in
-   * unserer Hand.
+   * Die deutschen Pfade bleiben trotzdem erreichbar: Sie standen in
+   * Praesentationen, Mails und Pitchdecks, bevor dieses Repo entstand, und eine
+   * Marketing-Adresse ist nach dem Versenden nicht mehr in unserer Hand.
+   *
+   * PERMANENT, nicht temporaer: Die deutschen Adressen kommen auf selyvi.com
+   * nicht zurueck. Suchmaschinen uebertragen damit die Bewertung der alten
+   * Adresse auf die neue. Next.js sendet bei `permanent: true` den Status 308,
+   * nicht 301 – die HTTP-Methode bleibt dabei erhalten, ein POST wird also
+   * nicht stillschweigend zu einem GET.
+   *
+   * `/produkt` steht weiter in der Liste: Die Route hiess so, solange die Seite
+   * nach dem Produkt benannt war. Sie zeigt direkt auf das englische Ziel,
+   * damit kein Umweg ueber zwei Weiterleitungen entsteht.
    */
   async redirects() {
-    return [
-      {
-        source: "/produkt",
-        destination: "/fuer-lehrkraefte",
-        permanent: true,
-      },
+    const germanPaths: Array<[string, string]> = [
+      ["/fuer-lehrkraefte", "/for-teachers"],
+      ["/produkt", "/for-teachers"],
+      ["/schulen", "/for-school-leadership"],
+      ["/forschung", "/research"],
+      ["/datenschutz-sicherheit", "/security"],
+      ["/ueber-uns", "/our-story"],
+      ["/demo", "/meet"],
+      ["/mitgestalten", "/co-create"],
+      ["/einblick", "/preview"],
+      ["/impressum", "/legal-notice"],
+      ["/datenschutz", "/privacy"],
     ];
+
+    return germanPaths.map(([source, destination]) => ({
+      source,
+      destination,
+      permanent: true,
+    }));
   },
 };
 

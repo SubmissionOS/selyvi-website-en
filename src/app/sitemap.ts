@@ -10,7 +10,7 @@ import { absoluteUrl, indexableRoutes } from "@/config/seo";
  * dort eingetragen sind – und nur dann.
  *
  * Rechtsseiten haengen an eigenen Freigabeschaltern (IMPRINT_READY,
- * PRIVACY_APPROVED in src/config/legal.ts). Derzeit fehlt nur /datenschutz.
+ * PRIVACY_APPROVED in src/config/legal.ts). Derzeit fehlt nur /privacy.
  *
  * Nicht indexierte Seiten bleiben in der robots.txt trotzdem erlaubt: Nur wenn
  * Crawler sie abrufen duerfen, sehen sie das noindex im HTML. Ein Disallow

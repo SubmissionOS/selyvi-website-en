@@ -3,14 +3,12 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 /**
- * Einladungs-Band am Ende von /fuer-lehrkraefte.
+ * Einladungs-Band am Ende von /for-teachers.
  *
- * Es steht zwischen „In Arbeit" und dem Final-CTA – und zwar genau dort aus
- * einem Grund: Wer die Liste der offenen Baustellen gelesen hat und trotzdem
- * weiterliest, ist die Person, die gemeint ist. Vor der Liste waere die
- * Einladung eine Werbung, danach ist sie eine Konsequenz.
+ * Es steht kurz vor dem Final-CTA: Wer die ganze Seite gelesen hat und
+ * trotzdem weiterliest, ist die Person, die gemeint ist.
  *
- * Der Knopf traegt NICHT die --cta-Farbe. Die gehoert dem Demo-Button, und
+ * Der Knopf traegt NICHT die --cta-Farbe. Die gehoert dem „Meet Selyvi", und
  * zwei gleich starke Aufrufe direkt untereinander heben sich gegenseitig auf.
  */
 export function CoCreateBand() {
@@ -25,17 +23,17 @@ export function CoCreateBand() {
             id="mitgestalten-band-titel"
             className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
           >
-            Sagen Sie uns, was fehlt.
+            Tell us what is missing.
           </h2>
 
           <p className="mt-5 text-lg text-gray-500">
-            Das ist der interessanteste Satz, den wir heute hören können. Ein Teil von
-            dem, was oben steht, gibt es, weil eine Lehrkraft genau das gesagt hat.
+            That is the most interesting sentence we can hear today. Part of what stands
+            above exists because a teacher said exactly that.
           </p>
 
           <div className="mt-8">
             <Button asChild variant="outline" size="lg">
-              <Link href="/mitgestalten">Mitgestalten</Link>
+              <Link href="/co-create">Co-create</Link>
             </Button>
           </div>
         </div>

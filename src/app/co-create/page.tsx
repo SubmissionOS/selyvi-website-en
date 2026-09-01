@@ -7,7 +7,7 @@ import { WhatItMeans } from "@/components/sections/mitgestalten/what-it-means";
 import { WhoFor } from "@/components/sections/mitgestalten/who-for";
 import { CoCreateForm } from "@/components/sections/mitgestalten/co-create-form";
 
-export const metadata: Metadata = pageMetadata("/mitgestalten");
+export const metadata: Metadata = pageMetadata("/co-create");
 
 /**
  * Seite für Lehrkräfte, die früh mitbauen wollen.
@@ -24,8 +24,8 @@ export const metadata: Metadata = pageMetadata("/mitgestalten");
  * und zwar an genau den drei Stellen, an denen jemand den Gedanken haben
  * koennte:
  *   - Fusszeile, Spalte „Unternehmen"
- *   - Einladungs-Band am Ende von /fuer-lehrkraefte
- *   - „So geht es weiter" auf /demo
+ *   - Einladungs-Band am Ende von /for-teachers
+ *   - „So geht es weiter" auf /meet
  * Sie steht ausserdem in der Sitemap und ist indexierbar.
  *
  * Die Reihenfolge der Sektionen ist die Argumentation: Einladung, was es

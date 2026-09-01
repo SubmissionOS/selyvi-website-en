@@ -76,6 +76,14 @@ export async function sendLeadToCrm({
   const body = {
     source,
     source_label: SOURCE_LABELS[source],
+    // Sprache der Website, von der die Anfrage kommt. Ein ZUSAETZLICHES Feld –
+    // die Pflichtfelder des Endpunkts sind unveraendert, das Schema bricht
+    // dadurch nicht. Wer antwortet, sieht ohne Umweg, in welcher Sprache.
+    //
+    // Fest verdrahtet und nicht aus einer Konfiguration gelesen: Dieses Repo
+    // IST die englische Seite. Eine Variable waere die Moeglichkeit, sie falsch
+    // zu setzen.
+    locale: "en",
     name: values.name,
     email: values.email,
     organisation: values.school,

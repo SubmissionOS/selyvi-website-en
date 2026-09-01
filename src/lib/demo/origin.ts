@@ -11,7 +11,7 @@
  * hier entsteht, existiert nur als Teil DIESER einen Anfrage – genau wie der
  * Name, den jemand ins Formular tippt.
  *
- * /datenschutz, Abschnitt 5 („Keine Cookies, kein Tracking") bleibt damit
+ * /privacy, Abschnitt 5 („Keine Cookies, kein Tracking") bleibt damit
  * wahr. Wer das ändert, ändert diesen Abschnitt mit – oder lässt es.
  *
  * ==========================================================================

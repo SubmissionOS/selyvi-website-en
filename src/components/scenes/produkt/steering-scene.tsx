@@ -48,7 +48,7 @@ const STEPS: SceneStep[] = [
  * Zwei Grössen, EINE Szene.
  *
  * Auf /produkt steht sie als einer von vier Funktionsblöcken in einer halben
- * Spalte, auf /schulen trägt sie die Sektion „Der Entlastungsbericht" und darf
+ * Spalte, auf /for-school-leadership trägt sie die Sektion „Der Entlastungsbericht" und darf
  * deutlich mehr Raum nehmen. Das ist der einzige Unterschied – Ablauf, Texte
  * und Wortlaut-Sperren sind identisch, weil es dieselbe Komponente ist.
  *
@@ -76,7 +76,7 @@ const SIZES: Record<
 > = {
   default: {
     panel: "h-[24rem] sm:h-[19rem]",
-    kicker: "Monatsende · Bericht für die Leitung",
+    kicker: "End of month · report for leadership",
     number: "text-3xl",
     barBox: "h-16",
     bar: "w-3",
@@ -86,9 +86,9 @@ const SIZES: Record<
   },
   large: {
     panel: "h-[27rem] sm:h-[22.5rem]",
-    // Auf /schulen traegt die Sektion bereits die Ueberschrift
+    // Auf /for-school-leadership traegt die Sektion bereits die Ueberschrift
     // "Der Entlastungsbericht" – der Kicker nennt deshalb nur die Zeit.
-    kicker: "Monatsende",
+    kicker: "End of month",
     number: "text-4xl",
     barBox: "h-24",
     bar: "w-4",
@@ -150,7 +150,7 @@ export function SteeringScene({ size = "default" }: { size?: SteeringSceneSize }
       steps={STEPS}
       loopPauseMs={2000}
       kicker={layout.kicker}
-      label={`Animierte Darstellung des Entlastungsberichts: Für ${DEMO_RELIEF_REPORT.month} zählt die Anzeige auf ${DEMO_RELIEF_REPORT.hours} Stunden gewonnene Zeit hoch, ausdrücklich als Schätzwert gekennzeichnet, daneben der Vergleich mit dem Vormonat. Darunter steht, dass die Befragung zur Wirkung läuft und die Zahl darüber ein Schätzwert ist. Zuletzt wird der Bericht als PDF exportiert. Alle Daten sind erfunden.`}
+      label={`Animated view of the workload relief report: for ${DEMO_RELIEF_REPORT.month} the display counts up to ${DEMO_RELIEF_REPORT.hours} hours of time gained, expressly labelled as an estimate, with the comparison to the previous month beside it. Below it states that the impact survey is under way and that the figure above is an estimate. Finally the report is exported as a PDF. All data is invented.`}
     >
       {(scene) => {
         const moving = !scene.isStatic;
@@ -171,7 +171,7 @@ export function SteeringScene({ size = "default" }: { size?: SteeringSceneSize }
             className={layout.panel}
           >
             <div className="flex items-center justify-between gap-3">
-              <SceneLabel>Entlastungsbericht</SceneLabel>
+              <SceneLabel>Workload relief report</SceneLabel>
               <span className="text-[10px] text-[var(--app-text-muted)]">
                 {DEMO_RELIEF_REPORT.month}
               </span>
@@ -192,15 +192,15 @@ export function SteeringScene({ size = "default" }: { size?: SteeringSceneSize }
                       durationMs={STEPS[1].duration}
                       animate={moving}
                       paused={paused}
-                      suffix=" Std."
+                      suffix=" hrs"
                     />
                   ) : (
-                    <span className="tabular-nums">0 Std.</span>
+                    <span className="tabular-nums">0 hrs</span>
                   )}
                 </div>
 
                 <div className="mt-1.5 text-[10px] text-[var(--app-text-muted)]">
-                  gewonnene Zeit · {DEMO_RELIEF_REPORT.note}
+                  time gained · {DEMO_RELIEF_REPORT.note}
                 </div>
               </div>
 
@@ -247,7 +247,7 @@ export function SteeringScene({ size = "default" }: { size?: SteeringSceneSize }
             <div className="mt-4 flex items-center gap-2">
               <span className="inline-flex items-center gap-1.5 rounded-[var(--app-radius-control)] border border-[var(--app-border)] px-2.5 py-1.5 text-[10px] font-medium text-[var(--app-text)]">
                 <FileDown className="size-3" />
-                Als PDF exportieren
+                Export as PDF
               </span>
 
               {/* Feste Breite, damit das Häkchen nichts verschiebt. */}

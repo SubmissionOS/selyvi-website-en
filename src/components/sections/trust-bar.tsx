@@ -18,21 +18,24 @@ import { AUDIENCE_SHORT } from "@/config/product";
  * war in einer Trust-Zeile besonders heikel: eine ungedeckte Zusage genau
  * dort, wo Leserinnen und Leser sie ungeprueft mitnehmen.
  *
- * An ihrer Stelle steht die Datenschutz-Aussage, die heute traegt – „keine
- * Weitergabe" ist durch den Produktstand gedeckt und ohne Fussnote wahr.
+ * An ihrer Stelle steht die Datenschutz-Aussage, die heute traegt – „no sharing
+ * of pupil data" ist durch den Produktstand gedeckt und ohne Fussnote wahr.
+ *
+ * „pupil data", nicht „student data": „Student" heisst ausserhalb der USA
+ * meist Studierende (docs/glossar-en.md).
  */
 const trustPoints = [
   // Zielgruppe – Quelle ist src/config/product.ts.
   AUDIENCE_SHORT,
   // Kurzform der kanonischen Praxis-Aussage – Quelle ist src/config/brand.ts.
   PRACTICE_CLAIM_SHORT,
-  "Keine Weitergabe von Schülerdaten",
+  "No sharing of pupil data",
 ];
 
 export function TrustBar() {
   return (
     <section
-      aria-label="Vertrauensmerkmale"
+      aria-label="Key facts"
       className="border-b border-gray-200 bg-surface-alt"
     >
       <div className="mx-auto w-full max-w-6xl px-6 py-5 lg:px-8">

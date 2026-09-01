@@ -6,14 +6,20 @@ import { SampleDataNote } from "@/components/scenes/sample-data-note";
 import { Button } from "@/components/ui/button";
 
 /**
- * Sektion – „Probieren Sie es selbst aus."
+ * Sektion – „Try it for yourself."
+ *
+ * ZAHL KORRIGIERT: Die deutsche Fassung sagt hier „Drei Bereiche sind offen",
+ * /preview und die Meta-Beschreibung sagen VIER. Offen sind vier
+ * (workspace.tsx: meine-klassen, live-unterricht, material, timeline). Die
+ * englische Fassung nennt vier; der Widerspruch gehoert auf der deutschen
+ * Seite nachgezogen.
  *
  * Ersetzt „So funktioniert's". Dort erklärten drei Mini-Szenen den Kreislauf;
  * jetzt führt ein Knopf in den geführten Einblick, wo man ihn selbst anklickt.
  * Erklären war der Umweg.
  *
  * Die frühere Sprungmarke `so-funktionierts` ist entfallen: Der
- * Sekundär-Button im Hero zeigt jetzt direkt auf /einblick statt auf einen
+ * Sekundär-Button im Hero zeigt jetzt direkt auf /preview statt auf einen
  * Anker weiter unten. Ein Sprung innerhalb der Seite war der Umweg zum Umweg.
  *
  * ==========================================================================
@@ -22,10 +28,10 @@ import { Button } from "@/components/ui/button";
  * <ReportScene /> zeigt, was die Schulleitung am Monatsende sieht. Ohne sie
  * verlöre die Startseite die Leitungs-Perspektive vollständig – die anderen
  * beiden Minis (Beobachten, Texte erzeugen) sagen dagegen dasselbe wie der
- * Hero und „Was Ihnen abgenommen wird". Sie sind deshalb entfallen, diese
+ * Hero und „What gets taken off your hands". Sie sind deshalb entfallen, diese
  * nicht.
  *
- * Der Knopf ist bewusst NICHT --cta: Die Farbe gehört dem Kennenlernen. Zwei
+ * Der Knopf ist bewusst NICHT --cta: Die Farbe gehört dem „Meet Selyvi". Zwei
  * gleich starke Aufrufe auf einer Seite heben sich gegenseitig auf.
  */
 export function TakeALook() {
@@ -40,17 +46,17 @@ export function TakeALook() {
             id="einen-blick-titel"
             className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
           >
-            Probieren Sie es selbst aus.
+            Try it for yourself.
           </h2>
 
           <p className="mt-6 max-w-xl text-lg text-gray-500">
-            Am schnellsten versteht man {PRODUCT_NAME}, wenn man kurz selbst klickt. Drei
-            Bereiche sind offen – den Rest zeigen wir Ihnen persönlich.
+            The quickest way to understand {PRODUCT_NAME} is to click through it briefly
+            yourself. Four areas are open – the rest we show you in person.
           </p>
 
           <div className="mt-10">
             <Button asChild variant="outline" size="lg">
-              <Link href="/einblick">Einblick öffnen</Link>
+              <Link href="/preview">Take a look</Link>
             </Button>
           </div>
         </div>

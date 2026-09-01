@@ -105,7 +105,7 @@ type Props = {
    *
    * Ohne Angabe der LETZTE – das passt für Szenen, die auf ihr Ergebnis
    * zulaufen. Es passt NICHT für Szenen, die am Ende wieder dorthin
-   * zurückkehren, wo sie angefangen haben: Der Leitungsmodus auf /schulen
+   * zurückkehren, wo sie angefangen haben: Der Leitungsmodus auf /for-school-leadership
    * schaltet um, zeigt die Leitungsansicht und schaltet zurück. Sein letzter
    * Schritt ist die Lehrkraft-Ansicht – und genau die ist NICHT die Aussage
    * der Szene.

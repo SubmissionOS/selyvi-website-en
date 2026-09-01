@@ -3,7 +3,7 @@ import { BarChart3, BookOpen, ClipboardList, Mail } from "lucide-react";
 import { TRANSLATION_LANGUAGE_COUNT } from "@/config/product";
 
 /**
- * Sektion 5 – Was Ihnen abgenommen wird.
+ * Sektion 5 – „What gets taken off your hands“.
  * Je Karte genau ein Nutzensatz. Keine Adjektivketten, keine Superlative.
  *
  * Die vier Karten sind die vier Bereiche, in die docs/produktstand-2026-08.md
@@ -13,30 +13,30 @@ import { TRANSLATION_LANGUAGE_COUNT } from "@/config/product";
 const features = [
   {
     icon: ClipboardList,
-    title: "Dokumentation",
+    title: "Documentation",
     description:
-      "Beobachtungen entstehen im Unterricht – getippt oder diktiert – und ergeben je Kind eine Timeline mit Kompetenzen und Förderhinweisen.",
+      "Observations are made during the lesson – typed or dictated – and build up a timeline per child, with competencies and support notes.",
   },
   {
     icon: Mail,
-    title: "Kommunikation",
-    // „im gelernten Schreibstil“ ist hier entfallen – siehe value-for-all.tsx:
-    // Die Stil-Aussage traegt seit der Straffung die Spalte „Fuer Lehrkraefte“,
+    title: "Communication",
+    // „in the learned writing style“ ist hier entfallen – siehe value-for-all.tsx:
+    // Die Stil-Aussage traegt seit der Straffung die Spalte „For teachers“,
     // und zwar als einzige Stelle der Startseite. Diese Karte beschreibt den
     // BEREICH Kommunikation; dafuer braucht sie das Merkmal nicht.
-    description: `Zeugnisbemerkungen und Elternmails entstehen aus den eigenen Beobachtungen – Elternmails auf Wunsch in ${TRANSLATION_LANGUAGE_COUNT} Sprachen.`,
+    description: `Report comments and parent emails come out of your own observations – parent emails in ${TRANSLATION_LANGUAGE_COUNT} languages on request.`,
   },
   {
     icon: BookOpen,
-    title: "Unterricht",
+    title: "Teaching",
     description:
-      "Material und Stundenentwürfe entstehen aus einem durchsuchbaren Fachkorpus. Jedes erzeugte Material weist seine Quellen aus.",
+      "Teaching materials and lesson drafts come out of a searchable subject corpus. Every generated document states its sources.",
   },
   {
     icon: BarChart3,
-    title: "Steuerung",
+    title: "Steering",
     description:
-      "Die Schulleitung sieht im Entlastungsbericht, wie viele Stunden das dem Kollegium zurückgegeben hat – Monat für Monat, als PDF.",
+      "In the workload relief report, school leadership sees how many hours that has given back to the staff – month by month, as a PDF.",
   },
 ];
 
@@ -48,7 +48,7 @@ export function Features() {
           id="abgenommen-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
         >
-          Was Ihnen abgenommen wird
+          What gets taken off your hands
         </h2>
 
         <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

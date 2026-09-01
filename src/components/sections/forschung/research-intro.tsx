@@ -3,7 +3,7 @@ import { PRODUCT_NAME } from "@/config/brand";
 /**
  * Sektion 1 – Intro der Forschungsseite.
  *
- * Gleiche Bauweise wie die Intros auf /fuer-lehrkraefte und /schulen: schmal,
+ * Gleiche Bauweise wie die Intros auf /for-teachers und /for-school-leadership: schmal,
  * ohne Bild, ohne CTA. Der Handlungsaufruf steht am Seitenende.
  *
  * Der Ton unterscheidet sich bewusst von beiden: Diese Seite wirbt niemanden
@@ -19,17 +19,17 @@ export function ResearchIntro() {
           id="forschung-intro-titel"
           className="max-w-3xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl"
         >
-          Wirkung wollen wir belegen – nicht behaupten.
+          Impact is something we want to evidence – not assert.
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          {PRODUCT_NAME} entsteht mitten im Schulalltag und erzeugt dabei die Frage, die
-          uns selbst am meisten interessiert: Was entlastet wirklich?
+          {PRODUCT_NAME} is being built in the middle of everyday school life, and that
+          raises the question that interests us most: what actually takes the load off?
         </p>
 
         <p className="mt-4 max-w-2xl text-lg text-gray-500">
-          Deshalb bauen wir die Wirkungsmessung von Anfang an ein – und suchen
-          Forschungspartner, die genauer hinschauen wollen.
+          So we build impact measurement in from the start – and are looking for research
+          partners who want to look more closely.
         </p>
       </div>
     </section>

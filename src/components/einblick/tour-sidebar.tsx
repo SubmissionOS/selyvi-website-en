@@ -31,8 +31,8 @@ import { PRODUCT_NAME } from "@/config/brand";
  * Navigation.
  *
  * VIER SIND OFFEN, VIER TRAGEN EIN SCHLOSS. Offen ist, wofür wir eine
- * Vorstellung haben, die dem Original entspricht. Geschlossen sind Heute,
- * Überprüfung, Förderpläne und Klassenanalyse – von diesen Ansichten liegt
+ * Vorstellung haben, die dem Original entspricht. Geschlossen sind „Today",
+ * „Review", „Support plans" und „Class analysis" – von diesen Ansichten liegt
  * kein Screenshot vor, und etwas zu erfinden wäre genau das, was diese Seite
  * nicht tut.
  *
@@ -49,24 +49,34 @@ type Entry = {
   area?: TourArea;
 };
 
+/**
+ * DIE BESCHRIFTUNGEN SIND DIESELBEN WIE IN DEN SZENEN.
+ *
+ * Sie stehen als DEMO_NAV_TEACHER in src/config/demo-data.ts – dort auch die
+ * Begruendung, warum die gezeigte Oberflaeche englisch ist (en-review.md,
+ * Punkt 9). Hier stehen sie ein zweites Mal, weil diese Leiste zusaetzlich
+ * Symbole und die Zuordnung zu den bedienbaren Bereichen traegt.
+ *
+ * Wer eine Beschriftung aendert, aendert sie an BEIDEN Stellen – sonst heisst
+ * derselbe Menuepunkt in der Szene anders als im Einblick.
+ */
 const ENTRIES: Entry[] = [
-  { key: "heute", label: "Heute", icon: Home },
-  { key: "meine-klassen", label: "Meine Klassen", icon: Users, area: "meine-klassen" },
+  { key: "heute", label: "Today", icon: Home },
+  { key: "meine-klassen", label: "My classes", icon: Users, area: "meine-klassen" },
   {
     key: "live-unterricht",
-    label: "Live-Unterricht",
+    label: "Live lesson",
     icon: Mic,
     area: "live-unterricht",
   },
   { key: "timeline", label: "Timeline", icon: Clock, area: "timeline" },
-  { key: "ueberpruefung", label: "Überprüfung", icon: Clipboard },
-  { key: "foerderplaene", label: "Förderpläne", icon: Heart },
-  { key: "material", label: "Material", icon: BookOpen, area: "material" },
-  { key: "klassenanalyse", label: "Klassenanalyse", icon: TrendingUp },
+  { key: "ueberpruefung", label: "Review", icon: Clipboard },
+  { key: "foerderplaene", label: "Support plans", icon: Heart },
+  { key: "material", label: "Materials", icon: BookOpen, area: "material" },
+  { key: "klassenanalyse", label: "Class analysis", icon: TrendingUp },
 ];
 
-export const LOCKED_HINT =
-  "Diesen Bereich zeigen wir Ihnen persönlich – im Kennenlernen.";
+export const LOCKED_HINT = "We show you this area in person, when we meet.";
 
 /** Wie viele Einträge tragen ein Schloss? Für den Satz unter dem Fenster. */
 export const LOCKED_COUNT = ENTRIES.filter((entry) => !entry.area).length;
@@ -116,7 +126,7 @@ export function TourSidebar({
                    ist aria-hidden – ohne dieses Attribut waere der Schalter
                    dort namenlos. Gemessen, nicht vermutet: Lighthouse prueft
                    in Mobilbreite und hat genau das gemeldet. */
-                aria-label={isLocked ? `${entry.label}, gesperrt` : entry.label}
+                aria-label={isLocked ? `${entry.label}, locked` : entry.label}
                 className={cn(
                   "relative flex w-full items-center justify-center gap-2 rounded-[var(--app-radius-nav)] px-2 py-1.5 text-left sm:justify-start",
                   isActive &&

@@ -26,14 +26,14 @@ export function SeparationBand() {
               id="datentrennung-titel"
               className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
             >
-              Was die Schulleitung sieht – und was nicht
+              What school leadership sees – and what it does not
             </h2>
 
             <p className="mt-5 text-lg text-gray-500">{DATA_SEPARATION_NOTE}</p>
 
             <p className="mt-4 text-lg text-gray-500">
-              Der Leitungsmodus zeigt ausgewertete Kennzahlen. Einzelne Beobachtungen und
-              Bewertungen sind dort nicht ausgeblendet – sie sind nicht vorhanden.
+              The leadership view shows aggregated figures. Individual observations and
+              assessments are not hidden there – they are not present.
             </p>
           </div>
 

@@ -6,7 +6,7 @@ import { PRODUCT_NAME } from "@/config/brand";
 /**
  * Sektion 3 – Zielgruppen-Weiche.
  *
- * Steht direkt nach der Trust-Zeile und vor „Was sich im Alltag ändert“. Die
+ * Steht direkt nach der Trust-Zeile und vor „What changes day to day“. Die
  * Position ist der ganze Zweck: Wer mit einer klaren Rolle im Kopf kommt –
  * Schulleitung, Forschende – soll seinen Weg finden, bevor die Seite anfaengt,
  * einen Schultag zu erzaehlen. Wer weiterscrollt, bekommt die Geschichte
@@ -15,38 +15,42 @@ import { PRODUCT_NAME } from "@/config/brand";
  * Bewusste Entscheidungen:
  *   - KEINE --cta-Farbe. Die gehoert exklusiv dem Demo-Button; drei bunte
  *     Karten direkt unter dem Hero wuerden ihn entwerten.
- *   - Keine Ueberschrift. Eine H2 „Wohin moechten Sie?“ waere eine Frage an
+ *   - Keine Ueberschrift. Eine H2 „Where would you like to go?“ waere eine Frage an
  *     Leserinnen, die gerade erst angekommen sind. Die Sektion traegt
  *     stattdessen ein aria-label – dieselbe Loesung wie in <TrustBar />.
  *   - Die Kartentitel sind <span>, keine Ueberschriften: Es sind drei Wege,
  *     keine drei Inhaltsabschnitte. Eine Ueberschriftenebene hier wuerde die
  *     Gliederung der Startseite verwaessern – und weil der Hero die einzige H1
  *     traegt, muesste sie H2 sein und stuende dann gleichrangig neben
- *     „Was sich im Alltag ändert“.
+ *     „What changes day to day“.
+ *   - Die Selbstauswahl in der ERSTEN PERSON („I teach“, „I lead a school“) ist
+ *     nach Regel A ausdruecklich erlaubt: Dort waehlt der Leser, wir schreiben
+ *     ihm nichts zu.
  *   - Alle drei sind gleich gross und gleich gestaltet. Sobald eine Karte
  *     hervorgehoben waere, waere es keine Weiche mehr, sondern eine Empfehlung.
  */
 const audiences = [
   {
-    title: "Ich unterrichte",
-    description: `Was ${PRODUCT_NAME} Ihnen an einem ganz normalen Dienstag abnimmt.`,
-    href: "/fuer-lehrkraefte",
+    title: "I teach",
+    description: `What ${PRODUCT_NAME} takes off your hands on an entirely ordinary Tuesday.`,
+    href: "/for-teachers",
   },
   {
-    title: "Ich leite eine Schule",
-    description: "Was das Kollegium entlastet – und was Sie dem Träger vorlegen können.",
-    href: "/schulen",
+    title: "I lead a school",
+    description:
+      "What takes the load off your staff – and what you can put in front of your school authority.",
+    href: "/for-school-leadership",
   },
   {
-    title: "Ich forsche",
-    description: "Woran wir gemeinsam messen wollen, was wirklich entlastet.",
-    href: "/forschung",
+    title: "I do research",
+    description: "How we want to measure together what actually takes the load off.",
+    href: "/research",
   },
 ];
 
 export function AudienceSwitch() {
   return (
-    <section aria-label="Wege nach Zielgruppe" className="border-b border-gray-200">
+    <section aria-label="Paths by audience" className="border-b border-gray-200">
       <div className="mx-auto w-full max-w-6xl px-6 py-12 lg:px-8 lg:py-16">
         <ul className="grid gap-4 sm:grid-cols-3 sm:gap-6">
           {audiences.map((audience) => (

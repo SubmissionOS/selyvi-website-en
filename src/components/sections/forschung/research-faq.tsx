@@ -7,7 +7,7 @@ import { FaqAccordion, type FaqItem } from "@/components/faq-accordion";
 /**
  * Sektion 6 – FAQ für Forschende.
  *
- * Dieselbe Darstellung wie auf Startseite und /schulen (FaqAccordion), andere
+ * Dieselbe Darstellung wie auf Startseite und /for-school-leadership (FaqAccordion), andere
  * Fragen: Es sind die vier, die in Anfragen aus Hochschulen tatsaechlich
  * kommen – und die dritte ist die, an der eine unehrliche Antwort die ganze
  * Seite entwerten wuerde.
@@ -30,14 +30,14 @@ const faqItems: FaqItem[] = [
     answer: `${PRODUCT_NAME} wird im laufenden Schulalltag benutzt – nicht in einer Erhebungssituation. Wenn Sie zu Unterricht, Vorbereitungspraxis oder der Arbeitsbelastung von Lehrkräften forschen, ist das ein Feldzugang, den es sonst selten gibt. Was sich daraus erheben lässt, legen wir gemeinsam fest – und genau darüber würden wir mit Ihnen sprechen wollen.`,
   },
   {
-    question: "Wie kann eine Zusammenarbeit aussehen?",
+    question: "What can a collaboration look like?",
     answer:
-      "Von Pilotbegleitung über die Mitgestaltung der Erhebungsinstrumente bis zu gemeinsamen Auswertungen nach Freigabe – die Formen sind so unterschiedlich wie die Fragestellungen. Am schnellsten klärt das ein kurzes Kennenlernen. Publikationen, Autorenschaften und Zugänge legen wir dort gemeinsam fest – schriftlich, bevor Daten fließen.",
+      "From accompanying a pilot through co-designing the survey instruments to joint analyses once released – the forms are as varied as the questions. A short conversation settles it fastest. Publications, authorship and access we agree there together – in writing, before any data flows.",
   },
   {
-    question: "Mit welchem Wirkungsmodell arbeitet ihr?",
+    question: "Which impact model do you work with?",
     answer:
-      "Mit einem Erhebungsmodell entlang der PHINEO-Wirkungstreppe: Input, Output, Outcome, Impact. Erhoben wird über drei Befragungswellen, die Einwilligung ist zweckgranular, die Auswertung folgt einem vorab festgelegten Codebuch, und Werte werden erst ab einer Mindestfallzahl ausgewiesen. Modellversion, Annahmeketten und offene Methodenlücken sind dokumentiert – auch die Lücken.",
+      "With a survey model along the PHINEO impact staircase: input, output, outcome, impact. Data is collected across three survey waves, consent is granular by purpose, the analysis follows a codebook fixed in advance, and values are only reported above a minimum case count. Model version, chains of assumptions and open methodological gaps are documented – the gaps included.",
   },
 ];
 
@@ -57,7 +57,7 @@ export function ResearchFaq() {
                 id="forschung-faq-titel"
                 className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
               >
-                Fragen aus der Forschung
+                Questions from research
               </h2>
             </div>
           </div>
@@ -73,7 +73,7 @@ export function ResearchFaq() {
             gehoert dem Kopfzeilen-Aufruf. */}
         <div className="mt-10">
           <Button asChild variant="outline" size="lg">
-            <Link href="/demo">Kennenlernen vereinbaren</Link>
+            <Link href="/meet">Arrange to meet</Link>
           </Button>
         </div>
       </div>

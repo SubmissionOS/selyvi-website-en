@@ -6,10 +6,10 @@ import { primaryCta } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { Workspace } from "@/components/einblick/workspace";
 
-export const metadata: Metadata = pageMetadata("/einblick");
+export const metadata: Metadata = pageMetadata("/preview");
 
 /**
- * Geführter Einblick – die einzige bedienbare Seite der Website.
+ * Take a look (/preview) – die einzige bedienbare Seite der Website.
  *
  * Sie ersetzt die frühere Sektion „So funktioniert's" auf der Startseite:
  * Erklären war der Umweg, klicken ist der kurze Weg.
@@ -20,24 +20,27 @@ export const metadata: Metadata = pageMetadata("/einblick");
  * für ein Gespräch.
  *
  * KEIN Navigationspunkt: Die Kopfzeile bleibt bei fünf. Erreichbar über die
- * Sektion „Probieren Sie es selbst aus." auf der Startseite und über die
- * Fusszeile.
+ * Sektion „Try it for yourself." auf der Startseite und über die Fusszeile.
+ *
+ * SEITENTITEL „Take a look": docs/glossar-en.md – es gibt kein englisches
+ * Substantiv, das so leicht klingt wie „Einblick". Die Einladung zaehlt hier
+ * mehr als die woertliche Entsprechung.
  */
 export default function EinblickPage() {
   return (
     <>
-      <section aria-labelledby="einblick-titel" className="border-b border-gray-200">
+      <section aria-labelledby="preview-title" className="border-b border-gray-200">
         <div className="mx-auto w-full max-w-6xl px-6 py-16 lg:px-8 lg:py-20">
           <h1
-            id="einblick-titel"
+            id="preview-title"
             className="max-w-3xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
           >
-            Klicken Sie sich einmal durch.
+            Have a click through.
           </h1>
 
           <p className="mt-5 max-w-2xl text-lg text-gray-500">
-            Vier Bereiche sind offen – klicken Sie in beliebiger Reihenfolge durch. Was
-            Sie auswählen, bleibt beim Wechsel erhalten.
+            Four areas are open – click through them in any order. What you select stays
+            when you switch.
           </p>
 
           <div className="mt-10">
@@ -48,14 +51,14 @@ export default function EinblickPage() {
 
       {/* Abschluss. Bewusst ruhig: Wer bis hierher geklickt hat, braucht keinen
           Anschub mehr, sondern nur den nächsten Schritt. */}
-      <section aria-labelledby="einblick-abschluss" className="bg-surface-alt">
+      <section aria-labelledby="preview-closing" className="bg-surface-alt">
         <div className="mx-auto w-full max-w-6xl px-6 py-16 lg:px-8 lg:py-20">
           <div className="max-w-2xl">
             <h2
-              id="einblick-abschluss"
+              id="preview-closing"
               className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
             >
-              Das war ein Ausschnitt aus vier von acht Bereichen.
+              That was a slice of four out of eight areas.
             </h2>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">
@@ -64,10 +67,10 @@ export default function EinblickPage() {
               </Button>
 
               <Link
-                href="/mitgestalten"
+                href="/co-create"
                 className="text-base text-brand-600 underline underline-offset-4"
               >
-                Oder gleich mitgestalten
+                Or go straight to co-creating
               </Link>
             </div>
           </div>

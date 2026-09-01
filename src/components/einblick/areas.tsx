@@ -6,6 +6,7 @@ import { Check, Lock, Mic, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   DEMO_CHAT,
+  DEMO_DICTATION,
   DEMO_MAIL_LANGS,
   DEMO_MATERIAL_RESULT,
   DEMO_MATERIAL_SOURCES,
@@ -17,6 +18,7 @@ import {
   DEMO_TOUR_OBSERVATIONS,
   type DemoMailLang,
 } from "@/config/demo-data";
+import { TRANSLATION_LANGUAGE_COUNT } from "@/config/product";
 import { Button } from "@/components/ui/button";
 
 /**
@@ -35,8 +37,8 @@ import { Button } from "@/components/ui/button";
  * ==========================================================================
  * Keine Bestaetigung sagt „Gespeichert". Das Banner ueber dem Fenster sagt
  * das Gegenteil, und zwei widersprechende Aussagen auf einem Bildschirm sind
- * schlimmer als gar keine Bestaetigung. Der Wortlaut ist „Übernommen ·
- * Beispiel" und steht als Konstante in workspace.tsx.
+ * schlimmer als gar keine Bestaetigung. Der Wortlaut ist „Taken over ·
+ * example" – nie „Saved".
  */
 
 export type Seat = { id: string; initials: string | null; locked: boolean };
@@ -91,14 +93,14 @@ export function AreaObservations({
   return (
     <section aria-labelledby="bereich-beobachtungen">
       <h2 id="bereich-beobachtungen" className={LABEL}>
-        Beobachtungen
+        Observations
       </h2>
 
       {/* Filter nach Kind. Der Produktstand fuehrt die Timeline und die
           Erfassung je Kind – die Liste danach einzugrenzen ist die
           Bedienung dieser Struktur, keine eigene Zusage. */}
       <div className="mt-3 flex flex-wrap items-center gap-1.5">
-        <span className="text-[11px] text-[var(--app-text-muted)]">Filtern:</span>
+        <span className="text-[11px] text-[var(--app-text-muted)]">Filter:</span>
         {DEMO_TOUR_OBSERVATIONS.map((e) => (
           <button
             key={e.initials}
@@ -135,7 +137,7 @@ export function AreaObservations({
                     reportText: "",
                     mailCreated: false,
                   }));
-                  notify("Beobachtung ausgewählt");
+                  notify("Observation selected");
                 }}
                 className={cn(
                   "w-full rounded-[var(--app-radius-card)] border p-3 text-left",
@@ -195,7 +197,7 @@ export function AreaObservations({
 
       {/* Chat ueber die eigenen Daten. */}
       <div className="mt-6 border-t border-[var(--app-border)] pt-4">
-        <p className={LABEL}>Frage an die eigenen Daten</p>
+        <p className={LABEL}>Question to your own data</p>
 
         <ul className="mt-3 flex flex-col gap-1.5">
           {DEMO_CHAT.questions.map((frage) => (
@@ -236,7 +238,7 @@ export function AreaObservations({
         </ul>
 
         <p className="mt-3 text-[11px] text-[var(--app-text-muted)]">
-          Antworten nur aus Ihren eigenen Einträgen
+          Answers only from your own entries
         </p>
       </div>
     </section>
@@ -258,14 +260,14 @@ function DictationButton({ state, actions }: { state: TourState; actions: TourAc
       type="button"
       disabled={state.dictated !== null}
       onClick={() => {
-        const worte =
-          "Frida hat im Sachunterricht ihren Versuch selbst aufgebaut und den Ablauf erklärt.".split(
-            " ",
-          );
+        // Aus der geteilten Konstante, nicht daneben getippt: Der Satz stand
+        // hier frueher ein zweites Mal als Literal und waere bei einer
+        // Aenderung von DEMO_DICTATION stehen geblieben.
+        const worte = DEMO_DICTATION.split(" ");
 
         if (reduced) {
           set((s) => ({ ...s, dictated: worte.join(" ") }));
-          notify("Übernommen · Beispiel");
+          notify("Taken over · example");
           return;
         }
 
@@ -276,7 +278,7 @@ function DictationButton({ state, actions }: { state: TourState; actions: TourAc
           if (i < worte.length) {
             window.setTimeout(schritt, 130);
           } else {
-            notify("Übernommen · Beispiel");
+            notify("Taken over · example");
           }
         };
         schritt();
@@ -294,7 +296,7 @@ function DictationButton({ state, actions }: { state: TourState; actions: TourAc
           laeuft && !reduced && "animate-soft-pulse",
         )}
       />
-      {state.dictated === null ? "Beobachtung diktieren" : "Diktat übernommen"}
+      {state.dictated === null ? "Dictate an observation" : "Dictation taken over"}
     </button>
   );
 }
@@ -319,10 +321,10 @@ export function AreaReports({
     return (
       <section aria-labelledby="bereich-zeugnisse">
         <h2 id="bereich-zeugnisse" className={LABEL}>
-          Zeugnisse
+          Reports
         </h2>
         <p className="mt-3 text-sm text-[var(--app-text)]">
-          Wählen Sie zuerst unter „Beobachtungen“ einen Eintrag aus.
+          First choose an entry under “Observations”.
         </p>
       </section>
     );
@@ -331,11 +333,11 @@ export function AreaReports({
   return (
     <section aria-labelledby="bereich-zeugnisse">
       <h2 id="bereich-zeugnisse" className={LABEL}>
-        Zeugnisse
+        Reports
       </h2>
 
       <p className="mt-3 text-sm text-[var(--app-text)]">
-        Grundlage: Ihre Beobachtung zu {beobachtung.child}
+        Based on: your observation about {beobachtung.child}
       </p>
 
       <div className="mt-3 rounded-[var(--app-radius-card)] border border-[var(--app-border)] bg-[var(--app-surface-muted)] p-3 text-[13px] text-[var(--app-text-muted)]">
@@ -349,30 +351,30 @@ export function AreaReports({
             size="md"
             onClick={() => {
               set((s) => ({ ...s, reportVariant: 0, reportText: beobachtung.report }));
-              notify("Entwurf erzeugt · Beispiel");
+              notify("Draft generated · example");
             }}
           >
-            Entwurf erzeugen
+            Generate a draft
           </Button>
         </div>
       ) : (
         <div className="mt-4">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--app-blue-soft)] px-2.5 py-1 text-[11px] font-medium text-[var(--app-blue-on-soft)]">
             <Sparkles aria-hidden="true" className="size-3" />
-            In Ihrem Schreibstil
+            In your writing style
           </span>
 
           {/* Frei editierbar – der Produktstand sagt das ausdruecklich. Ein
               <textarea> statt contenteditable: Es ist von Haus aus
               tastaturbedienbar und traegt ein Label. */}
           <label
-            htmlFor="einblick-entwurf"
+            htmlFor="preview-draft"
             className="mt-3 block text-[11px] text-[var(--app-text-muted)]"
           >
-            Entwurf – Sie können ihn hier ändern
+            Draft – you can change it here
           </label>
           <textarea
-            id="einblick-entwurf"
+            id="preview-draft"
             value={state.reportText}
             onChange={(e) => set((s) => ({ ...s, reportText: e.target.value }))}
             rows={4}
@@ -390,15 +392,15 @@ export function AreaReports({
                   reportVariant: naechste,
                   reportText: naechste === 0 ? beobachtung.report : beobachtung.report2,
                 }));
-                notify("Zweiter Entwurf · Beispiel");
+                notify("Second draft · example");
               }}
             >
-              Andere Formulierung
+              Another wording
             </Button>
           </div>
 
           <p className="mt-3 text-[11px] text-[var(--app-text-muted)]">
-            Vorbereitetes Beispiel
+            Prepared example
           </p>
         </div>
       )}
@@ -420,10 +422,10 @@ export function AreaMail({ state, actions }: { state: TourState; actions: TourAc
     return (
       <section aria-labelledby="bereich-elternpost">
         <h2 id="bereich-elternpost" className={LABEL}>
-          Elternpost
+          Parent post
         </h2>
         <p className="mt-3 text-sm text-[var(--app-text)]">
-          Wählen Sie zuerst unter „Beobachtungen“ einen Eintrag aus.
+          First choose an entry under “Observations”.
         </p>
       </section>
     );
@@ -435,13 +437,13 @@ export function AreaMail({ state, actions }: { state: TourState; actions: TourAc
   return (
     <section aria-labelledby="bereich-elternpost">
       <h2 id="bereich-elternpost" className={LABEL}>
-        Elternpost
+        Parent post
       </h2>
 
       {!state.mailCreated ? (
         <>
           <p className="mt-3 text-sm text-[var(--app-text)]">
-            Aus Ihrer Beobachtung zu {beobachtung.child} entsteht eine Elternmail.
+            Your observation about {beobachtung.child} becomes a parent email.
           </p>
           <div className="mt-5">
             <Button
@@ -449,10 +451,10 @@ export function AreaMail({ state, actions }: { state: TourState; actions: TourAc
               size="md"
               onClick={() => {
                 set((s) => ({ ...s, mailCreated: true }));
-                notify("Mail entworfen · Beispiel");
+                notify("Email drafted · example");
               }}
             >
-              Elternmail entwerfen
+              Draft a parent email
             </Button>
           </div>
         </>
@@ -466,7 +468,7 @@ export function AreaMail({ state, actions }: { state: TourState; actions: TourAc
                 aria-pressed={state.mailLang === l.key}
                 onClick={() => {
                   set((s) => ({ ...s, mailLang: l.key }));
-                  notify("Übersetzt · Beispiel");
+                  notify("Translated · example");
                 }}
                 className={cn(
                   "rounded-full border px-2.5 py-0.5 text-[11px]",
@@ -478,8 +480,10 @@ export function AreaMail({ state, actions }: { state: TourState; actions: TourAc
                 {l.label}
               </button>
             ))}
+            {/* Die Zahl kommt aus der Liste in product.ts, nicht daneben
+                getippt – sonst weicht sie beim naechsten Zuwachs ab. */}
             <span className="ml-1 rounded-full bg-[var(--app-blue-soft)] px-2 py-0.5 text-[10px] text-[var(--app-blue-on-soft)]">
-              9 Sprachen
+              {TRANSLATION_LANGUAGE_COUNT} languages
             </span>
           </div>
 
@@ -488,11 +492,17 @@ export function AreaMail({ state, actions }: { state: TourState; actions: TourAc
                 dem Produktstand, und sie ist hier sichtbar: Nur die beiden
                 Inhaltszeilen wechseln die Sprache. */}
             <p className="text-[12px] text-[var(--app-text-muted)]">
-              Betreff: {beobachtung.mail.subject}
+              Subject: {beobachtung.mail.subject}
             </p>
-            <p className="mt-3 text-[13px] text-[var(--app-text)]">Guten Tag,</p>
+            <p className="mt-3 text-[13px] text-[var(--app-text)]">Hello,</p>
 
+            {/* `lang` UND `dir`: Die Inhaltszeilen wechseln die Sprache, und
+                genau das ist die Aussage dieser Ansicht. Ohne lang liest ein
+                Screenreader den tuerkischen Satz englisch vor – WCAG 3.1.2.
+                Dasselbe Attribut sagt scripts/german-check.mjs, dass diese
+                Zeilen nicht englisch sein sollen. */}
             <div
+              lang={sprache?.lang}
               dir={sprache?.rtl ? "rtl" : "ltr"}
               className="mt-2 flex flex-col gap-1.5"
             >
@@ -507,14 +517,14 @@ export function AreaMail({ state, actions }: { state: TourState; actions: TourAc
             </div>
 
             <p className="mt-3 text-[13px] text-[var(--app-text)]">
-              Mit freundlichen Grüßen
+              Kind regards
               <br />
               {DEMO_TEACHER}
             </p>
           </div>
 
           <p className="mt-3 text-[11px] text-[var(--app-text-muted)]">
-            Anrede und Signatur bleiben unangetastet · Vorbereitetes Beispiel
+            Greeting and signature stay untouched · prepared example
           </p>
         </>
       )}
@@ -540,10 +550,10 @@ export function AreaMaterial({
   return (
     <section aria-labelledby="bereich-material">
       <h2 id="bereich-material" className={LABEL}>
-        Material
+        Materials
       </h2>
 
-      <p className="mt-3 text-sm text-[var(--app-text)]">Thema wählen:</p>
+      <p className="mt-3 text-sm text-[var(--app-text)]">Choose a topic:</p>
       <div className="mt-2 flex flex-wrap gap-1.5">
         {DEMO_MATERIAL_TOPICS.map((t) => (
           <button
@@ -564,7 +574,7 @@ export function AreaMaterial({
       </div>
 
       <p className="mt-5 text-sm text-[var(--app-text)]">
-        Fundstellen aus dem Fachkorpus:
+        Sources from the subject corpus:
       </p>
       <ul className="mt-2 flex flex-col gap-1.5">
         {DEMO_MATERIAL_SOURCES.map((q, i) => {
@@ -620,10 +630,10 @@ export function AreaMaterial({
           disabled={!state.topic || state.sources.length === 0}
           onClick={() => {
             set((s) => ({ ...s, materialCreated: true }));
-            notify("Material erzeugt · Beispiel");
+            notify("Materials generated · example");
           }}
         >
-          Material erzeugen
+          Generate materials
         </Button>
       </div>
 
@@ -638,7 +648,7 @@ export function AreaMaterial({
                 {zeile}{" "}
                 {/* Ein Marker je Aufgabe, reihum aus den angehakten
                     Fundstellen. Wer eine abwaehlt, sieht die Marker sofort
-                    wechseln – genau das meint „weist seine Quellen aus". */}
+                    wechseln – genau das meint „states its sources". */}
                 <span className="text-[11px] text-[var(--app-blue)]">
                   [
                   {DEMO_MATERIAL_SOURCES.findIndex(
@@ -650,7 +660,7 @@ export function AreaMaterial({
             ))}
           </ul>
           <p className="mt-3 text-[11px] text-[var(--app-text-muted)]">
-            Quellen:{" "}
+            Sources:{" "}
             {state.sources
               .map((id) => DEMO_MATERIAL_SOURCES.find((q) => q.id === id)?.label)
               .join(" · ")}
@@ -720,16 +730,15 @@ export function AreaSeating({
   return (
     <section aria-labelledby="bereich-sitzplan">
       <h2 id="bereich-sitzplan" className={LABEL}>
-        Sitzplan
+        Seating plan
       </h2>
 
       <p className="mt-3 text-sm text-[var(--app-text)]">
-        Ein Kind antippen, dann den neuen Platz – die beiden tauschen. Das Schloss sperrt
-        einen Platz.
+        Tap a child, then the new seat – the two swap. The padlock locks a seat.
       </p>
 
       <p className="mt-3 rounded-[var(--app-radius-control)] bg-[var(--app-surface-muted)] py-1 text-center text-[10px] tracking-wide text-[var(--app-text-muted)] uppercase">
-        Tafel
+        Board
       </p>
 
       <ul className="mt-3 grid grid-cols-3 gap-2">
@@ -737,10 +746,10 @@ export function AreaSeating({
           const aufgenommen = state.picked === platz.id;
           const abgelehnt = state.refused === platz.id;
           const name = platz.locked
-            ? "Gesperrter Platz"
+            ? "Locked seat"
             : platz.initials
-              ? `Platz von ${platz.initials}`
-              : "Freier Platz";
+              ? `Seat of ${platz.initials}`
+              : "Free seat";
 
           return (
             <li key={platz.id} className="relative">
@@ -774,7 +783,7 @@ export function AreaSeating({
               <button
                 type="button"
                 aria-label={
-                  platz.locked ? `${name} entsperren` : `Platz ${platz.id} sperren`
+                  platz.locked ? `Unlock ${name}` : `Lock seat ${platz.id}`
                 }
                 aria-pressed={platz.locked}
                 onClick={() => {
@@ -784,7 +793,7 @@ export function AreaSeating({
                       x.id === platz.id ? { ...x, locked: !x.locked } : x,
                     ),
                   }));
-                  notify(platz.locked ? "Platz freigegeben" : "Platz gesperrt");
+                  notify(platz.locked ? "Seat released" : "Seat locked");
                 }}
                 className="absolute top-1 right-1 rounded p-0.5 text-[var(--app-text-muted)] hover:text-[var(--app-blue)]"
               >
@@ -820,12 +829,11 @@ export function AreaTimetable({
   return (
     <section aria-labelledby="bereich-stundenplan">
       <h2 id="bereich-stundenplan" className={LABEL}>
-        Stundenplan
+        Timetable
       </h2>
 
       <p className="mt-3 text-sm text-[var(--app-text)]">
-        Ihr Fach wählen, dann eine freie Stunde antippen. Nochmal antippen entfernt sie
-        wieder.
+        Choose your subject, then tap a free period. Tapping again removes it.
       </p>
 
       <div className="mt-3 flex flex-wrap gap-1.5">
@@ -851,12 +859,12 @@ export function AreaTimetable({
           steht sichtbar darueber – eine Scrollflaeche ohne Ansage ist auf
           dem Handy unsichtbar. */}
       <p className="mt-4 text-[11px] text-[var(--app-text-muted)] sm:hidden">
-        Seitwärts wischbar →
+        Swipe sideways →
       </p>
       <div className="mt-2 overflow-x-auto">
         <table className="w-full min-w-[22rem] border-collapse text-[11px]">
           <caption className="sr-only">
-            Wochenstundenplan der Klasse. Jede Zelle ist ein Schalter.
+            Weekly timetable for the class. Every cell is a button.
           </caption>
           <thead>
             <tr>
@@ -864,7 +872,7 @@ export function AreaTimetable({
                 scope="col"
                 className="p-1 text-left font-medium text-[var(--app-text-muted)]"
               >
-                Zeit
+                Period
               </th>
               {DEMO_TIMETABLE_DAYS.map((t) => (
                 <th
@@ -895,7 +903,7 @@ export function AreaTimetable({
                       <button
                         type="button"
                         aria-label={
-                          belegt ? `${tag}, ${slot}: ${belegt}` : `${tag}, ${slot}: frei`
+                          belegt ? `${tag}, ${slot}: ${belegt}` : `${tag}, ${slot}: free`
                         }
                         onClick={() => {
                           set((s) => ({
@@ -905,7 +913,7 @@ export function AreaTimetable({
                               [id]: s.timetable[id] ? null : fach,
                             },
                           }));
-                          notify(belegt ? "Stunde entfernt" : "Übernommen · Beispiel");
+                          notify(belegt ? "Period removed" : "Taken over · example");
                         }}
                         className={cn(
                           "h-9 w-full rounded border text-[10px]",
@@ -926,7 +934,7 @@ export function AreaTimetable({
       </div>
 
       <p className="mt-3 text-[11px] text-[var(--app-text-muted)]">
-        Kein Redaktionsschritt, keine Freigabe – wer Zeiten hinterlegt, steht im Plan.
+        No editorial step, no approval – whoever stores times is in the plan.
       </p>
     </section>
   );
@@ -952,7 +960,7 @@ export function AreaDevelopment({
   return (
     <section aria-labelledby="bereich-entwicklung">
       <h2 id="bereich-entwicklung" className={LABEL}>
-        Entwicklung
+        Development
       </h2>
 
       <div className="mt-3 flex flex-wrap gap-1.5">
@@ -1022,7 +1030,7 @@ export function AreaDevelopment({
       </ol>
 
       <p className="mt-3 text-[11px] text-[var(--app-text-muted)]">
-        Chronologische Timeline je Kind · Vorbereitetes Beispiel
+        A chronological timeline per child · prepared example
       </p>
     </section>
   );

@@ -12,7 +12,7 @@ export function InterfaceSkeleton() {
   return (
     <div
       role="img"
-      aria-label="Schematische Darstellung der Programmoberfläche: Seitenleiste mit Navigation, Kopfbereich und Inhaltsbereich mit Listeneinträgen. Ohne echte Inhalte."
+      aria-label="Schematic view of the application interface: sidebar with navigation, header area and content area with list entries. Without real content."
       className="overflow-hidden rounded-xl border border-gray-200 bg-surface"
     >
       {/* Browser-Leiste */}

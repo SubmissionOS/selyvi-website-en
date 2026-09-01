@@ -1,0 +1,52 @@
+Tastatur-Protokoll /preview (englische Fassung)
+Reihenfolge der fokussierbaren Elemente, 1440 px
+
+  1. <a> Skip to main content
+  2. <a> Selyvi – to the home page
+  3. <a> For teachers
+  4. <a> For school leadership
+  5. <a> Research
+  6. <a> Security
+  7. <a> Our story
+  8. <a> Meet Selyvi
+  9. <button> Reset
+ 10. <button> Today, locked
+ 11. <button> My classes
+ 12. <button> Live lesson
+ 13. <button> Timeline
+ 14. <button> Review, locked
+ 15. <button> Support plans, locked
+ 16. <button> Materials
+ 17. <button> Class analysis, locked
+ 18. <button> Leadership
+ 19. <button> All classes
+ 20. <input> Search for a name
+ 21. <button> Add a pupil
+ 22. <button> Emma K.New
+ 23. <button> Yusuf A.New
+ 24. <button> Lotta B.New
+ 25. <button> Milan P.New
+ 26. <button> Frida S.New
+ 27. <button> Jonas T.New
+ 28. <button> Overview
+ 29. <button> Timetable
+ 30. <button> Documents
+ 31. <button> Plan a lesson
+ 32. <button> German
+ 33. <a> Meet Selyvi
+ 34. <a> Or go straight to co-creating
+ 35. <a> Take a look
+ 36. <a> For teachers
+ 37. <a> For school leadership
+ 38. <a> Research & impact
+ 39. <a> Data protection & security
+ 40. <a> Meet Selyvi
+ 41. <a> Our story
+ 42. <a> Co-create
+ 43. <a> Meet Selyvi
+ 44. <a> Legal notice
+ 45. <a> Privacy policy
+ 46. <a> selyvi.app@gmail.com
+ 47. <a> Meet Selyvi
+ 48. <a> Selyvi on LinkedIn
+ 49. <a> Selyvi on Instagram

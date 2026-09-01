@@ -18,26 +18,31 @@ import { DECISION_PROMISE } from "@/config/product";
  * Abschlusszeile fordert ausdruecklich zum Nachpruefen auf; ein Versprechen
  * ohne Fundstelle waere damit eine Einladung, uns zu widerlegen.
  *
- *   1. Entscheidung  -> Prinzip-Band auf /fuer-lehrkraefte. WORTGLEICH ueber
+ * DAS ANGEHAENGTE „Always." ist die englische Fassung des „Immer." – es
+ * gehoert NUR hierher. Ueber den Funktionsbloecken ist DECISION_PROMISE eine
+ * Ueberschrift, hier ist er ein Schwur. Deshalb steht die Konstante ohne das
+ * Wort und das Manifest haengt es an.
+ *
+ *   1. Entscheidung  -> Prinzip-Band auf /for-teachers. WORTGLEICH ueber
  *                       die geteilte Konstante DECISION_PROMISE – wer den
  *                       Wortlaut aendert, aendert beide Stellen zugleich.
- *   2. Verteilung    -> /schulen, „Nutzung im Kollegium als Verteilung –
+ *   2. Verteilung    -> /for-school-leadership, „Nutzung im Kollegium als Verteilung –
  *                       bewusst keine namentliche Rangliste"; im Produktstand
  *                       als Produktpolitik begruendet.
- *   3. Offene Punkte -> „In Arbeit" auf /fuer-lehrkraefte, der Zugangs-Absatz
- *                       auf /forschung, die offenen Punkte auf
- *                       /datenschutz-sicherheit.
+ *   3. Offene Punkte -> „In Arbeit" auf /for-teachers, der Zugangs-Absatz
+ *                       auf /research, die offenen Punkte auf
+ *                       /security.
  *   4. Beispieldaten -> die sichtbare Zeile unter allen vier Szenen mit
  *                       Kennzahlen (sample-data-note.tsx).
  *   5. Kein Kind     -> der Kopf von demo-data.ts, der negative Inhalte ueber
  *                       Kinder auch in erfundenen Daten untersagt.
  */
 const promises = [
-  `${DECISION_PROMISE} Immer.`,
-  "Nutzung zeigen wir als Verteilung – nie als Rangliste. Niemand wird vorgeführt.",
-  "Offene Punkte kennzeichnen wir, statt sie zu überspielen – auf dieser Website und im Produkt.",
-  "Beispieldaten heißen bei uns Beispieldaten.",
-  "Kein Kind wird bloßgestellt – nicht in der Software, nicht in unserem Marketing, auch kein erfundenes.",
+  `${DECISION_PROMISE} Always.`,
+  "We show usage as a distribution – never as a ranking. Nobody is put on the spot.",
+  "Open points we mark, instead of glossing over them – on this website and in the product.",
+  "Sample data is called sample data here.",
+  "No child is exposed – not in the software, not in our marketing, not even an invented one.",
 ];
 
 export function Promises() {
@@ -48,7 +53,7 @@ export function Promises() {
           id="versprechen-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
         >
-          Unser Versprechen
+          Our promise
         </h2>
 
         <ul className="mt-12 max-w-3xl divide-y divide-gray-200 border-t border-gray-200">
@@ -60,8 +65,8 @@ export function Promises() {
         </ul>
 
         <p className="mt-10 max-w-3xl text-lg text-gray-500">
-          Das sind keine Marketingsätze. Es sind die Regeln, nach denen diese Website
-          gebaut wurde – prüfen Sie uns.
+          These are not marketing lines. They are the rules this website was built by –
+          hold us to them.
         </p>
       </div>
     </section>

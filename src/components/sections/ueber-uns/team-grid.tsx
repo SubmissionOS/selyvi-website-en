@@ -21,11 +21,11 @@ export function TeamGrid() {
           id="team-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
         >
-          Das Team
+          The team
         </h2>
 
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          Hier stehen Initialen, keine Stockfotos.
+          What you see here are initials, not stock photos.
         </p>
 
         <ul className="mt-14 grid gap-6 md:grid-cols-3">

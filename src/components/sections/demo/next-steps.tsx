@@ -7,25 +7,25 @@ import { PRODUCT_NAME } from "@/config/brand";
  * Rechte Spalte der Demo-Seite.
  *
  * Die drei Datenschutz-Punkte sind wortgleich aus den bestehenden Komponenten
- * uebernommen (Trust-Zeile der Startseite, DSGVO-Block, /datenschutz-sicherheit).
+ * uebernommen (Trust-Zeile der Startseite, DSGVO-Block, /security).
  * Eine vierte Formulierung derselben Zusagen waere genau die Stelle, an der
  * eine Datenschutzbeauftragte Widersprueche findet.
  */
 const steps = [
   {
-    title: "Anfrage",
+    title: "Your request",
     description:
-      "Sie schildern kurz, worum es geht. Wir melden uns zur Terminabstimmung.",
+      "You describe briefly what it is about. We get in touch to arrange a time.",
   },
   {
-    title: "Persönliche Demo",
+    title: "A personal demo",
     description:
-      "20 Minuten an der echten Oberfläche. Ihre Fragen bestimmen, was wir zeigen.",
+      "20 minutes on the real interface. Your questions decide what we show.",
   },
   {
-    title: "Pilotgespräch",
+    title: "Pilot conversation",
     description:
-      "Wenn es passt, sprechen wir über eine Pilotphase an Ihrer Schule. Ohne Verpflichtung.",
+      "If it fits, we talk about a pilot phase at your school. With no obligation.",
   },
 ];
 
@@ -33,16 +33,16 @@ const privacyPoints = [
   // „Server in der EU" stand hier bis zum Abgleich mit dem Produktstand und war
   // fuer das Produkt nicht gedeckt. An dieser Stelle – kurz vor dem Absenden
   // eines Formulars – waere eine ungedeckte Zusage besonders unglücklich.
-  "Strikte Datentrennung: jede Lehrkraft sieht nur ihre eigenen Daten",
-  "Kein Eltern- oder Schülerportal",
-  "Keine Weitergabe von Schülerdaten",
+  "Strict data separation: every teacher sees only their own data",
+  "No parent or pupil portal",
+  "No sharing of pupil data",
 ];
 
 export function NextSteps() {
   return (
     <div className="space-y-10">
       <div>
-        <h2 className="text-lg font-semibold text-ink">So geht es weiter</h2>
+        <h2 className="text-lg font-semibold text-ink">What happens next</h2>
 
         <ol className="mt-6 space-y-6">
           {steps.map((step, index) => (
@@ -59,28 +59,28 @@ export function NextSteps() {
         </ol>
       </div>
 
-      {/* Dritter Einstieg zu /mitgestalten – die Seite hat bewusst keinen
+      {/* Dritter Einstieg zu /co-create – die Seite hat bewusst keinen
           Navigationspunkt. Sie steht hier, weil manche gar keine Demo wollen,
           sondern mitbauen: Der Hinweis gehoert neben den Ablauf und nicht
           hinter das abgeschickte Formular. */}
       <div className="rounded-xl border border-gray-200 p-6">
-        <h2 className="text-sm font-semibold text-ink">Lieber gleich mitbauen?</h2>
+        <h2 className="text-sm font-semibold text-ink">Rather build along right away?</h2>
 
         <p className="mt-3 text-sm text-gray-500">
-          Wenn Sie {PRODUCT_NAME} nicht nur sehen, sondern mitentwickeln wollen, führt
-          dieser Weg direkter dorthin.
+          If you want not just to see {PRODUCT_NAME} but to help develop it, this route
+          takes you there more directly.
         </p>
 
         <Link
-          href="/mitgestalten"
+          href="/co-create"
           className="mt-4 inline-block text-sm text-brand-600 underline underline-offset-4"
         >
-          {PRODUCT_NAME} mitgestalten
+          Co-create {PRODUCT_NAME}
         </Link>
       </div>
 
       <div className="rounded-xl border border-gray-200 bg-surface-alt p-6">
-        <h2 className="text-sm font-semibold text-ink">Datenschutz</h2>
+        <h2 className="text-sm font-semibold text-ink">Data protection</h2>
 
         <ul className="mt-4 space-y-3">
           {privacyPoints.map((point) => (

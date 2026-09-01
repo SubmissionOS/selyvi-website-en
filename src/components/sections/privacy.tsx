@@ -30,33 +30,33 @@ import { Button } from "@/components/ui/button";
 const facts = [
   {
     icon: Server,
-    title: "Diese Website",
+    title: "This website",
     description: WEBSITE_HOSTING_NOTE,
   },
   {
     icon: FileText,
-    title: "Die Anwendung",
+    title: "The application",
     description: PRODUCT_HOSTING_NOTE,
   },
   {
     icon: Lock,
-    title: "Strikte Datentrennung",
+    title: "Strict data separation",
     description: DATA_SEPARATION_NOTE,
   },
   {
     icon: ScanLine,
-    title: "Datensparsamkeit als Prinzip",
-    description: "Erhoben wird, was die jeweilige Funktion benötigt – nicht mehr.",
+    title: "Data minimisation as a principle",
+    description: "What is collected is what the particular function needs – no more.",
   },
   {
     icon: Ban,
-    title: "Keine Weitergabe von Schülerdaten",
-    description: "Keine Weitergabe an Dritte, keine Nutzung für Werbezwecke.",
+    title: "No sharing of pupil data",
+    description: "No passing on to third parties, no use for advertising purposes.",
   },
   {
     icon: UserX,
-    title: "Kein Eltern- oder Schülerzugang",
-    description: `${PRODUCT_NAME} ist ein Werkzeug für Lehrkräfte und Schulleitung. Ein Portal für Eltern oder Kinder gibt es bewusst nicht.`,
+    title: "No parent or pupil access",
+    description: `${PRODUCT_NAME} is a tool for teachers and school leadership. There is deliberately no portal for parents or children.`,
   },
 ];
 
@@ -71,7 +71,7 @@ export function Privacy() {
           id="datenschutz-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-surface sm:text-4xl"
         >
-          Ihre Daten bleiben Ihre Daten.
+          Your data stays your data.
         </h2>
 
         <ul className="mt-14 grid gap-x-8 gap-y-10 sm:grid-cols-2">
@@ -95,9 +95,7 @@ export function Privacy() {
 
         <div className="mt-14">
           <Button asChild variant="outlineInverse" size="lg">
-            <Link href="/datenschutz-sicherheit">
-              Mehr zu Sicherheit &amp; Datenschutz
-            </Link>
+            <Link href="/security">More on security &amp; data protection</Link>
           </Button>
         </div>
       </div>

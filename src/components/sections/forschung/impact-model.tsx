@@ -21,6 +21,9 @@ import { cn } from "@/lib/utils";
  * Seite beschreibt, WIE gemessen wird, nicht WAS herauskam – Zahlen gibt es
  * erst, wenn die Wellen durch sind.
  *
+ * „impact staircase“ fuer „Wirkungstreppe“ – PHINEO nennt sie in eigenen
+ * englischsprachigen Veroeffentlichungen selbst so (docs/glossar-en.md).
+ *
  * Die Treppe ist bewusst keine Grafik-Datei und keine Animation:
  *   - Sie besteht aus echtem Text in einer geordneten Liste. Eine SVG-Treppe
  *     mit Beschriftung waere fuer Screenreader eine einzige alt-Zeile; hier
@@ -54,26 +57,26 @@ const stages = [
   {
     name: "Input",
     description:
-      "Was hineingeht: Entwicklungsarbeit, Fachkorpus, die Einführung an einer Schule.",
+      "What goes in: development work, the subject corpus, the introduction at a school.",
     /** Aufsteigende Balkenlaengen – die Treppe entsteht hier und nirgends sonst. */
     width: "w-[40%]",
   },
   {
     name: "Output",
     description:
-      "Was messbar entsteht: Beobachtungen, Zeugnisbemerkungen, Elternmails, Material.",
+      "What measurably comes out: observations, report comments, parent emails, materials.",
     width: "w-[60%]",
   },
   {
     name: "Outcome",
     description:
-      "Was sich bei den Beteiligten ändert: Zeitaufwand, erlebte Belastung, Rückmeldung an Eltern.",
+      "What changes for those involved: time spent, perceived workload, feedback to parents.",
     width: "w-[80%]",
   },
   {
     name: "Impact",
     description:
-      "Was darüber hinaus bleibt. Die Stufe, für die drei Befragungswellen allein nicht reichen – hier brauchen wir Forschungspartner.",
+      "What remains beyond that. The stage for which three survey waves alone are not enough – here we need research partners.",
     width: "w-full",
   },
 ];
@@ -119,7 +122,7 @@ export function ImpactModel() {
           id="wirkungsmodell-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
         >
-          Wie wir messen
+          How we measure
         </h2>
 
         {/* Text links, Treppe rechts. Mobil stapelt das Grid in
@@ -127,18 +130,18 @@ export function ImpactModel() {
         <div className="mt-8 grid gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="space-y-4 text-lg text-gray-500 lg:col-span-5">
             <p>
-              Das Erhebungsmodell orientiert sich an der Wirkungstreppe von PHINEO und
-              unterscheidet Input, Output, Outcome und Impact. Erhoben wird über drei
-              Befragungswellen – nicht einmalig, weil eine einzelne Momentaufnahme
-              Gewöhnungseffekte nicht von Entlastung trennen kann.
+              The survey model follows the PHINEO impact staircase and distinguishes
+              input, output, outcome and impact. Data is collected across three survey
+              waves – not once, because a single snapshot cannot separate habituation
+              effects from relief.
             </p>
 
             <p>
-              Wer teilnimmt, willigt zweckgranular ein: nicht pauschal in „Forschung“,
-              sondern je Zweck einzeln. Wie ausgewertet wird, steht vorab in einem
-              Codebuch. Und ausgewiesen wird ein Wert erst ab einer festgelegten
-              Mindestfallzahl – darunter bleibt das Feld leer, statt eine Zahl zu zeigen,
-              die niemanden trägt.
+              Whoever takes part consents granularly by purpose: not to “research” in
+              general, but to each purpose separately. How the analysis works is set out
+              in a codebook beforehand. And a value is only reported above a defined
+              minimum case count – below that the field stays empty, rather than showing a
+              figure that carries nobody.
             </p>
           </div>
 
@@ -161,7 +164,7 @@ export function ImpactModel() {
                 />
 
                 <p className="mt-3 text-xs font-medium tracking-wide text-brand-600 uppercase">
-                  Stufe {index + 1}
+                  Stage {index + 1}
                 </p>
                 <p className="mt-1 text-base font-semibold text-ink">{stage.name}</p>
                 <p className="mt-1 text-sm text-gray-500">{stage.description}</p>

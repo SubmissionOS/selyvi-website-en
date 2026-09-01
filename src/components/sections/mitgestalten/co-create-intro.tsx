@@ -3,7 +3,7 @@ import Link from "next/link";
 import { PRODUCT_NAME } from "@/config/brand";
 
 /**
- * Sektion 1 – Intro von /mitgestalten.
+ * Sektion 1 – Intro von /co-create.
  *
  * Gleiche Bauweise wie die Intros der anderen Seiten: schmal, ohne Bild, ohne
  * CTA. Der Handlungsaufruf ist hier das Formular weiter unten.
@@ -24,21 +24,21 @@ export function CoCreateIntro() {
           id="mitgestalten-intro-titel"
           className="max-w-3xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl"
         >
-          Bauen Sie mit an dem Werkzeug, das Ihnen gefehlt hat.
+          Help build the tool that was missing.
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          {PRODUCT_NAME} ist mit Lehrkräften entstanden und wächst nur so weiter.
+          {PRODUCT_NAME} was built with teachers and only grows that way.
         </p>
 
         <p className="mt-4 max-w-2xl text-lg text-gray-500">
-          Wer früh dabei ist, prägt, was gebaut wird – so ehrlich, wie diese Website
-          geschrieben ist.
+          Whoever is there early shapes what gets built – as plainly as this website is
+          written.
         </p>
 
         <p className="mt-6 max-w-2xl text-lg">
-          <Link href="/einblick" className="text-brand-600 underline underline-offset-4">
-            Vorher selbst ausprobieren
+          <Link href="/preview" className="text-brand-600 underline underline-offset-4">
+            Try it for yourself first
           </Link>
         </p>
       </div>

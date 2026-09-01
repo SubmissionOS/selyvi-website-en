@@ -34,16 +34,16 @@ function escapeHtml(value: string) {
 
 function buildHtml(values: DemoFormValues, source: SourceValue) {
   const rows: [string, string][] = [
-    ["Herkunft", SOURCE_LABELS[source]],
+    ["Origin", SOURCE_LABELS[source]],
     ["Name", values.name],
-    ["Schule", values.school],
-    ["E-Mail", values.email],
-    ["Rolle", values.role || "– keine Angabe –"],
-    ["Nachricht", values.message || "– keine Nachricht –"],
+    ["School", values.school],
+    ["Email", values.email],
+    ["Role", values.role || "– not given –"],
+    ["Message", values.message || "– no message –"],
   ];
 
   return [
-    `<h1>Neue Anfrage: ${escapeHtml(SOURCE_LABELS[source])}</h1>`,
+    `<h1>New request from selyvi.com: ${escapeHtml(SOURCE_LABELS[source])}</h1>`,
     "<table>",
     ...rows.map(
       ([label, value]) =>
@@ -96,11 +96,14 @@ export async function sendDemoRequest(
         accept: "application/json",
       },
       body: JSON.stringify({
-        sender: { email: senderEmail, name: "Website-Formular" },
+        sender: { email: senderEmail, name: "Website form (EN)" },
         to: [{ email: mailTo }],
         // Antworten gehen direkt an die anfragende Person.
         replyTo: { email: values.email, name: values.name },
-        subject: `${SOURCE_LABELS[source]}: ${values.school}`,
+        // „(EN)" in der Betreffzeile: Im selben Postfach landen die Anfragen
+        // beider Websites. Wer antwortet, muss auf einen Blick sehen, in
+        // welcher Sprache erwartet wird – nicht erst nach dem Oeffnen.
+        subject: `${SOURCE_LABELS[source]} (EN): ${values.school}`,
         htmlContent: buildHtml(values, source),
       }),
     });

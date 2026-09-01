@@ -3,9 +3,9 @@ import { BookOpenCheck, PenLine, Users } from "lucide-react";
 import { PRODUCT_NAME } from "@/config/brand";
 
 /**
- * Sektion – „Selyvi lernt mit.“
+ * Sektion – „Selyvi keeps learning.“
  *
- * Steht direkt nach dem Intro von /fuer-lehrkraefte und beantwortet die
+ * Steht direkt nach dem Intro von /for-teachers und beantwortet die
  * Frage, die sonst erst nach vier Funktionsbloecken beantwortet waere:
  * Warum ist das kein Materialgenerator?
  *
@@ -23,8 +23,8 @@ import { PRODUCT_NAME } from "@/config/brand";
  * ==========================================================================
  * WORTLAUT-SPERRE FÜR KARTE 3 – NICHT AUFWEICHEN
  * ==========================================================================
- * „Orientiert sich an" ist das staerkste zulaessige Verb. Niemals „greift
- * zu", „nutzt", „liest ein" oder „ist angebunden an": Die Lehrplaene aller 16
+ * „Guided by" ist das staerkste zulaessige Verb. Niemals „accesses", „uses",
+ * „reads in" oder „is connected to": Die Lehrplaene aller 16
  * Bundeslaender liegen laut Produktstand erhoben vor, sind aus Lizenzgruenden
  * aber BEWUSST NICHT ANGEBUNDEN. Rahmen- und Teilrahmenplaene werden hier als
  * Beispiel dessen genannt, WORAN sich das Kompetenzmodell orientiert – nicht
@@ -34,40 +34,40 @@ import { PRODUCT_NAME } from "@/config/brand";
  * TON-WÄCHTER FÜR KARTE 3
  * ==========================================================================
  * Der Satz darf langjaehrige Lehrkraefte nicht als veraltet vorfuehren. Das
- * Manifest auf /ueber-uns verspricht ausdruecklich: niemand wird vorgefuehrt.
+ * Manifest auf /our-story verspricht ausdruecklich: niemand wird vorgefuehrt.
  * Die Karte sagt deshalb, dass BEWAEHRTER Unterricht und heutige Anforderungen
  * zusammenfinden – Erfahrung ist hier das Wertvolle, nicht das Problem.
- * Formulierungen wie „endlich auf dem neuesten Stand" oder „ohne veraltete
- * Methoden" sind gesperrt.
+ * Formulierungen wie „finally up to date" oder „without outdated methods"
+ * sind gesperrt.
  *
  * ==========================================================================
  * WARUM DIE ERSTE KARTE NICHT „STIL" HEISST
  * ==========================================================================
  * Die Stil-Aussage hat auf der Startseite genau EINE Heimat: die Spalte „Für
- * Lehrkräfte" in „Was Selyvi zurückgibt". Diese Sektion liegt auf einer
+ * Lehrkräfte" in „What Selyvi gives back". Diese Sektion liegt auf einer
  * anderen Seite und zaehlt dort nicht mit – die Redundanz-Zaehlung laeuft je
  * Seite. Trotzdem ist der Wortlaut hier bewusst ein anderer: Dort geht es um
- * das ERGEBNIS („Texte, die nach Ihnen klingen"), hier um die FÄHIGKEIT
- * („lernt, wie Sie schreiben"). Zwei Mal derselbe Satz waere Fuellmaterial.
+ * das ERGEBNIS („texts that sound like you"), hier um die FÄHIGKEIT („learns
+ * how you write"). Zwei Mal derselbe Satz waere Fuellmaterial.
  */
 const traits = [
   {
     icon: PenLine,
-    title: "Ihr Stil",
+    title: "Your style",
     description:
-      "Lernt, wie Sie schreiben und arbeiten. Was entsteht, klingt nach Ihnen – nicht nach einem Sprachmodell.",
+      "Learns how you write and work. What comes out sounds like you – not like a language model.",
   },
   {
     icon: Users,
-    title: "Ihre Klasse",
+    title: "Your class",
     description:
-      "Begleitet die Entwicklung über Monate. Beobachtungen, Fachverlauf und Kompetenzen wachsen zusammen statt nebeneinander.",
+      "Follows the development over months. Observations, subject progress and competencies grow together rather than side by side.",
   },
   {
     icon: BookOpenCheck,
-    title: "Der aktuelle Stand",
+    title: "Where things stand today",
     description:
-      "Orientiert sich an aktuellen Bildungsvorgaben wie Rahmen- und Teilrahmenplänen – damit bewährter Unterricht und heutige Anforderungen zusammenfinden, ganz ohne Fortbildungsmarathon.",
+      "Guided by current education standards such as framework and subject curricula – so that well-proven teaching and today's requirements meet, with no marathon of training days.",
   },
 ];
 
@@ -82,7 +82,7 @@ export function LearnsWithYou() {
           id="lernt-mit-titel"
           className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
         >
-          {PRODUCT_NAME} lernt mit.
+          {PRODUCT_NAME} keeps learning.
         </h2>
 
         <ul className="mt-10 grid gap-6 md:grid-cols-3">

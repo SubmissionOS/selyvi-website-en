@@ -26,33 +26,33 @@ export default function Error({
 }) {
   useEffect(() => {
     // Nur serverseitig bzw. in der Browserkonsole, nicht im sichtbaren UI.
-    console.error("[unerwarteter Fehler]", error);
+    console.error("[unexpected error]", error);
   }, [error]);
 
   return (
-    <section aria-labelledby="fehler-titel">
+    <section aria-labelledby="error-title">
       <div className="mx-auto w-full max-w-6xl px-6 py-24 lg:px-8 lg:py-32">
-        <p className="text-sm font-medium text-brand-600">Unerwarteter Fehler</p>
+        <p className="text-sm font-medium text-brand-600">Unexpected error</p>
 
         <h1
-          id="fehler-titel"
+          id="error-title"
           className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl"
         >
-          Da ist etwas schiefgegangen.
+          Something went wrong.
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          Bitte laden Sie die Seite neu. Bleibt der Fehler bestehen, erreichen Sie uns
-          über die Terminanfrage.
+          Please reload the page. If the error persists, you can reach us through the
+          request form.
         </p>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
           <Button type="button" variant="primary" size="lg" onClick={reset}>
-            Erneut versuchen
+            Try again
           </Button>
 
           <Button asChild variant="outline" size="lg">
-            <Link href="/">Zur Startseite</Link>
+            <Link href="/">Go to the home page</Link>
           </Button>
         </div>
       </div>

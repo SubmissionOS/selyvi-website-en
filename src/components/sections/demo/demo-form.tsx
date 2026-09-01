@@ -16,7 +16,7 @@ import {
 } from "@/lib/demo/schema";
 import { imprint } from "@/config/legal";
 import { INITIAL_DEMO_STATE, type DemoFormState } from "@/lib/demo/state";
-import { submitDemoRequest } from "@/app/demo/actions";
+import { submitDemoRequest } from "@/app/meet/actions";
 import { Button } from "@/components/ui/button";
 import { OriginFields } from "@/components/sections/demo/origin-fields";
 
@@ -41,7 +41,7 @@ import { OriginFields } from "@/components/sections/demo/origin-fields";
  * gefuellt, unabhaengig davon, ob React das DOM-Formular zuruecksetzt.
  */
 /**
- * Dasselbe Formular auf /demo und auf /mitgestalten.
+ * Dasselbe Formular auf /meet und auf /co-create.
  *
  * Bewusst EINE Komponente und EINE Server Action statt zweier Endpunkte: Der
  * Spamschutz (Honeypot, Zeitmessung, Rate-Limit), die Validierung und der
@@ -53,13 +53,17 @@ import { OriginFields } from "@/components/sections/demo/origin-fields";
  * Mailtext, damit beim Lesen klar ist, worauf jemand geantwortet hat.
  */
 /**
- * Beschriftung des Absende-Knopfes je Herkunft. „Demo anfragen" auf einer
+ * Beschriftung des Absende-Knopfes je Herkunft. „Request a demo" auf einer
  * Seite, die gar keine Demo anbietet, waere die Stelle, an der auffaellt,
  * dass hier ein Formular zweitverwendet wurde.
+ *
+ * NICHT „Meet Selyvi": Das ist die Beschriftung des Navigations-CTA, der auf
+ * diese Seite fuehrt. Derselbe Text auf dem Absende-Knopf laese sich wie ein
+ * zweiter Weg zur selben Seite.
  */
 const SUBMIT_LABELS: Record<SourceValue, string> = {
-  demo: "Kennenlernen anfragen",
-  mitgestalten: "Anfrage senden",
+  demo: "Request a meeting",
+  mitgestalten: "Send request",
 };
 
 export function DemoForm({ source = "demo" }: { source?: SourceValue }) {
@@ -127,9 +131,9 @@ export function DemoForm({ source = "demo" }: { source?: SourceValue }) {
       {/* Statuszeile: immer im DOM, damit Screenreader Aenderungen melden. */}
       <div role="status" aria-live="polite" className="sr-only">
         {state.status === "success"
-          ? "Ihre Anfrage wurde übermittelt."
+          ? "Your request has been submitted."
           : state.status === "error"
-            ? (state.message ?? "Die Anfrage konnte nicht übermittelt werden.")
+            ? (state.message ?? "The request could not be submitted.")
             : ""}
       </div>
 
@@ -142,10 +146,10 @@ export function DemoForm({ source = "demo" }: { source?: SourceValue }) {
           <CircleCheck aria-hidden="true" className="size-8 text-brand-600" />
 
           <h2 className="mt-5 text-2xl font-semibold tracking-tight text-ink">
-            Danke für Ihre Anfrage.
+            Thank you for your request.
           </h2>
 
-          <p className="mt-4 text-gray-500">Wir melden uns werktags bei Ihnen.</p>
+          <p className="mt-4 text-gray-500">We get back to you on working days.</p>
         </div>
       ) : (
         <form ref={formRef} action={formAction} noValidate className="space-y-6">
@@ -198,7 +202,7 @@ export function DemoForm({ source = "demo" }: { source?: SourceValue }) {
 
           <div>
             <label htmlFor="school" className="block text-sm font-medium text-ink">
-              Schule <span aria-hidden="true">*</span>
+              School <span aria-hidden="true">*</span>
             </label>
             <input
               id="school"
@@ -221,7 +225,7 @@ export function DemoForm({ source = "demo" }: { source?: SourceValue }) {
 
           <div>
             <label htmlFor="email" className="block text-sm font-medium text-ink">
-              Dienstliche E-Mail <span aria-hidden="true">*</span>
+              Work email <span aria-hidden="true">*</span>
             </label>
             <input
               id="email"
@@ -245,7 +249,7 @@ export function DemoForm({ source = "demo" }: { source?: SourceValue }) {
 
           <div>
             <label htmlFor="role" className="block text-sm font-medium text-ink">
-              Rolle
+              Role
             </label>
             <select
               id="role"
@@ -256,7 +260,7 @@ export function DemoForm({ source = "demo" }: { source?: SourceValue }) {
               onChange={set("role")}
               className={cn("mt-2 appearance-none", inputClass("role"))}
             >
-              <option value="">Bitte wählen</option>
+              <option value="">Please choose</option>
               {ROLE_OPTIONS.map((option) => (
                 <option key={option} value={option}>
                   {option}
@@ -272,7 +276,7 @@ export function DemoForm({ source = "demo" }: { source?: SourceValue }) {
 
           <div>
             <label htmlFor="message" className="block text-sm font-medium text-ink">
-              Nachricht <span className="font-normal text-gray-500">(optional)</span>
+              Message <span className="font-normal text-gray-500">(optional)</span>
             </label>
             <textarea
               id="message"
@@ -298,7 +302,7 @@ export function DemoForm({ source = "demo" }: { source?: SourceValue }) {
             aria-hidden="true"
             className="absolute -left-[9999px] h-0 w-0 overflow-hidden"
           >
-            <label htmlFor={HONEYPOT_FIELD}>Website (bitte frei lassen)</label>
+            <label htmlFor={HONEYPOT_FIELD}>Website (please leave blank)</label>
             <input
               id={HONEYPOT_FIELD}
               name={HONEYPOT_FIELD}
@@ -321,10 +325,10 @@ export function DemoForm({ source = "demo" }: { source?: SourceValue }) {
                 className="mt-1 size-4 shrink-0 accent-brand-600"
               />
               <label htmlFor="consent" className="text-sm text-gray-500">
-                Ich bin einverstanden, dass meine Angaben zur Bearbeitung meiner Anfrage
-                verarbeitet werden. Details in der{" "}
-                <Link href="/datenschutz" className="text-brand-600 underline">
-                  Datenschutzerklärung
+                I agree that my details may be processed in order to handle my request.
+                Details in the{" "}
+                <Link href="/privacy" className="text-brand-600 underline">
+                  privacy policy
                 </Link>
                 . <span aria-hidden="true">*</span>
               </label>
@@ -339,14 +343,14 @@ export function DemoForm({ source = "demo" }: { source?: SourceValue }) {
           <div className="pt-2">
             {/* Primaerer CTA – einzige Verwendung von --cta auf dieser Seite. */}
             <Button type="submit" variant="cta" size="lg" disabled={isPending}>
-              {isPending ? "Wird gesendet …" : SUBMIT_LABELS[source]}
+              {isPending ? "Sending …" : SUBMIT_LABELS[source]}
             </Button>
 
             <p className="mt-4 text-sm text-gray-500">
-              <span aria-hidden="true">*</span> Pflichtfeld. Ihre Angaben verwenden wir
-              ausschließlich zur Bearbeitung dieser Anfrage – kein Newsletter, keine
-              Werbung. Ihre Anfrage speichern wir in unserem eigenen Kundensystem (Server
-              in der EU) zur Bearbeitung.
+              <span aria-hidden="true">*</span> Required field. We use your details solely
+              to handle this request – no newsletter, no advertising. We store your
+              request in our own customer system (servers in the EU) in order to process
+              it.
             </p>
           </div>
         </form>

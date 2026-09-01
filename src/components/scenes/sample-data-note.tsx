@@ -26,7 +26,7 @@
 export function SampleDataNote({ excerpt = false }: { excerpt?: boolean }) {
   return (
     <p className="mt-3 text-xs text-gray-500">
-      {excerpt ? "Beispieldaten · Ausschnitt aus der Anwendung" : "Beispieldaten"}
+      {excerpt ? "Sample data · excerpt from the application" : "Sample data"}
     </p>
   );
 }

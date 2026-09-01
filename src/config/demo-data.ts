@@ -6,10 +6,16 @@
  * ÄNDERUNGEN HIER ÄNDERN DIE GESCHICHTE ÜBERALL.
  * --------------------------------------------------------------------------
  * Dieselbe Klasse (3b), dieselben sechs Kinder, dieselbe Lehrkraft
- * (A. Weber) – vom Hero über „So funktioniert's" und /produkt bis /schulen.
- * Wer hier einen Namen austauscht, tauscht ihn auf allen fünf Bühnen aus,
- * und genau das ist der Zweck: Zehn Szenen mit zehn erfundenen Klassen wären
- * zehn Beispiele, eine durchgehende Besetzung ist ein Tag.
+ * (A. Weber) – vom Hero über die kleinen Szenen und /for-teachers bis
+ * /for-school-leadership. Wer hier einen Namen austauscht, tauscht ihn auf
+ * allen fünf Bühnen aus, und genau das ist der Zweck: Zehn Szenen mit zehn
+ * erfundenen Klassen wären zehn Beispiele, eine durchgehende Besetzung ist
+ * ein Tag.
+ *
+ * DIE BESETZUNG BLEIBT IN DER ENGLISCHEN FASSUNG UNVERAENDERT: Emma K.,
+ * Yusuf A., Lotta B., Milan P., Frida S., Jonas T. und die Klasse 3b. Namen
+ * sind keine Uebersetzung, und der Cast ist ueber alle Szenen und ueber beide
+ * Sprachfassungen derselbe.
  *
  * Die Zeit-Kicker über den Fenstern (08:15 → 16:30 → 17:10 → Monatsende)
  * stehen in den Szenen selbst, nicht hier – sie sind Erzählung, nicht Daten.
@@ -28,8 +34,21 @@
  * ist ein Datenschutzvorfall, kein Screenshot.
  * ==========================================================================
  *
+ * ==========================================================================
+ * DIE OBERFLAECHE IST ENGLISCH – DAS IST EINE ENTSCHEIDUNG, KEINE UEBERSETZUNG
+ * --------------------------------------------------------------------------
+ * docs/en-review.md, Punkt 9: Die echte Anwendung ist heute deutsch. Auf
+ * selyvi.com zeigen wir eine englische Oberflaeche, die es so noch nicht gibt.
+ * Gewaehlt wurde bewusst Weg 1 (uebersetzen), weil eine englische Seite mit
+ * deutscher Oberflaeche unfertig wirkt.
+ *
+ * DAS GEHOERT INS VERKAUFSGESPRAECH: Wer nach dieser Seite eine Demo sieht,
+ * sieht eine deutsche Anwendung. Der Satz dazu steht in en-review.md.
+ * ==========================================================================
+ *
  * Die Inhalte müssen zum Produktstand passen (docs/produktstand-2026-08.md):
- * Grundschule, Klassen 1–4, Kompetenzen statt Notendurchschnitt.
+ * Grundschule, Klassen 1–4, Kompetenzen statt Notendurchschnitt. Die Quelle
+ * ist deutsch; diese Datei uebersetzt sie, sie erweitert sie nicht.
  */
 
 /** Fiktive Klasse, auf die sich alle Szenen beziehen. */
@@ -44,11 +63,14 @@ export const DEMO_TEACHER = "A. Weber";
 /**
  * Das Fach, das die Beispiel-Lehrkraft in dieser Klasse unterrichtet.
  *
- * Steht in der Klassenansicht unter „Meine Fächer" und als Fach-Tab – die
- * Referenz zeigt dort „Mathe", unser Cast arbeitet durchgehend mit Deutsch
- * (Beobachtung, Zeugnistext, Elternmail beziehen sich darauf).
+ * Steht in der Klassenansicht unter „My subjects" und als Fach-Tab.
+ *
+ * „German", nicht „English": Das Fach ist der Deutschunterricht einer
+ * deutschen Grundschule. Es zum Englischunterricht zu machen, weil die
+ * Website englisch ist, waere eine Aussage ueber ein Schulsystem, in dem das
+ * Produkt nicht laeuft.
  */
-export const DEMO_SUBJECT = "Deutsch";
+export const DEMO_SUBJECT = "German";
 
 /**
  * KEINE NEGATIVEN INHALTE ÜBER KINDER – auch nicht über erfundene.
@@ -58,7 +80,7 @@ export const DEMO_SUBJECT = "Deutsch";
  * Beschönigung des Produkts: Es kann selbstverständlich auch Schwierigkeiten
  * dokumentieren. Aber eine öffentliche Marketingseite ist nicht der Ort, an
  * dem ein – wenn auch erfundenes – Kind vorgeführt wird, und ein Screenshot
- * mit „braucht noch Übung" wandert erfahrungsgemäß durch Präsentationen.
+ * mit „needs more practice" wandert erfahrungsgemäß durch Präsentationen.
  *
  * Eine frühere Beobachtung mit dem Marker „Förderbedarf" ist aus diesem Grund
  * ersatzlos entfallen.
@@ -84,34 +106,33 @@ export const DEMO_SUBJECT = "Deutsch";
 
    VORHER STAND HIER ETWAS ANDERES, und das war der Fehler: eine elfstellige
    Liste, die aus den als „Live" gefuehrten Funktionen des Produktstands
-   ABGELEITET war (Beobachtungen, Klassen, Zeugnisse, Elternpost, Material,
-   Entwuerfe, Sitzplan, Stundenplan, Dokumente, Entwicklung, Bibliothek) –
-   plus eine Zeile „+ weitere". Die Herleitung war sauber begruendet und
-   trotzdem falsch: Die echte Anwendung ordnet ihre Funktionen anders. Ein
-   Funktionsverzeichnis ist keine Navigation.
+   ABGELEITET war – plus eine Zeile „+ weitere". Die Herleitung war sauber
+   begruendet und trotzdem falsch: Die echte Anwendung ordnet ihre Funktionen
+   anders. Ein Funktionsverzeichnis ist keine Navigation.
 
    Damit entfaellt auch „+ weitere": Diese acht Punkte SIND die Navigation,
-   nicht ein Ausschnitt davon. Eine Andeutung von mehr waere jetzt eine
-   Behauptung ueber ein Produkt, von dem ein Bild vorliegt.
+   nicht ein Ausschnitt davon.
 
-   Was aus der alten Liste nicht mehr auftaucht, ist damit nicht verschwunden
-   – es liegt eine Ebene tiefer. Zeugnisse und Elternpost etwa sind im
-   Screenshot nirgends als Navigationspunkt zu sehen; wo sie genau sitzen,
-   ist unbekannt, bis ein Screenshot davon vorliegt.
+   DIE UEBERSETZUNG IST FESTGELEGT (docs/en-review.md, Punkt 9):
+     Heute → Today · Meine Klassen → My classes · Live-Unterricht → Live lesson
+     · Timeline → Timeline · Überprüfung → Review · Förderpläne → Support plans
+     · Material → Materials · Klassenanalyse → Class analysis
+   Wer eine dieser Beschriftungen aendert, aendert sie in en-review.md mit –
+   sonst heisst derselbe Menuepunkt im Gespraech anders als auf der Seite.
    ========================================================================== */
 export const DEMO_NAV_TEACHER = [
-  { key: "heute", label: "Heute" },
-  { key: "meine-klassen", label: "Meine Klassen" },
-  { key: "live-unterricht", label: "Live-Unterricht" },
+  { key: "heute", label: "Today" },
+  { key: "meine-klassen", label: "My classes" },
+  { key: "live-unterricht", label: "Live lesson" },
   { key: "timeline", label: "Timeline" },
-  { key: "ueberpruefung", label: "Überprüfung" },
-  { key: "foerderplaene", label: "Förderpläne" },
-  { key: "material", label: "Material" },
-  { key: "klassenanalyse", label: "Klassenanalyse" },
+  { key: "ueberpruefung", label: "Review" },
+  { key: "foerderplaene", label: "Support plans" },
+  { key: "material", label: "Materials" },
+  { key: "klassenanalyse", label: "Class analysis" },
 ] as const;
 
 /**
- * Leitungsmodus – UNVERAENDERT, ABSICHTLICH.
+ * Leitungsmodus – UNVERAENDERT HERGELEITET, ABSICHTLICH.
  *
  * Von dieser Ansicht liegt KEIN Screenshot vor. Die Liste bleibt deshalb
  * genau so, wie sie aus dem Produktstand hergeleitet wurde – auch wenn die
@@ -120,21 +141,23 @@ export const DEMO_NAV_TEACHER = [
  * aussehen zu lassen. Sobald ein Leitungsmodus-Screenshot vorliegt, gehoert
  * sie ersetzt.
  *
- * Der Produktstand fuehrt unter „Bereich 2 – Für die
- * Schulleitung" genau diese fuenf Bereiche als Live:
- * Entlastungsbericht, Lehrer & Klassen, Nutzung im Kollegium,
- * Schulentwicklung, Aufmerksamkeit.
+ * Der Produktstand fuehrt unter „Bereich 2 – Für die Schulleitung" genau
+ * diese fuenf Bereiche als Live: Entlastungsbericht, Lehrer & Klassen,
+ * Nutzung im Kollegium, Schulentwicklung, Aufmerksamkeit.
  *
  * Diese Liste ist VOLLSTAENDIG – deshalb traegt sie im Gegensatz zur
  * Lehrkraft-Liste KEINE „+ weitere"-Zeile. Eine Andeutung von mehr waere hier
  * eine Behauptung.
+ *
+ * „staff", nicht „faculty": Letzteres ist US-Hochschulsprache
+ * (docs/glossar-en.md).
  */
 export const DEMO_NAV_LEADERSHIP = [
-  { key: "entlastungsbericht", label: "Entlastungsbericht" },
-  { key: "lehrer-klassen", label: "Lehrer & Klassen" },
-  { key: "nutzung", label: "Nutzung im Kollegium" },
-  { key: "schulentwicklung", label: "Schulentwicklung" },
-  { key: "aufmerksamkeit", label: "Aufmerksamkeit" },
+  { key: "entlastungsbericht", label: "Workload relief report" },
+  { key: "lehrer-klassen", label: "Teachers & classes" },
+  { key: "nutzung", label: "Use across the staff" },
+  { key: "schulentwicklung", label: "School development" },
+  { key: "aufmerksamkeit", label: "Attention" },
 ] as const;
 
 export type DemoNavKey =
@@ -182,14 +205,14 @@ export type DemoObservation = {
  */
 export const DEMO_READING: DemoObservation = {
   child: "Emma K.",
-  input: "Emma liest heute zum ersten Mal flüssig vor der Klasse – traut sich mehr zu.",
-  chips: ["Deutsch · Lesen", "Beobachtung", "Stärke"],
+  input: "Emma read aloud to the class fluently for the first time today – she is trusting herself more.",
+  chips: ["German · Reading", "Observation", "Strength"],
   reportDraft:
-    "Emma liest zunehmend flüssig und sicher vor der Klasse vor. Sie traut sich dabei mehr zu und bringt sich im Deutschunterricht immer häufiger von sich aus ein.",
+    "Emma reads aloud to the class with growing fluency and assurance. She trusts herself more as she does so and contributes to German lessons of her own accord more and more often.",
 };
 
 /* ==========================================================================
-   Daten der vier Szenen auf /produkt.
+   Daten der vier Szenen auf /for-teachers.
    ========================================================================== */
 
 /**
@@ -200,8 +223,8 @@ export const DEMO_READING: DemoObservation = {
  * Gegenteil suggerieren.
  */
 export const DEMO_LIVE_NOTES = [
-  { child: "Emma K.", note: "liest flüssig vor", chip: "Deutsch" },
-  { child: "Yusuf A.", note: "sicher im ZR 100", chip: "Mathe" },
+  { child: "Emma K.", note: "reads aloud fluently", chip: "German" },
+  { child: "Yusuf A.", note: "secure with numbers to 100", chip: "Maths" },
 ] as const;
 
 /**
@@ -217,13 +240,13 @@ export const DEMO_LIVE_NOTES = [
  * darin fiele ausgerechnet der Zielgruppe auf.
  */
 export const DEMO_PARENT_MAIL = {
-  greeting: "Liebe Frau Kaya,",
-  closing: "Mit freundlichen Grüßen",
+  greeting: "Dear Mrs Kaya,",
+  closing: "Kind regards",
   // Aus der Konstante, damit die Lehrkraft in allen Szenen dieselbe ist.
   signature: DEMO_TEACHER,
-  stableNote: "Namen & Signatur bleiben unangetastet",
+  stableNote: "Names & signature stay untouched",
   /** Angedeutete Sprachliste im Auswahlfeld. */
-  dropdown: ["Deutsch", "Türkisch", "Arabisch", "Ukrainisch"],
+  dropdown: ["English", "Turkish", "Arabic", "Ukrainian"],
 } as const;
 
 /**
@@ -235,44 +258,44 @@ export const DEMO_PARENT_MAIL = {
  */
 export const DEMO_MATERIAL = {
   /** Fach-Filter über den Fundstellen. Der erste Eintrag wird gewählt. */
-  subjects: ["Deutsch", "Mathe", "Sachunterricht"],
-  topic: "Wortarten, Klasse 3",
+  subjects: ["German", "Maths", "General studies"],
+  topic: "Word classes, year 3",
   sources: [
-    "Wortarten bestimmen – Übungsblatt",
-    "Nomen, Verben, Adjektive (Kl. 3)",
-    "Wortarten-Werkstatt, Teil 2",
+    "Identifying word classes – worksheet",
+    "Nouns, verbs, adjectives (year 3)",
+    "Word classes workshop, part 2",
   ],
-  documentTitle: "Arbeitsblatt: Wortarten",
-  sourceNote: "Quellen: [1], [2]",
+  documentTitle: "Worksheet: word classes",
+  sourceNote: "Sources: [1], [2]",
 } as const;
 
 /**
  * Szene D – Entlastungsbericht der Schulleitung.
  *
- * WORTWAHL: „gewonnene Zeit" und „Entlastung" sind zulässig. Das Wort
- * „Wirkung" kommt in der ganzen Szene NICHT als Behauptung vor – nur die
- * Erhebungs-Zeile spricht über Befragungswerte, und sie weist die Zahl
- * darüber ausdrücklich als Schätzwert aus. Eingesparte Stunden sind eine
- * Prozesskennzahl, kein Wirkungsnachweis (docs/produktstand-2026-08.md).
+ * WORTWAHL: „time gained" und „relief" sind zulässig. Das Wort „impact" kommt
+ * in der ganzen Szene NICHT als Behauptung vor – nur die Erhebungs-Zeile
+ * spricht über Befragungswerte, und sie weist die Zahl darüber ausdrücklich
+ * als Schätzwert aus. Eingesparte Stunden sind eine Prozesskennzahl, kein
+ * Wirkungsnachweis (docs/produktstand-2026-08.md).
  *
  * Kein Euro-Betrag: Die Grundlage sind hinterlegte Minutenannahmen, deshalb
  * steht `note` dauerhaft neben der Zahl.
  */
 export const DEMO_RELIEF_REPORT = {
-  month: "Juli 2026",
-  previousMonth: "Juni",
+  month: "July 2026",
+  previousMonth: "June",
   hours: 138,
   /** Automatisierungsquote in Prozent – laut Produktstand Teil des Berichts. */
   automationRate: 68,
-  note: "Schätzwert",
-  surveyLine: "Befragungswerte: Erhebung läuft. Die Zahl oben ist ein Schätzwert.",
+  note: "Estimate",
+  surveyLine: "Survey values: collection under way. The figure above is an estimate.",
   /** Balkenhöhen als Faktor für scaleY: laufender Monat und Vormonat. */
   currentBars: [0.68, 1, 0.44],
   previousBars: [0.5, 0.74, 0.3],
 } as const;
 
 /* ==========================================================================
-   Kurzfassungen für die kleinen Szenen in „So funktioniert's".
+   Kurzfassungen für die kleinen Szenen.
    --------------------------------------------------------------------------
    Dort ist die Bühne nur gut 110 px hoch. Die Texte sind deshalb deutlich
    kürzer als in der Hero-Szene – ein Gedanke je Szene, mehr passt nicht und
@@ -281,16 +304,16 @@ export const DEMO_RELIEF_REPORT = {
 
 /** Szene 1: eine Beobachtung, wie sie zwischen Tür und Angel entsteht. */
 export const DEMO_QUICK_NOTE = {
-  input: "Yusuf rechnet heute sicher im ZR 100.",
-  chip: "Mathe",
+  input: "Yusuf works confidently with numbers to 100 today.",
+  chip: "Maths",
 } as const;
 
 /**
  * Szene 3: gewonnene Zeit im Entlastungsbericht.
  *
- * WORTWAHL IST HIER KEINE GESCHMACKSFRAGE. „Gewonnene Zeit" und „Entlastung"
- * sind zulässig, „Wirkung" NICHT: Eingesparte Stunden sind eine
- * Prozesskennzahl, kein Wirkungsnachweis. Die Trennung stammt aus
+ * WORTWAHL IST HIER KEINE GESCHMACKSFRAGE. „Time gained" und „relief" sind
+ * zulässig, „impact" NICHT: Eingesparte Stunden sind eine Prozesskennzahl,
+ * kein Wirkungsnachweis. Die Trennung stammt aus
  * docs/produktstand-2026-08.md und gilt auch in Grafiken – gerade dort, weil
  * eine Zahl in einem Diagramm schneller als Beleg gelesen wird als ein Satz.
  *
@@ -299,8 +322,8 @@ export const DEMO_QUICK_NOTE = {
  */
 export const DEMO_RELIEF_MONTH = {
   hours: 14.5,
-  unit: "Std.",
-  note: "Schätzwert",
+  unit: "hrs",
+  note: "Estimate",
 } as const;
 
 /* ==========================================================================
@@ -338,7 +361,7 @@ export const DEMO_SEATING = {
 } as const;
 
 /* ==========================================================================
- * EINBLICK (/einblick) – VORBEREITETE DATEN FÜR SIEBEN BEDIENBARE BEREICHE
+ * TAKE A LOOK (/preview) – VORBEREITETE DATEN FÜR SIEBEN BEDIENBARE BEREICHE
  * ==========================================================================
  * Es gibt kein Backend. JEDER Text hier steht fertig; ein Klick waehlt aus,
  * er erzeugt nichts. Genau das sagt das Banner ueber dem Fenster.
@@ -348,11 +371,14 @@ export const DEMO_SEATING = {
  * Alle Timeline-Eintraege beschreiben Gelingendes.
  *
  * Der Cast bleibt die 3b aus DEMO_CHILDREN.
+ *
+ * DATUMSFORMAT: „12 May", nicht „12.05." – docs/glossar-en.md, Abschnitt
+ * „Sprache und Zahlen".
  * ========================================================================== */
 
 /**
  * Drei vorbereitete Beobachtungen. Je Kind ein Zeugnistext UND eine zweite
- * Formulierung, dazu die Elternmail in vier Sprachen und eine Timeline.
+ * Formulierung, dazu die Elternmail in drei Sprachen und eine Timeline.
  *
  * Produktstand-Deckung je Feld:
  *   note      -> „Beobachtungen strukturieren — Live"
@@ -360,31 +386,46 @@ export const DEMO_SEATING = {
  *   report    -> „Zeugnisbemerkungen — Live … im gelernten Schreibstil"
  *   report2   -> dieselbe Funktion, ein zweites Mal aufgerufen. Der
  *                Produktstand kennt keinen Knopf „andere Formulierung"; er
- *                kennt das Erzeugen von Texten. Die Karte im Einblick
- *                beschriftet ihn deshalb als zweiten Entwurf, nicht als
- *                eigenes Feature.
+ *                kennt das Erzeugen von Texten. Die Karte beschriftet ihn
+ *                deshalb als zweiten Entwurf, nicht als eigenes Feature.
  *   mail      -> „Elternmails, auf Wunsch übersetzt — Live … Namen und
  *                Signatur bleiben unangetastet"
  *   timeline  -> „Förderempfehlungen, Timeline, Klassenanalyse — Live"
+ *
+ * ==========================================================================
+ * WARUM DIE AUSGANGSSPRACHE HIER ENGLISCH IST
+ * --------------------------------------------------------------------------
+ * Die deutsche Fassung zeigt vier Sprachen: DE (Original), EN, TR, AR. Auf
+ * selyvi.com ist die gezeigte Oberflaeche englisch (en-review.md, Punkt 9) –
+ * also ist die Ausgangssprache der Elternmail hier EN, und uebrig bleiben drei
+ * Sprachen statt vier.
+ *
+ * KEINE VIERTE SPRACHE ERFUNDEN: Eine ukrainische oder polnische Zeile
+ * muesste jemand gegenlesen, und ein Fehler darin faellt ausgerechnet der
+ * Zielgruppe auf. Drei belegte Sprachen sind mehr wert als vier, von denen
+ * eine ungeprueft ist. Die Auswahlliste im Produkt nennt weiterhin neun
+ * Zielsprachen (TRANSLATION_LANGUAGES in src/config/product.ts).
+ *
+ * Die fremdsprachigen Zeilen bekommen in der Anzeige ein `lang`-Attribut.
+ * Das ist WCAG 3.1.2 (Language of Parts) – und zugleich das, woran
+ * scripts/german-check.mjs erkennt, dass diese Zeilen nicht englisch sein
+ * sollen und deshalb nicht mitgeprueft werden.
+ * ==========================================================================
  */
 export const DEMO_TOUR_OBSERVATIONS = [
   {
     id: "emma",
     child: "Emma K.",
     initials: "EK",
-    note: "Emma liest heute zum ersten Mal flüssig vor der Klasse – traut sich mehr zu.",
-    chips: ["Deutsch · Lesen", "Beobachtung"],
+    note: "Emma read aloud to the class fluently for the first time today – she is trusting herself more.",
+    chips: ["German · Reading", "Observation"],
     report:
-      "Emma liest inzwischen flüssig und sicher vor der Klasse vor und traut sich dabei mehr zu. Seit Mai bringt sie sich im Deutschunterricht immer häufiger von sich aus ein.",
+      "Emma now reads aloud to the class fluently and with assurance, and she trusts herself more as she does so. Since May she has been contributing to German lessons of her own accord more and more often.",
     report2:
-      "Emma trägt sicher und mit fester Stimme vor der Klasse vor. Sie meldet sich im Deutschunterricht häufig und beteiligt sich mit eigenen Beiträgen am Gespräch.",
+      "Emma reads aloud to the class confidently and in a steady voice. She puts her hand up often in German lessons and brings her own contributions into the discussion.",
     mail: {
-      subject: "Emma im Deutschunterricht",
+      subject: "Emma in German lessons",
       lines: {
-        de: [
-          "Emma hat heute zum ersten Mal flüssig vor der Klasse vorgelesen.",
-          "Sie traut sich sichtbar mehr zu und beteiligt sich häufiger.",
-        ],
         en: [
           "Today Emma read aloud to the class fluently for the first time.",
           "She is visibly gaining confidence and joins in more often.",
@@ -401,19 +442,19 @@ export const DEMO_TOUR_OBSERVATIONS = [
     },
     timeline: [
       {
-        date: "12.05.",
-        title: "Liest im Lesekreis mit",
-        text: "Emma liest im Lesekreis einen Abschnitt vor und lässt sich dabei Zeit.",
+        date: "12 May",
+        title: "Reads along in the reading circle",
+        text: "Emma reads a passage aloud in the reading circle and takes her time over it.",
       },
       {
-        date: "03.07.",
-        title: "Trägt vor der Klasse vor",
-        text: "Zum ersten Mal flüssig vor der ganzen Klasse – sie traut sich mehr zu.",
+        date: "3 Jul",
+        title: "Reads aloud to the class",
+        text: "Fluently in front of the whole class for the first time – she is trusting herself more.",
       },
       {
-        date: "18.09.",
-        title: "Meldet sich von sich aus",
-        text: "Bringt eigene Beiträge ins Unterrichtsgespräch ein, ohne Aufforderung.",
+        date: "18 Sep",
+        title: "Speaks up of her own accord",
+        text: "Brings her own contributions into the lesson discussion without being asked.",
       },
     ],
   },
@@ -421,19 +462,15 @@ export const DEMO_TOUR_OBSERVATIONS = [
     id: "yusuf",
     child: "Yusuf A.",
     initials: "YA",
-    note: "Yusuf rechnet sicher im Zahlenraum bis 100 und erklärt seinen Weg der Nachbarin.",
-    chips: ["Mathe · Zahlenraum", "Beobachtung"],
+    note: "Yusuf works confidently with numbers to 100 and explains his method to the girl next to him.",
+    chips: ["Maths · Number range", "Observation"],
     report:
-      "Yusuf bewegt sich sicher im Zahlenraum bis 100. Er kann seinen Rechenweg in eigenen Worten erklären und hilft damit auch anderen Kindern weiter.",
+      "Yusuf works confidently with numbers up to 100. He can explain his method in his own words and in doing so helps other children along as well.",
     report2:
-      "Yusuf rechnet im Zahlenraum bis 100 zuverlässig und beschreibt seinen Lösungsweg verständlich. Damit unterstützt er seine Sitznachbarn im Unterricht.",
+      "Yusuf calculates reliably with numbers up to 100 and describes his solution clearly. He supports the children sitting next to him in lessons that way.",
     mail: {
-      subject: "Yusuf im Mathematikunterricht",
+      subject: "Yusuf in maths lessons",
       lines: {
-        de: [
-          "Yusuf rechnet sicher im Zahlenraum bis 100.",
-          "Er erklärt seinen Rechenweg und hilft damit anderen Kindern weiter.",
-        ],
         en: [
           "Yusuf works confidently with numbers up to 100.",
           "He explains his approach and helps other children along the way.",
@@ -450,19 +487,19 @@ export const DEMO_TOUR_OBSERVATIONS = [
     },
     timeline: [
       {
-        date: "22.04.",
-        title: "Zerlegt Zahlen sicher",
-        text: "Yusuf zerlegt zweistellige Zahlen und erklärt die Schritte laut mit.",
+        date: "22 Apr",
+        title: "Breaks numbers down securely",
+        text: "Yusuf breaks two-digit numbers down and talks through the steps out loud.",
       },
       {
-        date: "09.06.",
-        title: "Hilft am Nachbartisch",
-        text: "Erklärt einem anderen Kind seinen Rechenweg, ohne die Lösung vorzusagen.",
+        date: "9 Jun",
+        title: "Helps at the next table",
+        text: "Explains his method to another child without giving the answer away.",
       },
       {
-        date: "01.10.",
-        title: "Sicher bis 100",
-        text: "Rechnet im Zahlenraum bis 100 zuverlässig, auch bei Zehnerübergang.",
+        date: "1 Oct",
+        title: "Secure up to 100",
+        text: "Works reliably with numbers up to 100, including across the tens boundary.",
       },
     ],
   },
@@ -470,19 +507,15 @@ export const DEMO_TOUR_OBSERVATIONS = [
     id: "lotta",
     child: "Lotta B.",
     initials: "LB",
-    note: "Lotta hat in der Gruppenarbeit die Aufgabenverteilung übernommen, ganz von selbst.",
-    chips: ["Sozialverhalten", "Beobachtung"],
+    note: "Lotta took charge of dividing up the tasks in group work, entirely on her own initiative.",
+    chips: ["Social behaviour", "Observation"],
     report:
-      "Lotta übernimmt in Gruppenarbeiten von sich aus Verantwortung und verteilt Aufgaben umsichtig. Sie achtet dabei darauf, dass alle Kinder beteiligt sind.",
+      "Lotta takes on responsibility in group work of her own accord and divides up the tasks thoughtfully. She makes a point of keeping every child involved.",
     report2:
-      "Lotta organisiert Gruppenarbeiten eigenständig und behält dabei die ganze Gruppe im Blick. Sie sorgt dafür, dass jedes Kind eine Aufgabe bekommt.",
+      "Lotta organises group work independently and keeps the whole group in view while she does. She sees to it that every child gets a task.",
     mail: {
-      subject: "Lotta in der Gruppenarbeit",
+      subject: "Lotta in group work",
       lines: {
-        de: [
-          "Lotta hat in der Gruppenarbeit die Aufgabenverteilung übernommen.",
-          "Sie achtet darauf, dass alle Kinder beteiligt sind.",
-        ],
         en: [
           "Lotta took charge of dividing up the tasks in group work.",
           "She makes sure that every child is involved.",
@@ -499,19 +532,19 @@ export const DEMO_TOUR_OBSERVATIONS = [
     },
     timeline: [
       {
-        date: "05.05.",
-        title: "Teilt Aufgaben ein",
-        text: "Lotta verteilt in der Gruppe die Aufgaben und fragt jedes Kind vorher.",
+        date: "5 May",
+        title: "Divides up the tasks",
+        text: "Lotta hands out the tasks in the group and asks each child first.",
       },
       {
-        date: "17.06.",
-        title: "Holt Stille dazu",
-        text: "Bezieht ein Kind ein, das sich sonst zurückhält, und gibt ihm eine Rolle.",
+        date: "17 Jun",
+        title: "Brings a quiet child in",
+        text: "Includes a child who usually holds back and gives them a role.",
       },
       {
-        date: "24.09.",
-        title: "Führt Gruppe eigenständig",
-        text: "Organisiert eine Gruppenarbeit von Anfang bis Ende ohne Begleitung.",
+        date: "24 Sep",
+        title: "Leads a group on her own",
+        text: "Organises a piece of group work from start to finish without support.",
       },
     ],
   },
@@ -523,25 +556,27 @@ export type DemoTourObservation = (typeof DEMO_TOUR_OBSERVATIONS)[number];
  * Diktat. Produktstand: „Beobachtungen strukturieren — Live … Die
  * Spracheingabe laeuft ueber Whisper."
  *
- * Der Text laeuft im Einblick Wort fuer Wort ein. Er steht hier fertig – es
- * wird nichts aufgenommen und nichts gesendet; der Browser fragt auch nicht
- * nach dem Mikrofon.
+ * Der Text laeuft Wort fuer Wort ein. Er steht hier fertig – es wird nichts
+ * aufgenommen und nichts gesendet; der Browser fragt auch nicht nach dem
+ * Mikrofon.
  */
 export const DEMO_DICTATION =
-  "Frida hat im Sachunterricht ihren Versuch selbst aufgebaut und den Ablauf erklärt.";
+  "Frida set up her experiment herself in general studies and explained the steps.";
 
 /**
  * Sprachen des Umschalters in der Elternpost.
  *
- * Vier von neun – mehr passen nicht in eine Zeile, und die Zahl steht als
- * Badge daneben. Arabisch laeuft von rechts nach links; die Anzeige setzt
- * dafuer dir="rtl".
+ * Drei von neun – siehe die Begruendung ueber DEMO_TOUR_OBSERVATIONS. Die Zahl
+ * neun steht als Badge daneben und kommt aus TRANSLATION_LANGUAGE_COUNT.
+ * Arabisch laeuft von rechts nach links; die Anzeige setzt dafuer dir="rtl".
+ *
+ * `lang` traegt den BCP-47-Code fuer das ausgegebene Element: WCAG 3.1.2, und
+ * die Marke, an der scripts/german-check.mjs fremdsprachige Zeilen ueberspringt.
  */
 export const DEMO_MAIL_LANGS = [
-  { key: "de", label: "DE", rtl: false },
-  { key: "en", label: "EN", rtl: false },
-  { key: "tr", label: "TR", rtl: false },
-  { key: "ar", label: "AR", rtl: true },
+  { key: "en", label: "EN", lang: "en", rtl: false },
+  { key: "tr", label: "TR", lang: "tr", rtl: false },
+  { key: "ar", label: "AR", lang: "ar", rtl: true },
 ] as const;
 
 export type DemoMailLang = (typeof DEMO_MAIL_LANGS)[number]["key"];
@@ -556,22 +591,22 @@ export type DemoMailLang = (typeof DEMO_MAIL_LANGS)[number]["key"];
  * anhaken, und die Marker im Ergebnis aendern sich mit.
  */
 export const DEMO_MATERIAL_TOPICS = [
-  { id: "wortarten", label: "Wortarten bestimmen", subject: "Deutsch" },
-  { id: "zahlenraum", label: "Zahlenraum bis 100", subject: "Mathe" },
-  { id: "wasser", label: "Wasserkreislauf", subject: "Sachunterricht" },
+  { id: "wortarten", label: "Identifying word classes", subject: "German" },
+  { id: "zahlenraum", label: "Numbers to 100", subject: "Maths" },
+  { id: "wasser", label: "The water cycle", subject: "General studies" },
 ] as const;
 
 export const DEMO_MATERIAL_SOURCES = [
-  { id: "q1", label: "Übungsblatt Wortarten", note: "Klasse 3, Fachkorpus" },
-  { id: "q2", label: "Merkblatt Nomen und Verben", note: "Klasse 3, Fachkorpus" },
-  { id: "q3", label: "Wortarten-Kartei", note: "Klasse 4, Fachkorpus" },
+  { id: "q1", label: "Word classes worksheet", note: "Year 3, subject corpus" },
+  { id: "q2", label: "Nouns and verbs reference sheet", note: "Year 3, subject corpus" },
+  { id: "q3", label: "Word classes card box", note: "Year 4, subject corpus" },
 ] as const;
 
 /** Der Ergebnis-Text. Die Marker verweisen auf die angehakten Fundstellen. */
 export const DEMO_MATERIAL_RESULT = [
-  "Aufgabe 1: Unterstreiche alle Nomen im Text blau.",
-  "Aufgabe 2: Schreibe zu jedem Verb die Grundform daneben.",
-  "Aufgabe 3: Finde drei Adjektive und steigere sie.",
+  "Task 1: Underline every noun in the text in blue.",
+  "Task 2: Write the base form next to each verb.",
+  "Task 3: Find three adjectives and compare them.",
 ] as const;
 
 /**
@@ -579,21 +614,30 @@ export const DEMO_MATERIAL_RESULT = [
  * eingetragen ueber einen Wochenplaner zum Anklicken und Ziehen. Wer bei
  * seinem Fach Zeiten hinterlegt, steht im Plan."
  *
- * Im Einblick nur Anklicken, kein Ziehen: Ein Drag-and-drop braucht eine
- * eigene Touch-Behandlung, und ein Klick funktioniert auf jedem Geraet gleich.
+ * Nur Anklicken, kein Ziehen: Ein Drag-and-drop braucht eine eigene
+ * Touch-Behandlung, und ein Klick funktioniert auf jedem Geraet gleich.
+ *
+ * „timetable", nicht „schedule": „Schedule" ist US und mehrdeutig
+ * (docs/glossar-en.md).
+ *
+ * SLOT-BESCHRIFTUNG KURZ GEHALTEN: „P1" statt „Period 1". Die Beschriftung
+ * steht in der Kopfspalte eines 5-Spalten-Rasters; bei 390 px Breite bleiben
+ * dafuer rund 40 px. „Period 1" bricht dort um und schiebt die Zeilenhoehe
+ * auseinander. Die Langform steht als aria-label an der Zelle, damit sie
+ * vorgelesen wird.
  */
-export const DEMO_TIMETABLE_DAYS = ["Mo", "Di", "Mi", "Do", "Fr"] as const;
-export const DEMO_TIMETABLE_SLOTS = ["1. Std", "2. Std", "3. Std", "4. Std"] as const;
+export const DEMO_TIMETABLE_DAYS = ["Mon", "Tue", "Wed", "Thu", "Fri"] as const;
+export const DEMO_TIMETABLE_SLOTS = ["P1", "P2", "P3", "P4"] as const;
 
-/** Faecher, die die Lehrkraft im Einblick setzen kann. */
-export const DEMO_TIMETABLE_SUBJECTS = ["Deutsch", "Mathe", "Sachunterricht"] as const;
+/** Faecher, die die Lehrkraft setzen kann. */
+export const DEMO_TIMETABLE_SUBJECTS = ["German", "Maths", "General studies"] as const;
 
 /** Vorbelegung: Was schon im Plan steht, bevor jemand klickt. */
 export const DEMO_TIMETABLE_PRESET: Record<string, string> = {
-  "Mo-1. Std": "Deutsch",
-  "Di-2. Std": "Mathe",
-  "Mi-1. Std": "Sachunterricht",
-  "Do-3. Std": "Deutsch",
+  "Mon-P1": "German",
+  "Tue-P2": "Maths",
+  "Wed-P1": "General studies",
+  "Thu-P3": "German",
 };
 
 /**
@@ -609,24 +653,24 @@ export const DEMO_CHAT = {
   questions: [
     {
       id: "lesen",
-      text: "Wie hat sich Emma im Lesen entwickelt?",
+      text: "How has Emma developed in reading?",
       answer:
-        "Emma liest inzwischen flüssig und sicher vor der Klasse vor und traut sich dabei mehr zu. Seit Mai bringt sie sich im Deutschunterricht immer häufiger von sich aus ein.",
-      references: ["Beobachtung 12.05.", "Beobachtung 03.07."],
+        "Emma now reads aloud to the class fluently and with assurance, and she trusts herself more as she does so. Since May she has been contributing to German lessons of her own accord more and more often.",
+      references: ["Observation, 12 May", "Observation, 3 Jul"],
     },
     {
       id: "mathe",
-      text: "Wer erklärt in Mathe gern anderen Kindern etwas?",
+      text: "Who likes explaining things to other children in maths?",
       answer:
-        "Yusuf erklärt seinen Rechenweg regelmäßig weiter, zuletzt am Nachbartisch. Er gibt dabei Hinweise, statt die Lösung vorzusagen.",
-      references: ["Beobachtung 22.04.", "Beobachtung 09.06."],
+        "Yusuf regularly passes on his method, most recently at the next table. He gives pointers rather than saying the answer out loud.",
+      references: ["Observation, 22 Apr", "Observation, 9 Jun"],
     },
     {
       id: "gruppen",
-      text: "Wer übernimmt in Gruppenarbeiten Verantwortung?",
+      text: "Who takes on responsibility in group work?",
       answer:
-        "Lotta verteilt in Gruppenarbeiten von sich aus die Aufgaben und achtet darauf, dass alle beteiligt sind. Zuletzt hat sie eine Gruppe eigenständig geführt.",
-      references: ["Beobachtung 05.05.", "Beobachtung 24.09."],
+        "Lotta divides up the tasks in group work of her own accord and makes sure everyone is involved. Most recently she led a group on her own.",
+      references: ["Observation, 5 May", "Observation, 24 Sep"],
     },
   ],
 } as const;

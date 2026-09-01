@@ -44,7 +44,7 @@ export function SiteFooter() {
 
         <div className="mt-16 flex flex-col gap-6 border-t border-brand-600 pt-8 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-sm text-brand-100">
-            © {year} {PRODUCT_NAME}. Alle Rechte vorbehalten.
+            © {year} {PRODUCT_NAME}. All rights reserved.
           </p>
 
           <ul className="flex items-center gap-2">
@@ -57,7 +57,7 @@ export function SiteFooter() {
                     href={social.href}
                     target="_blank"
                     rel="noreferrer noopener"
-                    aria-label={`${PRODUCT_NAME} auf ${social.label}`}
+                    aria-label={`${PRODUCT_NAME} on ${social.label}`}
                     className="inline-flex size-10 items-center justify-center rounded-md text-brand-100 transition-colors hover:text-surface"
                   >
                     <Icon className="size-5" aria-hidden="true" />

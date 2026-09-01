@@ -60,10 +60,10 @@ type Props = { state: TourState; actions: TourActions };
 type Tab = "uebersicht" | "stundenplan" | "dokumente" | "planen" | "fach";
 
 const TABS: { key: Tab; label: string; gesperrt?: boolean }[] = [
-  { key: "uebersicht", label: "Übersicht" },
-  { key: "stundenplan", label: "Stundenplan" },
-  { key: "dokumente", label: "Dokumente", gesperrt: true },
-  { key: "planen", label: "Unterricht planen" },
+  { key: "uebersicht", label: "Overview" },
+  { key: "stundenplan", label: "Timetable" },
+  { key: "dokumente", label: "Documents", gesperrt: true },
+  { key: "planen", label: "Plan a lesson" },
   { key: "fach", label: DEMO_SUBJECT, gesperrt: true },
 ];
 
@@ -98,18 +98,18 @@ export function AreaMyClasses({ state, actions }: Props) {
           hat das gemeldet (heading-order). Ein sr-only-h2 gibt die Stufe
           zurück, ohne dem Bild etwas hinzuzufügen. */}
       <h2 id="bereich-meine-klassen" className="sr-only">
-        Meine Klassen
+        My classes
       </h2>
 
       {/* Kartenueberschrift ueber den Reitern. Im Original sitzt der ganze
           Block (Ueberschrift, Reiter, Inhalt) in einer Karte – genau wie auf
           der Material-Seite, wo ueber den Reitern „Material" steht. */}
-      <p className="mb-3 text-base font-bold text-[var(--app-text)]">Klassen</p>
+      <p className="mb-3 text-base font-bold text-[var(--app-text)]">Classes</p>
 
       {/* ---------- Obere Tab-Ebene: gefüllter Reiter im Rahmen ---------- */}
       <div className="flex items-center gap-1 rounded-[var(--app-radius-control)] border border-[var(--app-border)] bg-[var(--app-surface)] p-1">
         <span className="rounded-[var(--app-radius-control)] bg-[var(--app-blue)] px-3 py-1.5 text-[11px] font-semibold text-white">
-          Meine Klassen
+          My classes
         </span>
         <button
           type="button"
@@ -121,7 +121,7 @@ export function AreaMyClasses({ state, actions }: Props) {
           }
           className="rounded-[var(--app-radius-control)] px-3 py-1.5 text-[11px] text-[var(--app-text-muted)] hover:text-[var(--app-blue)]"
         >
-          Alle Klassen
+          All classes
         </button>
       </div>
 
@@ -139,7 +139,7 @@ export function AreaMyClasses({ state, actions }: Props) {
         {/* ================= Linke Spalte: Klasse und Schüler ============= */}
         <div className="rounded-[var(--app-radius-card)] border border-[var(--app-border)] bg-[var(--app-surface)] p-3">
           <span className="flex items-center justify-between rounded-[var(--app-radius-control)] border border-[var(--app-border)] px-2.5 py-2 text-[12px] text-[var(--app-text)]">
-            Klasse {DEMO_CLASS}
+            Class {DEMO_CLASS}
             <ChevronDown aria-hidden="true" className="size-3.5 opacity-60" />
           </span>
 
@@ -150,11 +150,11 @@ export function AreaMyClasses({ state, actions }: Props) {
               die ganze Suchzeile umfasst statt nur den Text. */}
           <label className="mt-2 flex items-center gap-2 rounded-[var(--app-radius-control)] border border-[var(--app-border)] px-2.5 py-2 focus-within:outline focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-brand-600">
             <Search aria-hidden="true" className="size-3.5 opacity-60" />
-            <span className="sr-only">Name suchen</span>
+            <span className="sr-only">Search for a name</span>
             <input
               value={suche}
               onChange={(event) => setSuche(event.target.value)}
-              placeholder="Name suchen…"
+              placeholder="Search for a name…"
               className="w-full bg-transparent text-[12px] text-[var(--app-text)] outline-none placeholder:text-[var(--app-text-muted)]"
               /* outline-none nur, weil der Ring am Label sitzt – siehe oben. */
             />
@@ -162,10 +162,10 @@ export function AreaMyClasses({ state, actions }: Props) {
 
           <button
             type="button"
-            onClick={() => actions.notify("Beispiel – nichts wird angelegt")}
+            onClick={() => actions.notify("Example – nothing is created")}
             className="mt-2 w-full rounded-[var(--app-radius-control)] bg-[var(--app-blue)] px-3 py-2 text-[12px] font-semibold text-white"
           >
-            Schüler hinzufügen
+            Add a pupil
           </button>
 
           <ul className="mt-2">
@@ -187,7 +187,7 @@ export function AreaMyClasses({ state, actions }: Props) {
                     {k.name}
                   </span>
                   <span className="block text-[11px] text-[var(--app-text-muted)]">
-                    Neu
+                    New
                   </span>
                 </button>
               </li>
@@ -195,7 +195,7 @@ export function AreaMyClasses({ state, actions }: Props) {
 
             {gefiltert.length === 0 ? (
               <li className="py-3 text-[11px] text-[var(--app-text-muted)]">
-                Kein Name gefunden.
+                No name found.
               </li>
             ) : null}
           </ul>
@@ -205,7 +205,7 @@ export function AreaMyClasses({ state, actions }: Props) {
         <div className="min-w-0">
           <div
             role="tablist"
-            aria-label="Ansicht der Klasse"
+            aria-label="View of the class"
             className="flex flex-wrap items-center gap-4 border-b border-[var(--app-border)]"
           >
             {TABS.map((eintrag) => {
@@ -266,7 +266,7 @@ export function AreaMyClasses({ state, actions }: Props) {
 }
 
 /* ========================================================================= */
-/* Übersicht: die vier Karten aus der Referenz                               */
+/* Overview: die vier Karten aus der Referenz                                */
 /* ========================================================================= */
 function Uebersicht() {
   const umfang = 2 * Math.PI * 34;
@@ -275,14 +275,14 @@ function Uebersicht() {
     <div className="space-y-4">
       <div className="rounded-[var(--app-radius-card)] border border-[var(--app-border)] bg-[var(--app-surface)] p-4">
         <h3 className="text-base font-bold text-[var(--app-text)]">
-          Klassenansicht {DEMO_CLASS}
+          Class view {DEMO_CLASS}
         </h3>
         <p className="mt-1 text-[11px] text-[var(--app-text-muted)]">
-          {DEMO_CHILDREN.length} Schüler · Fächer, Notenschnitt und Verwaltung
+          {DEMO_CHILDREN.length} pupils · subjects, mark average and administration
         </p>
 
         <p className="mt-4 text-[12px] font-semibold text-[var(--app-text)]">
-          Meine Fächer
+          My subjects
         </p>
 
         <div className="mt-2 flex items-center justify-between gap-3 rounded-[var(--app-radius-control)] bg-[var(--app-surface-muted)] px-3 py-2.5">
@@ -291,7 +291,7 @@ function Uebersicht() {
               {DEMO_SUBJECT}
             </span>
             <span className="block text-[11px] text-[var(--app-text-muted)]">
-              Mo 2. · Mi 2. · Fr 2.
+              Mon P2 · Wed P2 · Fri P2
             </span>
           </span>
 
@@ -302,7 +302,7 @@ function Uebersicht() {
                 weiss gefuellt. */}
             <span className="inline-flex items-center gap-1.5 rounded-[var(--app-radius-control)] border border-[var(--app-blue)] bg-[var(--app-surface)] px-2.5 py-1 text-[11px] text-[var(--app-blue)]">
               <Clock aria-hidden="true" className="size-3" />
-              Bearbeiten
+              Edit
             </span>
             <Trash2
               aria-hidden="true"
@@ -312,23 +312,26 @@ function Uebersicht() {
         </div>
 
         <span className="mt-3 block rounded-[var(--app-radius-control)] border border-[var(--app-blue)] px-3 py-2 text-center text-[12px] text-[var(--app-blue)]">
-          Fach hinzufügen
+          Add a subject
         </span>
       </div>
 
       <div className="rounded-[var(--app-radius-card)] border border-[var(--app-border)] bg-[var(--app-surface)] p-4">
-        <h3 className="text-base font-bold text-[var(--app-text)]">Notenschnitt</h3>
+        <h3 className="text-base font-bold text-[var(--app-text)]">Mark average</h3>
         <p className="mt-3 flex items-center justify-between text-[12px] text-[var(--app-text)]">
           <span className="font-semibold">{DEMO_SUBJECT}</span>
-          <span className="font-semibold">Keine Noten</span>
+          <span className="font-semibold">No marks</span>
         </p>
       </div>
 
       <div className="grid gap-4 xl:grid-cols-[1fr_13rem]">
         <div className="rounded-[var(--app-radius-card)] border border-[var(--app-border)] bg-[var(--app-surface)] p-4">
-          <h3 className="text-base font-bold text-[var(--app-text)]">Klassenübersicht</h3>
+          <h3 className="text-base font-bold text-[var(--app-text)]">Class overview</h3>
+          {/* „support overview“ fuer „Förderblick“ – Beschriftung aus der
+              Anwendung; die Bedeutung ist im Produktstand nicht dokumentiert
+              (docs/glossar-en.md, docs/en-review.md). */}
           <p className="mt-1 text-[11px] text-[var(--app-text-muted)]">
-            Förderblick aller Schüler der gewählten Klasse.
+            Support overview of all pupils in the selected class.
           </p>
 
           <ul className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -344,9 +347,9 @@ function Uebersicht() {
         </div>
 
         <div className="rounded-[var(--app-radius-card)] border border-[var(--app-border)] bg-[var(--app-surface)] p-4">
-          <h3 className="text-base font-bold text-[var(--app-text)]">Klassen-Puls</h3>
+          <h3 className="text-base font-bold text-[var(--app-text)]">Class pulse</h3>
           <p className="mt-1 text-[11px] text-[var(--app-text-muted)]">
-            Durchschnittlicher Förderblick der aktuell gewählten Klasse.
+            Average support overview of the class currently selected.
           </p>
 
           {/* Feste Maße, kein Nachladen: Der Donut ist SVG im Fluss und
@@ -356,7 +359,7 @@ function Uebersicht() {
               viewBox="0 0 80 80"
               className="size-24"
               role="img"
-              aria-label={`Klassen-Puls: ${PULS} Prozent, Beispieldaten`}
+              aria-label={`Class pulse: ${PULS} per cent, sample data`}
             >
               <circle
                 cx="40"
@@ -394,7 +397,7 @@ function Uebersicht() {
 }
 
 /* ========================================================================= */
-/* Schüler-Detail: der vorläufige Ort für Zeugnis und Elternpost             */
+/* Schueler-Detail: der vorlaeufige Ort fuer Zeugnis und Elternpost          */
 /* ========================================================================= */
 function SchuelerDetail({
   name,
@@ -418,19 +421,19 @@ function SchuelerDetail({
           onClick={onClose}
           className="text-[11px] text-[var(--app-blue)] underline underline-offset-4"
         >
-          Zurück zur Klassenansicht
+          Back to the class view
         </button>
       </div>
 
       <div
         role="tablist"
-        aria-label="Aktionen zu diesem Kind"
+        aria-label="Actions for this child"
         className="mt-3 flex items-center gap-4 border-b border-[var(--app-border)]"
       >
         {(
           [
-            ["zeugnis", "Zeugnisbemerkung"],
-            ["mail", "Elternmail"],
+            ["zeugnis", "Report comment"],
+            ["mail", "Parent email"],
           ] as const
         ).map(([key, label]) => (
           <button

@@ -1,22 +1,21 @@
 import { SeatingScene } from "@/components/scenes/produkt/seating-scene";
 
 /**
- * Sektion – „Und der Alltag drumherum“.
+ * Sektion – „And the everyday around it“.
  *
  * ==========================================================================
  * WARUM EIGENE SEKTION UND NICHT INS PRINZIP-BAND
  * ==========================================================================
- * Das Prinzip-Band ist eine Haltungsaussage in zwei Saetzen („Selyvi schlägt
- * vor. Sie entscheiden.“). Eine Szene daneben wuerde dort zwei Dinge
+ * Das Prinzip-Band ist eine Haltungsaussage in zwei Saetzen („Selyvi suggests.
+ * You decide.“). Eine Szene daneben wuerde dort zwei Dinge
  * gleichzeitig behaupten und die Aussage schwaechen – das Band lebt davon,
  * dass es nichts zeigt.
  *
  * Nach den vier Bloecken passt sie dagegen genau: Die vier Bereiche sind die
- * grossen Zusagen, das hier ist der Rest des Schultags. Und sie steht VOR
- * „In Arbeit“ – zuerst alles Fertige, dann der Ausblick.
+ * grossen Zusagen, das hier ist der Rest des Schultags.
  *
  * Schmal gehalten (max-w-4xl statt max-w-6xl) und ohne Stichpunktliste: Die
- * drei Funktionen sind bereits im Block „Unterricht“ aufgezaehlt. Diese
+ * drei Funktionen sind bereits im Block „Teaching“ aufgezaehlt. Diese
  * Sektion wiederholt sie nicht, sie ZEIGT eine davon – das ist der einzige
  * Grund, warum es sie gibt.
  */
@@ -28,13 +27,13 @@ export function EverydayExtras() {
           id="alltag-titel"
           className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
         >
-          Und der Alltag drumherum
+          And the everyday around it
         </h2>
 
         <p className="mt-5 max-w-2xl text-lg text-gray-500">
-          Nicht jede Aufgabe im Schuljahr ist ein Text. Der Sitzplan gehört dazu, der
-          Klassenstundenplan und die Ablage der Schülerarbeiten – die kleinen Dinge, die
-          keine Stunde kosten sollten.
+          Not every job in the school year is a piece of writing. The seating plan
+          belongs here too, the class timetable and the filing of pupils’ work – the
+          small things that should not cost an hour.
         </p>
 
         <div className="mt-10">

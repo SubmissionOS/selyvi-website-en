@@ -10,7 +10,7 @@ import { ResearchAccessBand } from "@/components/sections/forschung/research-acc
 import { ResearchFaq } from "@/components/sections/forschung/research-faq";
 import { ResearchContact } from "@/components/sections/forschung/research-contact";
 
-export const metadata: Metadata = pageMetadata("/forschung");
+export const metadata: Metadata = pageMetadata("/research");
 
 /**
  * Seite für Forschende – die dritte Zielgruppe neben Lehrkräften und

@@ -5,8 +5,8 @@
  */
 export function PagePlaceholder({
   title,
-  eyebrow = "Platzhalter",
-  description = "Inhalt folgt.",
+  eyebrow = "Placeholder",
+  description = "Content to come.",
 }: {
   title: string;
   eyebrow?: string;

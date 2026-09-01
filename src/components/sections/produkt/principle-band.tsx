@@ -25,8 +25,8 @@ export function PrincipleBand() {
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            Jeder Vorschlag ist transparent, änderbar und wird nie ohne die Lehrkraft
-            wirksam.
+            Every suggestion is transparent, editable, and never takes effect without the
+            teacher.
           </p>
 
           <p className="mt-4 text-lg text-gray-500">{PRACTICE_CLAIM}</p>

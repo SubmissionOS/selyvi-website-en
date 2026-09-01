@@ -52,8 +52,8 @@ export function ReportScene({ startDelayMs = 0 }: { startDelayMs?: number }) {
       steps={REPORT_STEPS}
       startDelayMs={startDelayMs}
       loopPauseMs={2000}
-      kicker="Monatsende"
-      label={`Kleine Animation: Der Entlastungsbericht der Schulleitung zählt auf ${DEMO_RELIEF_MONTH.hours} Stunden gewonnene Zeit im Monat hoch, ausdrücklich als Schätzwert gekennzeichnet.`}
+      kicker="End of month"
+      label={`Small animation: the workload relief report for school leadership counts up to ${DEMO_RELIEF_MONTH.hours} hours of time gained in the month, expressly labelled as an estimate.`}
     >
       {(scene) => {
         const moving = !scene.isStatic;
@@ -63,7 +63,7 @@ export function ReportScene({ startDelayMs = 0 }: { startDelayMs?: number }) {
           <MiniStage>
             <div className="flex h-full flex-col justify-between">
               <span className="text-[9px] font-medium tracking-wide text-[var(--app-text-muted)] uppercase">
-                Entlastungsbericht
+                Workload relief report
               </span>
 
               <div className="flex items-end justify-between gap-3">
@@ -80,11 +80,11 @@ export function ReportScene({ startDelayMs = 0 }: { startDelayMs?: number }) {
                     />
                   </div>
 
-                  {/* „Gewonnene Zeit", nicht „Wirkung" – und der Schätzwert
+                  {/* „Time gained", nicht „impact" – und der Schätzwert
                       steht dauerhaft dabei, nicht als Fussnote. Beides folgt
                       docs/produktstand-2026-08.md. */}
                   <div className="mt-1 truncate text-[9px] text-[var(--app-text-muted)]">
-                    gewonnene Zeit · {DEMO_RELIEF_MONTH.note}
+                    time gained · {DEMO_RELIEF_MONTH.note}
                   </div>
                 </div>
 

@@ -10,7 +10,7 @@ import { DpaBand } from "@/components/sections/dpa-band";
 import { LeadershipFaq } from "@/components/sections/schulen/leadership-faq";
 import { FinalCta } from "@/components/sections/final-cta";
 
-export const metadata: Metadata = pageMetadata("/schulen");
+export const metadata: Metadata = pageMetadata("/for-school-leadership");
 
 /**
  * Seite für Schulleitung und Schulträger.

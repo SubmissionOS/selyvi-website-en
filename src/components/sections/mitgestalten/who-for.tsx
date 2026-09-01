@@ -27,31 +27,30 @@ export function WhoFor() {
             id="mitgestalten-fuer-wen-titel"
             className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
           >
-            Für wen das gedacht ist
+            Who this is for
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            Zuerst für Grundschullehrkräfte, Klassen 1 bis 4 – dafür ist {PRODUCT_NAME}{" "}
-            heute gebaut. Wer dort unterrichtet, arbeitet mit dem Werkzeug in genau der
-            Form, in der es gedacht ist.
+            First for primary school teachers, years 1 to 4 (grades 1 to 4) – that is
+            what {PRODUCT_NAME} is built for today. Anyone teaching there works with the
+            tool in exactly the form it is meant to take.
           </p>
 
           <p className="mt-4 text-lg text-gray-500">
-            Lehrkräfte anderer Schulformen sind ausdrücklich willkommen – für die
-            Weiterentwicklung. {PRACTICE_CLAIM} Was die Anwendung heute kann, ist
-            allerdings auf die Grundschule zugeschnitten; das gehört vorher gesagt und
-            nicht nachher.
+            Teachers from other school types are expressly welcome – for the further
+            development. {PRACTICE_CLAIM} What the application can do today is, however,
+            tailored to primary school; that belongs said beforehand and not afterwards.
           </p>
 
           <p className="mt-4 text-lg text-gray-500">
-            Für Forschung zu Schule und Unterricht gibt es{" "}
+            For research on schools and teaching there is{" "}
             <Link
-              href="/forschung"
+              href="/research"
               className="text-brand-600 underline underline-offset-4"
             >
-              eine eigene Seite
+              a page of its own
             </Link>{" "}
-            – mit unseren Fragen und dem Erhebungsmodell dahinter.
+            – with our questions and the survey model behind them.
           </p>
         </div>
       </div>

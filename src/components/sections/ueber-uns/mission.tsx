@@ -4,8 +4,8 @@ import { MISSION_PROMISE } from "@/config/product";
  * Sektion 2 – Mission.
  *
  * Drei Saetze, vollstaendig aus dem bestehenden Material abgeleitet: die
- * Hero-Aussage der Startseite („Weniger Verwaltung. Mehr Unterricht.“) und das
- * Prinzip-Band auf /fuer-lehrkraefte (DECISION_PROMISE).
+ * Hero-Aussage der Startseite und das
+ * Prinzip-Band auf /for-teachers (DECISION_PROMISE).
  * Bewusst nichts Neues – eine Mission, die von den Produktaussagen abweicht,
  * waere entweder falsch oder ein Hinweis darauf, dass die Produktaussagen
  * falsch sind.
@@ -25,11 +25,11 @@ export function Mission() {
             id="mission-titel"
             className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
           >
-            Warum wir das bauen
+            Why we build this
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            Lehrkräfte verbringen zu viel Zeit mit Verwaltung. {MISSION_PROMISE}
+            Teachers spend too much time on administration. {MISSION_PROMISE}
           </p>
         </div>
       </div>

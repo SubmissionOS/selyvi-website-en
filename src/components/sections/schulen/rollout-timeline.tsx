@@ -18,27 +18,28 @@
  */
 const steps = [
   {
-    title: "Erstgespräch und Demo",
+    title: "First conversation and demo",
     description:
-      "Wir zeigen den aktuellen Stand an der echten Oberfläche und klären, was Ihre Schule braucht. Danach entscheiden Sie, ob eine Pilotphase sinnvoll ist.",
+      "We show where things stand on the real interface and work out what your school needs. After that, you decide whether a pilot phase makes sense.",
   },
   {
-    title: "Konten legt die Schulleitung an",
+    title: "School leadership sets up the accounts",
     description:
-      "Eine Selbstregistrierung gibt es bewusst nicht: Zugänge für Ihr Kollegium richtet die Schulleitung ein und kann Passwörter jederzeit zurücksetzen. Ein Pilot beginnt damit immer mit einem Gespräch, nicht mit einem Anmeldelink.",
+      "There is deliberately no self-registration: school leadership creates the accounts for your staff and can reset passwords at any time. A pilot therefore always begins with a conversation, not with a sign-up link.",
   },
   {
-    title: "Gemeinsame Ersteinrichtung der Klassen",
-    description: "Klassen und Kinder richten wir gemeinsam mit Ihnen ein.",
+    title: "Setting up the classes together",
+    description: "We set up classes and children together with you.",
   },
   {
-    title: "Persönliche Einweisung",
+    title: "A personal walkthrough",
     description:
-      "Statt einer Einführungstour im Produkt begleiten wir den Einstieg persönlich, gemeinsam mit den Lehrkräften, die anfangen.",
+      "Instead of an onboarding tour inside the product, we accompany the start in person, together with the teachers who are beginning.",
   },
   {
-    title: "Einführung im Kollegium",
-    description: "Nach der Pilotphase führen wir Selyvi im gesamten Kollegium ein.",
+    title: "Roll-out across the staff",
+    description:
+      "After the pilot phase we introduce Selyvi across the whole teaching staff.",
   },
 ];
 
@@ -53,7 +54,7 @@ export function RolloutTimeline() {
           id="ablauf-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
         >
-          So läuft die Einführung ab
+          How the introduction runs
         </h2>
 
         <ol className="mt-14 max-w-3xl">

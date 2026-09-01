@@ -58,8 +58,8 @@ export function TeachingScene() {
     <SceneTimeline
       steps={STEPS}
       loopPauseMs={2000}
-      kicker="16:30 · Vorbereitung für morgen"
-      label="Animierte Darstellung der Materialerzeugung: Ein Thema wird eingegeben, aus dem Fachkorpus erscheinen drei Fundstellen, von denen zwei ausgewählt werden. Rechts entsteht daraus ein Arbeitsblatt, in dem die verwendeten Quellen als Marker und in einer Quellenzeile ausgewiesen sind. Alle Daten sind erfunden."
+      kicker="16:30 · Preparing for tomorrow"
+      label="Animated view of materials being generated: a topic is entered, three sources appear from the subject corpus, and two of them are selected. On the right a worksheet grows out of that, in which the sources used are stated as markers and in a source line. All data is invented."
     >
       {(scene) => {
         const moving = !scene.isStatic;
@@ -82,14 +82,14 @@ export function TeachingScene() {
           <UiWindow
             variant="app"
             active="material"
-            chips={[`Klasse ${DEMO_CLASS}`]}
+            chips={[`Class ${DEMO_CLASS}`]}
             className="h-[29rem] sm:h-[27rem]"
           >
             <div className="flex h-full flex-col">
               <div className="grid min-h-0 flex-1 grid-cols-[1.1fr_1fr] gap-3">
                 {/* ---------- links: Thema und Fundstellen ---------- */}
                 <div className="flex min-w-0 flex-col">
-                  <SceneLabel>Thema</SceneLabel>
+                  <SceneLabel>Topic</SceneLabel>
 
                   <div className="mt-1.5 min-h-9 rounded-[var(--app-radius-control)] border border-[var(--app-border)] bg-[var(--app-surface-muted)] px-2.5 py-2 text-[11px] leading-relaxed text-[var(--app-text)]">
                     <TypingText
@@ -104,7 +104,7 @@ export function TeachingScene() {
                   {/* Fach-Filter. Die Auswahl steht VOR den Fundstellen –
                       erst das Fach, dann die Treffer. */}
                   <div className="mt-3">
-                    <SceneLabel>Fach</SceneLabel>
+                    <SceneLabel>Subject</SceneLabel>
                     <div className="mt-1.5 flex flex-wrap gap-1">
                       {DEMO_MATERIAL.subjects.map((subject, position) => (
                         <span
@@ -123,7 +123,7 @@ export function TeachingScene() {
                   </div>
 
                   <div className="mt-3">
-                    <SceneLabel>Fundstellen im Fachkorpus</SceneLabel>
+                    <SceneLabel>Sources in the subject corpus</SceneLabel>
                   </div>
 
                   <ul className="mt-2 space-y-1.5">
@@ -239,7 +239,7 @@ export function TeachingScene() {
 
               <div className="mt-3 shrink-0">
                 <span className="inline-flex items-center rounded-full bg-[var(--app-blue-soft)] px-2.5 py-1 text-[10px] font-medium text-[var(--app-blue-on-soft)]">
-                  Quellen ausgewiesen
+                  Sources stated
                 </span>
               </div>
             </div>

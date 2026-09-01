@@ -11,13 +11,14 @@ import { FaqAccordion, type FaqItem } from "@/components/faq-accordion";
  */
 const faqItems: FaqItem[] = [
   {
-    question: `Was ist ${PRODUCT_NAME}?`,
-    answer: `${PRODUCT_NAME} ist die KI-Assistenz für Grundschullehrkräfte. Sie nimmt Beobachtungen aus dem Unterricht auf – getippt oder diktiert – und macht daraus Zeugnisbemerkungen, Elternmails und Unterrichtsmaterial.`,
+    question: `What is ${PRODUCT_NAME}?`,
+    answer: `${PRODUCT_NAME} is the AI assistant for primary school teachers. It takes in observations from the lesson – typed or dictated – and turns them into report comments, parent emails and teaching materials.`,
   },
   {
     // Diese Frage war eine Zeit lang entfernt, weil die Antwort nicht
-    // feststand. Sie steht fest: Grundschule, Klassen 1–4.
-    question: "Für welche Schulformen ist es gedacht?",
+    // feststand. Sie steht fest: Grundschule, Klassen 1–4 („primary school,
+    // years 1 to 4“).
+    question: "Which school types is it meant for?",
     // Geteilte Formulierung – Quelle ist src/config/brand.ts.
     answer: SCHOOL_TYPE_ANSWER,
   },
@@ -25,31 +26,31 @@ const faqItems: FaqItem[] = [
     // Fruehere Antwort: „Über das Rollen- und Rechtekonzept entscheiden wir
     // gerade." Das Modell steht – und zwar restriktiver, als Interessierte
     // erwarten. Genau deshalb gehoert es hierher und nicht ins Kleingedruckte.
-    question: "Wer sieht die Daten meiner Klasse?",
-    answer: `${DATA_SEPARATION_NOTE} Eine Rolle mit Gesamtsicht auf die Daten mehrerer Lehrkräfte gibt es nicht. Die Schulleitung sieht ausgewertete Kennzahlen zur Nutzung – keine einzelnen Beobachtungen.`,
+    question: "Who sees my class's data?",
+    answer: `${DATA_SEPARATION_NOTE} There is no role with an overall view of several teachers' data. School leadership sees aggregated figures on usage – no individual observations.`,
   },
   {
-    question: "Brauchen Eltern oder Kinder einen Zugang?",
-    answer: `Nein. ${PRODUCT_NAME} ist ein reines Werkzeug für Lehrkräfte und Schulleitung – es gibt bewusst kein Eltern- oder Schülerportal.`,
+    question: "Do parents or children need an account?",
+    answer: `No. ${PRODUCT_NAME} is purely a tool for teachers and school leadership – there is deliberately no parent or pupil portal.`,
   },
   {
-    // Regel C: „Preise werden aktuell mit Pilotschulen festgelegt" sagt in
+    // Regel C: „prices are currently being set with pilot schools" sagt in
     // sieben Wörtern, dass es weder Preisliste noch Kundschaft gibt. Der Satz
     // beschreibt jetzt, WIE der Preis zustande kommt.
     // Weiterhin gedeckt: Der Produktstand nennt keinen Preis, und dieser Satz
     // nennt auch keinen – er nennt den Weg zu ihm.
-    question: "Was kostet es?",
+    question: "What does it cost?",
     answer:
-      "Den Preis besprechen wir im Erstgespräch – zusammen mit dem Umfang, den Ihre Schule braucht.",
+      "We discuss the price in the first conversation – together with the scope your school needs.",
   },
   {
-    question: `Ersetzt ${PRODUCT_NAME} meine Bewertung?`,
-    answer: `Nein. Jeder Vorschlag ist ein Vorschlag – jede Entscheidung bleibt bei der Lehrkraft. Kompetenzeinschätzungen leitet ${PRODUCT_NAME} bewusst nicht automatisch aus Noten ab: Aus einer Deutschnote folgt nicht, ob ein Kind flüssig liest.`,
+    question: `Does ${PRODUCT_NAME} replace my assessment?`,
+    answer: `No. Every suggestion is a suggestion – every decision stays with the teacher. ${PRODUCT_NAME} deliberately does not derive competency assessments automatically from marks: a mark in German does not tell you whether a child reads fluently.`,
   },
   {
-    question: "Wie starte ich?",
+    question: "How do I start?",
     answer:
-      "Der Einstieg beginnt mit einer Demo. Alles Weitere – Pilotphase, Auftragsverarbeitungsvertrag, Einführung im Kollegium – besprechen wir dort mit Ihnen.",
+      "It starts with a first conversation. Everything after that – pilot phase, data processing agreement, introducing it to the staff – we go through with you there.",
   },
 ];
 
@@ -69,7 +70,7 @@ export function Faq() {
                 id="faq-titel"
                 className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
               >
-                Häufige Fragen
+                Common questions
               </h2>
             </div>
           </div>

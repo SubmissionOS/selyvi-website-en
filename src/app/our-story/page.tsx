@@ -10,7 +10,7 @@ import { HowWeWork } from "@/components/sections/ueber-uns/how-we-work";
 import { Promises } from "@/components/sections/ueber-uns/promises";
 import { ContactBand } from "@/components/sections/ueber-uns/contact-band";
 
-export const metadata: Metadata = pageMetadata("/ueber-uns");
+export const metadata: Metadata = pageMetadata("/our-story");
 
 /**
  * Über-uns-Seite.

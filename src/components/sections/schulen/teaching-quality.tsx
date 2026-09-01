@@ -12,19 +12,19 @@ import { PRODUCT_NAME } from "@/config/brand";
  * ==========================================================================
  * DREI WORTLAUT-SPERREN – NICHT AUFWEICHEN
  * ==========================================================================
- *   1. Kein „nachweislich" oder „messbar gestiegen". Gemessene
+ *   1. Kein „demonstrably" oder „measurably increased". Gemessene
  *      Qualitaetssteigerungen gibt es NICHT. Der Produktstand fuehrt die
  *      Wirkungsmessung als Erhebungsmodell, nicht als Ergebnis – und die
  *      Wirkungszeile im Produkt weist jede Zahl als Messwert oder als
  *      Schaetzwert aus.
- *   2. Kein „die Schulqualität steigt" als Tatsachenbehauptung. Der Text sagt,
+ *   2. Kein „school quality rises" als Tatsachenbehauptung. Der Text sagt,
  *      dass wir MESSEN – er nennt kein Ergebnis. Frueher stand hier „behaupten
  *      wir nicht"; das war eine Selbstauskunft ueber Unwissen und faellt unter
  *      CLAUDE.md, Regel B.
- *   3. Kein „greift auf Lehrpläne zu". Die Lehrplaene liegen erhoben vor,
- *      sind aus Lizenzgruenden aber bewusst nicht angebunden. „Orientiert
- *      sich an" ist das staerkste zulaessige Verb – dieselbe Sperre wie im
- *      Hero und in „Selyvi lernt mit."
+ *   3. Kein „accesses the curricula". Die Lehrplaene liegen erhoben vor,
+ *      sind aus Lizenzgruenden aber bewusst nicht angebunden. „Guided by" ist
+ *      das staerkste zulaessige Verb – dieselbe Sperre wie im Hero und in
+ *      „Selyvi keeps learning."
  *
  * BEWUSST OHNE SZENE UND OHNE KENNZAHL. Die Seite sollte in derselben Runde
  * kuerzer werden; eine Sektion, die genau das unterlaeuft, waere ein
@@ -43,26 +43,26 @@ export function TeachingQuality() {
             id="unterrichtsqualitaet-titel"
             className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
           >
-            Entlastung ist kein Selbstzweck: Es geht um Unterricht.
+            Relief is not an end in itself: this is about teaching.
           </h2>
 
           <p className="mt-5 text-lg text-gray-500">
-            Wer weniger Abende mit Verwaltung verbringt, hat am nächsten Morgen mehr Kraft
-            für die Stunde. Und {PRODUCT_NAME} orientiert sich dabei an aktuellen
-            Bildungsvorgaben, damit Entlastung und heutige Anforderungen zusammenkommen.
+            Fewer evenings spent on administration means more energy for the lesson the
+            next morning. And {PRODUCT_NAME} is guided by current education standards, so
+            that relief and today’s requirements come together.
           </p>
 
           <p className="mt-4 text-lg text-ink">
-            Ob das im Unterricht ankommt, messen wir – von Anfang an, mit unserem
-            Wirkungsmodell.
+            Whether that reaches the classroom is something we measure – from the start,
+            with our impact model.
           </p>
 
           <p className="mt-6">
             <Link
-              href="/forschung"
+              href="/research"
               className="text-base text-brand-600 underline underline-offset-4"
             >
-              Wie wir Wirkung messen
+              How we measure impact
             </Link>
           </p>
         </div>

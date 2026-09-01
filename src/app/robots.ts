@@ -7,7 +7,7 @@ import { absoluteUrl } from "@/config/seo";
  *
  * Erlaubt alles und verweist auf die Sitemap.
  *
- * Absichtlich KEIN Disallow für /impressum und /datenschutz: Diese Seiten
+ * Absichtlich KEIN Disallow für /legal-notice und /privacy: Diese Seiten
  * tragen bereits <meta name="robots" content="noindex">. Ein Disallow würde
  * Crawler daran hindern, die Seiten überhaupt abzurufen – sie könnten das
  * noindex dann nicht lesen und die Seiten unter Umständen trotzdem

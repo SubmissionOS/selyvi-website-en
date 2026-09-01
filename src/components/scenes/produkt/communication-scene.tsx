@@ -57,8 +57,8 @@ export function CommunicationScene() {
     <SceneTimeline
       steps={STEPS}
       loopPauseMs={2000}
-      kicker="17:10 · Elternpost"
-      label={`Animierte Darstellung einer Elternmail: Über ein Auswahlfeld wird die Sprache von Deutsch auf Türkisch umgeschaltet. Nur die Inhaltszeilen ändern sich, Anrede und Signatur bleiben unverändert stehen. Insgesamt stehen ${TRANSLATION_LANGUAGE_COUNT} Zielsprachen zur Verfügung. Alle Daten sind erfunden.`}
+      kicker="17:10 · Parent post"
+      label={`Animated view of a parent email: a select field switches the language from English to Turkish. Only the body lines change; the greeting and signature stay exactly as they were. ${TRANSLATION_LANGUAGE_COUNT} target languages are available in total. All data is invented.`}
     >
       {(scene) => {
         const moving = !scene.isStatic;
@@ -75,11 +75,11 @@ export function CommunicationScene() {
             // und Kinder haengen unter „Meine Klassen" – deshalb vorlaeufig
             // hier. Mapping folgt nach Screenshot.
             active="meine-klassen"
-            chips={[`Klasse ${DEMO_CLASS}`]}
+            chips={[`Class ${DEMO_CLASS}`]}
             className="h-[23rem] sm:h-[19rem]"
           >
             <div className="flex items-start justify-between gap-3">
-              <SceneLabel>Elternmail</SceneLabel>
+              <SceneLabel>Parent email</SceneLabel>
 
               <div className="relative shrink-0">
                 <span

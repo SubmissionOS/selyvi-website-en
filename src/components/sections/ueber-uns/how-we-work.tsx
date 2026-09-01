@@ -8,34 +8,34 @@ import { Button } from "@/components/ui/button";
  * Sektion 4 – Arbeitsweise.
  *
  * Alle drei Aussagen sind durch die Website selbst belegbar – besonders die
- * dritte: „Wir kennzeichnen offene Punkte“ ist keine Behauptung, sondern auf
- * /datenschutz-sicherheit und auf dieser Seite nachpruefbar. Genau deshalb
+ * dritte: „What is open we mark visibly“ ist keine Behauptung, sondern auf
+ * /security und auf dieser Seite nachpruefbar. Genau deshalb
  * darf sie hier ohne Marker stehen.
  *
  * Die erste Karte nennt die kanonische Praxis-Aussage aus PRACTICE_CLAIM –
- * dieselbe wie auf Startseite, /produkt und /schulen.
+ * dieselbe wie auf Startseite, /produkt und /for-school-leadership.
  */
 const practices = [
   {
     icon: Users,
-    title: "Mit Lehrkräften entwickelt",
+    title: "Developed with teachers",
     description: PRACTICE_CLAIM,
   },
   {
     icon: ShieldCheck,
-    title: "Datenschutz by Design",
+    title: "Data protection by design",
     // Ohne Hosting-Zusatz: Der Serverstandort des Produkts ist noch nicht
     // Deutschland (siehe PRODUCT_HOSTING_NOTE), und diese Karte ist nicht der
     // Ort, an dem das mit einem Halbsatz geklaert werden koennte.
     description:
-      "Verarbeitet wird nur, was die jeweilige Funktion benötigt. Jede Lehrkraft sieht ausschließlich ihre eigenen Daten.",
-    action: { label: "Sicherheit & Datenschutz", href: "/datenschutz-sicherheit" },
+      "Only what the particular function needs is processed. Every teacher sees only their own data.",
+    action: { label: "Security & data protection", href: "/security" },
   },
   {
     icon: Eye,
-    title: "Ehrlich über den Stand",
+    title: "Honest about where we stand",
     description:
-      "Was offen ist, kennzeichnen wir sichtbar, statt es zu überspielen. Auch auf dieser Seite.",
+      "What is open we mark visibly, instead of glossing over it. On this page too.",
   },
 ];
 
@@ -50,7 +50,7 @@ export function HowWeWork() {
           id="arbeitsweise-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
         >
-          Wie wir arbeiten
+          How we work
         </h2>
 
         <ul className="mt-14 grid gap-6 md:grid-cols-3">

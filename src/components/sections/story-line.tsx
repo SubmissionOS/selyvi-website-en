@@ -15,7 +15,9 @@
  *   - Kein eigener Hintergrund: Die Zeile uebernimmt den der Seite und wirkt
  *     wie eine Atempause zwischen zwei Baendern, nicht wie ein viertes Band.
  *
- * TON: Diese Saetze sind der empfindlichste Text der ganzen Website. Sie
+ * TON: Diese Saetze sind der empfindlichste Text der ganzen Website – und in
+ * der Uebersetzung erst recht: Sie leben von Rhythmus, nicht von Information.
+ * Die drei englischen Fassungen stehen in docs/en-review.md zur Freigabe. Sie
  * duerfen nichts behaupten, nichts anpreisen und keine Funktion nennen – wer
  * hier eine Produktaussage unterbringt, macht aus einer Erinnerung eine
  * Anzeige. Massstab beim Ueberarbeiten: Der Satz muss laut vorgelesen von

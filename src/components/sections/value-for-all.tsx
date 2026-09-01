@@ -3,11 +3,11 @@ import { Building2, ClipboardPen, LineChart, type LucideIcon } from "lucide-reac
 import { PRODUCT_NAME } from "@/config/brand";
 
 /**
- * Sektion 8 – Was Selyvi zurueckgibt.
+ * Sektion 8 – „What Selyvi gives back“.
  *
- * Steht zwischen „Was Ihnen abgenommen wird“ und dem DSGVO-Block. Die
+ * Steht zwischen „What gets taken off your hands“ und dem DSGVO-Block. Die
  * Reihenfolge ist Absicht: erst die Funktionen, dann – fuer wen sich das
- * lohnt. Vorher gelesen waere die Spalte „Schultraeger“ eine Behauptung ohne
+ * lohnt. Vorher gelesen waere die Spalte „For school authorities“ eine Behauptung ohne
  * Grundlage.
  *
  * ==========================================================================
@@ -30,11 +30,11 @@ import { PRODUCT_NAME } from "@/config/brand";
  *
  *
  * ==========================================================================
- * WARUM DIE SPALTE „FUER LEHRKRAEFTE“ ANDERS GEBAUT IST ALS DIE ANDEREN BEIDEN
+ * WARUM DIE SPALTE „FOR TEACHERS“ ANDERS GEBAUT IST ALS DIE ANDEREN BEIDEN
  * ==========================================================================
  * Sie nannte urspruenglich Zeugnistext, Elternmail und Material – also genau
  * die drei Tatsachen, die auf der Startseite ohnehin schon im Hero, in „Was
- * sich im Alltag ändert“, in „Was Ihnen abgenommen wird“ und in der FAQ
+ * sich im Alltag ändert“, in „What gets taken off your hands“ und in der FAQ
  * stehen. Gemessen ueber die Quelldateien waren das fuenf Sektionen fuer
  * dieselben drei Aussagen; diese hier war die fuenfte und hat nichts
  * hinzugefuegt.
@@ -58,9 +58,13 @@ import { PRODUCT_NAME } from "@/config/brand";
  *      echtem Fachwissen — Live … Die Lehrkraft kann die Fundstellen auch
  *      selbst auswaehlen statt sie automatisch ziehen zu lassen.“
  *
- * Der dritte Punkt vermeidet bewusst das Wort „Material“: Die Aussage
- * „Material, das zur Klasse passt“ steht schon vier Mal auf der Seite. Hier
- * geht es um etwas anderes – wer die Quellen auswaehlt.
+ * Der dritte Punkt vermeidet bewusst das Wort „materials“: Die Aussage
+ * „materials that fit the class“ steht schon vier Mal auf der Seite. Hier geht
+ * es um etwas anderes – wer die Quellen auswaehlt.
+ *
+ * „school authority“ fuer „Schultraeger“ (docs/glossar-en.md): Ein deutsches
+ * Konstrukt ohne Entsprechung. Der Begriff beschreibt die Funktion, ohne ein
+ * falsches Land-Modell zu behaupten.
  *
  * Alle drei passen unter dieselbe Ueberschrift: Es sind die Stellen, an denen
  * die Entscheidung ausdruecklich bei der Lehrkraft bleibt.
@@ -80,32 +84,32 @@ type ValueColumn = {
 const columns: ValueColumn[] = [
   {
     icon: ClipboardPen,
-    audience: "Für Lehrkräfte",
-    headline: "Die Schreibarbeit, nicht das Urteil.",
+    audience: "For teachers",
+    headline: "The writing, not the judgement.",
     points: [
-      "Beobachtungen für mehrere Kinder gleichzeitig, während die Stunde läuft – statt abends aus dem Gedächtnis",
-      "Keine Automatik bei Kompetenzen – aus einer Deutschnote folgt nicht, ob ein Kind flüssig liest. Eingeschätzt wird, was Sie beobachtet haben",
-      "Welche Fundstellen aus dem Fachkorpus einfließen, wählen Sie auf Wunsch selbst – statt sie automatisch ziehen zu lassen",
+      "Observations for several children at once, while the lesson is running – instead of from memory in the evening",
+      "No automatic step from marks to competencies – a mark in German does not tell you whether a child reads fluently. What gets assessed is what you observed",
+      "Which sources from the subject corpus feed in is yours to choose, if you want – instead of letting them be pulled automatically",
     ],
   },
   {
     icon: LineChart,
-    audience: "Für Schulleitungen",
-    headline: "Überblick, der niemanden vorführt.",
+    audience: "For school leadership",
+    headline: "An overview that puts nobody on the spot.",
     points: [
-      "Der Entlastungsbericht zeigt die gewonnene Zeit, Monat für Monat",
-      "Nutzung im Kollegium als Verteilung – nie als namentliche Rangliste",
-      "Trends über echte Monate; der laufende Monat ist als „läuft“ markiert",
+      "The workload relief report shows the time gained, month by month",
+      "Use across the staff as a distribution – never as a ranking by name",
+      "Trends across real months; the current month is marked as “running”",
     ],
   },
   {
     icon: Building2,
-    audience: "Für Schulträger",
-    headline: "Etwas Vorlegbares statt Bauchgefühl.",
+    audience: "For school authorities",
+    headline: "Something to put on the table instead of a gut feeling.",
     points: [
-      "Die Schulleitung kann den Entlastungsbericht als PDF vorlegen",
-      "Geschätzte Zahlen sind als Schätzwerte gekennzeichnet, nicht als Messwerte",
-      "Die Wirkungszeile ordnet jede Zahl ein: Messwert oder Schätzwert",
+      "School leadership can submit the workload relief report as a PDF",
+      "Estimated figures are labelled as estimates, not as measured values",
+      "The impact line places every figure: measured value or estimate",
     ],
   },
 ];
@@ -121,7 +125,7 @@ export function ValueForAll() {
           id="zurueckgibt-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
         >
-          Was {PRODUCT_NAME} zurückgibt
+          What {PRODUCT_NAME} gives back
         </h2>
 
         <div className="mt-14 grid gap-10 lg:grid-cols-3 lg:gap-12">
@@ -156,8 +160,8 @@ export function ValueForAll() {
         {/* Abschlusszeile ueber die volle Breite – bewusst KEINE vierte Spalte.
             Siehe Kopfkommentar: ein Schuelerportal gibt es nicht. */}
         <p className="mt-14 border-t border-gray-200 pt-10 text-lg text-ink">
-          Und die Kinder? Profitieren indirekt – von einer Lehrkraft, die wieder Zeit für
-          sie hat.
+          And the children? They benefit indirectly – from a teacher who has time for
+          them again.
         </p>
       </div>
     </section>

@@ -53,8 +53,8 @@ export function ChatScene() {
     <SceneTimeline
       steps={STEPS}
       loopPauseMs={2400}
-      kicker="16:45 · Vor dem Elterngespräch"
-      label={`Animierte Darstellung einer freien Frage an die eigene Dokumentation: In ein Eingabefeld wird „${FRAGE.text}" getippt. Darunter entsteht eine Antwort aus zwei Sätzen, die auf zwei zuvor erfasste Beobachtungen verweist. Ein Hinweis nennt, dass die Antwort ausschliesslich aus den eigenen Einträgen der Lehrkraft stammt. Alle Daten sind erfunden.`}
+      kicker="16:45 · Before the parents' meeting"
+      label={`Animated view of a free question put to your own documentation: „${FRAGE.text}" is typed into an input field. Below it an answer of two sentences appears, referring to two observations recorded earlier. A note states that the answer comes solely from the teacher's own entries. All data is invented.`}
     >
       {(scene) => {
         const moving = !scene.isStatic;
@@ -70,10 +70,10 @@ export function ChatScene() {
             // „Live-Unterricht" – dort entstehen die Eintraege, auf die der
             // Chat sich beruft.
             active="live-unterricht"
-            chips={[`Klasse ${DEMO_CLASS}`]}
+            chips={[`Class ${DEMO_CLASS}`]}
             className="h-[24rem] sm:h-[21rem]"
           >
-            <SceneLabel>Frage an die eigenen Daten</SceneLabel>
+            <SceneLabel>Question to your own data</SceneLabel>
 
             {/* ---------- Eingabezeile ---------- */}
             <div className="mt-3 flex items-start gap-2 rounded-[var(--app-radius-card)] border border-[var(--app-border)] bg-[var(--app-surface-muted)] px-3 py-2.5">
@@ -135,7 +135,7 @@ export function ChatScene() {
                 answering ? "opacity-100" : "opacity-0",
               )}
             >
-              Antworten nur aus Ihren eigenen Einträgen
+              Answers only from your own entries
             </p>
           </UiWindow>
         );

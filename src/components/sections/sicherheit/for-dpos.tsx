@@ -20,18 +20,18 @@ export function ForDpos() {
             id="dsb-titel"
             className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
           >
-            Für Datenschutzbeauftragte
+            For data protection officers
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            Fragen aus einer Datenschutzprüfung zu {PRODUCT_NAME} beantworten wir direkt
-            und ohne Verkaufsgespräch. Schreiben Sie uns über die Terminanfrage – wir
-            melden uns.
+            Questions from a data protection review of {PRODUCT_NAME} we answer directly
+            and without a sales conversation. Write to us through the request form – we
+            will get back to you.
           </p>
 
           <div className="mt-10">
             <Button asChild variant="outline" size="lg">
-              <Link href="/demo">Fragen an uns richten</Link>
+              <Link href="/meet">Put your questions to us</Link>
             </Button>
           </div>
         </div>

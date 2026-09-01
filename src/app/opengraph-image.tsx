@@ -20,7 +20,7 @@ import { PRODUCT_NAME } from "@/config/brand";
  */
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = `${PRODUCT_NAME} – Die KI-Assistenz für Grundschullehrkräfte`;
+export const alt = `${PRODUCT_NAME} – the AI assistant for primary school teachers`;
 
 // Tokens als Literale: ImageResponse rendert ausserhalb des Dokuments und
 // kennt die CSS-Variablen aus globals.css nicht.
@@ -83,7 +83,7 @@ export default function OpengraphImage() {
             maxWidth: "900px",
           }}
         >
-          Weniger Verwaltung. Mehr Unterricht.
+          Less admin. More teaching.
         </div>
 
         <div
@@ -95,7 +95,7 @@ export default function OpengraphImage() {
             maxWidth: "820px",
           }}
         >
-          Die KI-Assistenz für Grundschullehrkräfte, Klassen 1–4.
+          The AI assistant for primary school teachers, years 1–4.
         </div>
       </div>
 

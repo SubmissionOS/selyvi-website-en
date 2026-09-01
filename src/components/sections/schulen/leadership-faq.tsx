@@ -10,15 +10,15 @@ import { FaqAccordion, type FaqItem } from "@/components/faq-accordion";
  */
 const faqItems: FaqItem[] = [
   {
-    question: `Was kostet ${PRODUCT_NAME} für unsere Schule?`,
+    question: `What does ${PRODUCT_NAME} cost for our school?`,
     // Wortgleich mit der Startseiten-FAQ – siehe dort die Begründung.
     answer:
-      "Den Preis besprechen wir im Erstgespräch – zusammen mit dem Umfang, den Ihre Schule braucht.",
+      "We discuss the price in the first conversation – together with the scope your school needs.",
   },
   {
-    question: "Müssen Personalrat und Datenschutzbeauftragte einbezogen werden?",
+    question: "Do the staff council and the data protection officer need to be involved?",
     answer:
-      "Das empfehlen wir ausdrücklich. Die Einführung einer Software, die personenbezogene Daten von Lehrkräften sowie Schülerinnen und Schülern verarbeitet, berührt die Zuständigkeit beider Seiten.",
+      "We expressly recommend it. Introducing software that processes personal data of teachers as well as pupils touches on the remit of both.",
   },
 ];
 
@@ -41,7 +41,7 @@ export function LeadershipFaq() {
                 id="schulleitung-faq-titel"
                 className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
               >
-                Fragen aus Schulleitungen
+                Questions from school leadership
               </h2>
             </div>
           </div>

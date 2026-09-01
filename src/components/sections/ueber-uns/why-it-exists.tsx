@@ -4,7 +4,7 @@ import { PRODUCT_NAME } from "@/config/brand";
 /**
  * Sektion „Warum es … gibt“ – zwischen Intro und Mission.
  *
- * Sprungziel des Herkunfts-Links im Hero der Startseite (id="warum").
+ * Sprungziel des Herkunfts-Links im Hero der Startseite (id="why").
  *
  * Bewusst ruhiger Lesetext, keine Karten: Das hier ist der einzige Abschnitt
  * der Website, der erzaehlt statt aufzuzaehlen. `max-w-[34rem]` haelt die
@@ -12,9 +12,9 @@ import { PRODUCT_NAME } from "@/config/brand";
  * noch gut lesbar bleibt.
  *
  * ACHTUNG, KOPPLUNG ZU PRACTICE_CLAIM:
- * Der zweite Absatz enthaelt die BW-Aussage ein zweites Mal – als Nebensatz im
- * Fliesstext ("gemeinsam mit Lehrkraeften aus ganz Baden-Wuerttemberg […] von
- * der Grundschule bis zum Abitur"). Sie laesst sich hier nicht durch die
+ * Der zweite Absatz enthaelt die Praxis-Aussage ein zweites Mal – als Nebensatz
+ * im Fliesstext („together with teachers across Germany – from primary through
+ * to upper secondary“). Sie laesst sich hier nicht durch die
  * Konstante ersetzen, weil PRACTICE_CLAIM ein eigenstaendiger Satz ist und der
  * Erzaehlfluss sonst bricht.
  *
@@ -35,7 +35,7 @@ import { PRODUCT_NAME } from "@/config/brand";
 export function WhyItExists() {
   return (
     <section
-      id="warum"
+      id="why"
       aria-labelledby="warum-titel"
       className="border-b border-gray-200"
     >
@@ -44,7 +44,7 @@ export function WhyItExists() {
           id="warum-titel"
           className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
         >
-          Warum es {PRODUCT_NAME} gibt
+          Why {PRODUCT_NAME} exists
         </h2>
 
         {/* ==================================================================
@@ -73,29 +73,27 @@ export function WhyItExists() {
         <div className="mt-8 grid gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="space-y-6 text-lg text-gray-500 lg:col-span-7">
             <p>
-              Angefangen hat das hier nicht mit einem Businessplan, sondern am
-              Küchentisch. Im engsten Umfeld unseres Teams ist eine angehende
-              Grundschullehrerin – und wir haben aus nächster Nähe gesehen, wie viele
-              Abende nicht in Unterricht fließen, sondern in Dokumentation, Zeugnistexte
-              und Elternpost. Also haben wir angefangen, ihr Werkzeuge zu bauen. Erst
-              kleine, dann bessere. Irgendwann war klar: Das Problem hat nicht eine Person
-              – das Problem hat ein ganzes Berufsfeld.
+              This did not start with a business plan. It started at the kitchen table. In
+              our team’s closest circle there is a trainee primary school teacher – and we
+              watched from up close how many evenings go not into teaching but into
+              documentation, report texts and parent post. So we started building her
+              tools. Small ones first, then better ones. At some point it was clear: this
+              is not one person’s problem – it is a whole profession’s problem.
             </p>
 
             <p>
-              Aus den Abenden wurde ein System. Wir haben es gemeinsam mit Lehrkräften aus
-              ganz Deutschland weiterentwickelt – von der Grundschule bis zum Abitur – und
-              dabei mehr gelernt, als jedes Lehrbuch hergibt: Was im Alltag wirklich
-              hilft, entscheidet sich im Alltag. Gebaut haben wir {PRODUCT_NAME} zuerst
-              für die Grundschule. Aus uns dreien – Christian, Tobi und Rafael – wurde ein
-              Team mit einem einfachen Maßstab: Würde das einer Lehrerin, die wir kennen,
-              wirklich einen Abend zurückgeben? Wenn nein, bauen wir es nicht.
+              Those evenings turned into a system. We developed it further together with
+              teachers across Germany – from primary through to upper secondary – and
+              learned more from that than any textbook offers: what really helps day to
+              day is decided day to day. We built {PRODUCT_NAME} for primary school first.
+              The three of us – Christian, Tobi and Rafael – became a team with one simple
+              test: would this really give an evening back to a teacher we know? If not,
+              we do not build it.
             </p>
 
             <p>
-              Und vielleicht noch das: Wir drei saßen selbst lange genug in diesen
-              Klassenzimmern. Wir bauen das hier auch für die Lehrkräfte, die wir damals
-              hatten.
+              And perhaps this as well: the three of us sat in those classrooms ourselves
+              for long enough. We are building this for the teachers we had back then, too.
             </p>
           </div>
 

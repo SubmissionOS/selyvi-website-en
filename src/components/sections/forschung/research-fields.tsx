@@ -25,8 +25,8 @@ import { PRODUCT_NAME } from "@/config/brand";
  * solange die Einwilligungstexte nicht juristisch geprueft sind.
  *
  * Der Vorspann sagt das weiterhin – aber als EINLADUNG statt als Defizit.
- * Die frueheren Saetze („Keine davon lässt sich heute aus Selyvi beantworten
- * – die Erhebungsinstrumente dafür gibt es noch nicht.“) waren wahr und
+ * Die frueheren Saetze („none of them can be answered from Selyvi today – the
+ * survey instruments for that do not exist yet“) waren wahr und
  * trotzdem falsch platziert: Sie erklaerten einer Leserin als Erstes, was
  * nicht geht. Der Inhalt ist unveraendert – es gibt heute nichts abzurufen –,
  * die Blickrichtung ist neu: Die Instrumente entstehen gerade, und wer jetzt
@@ -41,8 +41,9 @@ import { PRODUCT_NAME } from "@/config/brand";
  * ==========================================================================
  * TEXTLAENGE: ALLE KARTEN AUF EIN MASS
  * ==========================================================================
- * Richtwert ist „Regionale Unterschiede“ mit 185 Zeichen – die Karte, die im
- * Layout am besten sass. Toleranz rund 165 bis 200 Zeichen. Zwei Saetze je
+ * Richtwert ist „Regional differences“ – die Karte, die im Layout am besten
+ * sass. Englischer Text laeuft hier rund 5 bis 10 Prozent laenger als der
+ * deutsche; die Spanne liegt entsprechend bei rund 175 bis 215 Zeichen. Zwei Saetze je
  * Karte: Der erste nennt die Frage, der zweite sagt, warum wir sie nicht
  * allein beantworten koennen.
  *
@@ -51,7 +52,8 @@ import { PRODUCT_NAME } from "@/config/brand";
  * Vorgaenger-Fassung aufgefallen.
  *
  * Die Themen stammen aus docs/selyvi-kompakt.md, Abschnitt
- * „Wissenschaftliches Potenzial“. Dort stehen sie als Potenzial – hier
+ * „Wissenschaftliches Potenzial“ (wissenschaftliches Potenzial). Dort stehen
+ * sie als Potenzial – hier
  * duerfen sie deshalb nur als Vorhaben stehen.
  */
 type ResearchField = {
@@ -63,57 +65,57 @@ type ResearchField = {
 const fields: ResearchField[] = [
   {
     icon: Compass,
-    title: "Evidenzbasierte Unterrichtskonzepte",
+    title: "Evidence-based teaching approaches",
     description:
-      "Welche Unterrichtskonzepte im Alltag tatsächlich tragen und welche nur auf dem Papier funktionieren. Eine Frage, die sich gemeinsam prüfen ließe, statt sie weiter zu vermuten.",
+      "Which teaching approaches actually hold up day to day and which only work on paper. A question that could be examined together, instead of continuing to guess at it.",
   },
   {
     icon: Microscope,
-    title: "Tatsächliche Unterrichtsprozesse",
+    title: "How lessons actually run",
     description:
-      "Wie eine Stunde wirklich verläuft – zwischen Plan, Zwischenfall und Improvisation. Diesen Abstand zwischen Entwurf und Wirklichkeit würden wir gern mit Ihnen vermessen.",
+      "How a lesson really unfolds – between the plan, the interruption and the improvisation. We would like to measure that gap between draft and reality with you.",
   },
   {
     icon: Blocks,
-    title: "Unterschiedliche Lehrstile",
+    title: "Differences in teaching styles",
     description:
-      "Woran sich Lehrstile im Alltag unterscheiden und was das im Unterricht bewirkt. Ein Feld, in dem wir uns Forschung wünschen, die mehr sieht als eine einzelne Schule.",
+      "Where teaching styles differ day to day and what that does in the classroom. A field in which we would welcome research that sees more than a single school.",
   },
   {
     icon: FileStack,
-    title: "Neue Lehr- und Lernmaterialien",
+    title: "New teaching and learning materials",
     description:
-      "Wie Material aussehen müsste, das auf den dokumentierten Beobachtungen einer konkreten Klasse aufbaut. Wir würden es gern gemeinsam entwerfen und danach prüfen lassen.",
+      "What materials would have to look like if they built on the documented observations of one particular class. We would like to design them together and then have them examined.",
   },
   {
     icon: ClipboardList,
-    title: "Evaluation digitaler Unterstützung",
-    description: `Ob digitale Werkzeuge im Schulalltag wirklich halten, was sie versprechen. Für uns die unbequemste Frage – und der Grund, warum ${PRODUCT_NAME} sie nicht allein beantworten sollte.`,
+    title: "Evaluating digital support",
+    description: `Whether digital tools really deliver in everyday school life what they promise. For us the most uncomfortable question – and the reason ${PRODUCT_NAME} should not answer it alone.`,
   },
   {
     icon: Timer,
-    title: "Organisatorische Belastung von Lehrkräften",
+    title: "Administrative workload of teachers",
     description:
-      "Welcher Anteil der Arbeitszeit auf Dokumentation, Kommunikation und Verwaltung entfällt – und welche dieser Tätigkeiten überhaupt als belastend erlebt wird und welche nicht.",
+      "What share of working time goes on documentation, communication and administration – and which of those tasks is experienced as a burden at all, and which is not.",
   },
   {
     icon: Map,
-    title: "Regionale Unterschiede",
-    /** Die Referenzkarte fuer die Textlaenge – 185 Zeichen. */
+    title: "Regional differences",
+    /** Die Referenzkarte fuer die Textlaenge – rund 200 Zeichen. */
     description:
-      "Ob sich Belastung und Vorbereitungspraxis zwischen Bundesländern, Schulgrößen und Einzugsgebieten systematisch unterscheiden. Eine Frage, die nur ein Verbund über Ländergrenzen hinweg beantwortet.",
+      "Whether workload and preparation practice differ systematically between federal states, school sizes and catchment areas. A question only a consortium across state borders can answer.",
   },
   {
     icon: Sprout,
-    title: "Neue Förderkonzepte",
+    title: "New approaches to learning support",
     description:
-      "Wie Förderung aussieht, wenn sie auf laufender Beobachtung aufbaut statt auf einer einzelnen Momentaufnahme. Dafür braucht es fachliche Gegenrede, nicht nur Software.",
+      "What support looks like when it builds on continuous observation instead of a single snapshot. That needs expert counter-argument, not just software.",
   },
   {
     icon: CalendarClock,
-    title: "Langfristige Wirkungsanalysen",
+    title: "Long-term impact analyses",
     description:
-      "Was von schulischen Maßnahmen nach Jahren tatsächlich übrig bleibt. Eine Frage, für die drei Befragungswellen nicht reichen – hier brauchen wir Partner mit langem Atem.",
+      "What is actually left of school measures after years. A question for which three survey waves are not enough – here we need partners with staying power.",
   },
 ];
 
@@ -128,21 +130,21 @@ export function ResearchFields() {
           id="forschungsfelder-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
         >
-          Woran sich mit {PRODUCT_NAME} forschen lässt
+          What there is to research with {PRODUCT_NAME}
         </h2>
 
         {/* Diese beiden Saetze sind die Absicherung der ganzen Sektion – und
             zugleich die Einladung. Ohne sie liest sich die Kartenliste wie ein
             Datenkatalog. */}
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          Neun Fragen, die uns beschäftigen. Unser Wirkungsmodell läuft bereits in
-          Befragungswellen; die Instrumente für diese Fragen entwerfen wir gemeinsam mit
-          denen, die sie später nutzen.
+          Nine questions that occupy us. Our impact model already runs in survey waves;
+          the instruments for these questions we design together with the people who will
+          later use them.
         </p>
 
         <p className="mt-4 max-w-2xl text-lg text-gray-500">
-          Wir entwerfen sie nicht gern allein. Wer in einem dieser Felder arbeitet, soll
-          mitentscheiden, was überhaupt erhoben wird – und was besser nicht.
+          We would rather not design them alone. Anyone working in one of these fields
+          should have a say in what is collected at all – and what had better not be.
         </p>
 
         <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

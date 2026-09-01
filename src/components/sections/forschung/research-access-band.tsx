@@ -38,23 +38,23 @@ export function ResearchAccessBand() {
             id="forschungszugang-titel"
             className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
           >
-            So gehen wir mit Forschungsdaten um
+            How we handle research data
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            Daten geben wir erst frei, wenn drei Dinge stehen: juristisch geprüfte,
-            zweckgranulare Einwilligungen der Beteiligten – Aggregation mit
-            Mindestfallzahlen statt Rohdaten – und ein dokumentiertes Erhebungsmodell.
+            We only release data once three things are in place: legally reviewed consent
+            from those involved, granular by purpose – aggregation with minimum case
+            counts instead of raw data – and a documented survey model.
           </p>
 
           <p className="mt-4 text-lg text-gray-500">
-            Das Erhebungsmodell ist dokumentiert, die Mindestfallzahlen sind darin
-            festgelegt, und die Wirkungszeile im Produkt arbeitet bereits danach.
+            The survey model is documented, the minimum case counts are laid down in it,
+            and the impact line in the product already works to them.
           </p>
 
           <p className="mt-6 text-lg text-ink">
-            Diese Reihenfolge ist langsamer. Sie ist auch der Grund, warum man mit uns
-            guten Gewissens forschen kann.
+            This order is slower. It is also the reason you can do research with us with
+            a clear conscience.
           </p>
         </div>
       </div>

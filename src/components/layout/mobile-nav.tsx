@@ -36,7 +36,7 @@ export function MobileNav() {
           variant="ghost"
           size="icon"
           className="lg:hidden"
-          aria-label="Menü öffnen"
+          aria-label="Open menu"
         >
           <Menu aria-hidden="true" />
         </Button>
@@ -49,15 +49,15 @@ export function MobileNav() {
               <Wordmark />
             </span>
           </SheetTitle>
-          <SheetDescription className="sr-only">Navigation der Website</SheetDescription>
+          <SheetDescription className="sr-only">Website navigation</SheetDescription>
           <SheetClose asChild>
-            <Button variant="ghost" size="icon" aria-label="Menü schließen">
+            <Button variant="ghost" size="icon" aria-label="Close menu">
               <X aria-hidden="true" />
             </Button>
           </SheetClose>
         </SheetHeader>
 
-        <nav aria-label="Mobile Navigation" className="px-6">
+        <nav aria-label="Mobile navigation" className="px-6">
           <ul className="flex flex-col">
             {mainNav.map((item) => {
               const isActive = pathname === item.href;

@@ -52,7 +52,7 @@ export function SeparationScene() {
       steps={STEPS}
       loopPauseMs={2200}
       staticStepId="hinweis"
-      label={`Animierte Gegenüberstellung zweier Ansichten derselben Klasse ${DEMO_CLASS}: Links sieht die Lehrkraft ihre eigenen Beobachtungen mit Namen, rechts zeigt der Leitungsmodus ausschließlich Summen. Ein Zeiger versucht rechts, eine einzelne Beobachtung zu öffnen; dort steht keine. Eingeblendet wird der Satz, dass einzelne Beobachtungen nur die Lehrkraft selbst sieht. Alle Daten sind erfunden.`}
+      label={`Animated comparison of two views of the same class ${DEMO_CLASS}: on the left the teacher sees her own observations with names, on the right the leadership view shows totals only. On the right a pointer tries to open a single observation; there is none there. A line appears stating that individual observations are seen only by the teacher. All data is invented.`}
     >
       {(scene) => {
         const moving = !scene.isStatic;
@@ -66,7 +66,7 @@ export function SeparationScene() {
               {/* ---------- Links: die Lehrkraft ---------- */}
               <div className="flex flex-col rounded-[var(--app-radius-card)] border border-[var(--app-border)] bg-[var(--app-surface)] p-3">
                 <p className="text-[10px] font-medium tracking-wide text-[var(--app-text-muted)] uppercase">
-                  Lehrkraft {DEMO_TEACHER}
+                  Teacher {DEMO_TEACHER}
                 </p>
 
                 <ul className="mt-3 flex flex-col gap-1.5">
@@ -82,7 +82,7 @@ export function SeparationScene() {
                 </ul>
 
                 <p className="mt-auto text-[10px] text-[var(--app-text-muted)]">
-                  Eigene Beobachtungen, mit Namen
+                  Own observations, with names
                 </p>
               </div>
 
@@ -98,7 +98,7 @@ export function SeparationScene() {
                       138 Std.
                     </p>
                     <p className="text-[10px] text-[var(--app-text-muted)]">
-                      gewonnene Zeit · Schätzwert
+                      time gained · Estimate
                     </p>
                   </div>
                   <div className="rounded-[var(--app-radius-control)] bg-[var(--app-surface-muted)] px-2 py-1.5">
@@ -112,7 +112,7 @@ export function SeparationScene() {
                 </div>
 
                 <p className="mt-auto text-[10px] text-[var(--app-text-muted)]">
-                  Ausschließlich Summen
+                  Totals only
                 </p>
               </div>
             </div>
@@ -125,7 +125,7 @@ export function SeparationScene() {
                 hinweis ? "opacity-100" : "opacity-0",
               )}
             >
-              Einzelne Beobachtungen sieht nur die Lehrkraft selbst.
+              Individual observations are seen only by the teacher.
             </p>
 
             <FakeCursor

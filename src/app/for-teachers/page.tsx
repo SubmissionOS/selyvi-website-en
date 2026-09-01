@@ -11,7 +11,7 @@ import { EverydayExtras } from "@/components/sections/produkt/everyday-extras";
 import { CoCreateBand } from "@/components/sections/produkt/co-create-band";
 import { FinalCta } from "@/components/sections/final-cta";
 
-export const metadata: Metadata = pageMetadata("/fuer-lehrkraefte");
+export const metadata: Metadata = pageMetadata("/for-teachers");
 
 /**
  * Produktseite.

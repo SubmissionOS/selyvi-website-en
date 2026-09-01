@@ -23,18 +23,18 @@ export function SecurityIntro() {
           id="sicherheit-intro-titel"
           className="max-w-3xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl"
         >
-          Sicherheit und Datenschutz bei {PRODUCT_NAME}.
+          Security and data protection at {PRODUCT_NAME}.
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          Wir verarbeiten personenbezogene Daten nur, soweit die jeweilige Funktion es
-          erfordert, und nur zu dem Zweck, zu dem Ihre Schule sie uns anvertraut: der
-          Erbringung des Dienstes. Keine Verarbeitung darüber hinaus – keine Auswertung
-          für eigene Zwecke, keine Weitergabe zu Werbezwecken.
+          We process personal data only as far as the particular function requires, and
+          only for the purpose your school entrusted it to us for: providing the service.
+          No processing beyond that – no analysis for our own purposes, no passing on for
+          advertising.
         </p>
 
         <p className="mt-4 max-w-2xl text-lg text-gray-500">
-          Was hier steht, ist vertraglich und technisch abgesichert.
+          What stands here is secured contractually and technically.
         </p>
       </div>
     </section>

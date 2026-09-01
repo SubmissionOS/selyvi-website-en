@@ -67,11 +67,11 @@ const HERO_STEPS: SceneStep[] = [
  */
 const CURSOR_REST = { x: 35, y: 78 };
 
-/** Schaltfläche „Speichern". */
+/** Schaltfläche „Save". */
 const CURSOR_BUTTON = { x: 89, y: 43 };
 
 const SCENE_LABEL =
-  "Animierte Darstellung der Programmoberfläche: Eine im Unterricht getippte Beobachtung wird zu Fach- und Kategorie-Markierungen strukturiert, und daraus entsteht ein Entwurf für die Zeugnisbemerkung im Schreibstil der Lehrkraft. Alle gezeigten Daten sind erfunden.";
+  "Animated view of the application interface: an observation typed during the lesson is structured into subject and category markers, and out of it grows a draft report comment in the teacher's writing style. All data shown is invented.";
 
 export function HeroScene() {
   return (
@@ -79,7 +79,7 @@ export function HeroScene() {
       steps={HERO_STEPS}
       label={SCENE_LABEL}
       loopPauseMs={2000}
-      kicker={`08:15 · Deutschstunde in der ${DEMO_CLASS}`}
+      kicker={`08:15 · German lesson in ${DEMO_CLASS}`}
     >
       {(scene) => {
         const moving = !scene.isStatic;
@@ -94,14 +94,14 @@ export function HeroScene() {
           <UiWindow
             variant="app"
             active="live-unterricht"
-            chips={[`Klasse ${DEMO_CLASS}`, "Deutsch"]}
+            chips={[`Class ${DEMO_CLASS}`, "German"]}
           >
             <div className="space-y-4">
               {/* ---------- Bereich 1: Beobachtung ---------- */}
               <div>
                 <div className="flex items-center justify-between gap-3">
                   <span className="text-xs font-medium tracking-wide text-[var(--app-text-muted)] uppercase">
-                    Beobachtung
+                    Observation
                   </span>
 
                   {/* Der Puls läuft nur, solange getippt wird – danach hätte
@@ -126,13 +126,13 @@ export function HeroScene() {
 
                 <div className="mt-3 flex items-center justify-between gap-3">
                   <span className="text-xs text-[var(--app-text-muted)]">
-                    Getippt oder diktiert
+                    Typed or dictated
                   </span>
 
                   {/* Klickziel des Zeigers. Kein echter Button und deshalb
                       auch kein <button>: Die Szene ist als Ganzes ein Bild. */}
                   <span className="rounded-[var(--app-radius-control)] bg-[var(--app-blue)] px-3 py-1.5 text-xs font-medium text-surface">
-                    Speichern
+                    Save
                   </span>
                 </div>
 
@@ -171,7 +171,7 @@ export function HeroScene() {
                   Abdunklung dieser Schrift verletzt AA.
 
                   Das Badge erscheint stattdessen zusammen mit dem Text. Das ist
-                  auch inhaltlich richtiger – „In Ihrem Schreibstil" ist eine
+                  auch inhaltlich richtiger – „In your writing style" ist eine
                   Aussage ÜBER den Entwurf und sollte nicht dastehen, solange es
                   keinen Entwurf gibt.
 
@@ -180,7 +180,7 @@ export function HeroScene() {
               <div className="border-t border-[var(--app-border)] pt-5">
                 <div className="flex min-h-7 flex-wrap items-center justify-between gap-2">
                   <span className="text-xs font-medium tracking-wide text-[var(--app-text-muted)] uppercase">
-                    Zeugnisbemerkung (Entwurf)
+                    Report comment (draft)
                   </span>
 
                   {drafting ? (
@@ -192,7 +192,7 @@ export function HeroScene() {
                       )}
                     >
                       <Sparkles className="size-3" />
-                      In Ihrem Schreibstil
+                      In your writing style
                     </span>
                   ) : null}
                 </div>

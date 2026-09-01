@@ -7,7 +7,7 @@ import { useIsomorphicLayoutEffect } from "@/lib/use-isomorphic-layout-effect";
 import { cn } from "@/lib/utils";
 
 /**
- * „Vom Küchentisch bis heute" – fünf Stationen, die sich beim Scrollen
+ * „From the kitchen table to today" – fünf Stationen, die sich beim Scrollen
  * nacheinander zeigen und verbinden.
  *
  * ==========================================================================
@@ -38,24 +38,24 @@ import { cn } from "@/lib/utils";
  */
 const STATIONS = [
   {
-    title: "Der Küchentisch",
-    text: "Eine angehende Grundschullehrerin im engsten Umfeld – und die Abende, die nicht in den Unterricht flossen.",
+    title: "The kitchen table",
+    text: "A trainee primary school teacher in our closest circle – and the evenings that did not go into teaching.",
   },
   {
-    title: "Das Lehrerzimmer",
-    text: "Die ersten Rückmeldungen von Lehrkräften, die dasselbe kannten.",
+    title: "The staffroom",
+    text: "The first responses from teachers who knew the same thing.",
   },
   {
-    title: "Drei Gründer",
-    text: "Aus den Abenden wurde ein System – und aus uns dreien ein Team mit einem einfachen Maßstab.",
+    title: "Three founders",
+    text: "Those evenings turned into a system – and the three of us into a team with one simple test.",
   },
   {
-    title: "Lehrkräfte aus ganz Deutschland",
-    text: "Weiterentwickelt mit Lehrkräften von der Grundschule bis zum Abitur.",
+    title: "Teachers across Germany",
+    text: "Developed further with teachers from primary through to upper secondary.",
   },
   {
-    title: "Wirkung messen statt behaupten",
-    text: "Ein Erhebungsmodell von Anfang an – damit nicht wir sagen, ob es hilft.",
+    title: "Measuring impact instead of asserting it",
+    text: "A survey model from the start – so that it is not us who says whether it helps.",
   },
 ];
 
@@ -106,7 +106,7 @@ export function StoryStations({ variant = "breit" }: { variant?: StationsVariant
 
   return (
     <div ref={hostRef}>
-      <h3 className="text-lg font-semibold text-ink">Vom Küchentisch bis heute</h3>
+      <h3 className="text-lg font-semibold text-ink">From the kitchen table to today</h3>
 
       <div className="relative mt-8">
         {/* Die Linie. Waagerecht ab lg, darunter senkrecht – zwei getrennte

@@ -15,15 +15,16 @@ export function AboutIntro() {
           id="ueber-uns-intro-titel"
           className="max-w-3xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl"
         >
-          Wer hinter {PRODUCT_NAME} steht.
+          Who stands behind {PRODUCT_NAME}.
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          Hinter {PRODUCT_NAME} steht ein Team aus Produkt, Technik und Bildungspraxis.
+          Behind {PRODUCT_NAME} stands a team from product, engineering and classroom
+          practice.
         </p>
 
         <p className="mt-4 max-w-2xl text-lg text-gray-500">
-          Wir wollen Lehrkräften Verwaltungsarbeit abnehmen – nicht die Verantwortung.
+          We want to take administrative work off teachers – not the responsibility.
         </p>
       </div>
     </section>

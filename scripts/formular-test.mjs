@@ -11,10 +11,10 @@
  * ==========================================================================
  * Zwei Durchläufe, beide müssen dieselbe Bestätigung zeigen:
  *
- *   A  CRM erreichbar   -> „Danke für Ihre Anfrage." UND der Endpunkt hat
+ *   A  CRM erreichbar   -> „Thank you for your request." UND der Endpunkt hat
  *                          genau eine Anfrage mit dem richtigen Header und
  *                          den erwarteten Feldern bekommen.
- *   B  CRM tot           -> „Danke für Ihre Anfrage." trotzdem.
+ *   B  CRM tot           -> „Thank you for your request." trotzdem.
  *
  * Durchlauf B ist der eigentliche Punkt: Die Mail ist der Verlass, die
  * CRM-Übergabe die Zugabe. Wenn B fehlschlägt, ist genau die Regel gebrochen,
@@ -149,7 +149,7 @@ async function starteApp(crmUrl) {
 
   for (let i = 0; i < 60; i++) {
     try {
-      const res = await fetch(`http://127.0.0.1:${APP_PORT}/demo`);
+      const res = await fetch(`http://127.0.0.1:${APP_PORT}/meet`);
       if (res.status === 200) return { kind, logs };
     } catch {}
     await sleep(500);
@@ -233,7 +233,7 @@ const AUSFUELLEN = `(() => {
 
   const rolle = feld('role');
   Object.getOwnPropertyDescriptor(window.HTMLSelectElement.prototype, 'value')
-    .set.call(rolle, 'Schulleitung');
+    .set.call(rolle, 'School leadership');
   rolle.dispatchEvent(new Event('change', { bubbles: true }));
 
   const zustimmung = feld('consent');
@@ -268,11 +268,11 @@ async function durchlauf(browser, name, url) {
   for (let i = 0; i < 30; i++) {
     await sleep(400);
     text = (await lies("document.querySelector('main').innerText")) || "";
-    if (/Danke für Ihre Anfrage/.test(text)) break;
+    if (/Thank you for your request/.test(text)) break;
   }
 
-  const bestaetigt = /Danke für Ihre Anfrage/.test(text);
-  pruefe(bestaetigt, `${name}: Bestätigung „Danke für Ihre Anfrage." sichtbar`);
+  const bestaetigt = /Thank you for your request/.test(text);
+  pruefe(bestaetigt, `${name}: Bestätigung „Thank you for your request." sichtbar`);
   if (!bestaetigt) {
     console.log("    Sichtbarer Text war: " + text.replace(/\s+/g, " ").slice(0, 200));
   }
@@ -316,7 +316,7 @@ try {
   app = await starteApp(`http://127.0.0.1:${CRM_PORT}/api/inbound/website-lead`);
   browser = await starteBrowser();
 
-  await durchlauf(browser, "A /demo", "/demo");
+  await durchlauf(browser, "A /meet", "/meet");
   await sleep(500);
 
   pruefe(empfangen.length === 1, `A: genau eine CRM-Anfrage (${empfangen.length})`);
@@ -335,19 +335,19 @@ try {
     pruefe(b.organisation === "Musterschule Formularpfad", "A: organisation übergeben");
     pruefe(b.role === "Schulleitung", `A: role übergeben (${b.role})`);
     pruefe(typeof b.message === "string" && b.message.length > 0, "A: message übergeben");
-    pruefe(b.page_path === "/demo", `A: page_path (${b.page_path})`);
+    pruefe(b.page_path === "/meet", `A: page_path (${b.page_path})`);
     pruefe(b.utm_source === "newsletter", `A: utm_source (${b.utm_source})`);
     pruefe(b.utm_medium === "email", `A: utm_medium (${b.utm_medium})`);
     pruefe(b.utm_campaign === "schulleitung-2026", `A: utm_campaign (${b.utm_campaign})`);
     pruefe("referrer" in b, "A: Feld referrer vorhanden");
   }
 
-  // Zweite Quelle: /mitgestalten schickt dasselbe Formular mit anderem source.
-  await durchlauf(browser, "A /mitgestalten", "/mitgestalten");
+  // Zweite Quelle: /co-create schickt dasselbe Formular mit anderem source.
+  await durchlauf(browser, "A /co-create", "/co-create");
   await sleep(500);
   const zweite = empfangen[1];
   pruefe(zweite?.body?.source === "mitgestalten", "A: source = mitgestalten");
-  pruefe(zweite?.body?.page_path === "/mitgestalten", "A: page_path = /mitgestalten");
+  pruefe(zweite?.body?.page_path === "/co-create", "A: page_path = /co-create");
 
   await beende(browser.kind);
   await beende(app.kind);
@@ -359,7 +359,7 @@ try {
   app = await starteApp(TOTE_ADRESSE);
   browser = await starteBrowser();
 
-  await durchlauf(browser, "B /demo", "/demo");
+  await durchlauf(browser, "B /meet", "/meet");
   await sleep(500);
 
   pruefe(empfangen.length === vorher, "B: der Schein-Endpunkt bekam nichts");

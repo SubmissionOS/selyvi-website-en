@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
  * @param withMission Stellt MISSION_PROMISE ueber die Ueberschrift.
  *
  * Nur die Startseite setzt das. Die Komponente steht auch auf
- * /fuer-lehrkraefte und /schulen; dort haben die Leserinnen bereits eine ganze
+ * /for-teachers und /for-school-leadership; dort haben die Leserinnen bereits eine ganze
  * Seite Argumente hinter sich und brauchen keine Grundsatzaussage mehr. Auf
  * der Startseite ist es der letzte Satz vor der Entscheidung – und der
  * benennt die Arbeitsteilung, bevor jemand auf einen Knopf drueckt.
@@ -36,7 +36,7 @@ export function FinalCta({ withMission = false }: { withMission?: boolean }) {
             withMission && "mt-4",
           )}
         >
-          Zwanzig Minuten, dann wissen Sie, ob {PRODUCT_NAME} Ihnen hilft.
+          Twenty minutes, and you will know whether {PRODUCT_NAME} helps you.
         </h2>
 
         <div className="mt-10">

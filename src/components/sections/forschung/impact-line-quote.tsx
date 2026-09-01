@@ -7,7 +7,7 @@ import { IMPACT_LINE_PRINCIPLE } from "@/config/product";
  * dem Entlastungsbericht steht eine Einordnung, die Gemessenes als Messwert
  * und Geschaetztes als Schaetzwert ausweist – und sie verschwindet nie.
  *
- * Warum dieser Satz auf der FORSCHUNGSSEITE steht und nicht nur auf /schulen:
+ * Warum dieser Satz auf der FORSCHUNGSSEITE steht und nicht nur auf /for-school-leadership:
  * Er ist der einzige Beleg auf dieser Website dafuer, dass die
  * Wirkungsmessung nicht nur als Absicht existiert, sondern im laufenden
  * Produkt eine Aussage BLOCKIEREN kann. Genau das ist die Frage, die eine
@@ -18,7 +18,7 @@ import { IMPACT_LINE_PRINCIPLE } from "@/config/product";
  */
 export function ImpactLineQuote() {
   return (
-    <section aria-label="Grundsatz der Wirkungszeile" className="bg-surface-alt">
+    <section aria-label="The principle behind the impact line" className="bg-surface-alt">
       {/* ==================================================================
           ANKER STATT TEXTWAND
           ==================================================================
@@ -48,8 +48,8 @@ export function ImpactLineQuote() {
             </blockquote>
 
             <p className="mt-6 text-base text-gray-500">
-              Sie ist das Gegengewicht dazu, dass „140 Stunden gespart“ sonst als belegte
-              Wirkung gelesen wird.
+              It is the counterweight to „140 hours saved“ otherwise being read as
+              evidenced impact.
             </p>
           </div>
         </div>

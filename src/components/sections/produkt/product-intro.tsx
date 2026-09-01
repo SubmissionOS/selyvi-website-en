@@ -22,7 +22,7 @@ export function ProductIntro() {
           id="produkt-intro-titel"
           className="max-w-3xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl"
         >
-          Die Abende gehören wieder Ihnen.
+          Your evenings are yours again.
         </h1>
 
         {/* ZWEI SAETZE, mehr nicht. Die Ueberschrift traegt die Aussage; der
@@ -31,8 +31,8 @@ export function ProductIntro() {
             Die Sektion „In Arbeit", auf die hier frueher verwiesen wurde, gibt
             es nicht mehr – siehe CLAUDE.md, Regel D. */}
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          Zeugniszeit heißt Wochenenden am Schreibtisch, Elternpost heißt Abende. Genau
-          diese Arbeit nimmt {PRODUCT_NAME} Ihnen ab – nicht die Entscheidungen.
+          Report season means weekends at the desk, parent post means evenings. That is
+          the work {PRODUCT_NAME} takes off you – not the decisions.
         </p>
 
         <p className="mt-4 max-w-2xl text-lg text-gray-500">{SCHOOL_TYPE_ANSWER}</p>

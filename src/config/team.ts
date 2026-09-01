@@ -1,5 +1,5 @@
 /**
- * Team-Daten für /ueber-uns.
+ * Team-Daten für /our-story.
  *
  * WICHTIG – Personenfreigabe:
  * Namen, Funktionen und Fotos realer Personen auf einer oeffentlichen Website
@@ -10,7 +10,7 @@
  *
  * STAND: Alle drei Personen haben der Nennung zugestimmt (`approved: true`).
  * Die Zustimmung deckt auch die Erwaehnung beim Vornamen im Erzaehltext auf
- * /ueber-uns ab.
+ * /our-story ab.
  *
  * `description` ist je Person leer und wird schlicht nicht gerendert. Sobald
  * eine Person einen Satz ueber sich freigibt, hier eintragen – erfundene
@@ -23,7 +23,7 @@
  */
 export type TeamMember = {
   name: string;
-  /** Funktion in Klartext, z. B. "Geschäftsführung (CEO)". */
+  /** Funktion in Klartext, englisch – z. B. "Managing director (CEO)". */
   role: string;
   /** Initialen fuer den Platzhalter-Avatar, ein bis drei Zeichen. */
   initials: string;
@@ -39,14 +39,14 @@ export type TeamMember = {
 export const team: TeamMember[] = [
   {
     name: "Christian Karl Lange",
-    role: "Geschäftsführung (CEO)",
+    role: "Managing director (CEO)",
     initials: "CL",
     description: "",
     approved: true,
   },
   {
     name: "Tobias Haaga",
-    role: "Technik (CTO)",
+    role: "Engineering (CTO)",
     initials: "TH",
     description: "",
     approved: true,

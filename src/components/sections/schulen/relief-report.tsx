@@ -23,15 +23,15 @@ import { SampleDataNote } from "@/components/scenes/sample-data-note";
  *      und dort haelt sie keiner Nachfrage stand.
  *   2. Die Wirkungszeile. „Eingesparte Stunden" ist eine Prozesskennzahl, keine
  *      belegte Wirkung. Der Grundsatz dazu kommt aus IMPACT_LINE_PRINCIPLE
- *      und steht wortgleich auf /forschung. Er wird hier NICHT eingeleitet:
+ *      und steht wortgleich auf /research. Er wird hier NICHT eingeleitet:
  *      Die Konstante sagt selbst, wo der Satz im Produkt steht.
  *
  * Beides gehoert auf die Website, weil eine Schulleitung genau hier nachfragt.
  */
 const details = [
-  "Eingesparte Stunden, Automatisierungsquoten und Vorgänge je Prozess",
-  "Letzter abgeschlossener Monat im Vergleich zum Vormonat, der laufende Monat separat als Zwischenstand",
-  "Nutzung im Kollegium als Verteilung – bewusst keine namentliche Rangliste",
+  "Hours saved, automation rates and cases per process",
+  "Last completed month compared with the month before; the current month separately as an interim figure",
+  "Use across the staff as a distribution – deliberately no ranking by name",
 ];
 
 export function ReliefReport() {
@@ -47,13 +47,13 @@ export function ReliefReport() {
               id="entlastungsbericht-titel"
               className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
             >
-              Der Entlastungsbericht
+              The workload relief report
             </h2>
 
             <p className="mt-6 max-w-xl text-lg text-gray-500">
-              Am Monatsende steht im Leitungsmodus, was die Anwendung dem Kollegium
-              zurückgegeben hat. Als PDF exportierbar – das Dokument, das Sie Ihrem
-              Schulträger vorlegen.
+              At the end of the month, the leadership view shows what the application has
+              given back to the staff. Exportable as a PDF – the document you put in front
+              of your school authority.
             </p>
 
             <ul className="mt-8 space-y-3">
@@ -81,7 +81,8 @@ export function ReliefReport() {
                 Leitungsbereiche, erklaert wird hier einer – das gehoert
                 gesagt, und zwar als Feststellung, nicht als Anreisser. */}
             <p className="mt-2 text-xs text-gray-500">
-              Der Entlastungsbericht ist eine von mehreren Auswertungen im Leitungsmodus.
+              The workload relief report is one of several analyses in the leadership
+              view.
             </p>
 
             {/* Verweis in den gefuehrten Einblick. Bewusst ALLGEMEIN
@@ -90,10 +91,10 @@ export function ReliefReport() {
                 selbst an" waere eine Zusage, die die Tour nicht einloest. */}
             <p className="mt-4 text-sm">
               <Link
-                href="/einblick"
+                href="/preview"
                 className="text-brand-600 underline underline-offset-4"
               >
-                Die Anwendung selbst ausprobieren
+                Try the application for yourself
               </Link>
             </p>
           </div>
@@ -105,23 +106,23 @@ export function ReliefReport() {
             trägt – wer sie hier streicht, streicht sie aus der Seite. */}
         <div className="mt-12 grid gap-8 md:grid-cols-2">
           <p className="text-gray-500">
-            <span className="font-medium text-ink">Bewusst ohne Euro-Betrag.</span>{" "}
-            Grundlage der Berechnung sind hinterlegte Minutenannahmen. Die sind als
-            Schätzwerte gekennzeichnet und werden nicht zu einer Summe hochgerechnet, die
-            einer Nachfrage nicht standhält.
+            <span className="font-medium text-ink">Deliberately without a euro figure.</span>{" "}
+            The calculation rests on stored assumptions about minutes. Those are labelled
+            as estimates and are not extrapolated into a total that would not survive a
+            follow-up question.
           </p>
 
           <p className="text-gray-500">
-            <span className="font-medium text-ink">Die Wirkungszeile.</span>{" "}
-            {IMPACT_LINE_PRINCIPLE} Denn eingesparte Stunden sind eine Prozesskennzahl,
-            kein Wirkungsnachweis.
+            <span className="font-medium text-ink">The impact line.</span>{" "}
+            {IMPACT_LINE_PRINCIPLE} Because hours saved are a process metric, not evidence
+            of impact.
           </p>
         </div>
 
         {/* ==================================================================
             UMGEZOGEN AUS DER GELOESCHTEN SEKTION „WER WAS NUTZT"
             ==================================================================
-            Dieser Absatz war dort die einzige Aussage, die es auf /schulen
+            Dieser Absatz war dort die einzige Aussage, die es auf /for-school-leadership
             sonst nirgends gibt – und ausgerechnet die, nach der ein
             Personalrat als Erstes fragt: Die Schulleitung sieht ausgewertete
             Kennzahlen, keine einzelnen Beobachtungen.
@@ -130,9 +131,9 @@ export function ReliefReport() {
             inhaltlich richtiger als vorher: direkt neben den Zahlen, die die
             Schulleitung tatsaechlich sieht. */}
         <p className="mt-12 max-w-3xl border-l-2 border-gray-200 pl-6 text-gray-500">
-          Was die Schulleitung ausdrücklich nicht sieht: einzelne Beobachtungen und
-          Bewertungen. {DATA_SEPARATION_NOTE} Eine Rolle mit Gesamtsicht auf die Daten
-          mehrerer Lehrkräfte gibt es nicht – auch nicht für die Schulleitung.
+          What school leadership explicitly does not see: individual observations and
+          assessments. {DATA_SEPARATION_NOTE} There is no role with an overall view of
+          several teachers’ data – not for school leadership either.
         </p>
       </div>
     </section>

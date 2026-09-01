@@ -6,9 +6,11 @@ import { CTA_VARIANT, PRODUCT_NAME } from "@/config/brand";
 import {
   HOME_TITLE,
   OG_IMAGE,
+  SITE_LANG,
   SITE_LOCALE,
   SITE_URL,
   absoluteUrl,
+  alternateLanguages,
   routeFor,
 } from "@/config/seo";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -51,7 +53,10 @@ export const metadata: Metadata = {
     template: `%s – ${PRODUCT_NAME}`,
   },
   description: routeFor("/").description,
-  alternates: { canonical: absoluteUrl("/") },
+  alternates: {
+    canonical: absoluteUrl("/"),
+    languages: alternateLanguages(routeFor("/")),
+  },
   openGraph: {
     type: "website",
     locale: SITE_LOCALE,
@@ -69,10 +74,10 @@ export default function RootLayout({
   return (
     // data-cta steuert, welche der beiden CTA-Farben an --cta gebunden wird.
     // Der Wert kommt aus der Konstante CTA_VARIANT in src/config/brand.ts.
-    <html lang="de" data-cta={CTA_VARIANT} className={ibmPlexSans.variable}>
+    <html lang={SITE_LANG} data-cta={CTA_VARIANT} className={ibmPlexSans.variable}>
       <body className="flex min-h-dvh flex-col bg-surface text-ink">
-        <a href="#hauptinhalt" className="skip-link">
-          Zum Hauptinhalt springen
+        <a href="#main-content" className="skip-link">
+          Skip to main content
         </a>
 
         <SiteHeader />
@@ -83,7 +88,7 @@ export default function RootLayout({
             Kopfzeile weiter – der Sprung waere fuer genau die Gruppe wirkungslos,
             fuer die er gedacht ist. Kein Fokusring, weil das Ziel kein
             Bedienelement ist. */}
-        <main id="hauptinhalt" tabIndex={-1} className="flex-1 outline-none">
+        <main id="main-content" tabIndex={-1} className="flex-1 outline-none">
           {children}
         </main>
 

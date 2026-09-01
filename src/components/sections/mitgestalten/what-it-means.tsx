@@ -8,10 +8,11 @@ import { PRODUCT_NAME } from "@/config/brand";
  * ==========================================================================
  * KEINE KOSTENAUSSAGE. DAS IST ABSICHT UND KEIN VERGESSEN.
  * ==========================================================================
- * Vorgesehen war fuer die erste Karte „Sie nutzen Selyvi kostenfrei in Ihrer
- * Klasse". Die Konditionen des Pilotkreises sind aber nicht bestaetigt, und
+ * Vorgesehen war fuer die erste Karte „you use Selyvi free of charge in your
+ * class". Die Konditionen des Pilotkreises sind aber nicht bestaetigt, und
  * der Produktstand sagt zu Preisen nur: „Preise werden aktuell mit
- * Pilotschulen festgelegt." Eine Kostenzusage waere damit die einzige
+ * Pilotschulen festgelegt" – auf Englisch „prices are currently being set with
+ * pilot schools". Eine Kostenzusage waere damit die einzige
  * ungedeckte Aussage auf dieser Seite – ausgerechnet auf der Seite, die um
  * Vertrauen bittet.
  *
@@ -26,12 +27,12 @@ import { PRODUCT_NAME } from "@/config/brand";
 const points = [
   {
     icon: FlaskConical,
-    title: "Ausprobieren im echten Alltag",
-    description: `${PRODUCT_NAME} läuft in Ihrer eigenen Klasse, im laufenden Schuljahr – nicht in einer Testumgebung, sondern dort, wo sich zeigt, ob es trägt.`,
+    title: "Trying it out in real everyday work",
+    description: `${PRODUCT_NAME} runs in your own class, during the school year – not in a test environment, but where it shows whether it holds up.`,
   },
   {
     icon: MessageSquareQuote,
-    title: "Gehört werden",
+    title: "Being heard",
     /**
      * „Landen beim Team" ist durch den Produktstand gedeckt („Feedback aus
      * dem Feld — Live: Rueckmeldungen aus der App landen gesammelt im
@@ -40,13 +41,13 @@ const points = [
      * ein Versprechen, das eine groessere Anfrage sofort bricht.
      */
     description:
-      "Ihre Rückmeldungen landen nicht in einem Ticketsystem, sondern beim Team. Was klein ist, steht oft in derselben Woche im Produkt.",
+      "Your feedback does not land in a ticket system but with the team. Small things are often in the product the same week.",
   },
   {
     icon: Unlock,
-    title: "Nichts verkaufen müssen",
+    title: "Nothing to sell",
     description:
-      "Mitgestalten verpflichtet zu nichts: kein Vertrag, kein Kaufdruck. Aufhören können Sie jederzeit, ohne Begründung.",
+      "Co-creating commits you to nothing: no contract, no pressure to buy. You can stop at any time, without giving a reason.",
   },
 ];
 
@@ -58,7 +59,7 @@ export function WhatItMeans() {
           id="mitgestalten-heisst-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
         >
-          Was Mitgestalten heißt
+          What co-creating means
         </h2>
 
         <ul className="mt-12 grid gap-6 md:grid-cols-3">

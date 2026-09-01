@@ -1,4 +1,35 @@
-# produkt-website
+# selyvi-website-en — die englische Website (selyvi.com)
+
+> **Eigenständige englische Seite, kopiert von `SubmissionOS/selyvi-website`
+> bei Commit `382f107`. Änderungen der deutschen Seite werden hier bewusst
+> nachgezogen, nicht automatisch.**
+>
+> Es gibt keinen Merge, keinen Cherry-Pick-Automatismus und keine gemeinsame
+> Sprachschicht. Wer auf selyvi.de einen Satz ändert, ändert ihn hier von Hand
+> — oder er ändert sich hier nicht. Das ist die Entscheidung hinter dem Fork:
+> Eine geteilte Codebasis hätte jede deutsche Änderung zu einer halben
+> englischen gemacht, und eine halb übersetzte Seite ist schlechter als eine
+> ganz deutsche.
+>
+> **Was hier anders ist als in der deutschen Fassung:**
+>
+> | | selyvi.de | selyvi.com |
+> | --- | --- | --- |
+> | Domain | `SITE_URL = https://selyvi.de` | `SITE_URL = https://selyvi.com` |
+> | `<html lang>` | `de` | `en` |
+> | `og:locale` | `de_DE` | `en_GB` (Begründung in [seo.ts](src/config/seo.ts)) |
+> | Routen | `/fuer-lehrkraefte` … | `/for-teachers` … (deutsche Pfade → 308) |
+> | Ausgelieferter Text | deutsch | englisch |
+> | Kommentare, `docs/`, CLAUDE.md | deutsch | **weiterhin deutsch** |
+>
+> Die Kommentare bleiben deutsch, weil die Wahrheitsquelle
+> [docs/produktstand-2026-08.md](docs/produktstand-2026-08.md) deutsch ist. Wer
+> eine Produktaussage prüft, liest beides nebeneinander; zwei Sprachen in
+> dieser Kette wären eine Fehlerquelle mehr.
+>
+> Verbindlich für jede Formulierung: [docs/glossar-en.md](docs/glossar-en.md).
+> Die bereits getroffenen Übersetzungsentscheidungen stehen in
+> [docs/en-review.md](docs/en-review.md).
 
 Fundament der Marketing-Website (B2B-SaaS für Schulen).
 Next.js 16 (App Router, TypeScript) · Tailwind CSS 4 · shadcn/ui · IBM Plex Sans.
@@ -19,7 +50,27 @@ npm run format        # Prettier schreibt
 npm run format:check  # Prettier prüft nur
 npm run check         # lint + build (Torwächter vor jedem Commit)
 npm run smoke <url>   # Smoke-Test gegen ein Deployment
+npm run smoke -- --gegenprobe   # beweist, dass die Ton-Muster leben
+npm run check:german <url>      # Deutsch-Detektor: muss 0 melden
+npm run qa:en <url>             # Überlauf, Kontrast, CLS, rAF, Tastatur, Screenshots
 ```
+
+**Drei dieser Befehle gibt es nur hier.** Sie sichern genau das ab, was beim
+Übersetzen kaputtgeht:
+
+- `check:german` prüft das **gerenderte HTML** aller Seiten auf Umlaute, ß und
+  häufige deutsche Wörter. Ausnahmen sind abschließend drei Eigennamen
+  (Selyvi, Waldstetten, Robert Bosch Stiftung); alles andere, was deutsch
+  bleiben muss, trägt `lang="de"` und wird übersprungen — das ist zugleich
+  WCAG 3.1.2. **Der Bericht muss 0 melden.**
+- `smoke -- --gegenprobe` prüft die Ton-Regeln gegen sich selbst: Zu jedem
+  Muster steht ein Satz, den es fangen muss, und fünf erlaubte Sätze, die es
+  nicht auslösen dürfen. Ein Ton-Test mit 0 Treffern beweist sonst nichts.
+- `qa:en` misst, was englische Beschriftungen kaputt machen: überlaufende
+  Kästen bei 390 und 1440, Kontrast **innerhalb** der nachgebauten
+  App-Fenster (dorthin kommt axe nicht, siehe CLAUDE.md), CLS, laufende
+  rAF-Schleifen im Ruhezustand, das Tastatur-Protokoll auf /preview und die
+  reduced-motion-Hashes.
 
 Verbindliche Arbeitsregeln stehen in [CLAUDE.md](CLAUDE.md).
 
@@ -781,6 +832,22 @@ streicht die Zeile aus dieser Liste.
 | 8   | Dediziertes Postfach für Datenschutzanfragen                                                                                                                                               | `for-dpos.tsx`, danach `legal.ts`                                                                | Betrieb           |
 | 9   | Stilprofil per Upload und Übernahme von Original-Arbeitsblättern: sobald sie **ausgeliefert** sind, gehören sie in die Funktionsblöcke. Vorher steht dazu nichts auf der Website – Regel D | `function-blocks.tsx`                                                                            | Produkt           |
 | 10  | Mehrkanalige, spielerischere Aufgabenformate (Rückmeldung einer Testerin: Material wirkt „zu trocken“)                                                                                     | erst Produkt, dann `function-blocks.tsx`                                                         | Produkt           |
+
+### Nur die englische Fassung (selyvi.com)
+
+Diese Punkte gibt es auf selyvi.de nicht. Sie entstehen daraus, dass diese
+Seite eine **Übersetzung** ist — und eine Übersetzung erbt die Prüfungen des
+Originals nicht.
+
+| #    | Punkt                                                                                                                                                                                                                                                                                                        | Wo einzutragen                                                | Zuständigkeit |
+| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------- |
+| E1   | **EN-Rechtstexte vom Anwalt prüfen lassen.** /legal-notice und /privacy sind Übersetzungen der deutschen Vorlagen. Die Pflichtangaben sind identisch, der Fließtext ist übersetzt — geprüft ist er nicht. Beide Seiten tragen den Satz „German law applies; this is a translation…"; das ersetzt keine Prüfung | [legal.ts](src/config/legal.ts), danach `PRIVACY_APPROVED`     | Anwalt        |
+| E2   | **hreflang von selyvi.de zurück auf selyvi.com setzen.** hreflang wirkt nur beidseitig. Diese Seite zeigt vollständig auf die deutsche (en, de, x-default); solange die deutsche nicht zurückzeigt, ist die Auszeichnung einseitig und wirkungslos                                                            | selyvi.de, `src/config/seo.ts` dort                           | SEO           |
+| E3   | **Freigabe der offenen Punkte in [docs/en-review.md](docs/en-review.md).** Wirkungszeile, Serverstandort-Wortlaut, Manifest-Schwüre und die drei Erzähl-Zeilen liegen dort mit Vorschlag und Alternative                                                                                                       | docs/en-review.md, danach der jeweilige Quellort               | CEO + CMO     |
+| E4   | **Der Satz fürs Verkaufsgespräch.** Die gezeigte Oberfläche ist englisch, die echte Anwendung ist deutsch (en-review.md, Punkt 9). Wer nach dieser Seite eine Demo zeigt, sagt das — sonst sagt es die Demo                                                                                                    | Verkaufsleitfaden, nicht die Website                          | Vertrieb      |
+| E5   | **Lighthouse und axe für die englische Fassung.** Beide brauchen neue Pakete (`lighthouse`, `axe-core`), und CLAUDE.md verlangt davor Websuche, Paket-Inspektion und 14 Tage Cooldown. `npm run qa:en` deckt Überlauf, Kontrast in den App-Fenstern, CLS, rAF, Tastatur und reduced motion bereits ab      | nach der Sicherheitsprüfung als `npm run a11y`                | Technik       |
+| E6   | **Vierte Sprache in der Elternpost.** Die deutsche Fassung zeigt vier Sprachen (DE, EN, TR, AR), die englische drei (EN, TR, AR) — eine ukrainische oder polnische Zeile müsste jemand gegenlesen. Sobald jemand das tut, kommt sie zurück                                                                     | `DEMO_TOUR_OBSERVATIONS` in [demo-data.ts](src/config/demo-data.ts) | Team          |
+| E7   | **„Drei Bereiche sind offen" auf der deutschen Seite korrigieren.** Offen sind VIER (workspace.tsx). Die englische Fassung sagt vier; auf selyvi.de steht in `take-a-look.tsx` noch drei                                                                                                                      | selyvi.de, `take-a-look.tsx`                                  | Inhalt        |
 
 ### Rechtlich / vertraglich
 

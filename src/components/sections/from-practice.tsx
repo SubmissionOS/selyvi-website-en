@@ -5,7 +5,8 @@ import { PRACTICE_CLAIM } from "@/config/brand";
 import { Button } from "@/components/ui/button";
 
 /**
- * Sektion „Aus der Praxis“ – zwischen „Probieren Sie es selbst aus.“ und „Was Ihnen abgenommen wird“.
+ * Sektion „From practice“ – zwischen „Try it for yourself.“ und „What gets
+ * taken off your hands“.
  *
  * Bewusst ohne Karten-Raster: Die Aussage traegt sich selbst, ein Raster wuerde
  * sie zu einem weiteren Feature-Block machen. Zwei Saetze, viel Weissraum, ein
@@ -31,19 +32,19 @@ export function FromPractice() {
             id="aus-der-praxis-titel"
             className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
           >
-            Aus der Praxis
+            From practice
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">{PRACTICE_CLAIM}</p>
 
           <p className="mt-4 text-lg text-gray-500">
-            Viele Funktionen gehen direkt auf Hinweise aus dieser Zusammenarbeit zurück.
+            Many features go straight back to remarks from that collaboration.
           </p>
 
           <div className="mt-8">
             <Button asChild variant="link" size="sm" className="h-auto px-0">
-              <Link href="/fuer-lehrkraefte">
-                Was daraus entstanden ist
+              <Link href="/for-teachers">
+                What came out of it
                 <ArrowRight aria-hidden="true" />
               </Link>
             </Button>

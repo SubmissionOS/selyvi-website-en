@@ -16,25 +16,26 @@ import { TRANSLATION_LANGUAGE_COUNT } from "@/config/product";
 const pairs = [
   {
     problem:
-      "Am Zeugnistag fehlt genau die Doku, die man das ganze Jahr nebenbei gemacht hat",
+      "On report day the very documentation you did on the side all year is nowhere to be found",
     solution:
-      "Beobachtungen aus dem Unterricht – getippt oder diktiert – werden am Zeugnistag zur Grundlage des Textes.",
+      "Observations from the lesson – typed or dictated – become the basis of the text on report day.",
   },
   {
-    // „in Ihrem Stil“ stand bis zur Straffung in diesem Satz. Die Stil-Aussage
+    // „in Ihrem Stil“ / „in your style“ stand bis zur Straffung in diesem Satz. Die Stil-Aussage
     // ist eines der drei Alleinstellungsmerkmale und gehoert seither genau
     // einmal auf die Startseite – in die Spalte „Fuer Lehrkraefte“ der Sektion
-    // „Was Selyvi zurueckgibt“. Hier stand sie nur nebenbei und hat die Aussage
+    // „What Selyvi gives back“. Hier stand sie nur nebenbei und hat die Aussage
     // dort entwertet. Der Satz nennt jetzt, was der Produktstand woertlich
-    // sagt: Die Mail entsteht auf Deutsch und wird in einem zweiten Schritt
-    // uebersetzt.
-    problem: "Elternmails kosten Abende, in mehreren Sprachen erst recht",
-    solution: `Die Mail entsteht auf Deutsch und wird auf Wunsch übersetzt – in ${TRANSLATION_LANGUAGE_COUNT} Sprachen.`,
+    // sagt: Die Mail entsteht auf DEUTSCH und wird in einem zweiten Schritt
+    // uebersetzt. Das bleibt auch auf der englischen Seite so – es ist eine
+    // Tatsache ueber das Produkt, keine ueber die Website.
+    problem: "Parent emails cost evenings, and in several languages all the more",
+    solution: `The email is written in German and translated on request – into ${TRANSLATION_LANGUAGE_COUNT} languages.`,
   },
   {
-    problem: "Material von der Stange passt nie zur eigenen Klasse",
+    problem: "Off-the-shelf materials never fit your own class",
     solution:
-      "Material entsteht aus dem, was Sie über Ihre Klasse dokumentiert haben – mit ausgewiesenen Quellen.",
+      "Materials come out of what you have documented about your class – with sources stated.",
   },
 ];
 
@@ -45,12 +46,12 @@ export function ProblemSolution() {
         {/* Zweispaltig ab lg: Text links, Szene rechts. Darunter steht die
             Szene unter dem Text.
 
-            Die frueher hier stehende Kopfzeile „Heute | Mit Selyvi" ist
+            Die frueher hier stehende Kopfzeile „Today | With Selyvi" ist
             entfallen. Sie war die Beschriftung einer zweispaltigen Tabelle –
             und die passt nicht mehr, seit die Paare selbst in einer halben
-            Spalte stehen: Bei rund 250 px je Zelle bricht „Am Zeugnistag
-            fehlt genau die Doku, die man das ganze Jahr nebenbei gemacht
-            hat" in sechs Zeilen um.
+            Spalte stehen: Bei rund 250 px je Zelle bricht „On report day the
+            very documentation you did on the side all year is nowhere to be
+            found" in sechs Zeilen um.
 
             Die Paare stehen deshalb jetzt ueberall so, wie sie auf dem Handy
             schon immer standen: Last oben, Antwort darunter, dazwischen der
@@ -62,7 +63,7 @@ export function ProblemSolution() {
               id="problem-loesung-titel"
               className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
             >
-              Was sich im Alltag ändert
+              What changes day to day
             </h2>
 
             <ul className="mt-10 divide-y divide-gray-200 border-t border-gray-200">

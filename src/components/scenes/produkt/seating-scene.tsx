@@ -49,8 +49,8 @@ export function SeatingScene() {
     <SceneTimeline
       steps={STEPS}
       loopPauseMs={2200}
-      kicker="07:50 · Vor der ersten Stunde"
-      label={`Animierte Darstellung des Sitzplans der Klasse ${DEMO_CLASS}: In einem Raster aus sechs Plätzen wird eine Kinder-Kachel mit dem Zeiger aufgenommen, auf einen freien Platz gezogen und rastet dort ein. Ein weiterer Platz ist gesperrt, trägt ein Schloss-Symbol und bleibt frei. Alle Daten sind erfunden.`}
+      kicker="07:50 · Before the first lesson"
+      label={`Animated view of the seating plan for class ${DEMO_CLASS}: in a grid of six seats, a child tile is picked up with the pointer, dragged to a free seat and snaps into place there. Another seat is locked, carries a padlock icon and stays empty. All data is invented.`}
     >
       {(scene) => {
         const moving = !scene.isStatic;
@@ -63,10 +63,10 @@ export function SeatingScene() {
           <UiWindow
             variant="app"
             active="meine-klassen"
-            chips={[`Klasse ${DEMO_CLASS}`]}
+            chips={[`Class ${DEMO_CLASS}`]}
             className="h-[19rem] sm:h-[17rem]"
           >
-            <SceneLabel>Sitzplan</SceneLabel>
+            <SceneLabel>Seating plan</SceneLabel>
 
             {/* Tafel-Kante: gibt dem Raster oben eine Richtung, damit es als
                 Klassenzimmer lesbar ist und nicht als Tabelle. */}
@@ -113,7 +113,7 @@ export function SeatingScene() {
             </div>
 
             <p className="mt-3 text-[11px] text-[var(--app-text-muted)]">
-              Plätze lassen sich sperren – gesperrt bleibt gesperrt.
+              Seats can be locked – locked stays locked.
             </p>
 
             {/* Die gezogene Kachel haengt am Zeiger. Nur transform/opacity –

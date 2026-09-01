@@ -63,8 +63,8 @@ export function DocumentationScene() {
     <SceneTimeline
       steps={STEPS}
       loopPauseMs={2000}
-      kicker="08:15 · Live im Unterricht"
-      label={`Animierte Darstellung des Live-Unterricht-Modus: In einer Raster-Ansicht der Klasse ${DEMO_CLASS} werden nacheinander zwei Kinder angetippt und je eine kurze Beobachtung erfasst, die automatisch einem Fach zugeordnet wird. Ein Zähler zeigt die Zahl der erfassten Beobachtungen. Alle Daten sind erfunden.`}
+      kicker="08:15 · Live in the lesson"
+      label={`Animated view of the live lesson mode: in a grid view of class ${DEMO_CLASS}, two children are tapped one after the other and a short observation is recorded for each, assigned automatically to a subject. A counter shows the number of observations recorded. All data is invented.`}
     >
       {(scene) => {
         const moving = !scene.isStatic;
@@ -107,12 +107,12 @@ export function DocumentationScene() {
           <UiWindow
             variant="app"
             active="live-unterricht"
-            chips={[`Klasse ${DEMO_CLASS}`]}
+            chips={[`Class ${DEMO_CLASS}`]}
             highlightChip={filtered ? 0 : -1}
             className="h-[27rem] sm:h-[22rem]"
           >
             <div className="flex items-center justify-between gap-3">
-              <SceneLabel>Live-Unterricht-Modus</SceneLabel>
+              <SceneLabel>Live lesson mode</SceneLabel>
 
               {/* Der Zähler poppt bei jeder Änderung kurz auf – der `key`
                   sorgt dafür, dass die Animation neu startet. */}
@@ -123,7 +123,7 @@ export function DocumentationScene() {
                   moving && "animate-chip-pop",
                 )}
               >
-                {counted} {counted === 1 ? "Beobachtung" : "Beobachtungen"}
+                {counted} {counted === 1 ? "observation" : "observations"}
               </span>
             </div>
 

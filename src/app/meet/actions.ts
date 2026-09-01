@@ -80,7 +80,7 @@ export async function submitDemoRequest(
     const minutes = Math.max(1, Math.ceil(limit.retryAfterMs / 60000));
     return {
       status: "error",
-      message: `Es sind bereits mehrere Anfragen von diesem Anschluss eingegangen. Bitte versuchen Sie es in ${minutes} Minuten erneut.`,
+      message: `Several requests have already come in from this connection. Please try again in ${minutes} minutes.`,
     };
   }
 
@@ -97,7 +97,7 @@ export async function submitDemoRequest(
   if (!result.ok) {
     return {
       status: "error",
-      message: "Bitte prüfen Sie die markierten Felder.",
+      message: "Please check the highlighted fields.",
       fieldErrors: result.fieldErrors,
     };
   }
@@ -155,8 +155,8 @@ export async function submitDemoRequest(
       status: "error",
       message:
         sent.reason === "not-configured"
-          ? "Der Versand ist derzeit nicht eingerichtet. Ihre Anfrage wurde nicht übermittelt."
-          : "Ihre Anfrage konnte gerade nicht übermittelt werden. Bitte versuchen Sie es erneut.",
+          ? "Sending is not set up at the moment. Your request was not submitted."
+          : "Your request could not be submitted just now. Please try again.",
     };
   }
 

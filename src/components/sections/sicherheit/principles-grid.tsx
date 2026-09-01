@@ -25,7 +25,7 @@ import {
  * steht jetzt entweder die abgeschwächte Tatsache oder eine Ankündigung mit
  * Zeitpunkt – keine Zusicherung ohne Grundlage.
  *
- * Besonders die Karte „KI-Verarbeitung“: Dort steht ABSICHTLICH keine Zusage,
+ * Besonders die Karte „AI processing“: Dort steht ABSICHTLICH keine Zusage,
  * dass Daten nicht fuer Training verwendet werden. Solche Zusicherungen haengen
  * an den Vertraegen mit den Modell-Anbietern. Eine Aussage dazu darf hier erst
  * stehen, wenn sie vertraglich belegt ist – genau danach fragt jede
@@ -38,13 +38,13 @@ import {
 const principles = [
   {
     icon: Server,
-    title: "Hosting dieser Website",
+    title: "Hosting of this website",
     // Belegt: die Serverregion fra1 steht in vercel.json.
     description: WEBSITE_HOSTING_NOTE,
   },
   {
     icon: FileText,
-    title: "Hosting der Anwendung",
+    title: "Hosting of the application",
     // GETRENNT von der Karte darueber, und das ist der Punkt: Die Anwendung
     // laeuft heute NICHT in Deutschland. Eine gemeinsame Karte „EU-Hosting"
     // stand hier bis zum Abgleich mit dem Produktstand und gab damit fuer das
@@ -53,17 +53,17 @@ const principles = [
   },
   {
     icon: Lock,
-    title: "Verschlüsselung",
+    title: "Encryption",
     // Auf die belegbare Aussage gekuerzt: TLS ist gesetzt. Zur Verschluesselung
     // ruhender Daten wird bewusst nichts behauptet.
-    description: "Die Übertragung erfolgt ausschließlich verschlüsselt (TLS).",
+    description: "Transmission is encrypted throughout (TLS).",
   },
   {
     icon: KeyRound,
-    title: "Strikte Datentrennung",
+    title: "Strict data separation",
     // Ersetzt die fruehere Ankuendigungs-Karte „Rollen & Rechte". Das Modell
     // steht – und zwar restriktiver, als eine Schule erwartet.
-    description: `${DATA_SEPARATION_NOTE} Eine Rolle mit Gesamtsicht auf die Daten mehrerer Lehrkräfte gibt es nicht.`,
+    description: `${DATA_SEPARATION_NOTE} There is no role with an overall view of several teachers' data.`,
   },
   {
     icon: Ban,
@@ -78,24 +78,24 @@ const principles = [
      * bekommt ein eigenes Label. Ein Symbol, das etwas aussagt und fuer
      * Screenreader unsichtbar ist, sagt es nur der Haelfte der Leute.
      */
-    iconLabel: "kein Verkauf von Schülerdaten",
-    title: "Datenweitergabe",
+    iconLabel: "no selling of pupil data",
+    title: "Sharing of data",
     description:
-      "Schülerdaten werden nicht verkauft und nicht zu Werbezwecken verarbeitet.",
+      "Pupil data is not sold and is not processed for advertising purposes.",
   },
   {
     icon: UserX,
-    title: "Kein Eltern- oder Schülerzugang",
-    description: `${PRODUCT_NAME} ist ein Werkzeug für Lehrkräfte und Schulleitung. Konten für Eltern oder Kinder gibt es bewusst nicht.`,
+    title: "No parent or pupil access",
+    description: `${PRODUCT_NAME} is a tool for teachers and school leadership. There are deliberately no accounts for parents or children.`,
   },
   {
     icon: Cpu,
-    title: "KI-Verarbeitung",
-    description: `${PRODUCT_NAME} setzt KI-Modelle ein, um aus den Beobachtungen einer Lehrkraft Texte und Unterrichtsmaterial zu erzeugen. Die genauen Verarbeitungsdetails unserer KI-Komponenten veröffentlichen wir hier.`,
+    title: "AI processing",
+    description: `${PRODUCT_NAME} uses AI models to generate texts and teaching materials from a teacher's observations. We publish the precise processing details of our AI components at this point.`,
   },
   {
     icon: Accessibility,
-    title: "Barrierefreiheit als Praxis",
+    title: "Accessibility as practice",
     /**
      * BEWUSST OHNE ZERTIFIKATS-BEHAUPTUNG.
      *
@@ -110,12 +110,12 @@ const principles = [
      * spaeter verschaerfen moechte, braucht vorher diese Erklaerung.
      */
     description:
-      "Tastaturbedienung, Screenreader-Struktur, Kontraste nach WCAG 2.1 AA und respektierte Bewegungs-Reduzierung sind bei uns Bau-Standard, nicht Nachrüstung.",
+      "Keyboard operation, screen reader structure, contrasts to WCAG 2.1 AA and respected motion reduction are build standards here, not retrofits.",
   },
   {
     icon: Trash2,
-    title: "Löschkonzept",
-    description: "Aufbewahrungs- und Löschfristen veröffentlichen wir an dieser Stelle.",
+    title: "Deletion policy",
+    description: "We publish retention and deletion periods at this point.",
   },
 ];
 
@@ -127,7 +127,7 @@ export function PrinciplesGrid() {
           id="prinzipien-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
         >
-          Unsere Grundsätze
+          Our principles
         </h2>
 
         <ul className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -148,7 +148,7 @@ export function PrinciplesGrid() {
               >
                 {/* Die Symbole sind sonst reine Dekoration und deshalb
                     aria-hidden. Genau eines traegt Bedeutung – das
-                    durchgestrichene bei „Datenweitergabe", weil dort die
+                    durchgestrichene bei „Sharing of data", weil dort die
                     Verneinung im Symbol steckt und nicht mehr im Titel.
                     Dieses eine bekommt ein Label. */}
                 {principle.iconLabel ? (

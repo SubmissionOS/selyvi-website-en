@@ -11,7 +11,7 @@ import { ForDpos } from "@/components/sections/sicherheit/for-dpos";
 import { SecurityFaq } from "@/components/sections/sicherheit/security-faq";
 import { FinalCta } from "@/components/sections/final-cta";
 
-export const metadata: Metadata = pageMetadata("/datenschutz-sicherheit");
+export const metadata: Metadata = pageMetadata("/security");
 
 /**
  * Seite für Schulleitungen und Datenschutzbeauftragte.
@@ -21,7 +21,7 @@ export const metadata: Metadata = pageMetadata("/datenschutz-sicherheit");
  * mit Zeitpunkt. Was noch aussteht, steht im README unter NACH-LAUNCH-LISTE –
  * nicht auf der Seite.
  *
- * <Reveal>   <DpaBand /> </Reveal> ist dieselbe Komponente wie auf /schulen – die AVV-Aussage
+ * <Reveal>   <DpaBand /> </Reveal> ist dieselbe Komponente wie auf /for-school-leadership – die AVV-Aussage
  * bleibt dadurch auf beiden Seiten zwingend wortgleich.
  */
 export default function DatenschutzSicherheitPage() {

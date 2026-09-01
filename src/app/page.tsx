@@ -42,9 +42,9 @@ export default function HomePage() {
       </Reveal>
 
       <StoryLine>
-        Wir kennen diese Abende nicht aus einem Marktreport. Wir kennen sie vom
-        Küchentisch – von einer angehenden Grundschullehrerin, die uns gezeigt hat, wo die
-        Zeit wirklich bleibt.
+        We do not know those evenings from a market report. We know them from the kitchen
+        table – from a trainee primary school teacher who showed us where the time
+        actually goes.
       </StoryLine>
 
       <Reveal>
@@ -62,8 +62,8 @@ export default function HomePage() {
       </Reveal>
 
       <StoryLine>
-        Alles hier drin geht auf einen Hinweis aus einem echten Lehrerzimmer zurück.
-        Manches haben wir gebaut, weil eine einzige Lehrkraft nicht lockergelassen hat.
+        Everything in here goes back to a remark from a real staffroom. Some of it we
+        built because one single teacher would not let it go.
       </StoryLine>
 
       <Reveal>
@@ -78,8 +78,8 @@ export default function HomePage() {
       </Reveal>
 
       <StoryLine>
-        Wir waren selbst lange genug Schüler. Jetzt bauen wir für die Menschen, die damals
-        für uns dageblieben sind.
+        We were pupils ourselves for long enough. Now we build for the people who stayed
+        late for us back then.
       </StoryLine>
 
       <FinalCta withMission />

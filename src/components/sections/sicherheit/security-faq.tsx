@@ -22,17 +22,17 @@ const faqItems: FaqItem[] = [
     // Die Antwort trennt Website und Anwendung ausdruecklich. Eine gemeinsame
     // Antwort („in der EU, Frankfurt") stand hier bis zum Abgleich mit dem
     // Produktstand und war fuer die Anwendung nicht gedeckt.
-    question: "Wo werden die Daten gespeichert?",
-    answer: `Für diese Website und für die Anwendung gelten unterschiedliche Antworten. ${WEBSITE_HOSTING_NOTE} Für die Anwendung gilt: ${PRODUCT_HOSTING_NOTE} Die Übertragung erfolgt in beiden Fällen ausschließlich verschlüsselt (TLS).`,
+    question: "Where is the data stored?",
+    answer: `Different answers apply to this website and to the application. ${WEBSITE_HOSTING_NOTE} For the application: ${PRODUCT_HOSTING_NOTE} In both cases, transmission is encrypted throughout (TLS).`,
   },
   {
-    question: "Wer hat Zugriff?",
-    answer: `${DATA_SEPARATION_NOTE} Eine Rolle mit Gesamtsicht auf die Daten mehrerer Lehrkräfte gibt es nicht – auch nicht für die Schulleitung. Sie sieht im Leitungsmodus ausgewertete Kennzahlen zur Nutzung, keine einzelnen Beobachtungen.`,
+    question: "Who has access?",
+    answer: `${DATA_SEPARATION_NOTE} There is no role with an overall view of several teachers' data – not for school leadership either. In the leadership view it sees aggregated figures on usage, not individual observations.`,
   },
   {
-    question: "Was passiert bei Vertragsende mit den Daten?",
+    question: "What happens to the data when the contract ends?",
     answer:
-      "Die Daten Ihrer Schule gehören Ihrer Schule. Aufbewahrungs- und Löschfristen – einschließlich der Frist nach Vertragsende – veröffentlichen wir an dieser Stelle.",
+      "Your school's data belongs to your school. We publish retention and deletion periods – including the period after the contract ends – at this point.",
   },
 ];
 
@@ -55,7 +55,7 @@ export function SecurityFaq() {
                 id="sicherheit-faq-titel"
                 className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
               >
-                Häufige Fragen aus der Prüfung
+                Common questions from the review
               </h2>
             </div>
           </div>

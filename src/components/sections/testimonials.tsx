@@ -17,7 +17,7 @@ type Testimonial = {
   /** Wortlaut exakt wie freigegeben, ohne redaktionelle Glaettung. */
   quote: string;
   name: string;
-  /** Funktion, z. B. "Lehrkraft Mathematik" oder "Schulleitung". */
+  /** Funktion, z. B. "Maths teacher" oder "Head teacher". */
   role: string;
   school: string;
 };
@@ -39,7 +39,7 @@ export function Testimonials() {
           id="stimmen-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
         >
-          Stimmen aus dem Pilotbetrieb
+          Voices from the pilot
         </h2>
 
         <ul className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

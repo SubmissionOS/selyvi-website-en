@@ -3,7 +3,7 @@ import { DemoForm } from "@/components/sections/demo/demo-form";
 /**
  * Sektion 4 – Das Formular.
  *
- * Bewusst DIESELBE Komponente und DIESELBE Server Action wie auf /demo, nur
+ * Bewusst DIESELBE Komponente und DIESELBE Server Action wie auf /meet, nur
  * mit `source="mitgestalten"`. Ein eigener Endpunkt waere ein zweiter Ort,
  * an dem Honeypot, Zeitmessung, Rate-Limit oder Validierung fehlen koennen –
  * und genau diese vier Huerden sind der Grund, warum das Formular bisher
@@ -14,7 +14,7 @@ import { DemoForm } from "@/components/sections/demo/demo-form";
  * beim Lesen klar, worauf jemand geantwortet hat: Eine Demo-Anfrage und eine
  * Anfrage zum Mitgestalten brauchen unterschiedliche Antworten.
  *
- * Die Ueberschrift ist hier SICHTBAR statt sr-only wie auf /demo: Dort steht
+ * Die Ueberschrift ist hier SICHTBAR statt sr-only wie auf /meet: Dort steht
  * das Formular neben einem Ablaufplan und braucht keine eigene Ansage, hier
  * ist es der Abschluss der Seite.
  */
@@ -30,12 +30,12 @@ export function CoCreateForm() {
             id="mitgestalten-formular-titel"
             className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
           >
-            Ich möchte mitgestalten
+            I would like to co-create
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            Schreiben Sie uns kurz, was Sie unterrichten und was Sie sich erhoffen. Wir
-            melden uns werktags – und sagen ehrlich, ob es gerade passt.
+            Write to us briefly about what you teach and what you are hoping for. We
+            reply on working days – and say plainly whether it fits right now.
           </p>
 
           <div className="mt-12">

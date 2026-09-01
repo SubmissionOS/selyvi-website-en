@@ -55,7 +55,7 @@ import {
  * setTimeout und hoert nach dem letzten Wort auf.
  */
 const BANNER =
-  "Einblick mit Beispieldaten – keine echte Anwendung, nichts wird gespeichert.";
+  "A look with sample data – not the real application, nothing is saved.";
 
 const SEATS: Seat[] = [
   { id: "s1", initials: "EK", locked: false },
@@ -74,7 +74,7 @@ const START: TourState = {
   reportVariant: null,
   reportText: "",
   mailCreated: false,
-  mailLang: "de",
+  mailLang: "en",
   topic: null,
   sources: [],
   materialCreated: false,
@@ -107,7 +107,7 @@ function naechsterBereich(area: TourArea, state: TourState): TourArea | null {
 export function Workspace() {
   const reduced = useReducedMotion();
 
-  // „Meine Klassen" ist im Original der Bereich, in dem eine Lehrkraft
+  // „My classes" ist im Original der Bereich, in dem eine Lehrkraft
   // ankommt – und die einzige Ansicht, von der ein vollstaendiger Screenshot
   // vorliegt. Deshalb steht der Einblick dort auf.
   const [area, setArea] = useState<TourArea>("meine-klassen");
@@ -140,18 +140,18 @@ export function Workspace() {
           onClick={() => {
             set(START);
             setArea("meine-klassen");
-            notify("Zurückgesetzt");
+            notify("Reset");
           }}
           className="text-sm text-brand-600 underline underline-offset-4"
         >
-          Zurücksetzen
+          Reset
         </button>
       </div>
 
       <div className="relative mt-4">
         <UiWindow
           variant="app"
-          chips={[`Klasse ${DEMO_CLASS}`]}
+          chips={[`Class ${DEMO_CLASS}`]}
           className="min-h-[34rem]"
           navSlot={
             <TourSidebar
@@ -178,20 +178,20 @@ export function Workspace() {
               blieb die Kartenueberschrift eine Zeile tiefer, und die habe ich
               fuer den Titel gehalten.
 
-              Der Seitentitel lautet „Meine Klassen", die Kartenueberschrift
-              „Klassen". Beides steht jetzt da, wo es hingehoert. */}
-          <p className="mb-3 text-lg font-bold text-[var(--app-text)]">Meine Klassen</p>
+              Der Seitentitel lautet „My classes", die Kartenueberschrift
+              „Classes". Beides steht jetzt da, wo es hingehoert. */}
+          <p className="mb-3 text-lg font-bold text-[var(--app-text)]">My classes</p>
 
           {/* Der Modus-Umschalter. Er sieht aus wie im Produkt und ist auch
               dort einer – hier fuehrt er zum Schloss-Hinweis. Der
               Leitungsmodus bleibt dem Gespraech vorbehalten. */}
           <div className="relative mb-4 flex items-center gap-2 border-b border-gray-200 pb-3">
             <span className="rounded-md bg-brand-100 px-2 py-0.5 text-[11px] font-medium text-brand-800">
-              Lehrkraft
+              Teacher
             </span>
             <button
               type="button"
-              aria-describedby={modeHint ? "einblick-modus-hinweis" : undefined}
+              aria-describedby={modeHint ? "preview-mode-hint" : undefined}
               /* Nur oeffnen, nicht umschalten: Der Fokus oeffnet den Hinweis
                  bereits, und ein Toggle danach haette ihn beim Klick sofort
                  wieder geschlossen. */
@@ -200,22 +200,22 @@ export function Workspace() {
               onBlur={() => setModeHint(false)}
               className="inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] text-gray-500 hover:text-brand-600"
             >
-              Leitung
+              Leadership
               <Lock aria-hidden="true" className="size-3" />
             </button>
 
             {modeHint ? (
               <p
-                id="einblick-modus-hinweis"
+                id="preview-mode-hint"
                 role="status"
                 className="absolute top-full left-0 z-10 mt-1 w-64 rounded-md border border-gray-200 bg-surface p-3 text-[11px] text-ink shadow-sm"
               >
-                Den Leitungsmodus zeigen wir Ihnen persönlich – im{" "}
+                We show you the leadership view in person, when we{" "}
                 <Link
-                  href="/demo"
+                  href="/meet"
                   className="text-brand-600 underline underline-offset-4"
                 >
-                  Kennenlernen
+                  meet
                 </Link>
                 .
               </p>
@@ -263,7 +263,7 @@ export function Workspace() {
       </div>
 
       <p className="mt-3 text-xs text-gray-500">
-        {LOCKED_COUNT} Bereiche und der Leitungsmodus sind gesperrt. {LOCKED_HINT}
+        {LOCKED_COUNT} areas and the leadership view are locked. {LOCKED_HINT}
       </p>
     </div>
   );

@@ -5,11 +5,15 @@ import { PRODUCT_HOSTING_NOTE } from "@/config/product";
 /**
  * Hinweis zur Auftragsverarbeitung – GETEILTE Sektion.
  *
- * Wird auf /schulen und /datenschutz-sicherheit eingesetzt. Bewusst EINE
+ * Wird auf /for-school-leadership und /security eingesetzt. Bewusst EINE
  * Komponente statt zweimal derselbe Text: Die Aussage zum AVV muss auf beiden
  * Seiten wortgleich sein, und zwar auch noch, nachdem jemand sie einmal
  * ueberarbeitet hat. Eine Kopie waere genau die Stelle, an der eine Schule
  * spaeter zwei verschiedene Zusagen nebeneinander findet.
+ *
+ * „data processing agreement (DPA)“ ist der Begriff aus Art. 28 GDPR in der
+ * englischen Fassung; die Abkuerzung wird beim ersten Vorkommen eingefuehrt
+ * (docs/glossar-en.md).
  *
  * Der Text verspricht bewusst KEIN fertiges Dokument. Ein AVV ist fuer eine
  * Schule ein Beschaffungs-Kriterium; die Zusage „Entwurf stellen wir bereit“
@@ -46,7 +50,7 @@ export function DpaBand() {
             hier stillschweigend einen halben Satz bekommen. */}
         <div className="max-w-4xl">
           <h2 id="avv-titel" className="text-2xl font-semibold tracking-tight text-ink">
-            Auftragsverarbeitung nach Art. 28 DSGVO
+            Data processing under Article 28 GDPR
           </h2>
 
           <ul className="mt-8 grid gap-6 sm:grid-cols-2">
@@ -54,7 +58,7 @@ export function DpaBand() {
               { icon: Server, text: PRODUCT_HOSTING_NOTE },
               {
                 icon: FileSignature,
-                text: "Alle Fragen dazu klären wir transparent im Erstgespräch.",
+                text: "We answer every question about it openly in the first conversation.",
               },
             ].map((karte) => (
               <li
