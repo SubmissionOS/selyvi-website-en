@@ -34,6 +34,7 @@ Quelltext und nicht geschätzt.
 | Prüfung | Ergebnis |
 | --- | --- |
 | Lighthouse mobil (Median aus 5) | Performance **95–97**, Accessibility **100**, Best Practices **100**, SEO **100** |
+| Gefallene Audits, alle Kategorien | nur Bündel-Performance und das gewollte `is-crawlable` — **kein** Accessibility-Befund mehr |
 | Lighthouse Desktop, Accessibility | **100** auf allen Seiten |
 | axe-core @ 390 und @ 1440 | **0** Verstöße auf allen 12 Seiten |
 | CLS | **0** auf allen Seiten |
@@ -49,15 +50,29 @@ Gemessen ist der Grund, nicht vermutet — das einzige fallende Audit heißt
 solange `PRIVACY_APPROVED` auf `false` steht. Der Wert steigt auf 100, sobald
 die Anwaltsprüfung vorliegt.
 
-**Zwei Dinge, die erst die neuen Prüfungen gefunden haben** — beide behoben:
+**Vier Dinge, die erst die neuen Prüfungen gefunden haben** — alle behoben.
+Sie stehen hier, weil sie zeigen, wozu die Prüfungen da sind:
 
-- Die Bestätigung des Sitzplan-Tauschs hieß noch „Übernommen · Beispiel". Sie
-  erscheint erst nach ZWEI Klicks und war für jede HTML-Prüfung unsichtbar.
-- Der CLS von 0,002 auf der Startseite war **nicht** der Schriftwechsel
-  (mit blockierter Webschrift blieb der Wert gleich), sondern die Hydration:
-  Der reservierte Platz für den Zeugnisentwurf stammte aus der deutschen
-  Fassung und war für den längeren englischen Text an neun von dreizehn
-  gemessenen Breiten zu klein. Die Höhe kommt jetzt vom Text selbst.
+- **Die Bestätigung des Sitzplan-Tauschs hieß noch „Übernommen · Beispiel".**
+  Sie erscheint erst nach ZWEI Klicks und war für jede HTML-Prüfung
+  unsichtbar. Gefunden vom Zustands-Crawler.
+- **Die Sitzplan-Szene beschriftete die Tafelkante mit „Tafel".** Gefunden,
+  weil die Wortliste um Szenen-Vokabular erweitert wurde.
+- **Der CLS von 0,002 auf der Startseite war nicht der Schriftwechsel.** Mit
+  blockierter Webschrift blieb der Wert identisch, mit abgeschaltetem
+  JavaScript verschwand er — es war die Hydration. Der reservierte Platz für
+  den Zeugnisentwurf stammte aus der deutschen Fassung und war für den
+  längeren englischen Text an neun von dreizehn gemessenen Breiten zu klein.
+  Die Höhe kommt jetzt vom Text selbst statt von Zahlen.
+- **Der Knopf „Live lesson" nannte seinen Zähler nicht.** Er zeigt sichtbar
+  die Zahl der Beobachtungen, sein `aria-label` lautete nur „Live lesson" —
+  wer vorlesen lässt, erfuhr sie überhaupt nicht (WCAG 2.5.3, Label in Name).
+  Der Befund lag verdeckt, weil der Accessibility-Wert trotzdem auf 100
+  rundet; gefunden hat ihn erst die Auflistung **jedes** gefallenen Audits.
+
+Der letzte Punkt ist der wichtigste für die Zukunft: **Eine Punktzahl von 100
+beweist nicht, dass nichts gefunden wurde.** `npm run audit:en` listet
+deshalb jedes Audit, das in allen fünf Läufen fiel.
 
 Die frühere Migrationsliste („290 Fundstellen in 54 Dateien") ist erledigt.
 
