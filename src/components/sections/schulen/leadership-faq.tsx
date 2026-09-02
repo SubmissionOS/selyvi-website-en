@@ -18,7 +18,7 @@ const faqItems: FaqItem[] = [
   {
     question: "Do the staff council and the data protection officer need to be involved?",
     answer:
-      "We expressly recommend it. Introducing software that processes personal data of teachers as well as pupils touches on the remit of both.",
+      "We recommend it. Software that processes personal data of teachers and pupils touches the remit of both, and it is easier to involve them early than to explain it later.",
   },
 ];
 

@@ -137,14 +137,14 @@ export function ResearchFields() {
             zugleich die Einladung. Ohne sie liest sich die Kartenliste wie ein
             Datenkatalog. */}
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          Nine questions that occupy us. Our impact model already runs in survey waves;
-          the instruments for these questions we design together with the people who will
-          later use them.
+          Nine questions we keep returning to. The impact model already runs in survey
+          waves; the instruments for these questions we design with the people who will
+          use them.
         </p>
 
         <p className="mt-4 max-w-2xl text-lg text-gray-500">
-          We would rather not design them alone. Anyone working in one of these fields
-          should have a say in what is collected at all – and what had better not be.
+          We would rather not design them alone. Whoever works in one of these fields
+          should have a say in what gets collected — and in what had better not be.
         </p>
 
         <ul className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

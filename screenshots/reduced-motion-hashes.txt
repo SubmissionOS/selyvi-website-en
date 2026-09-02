@@ -2,8 +2,8 @@ SHA-256 (erste 16 Zeichen) der Seiten bei prefers-reduced-motion: reduce
 Englische Fassung, 1440 px. Zwei Aufnahmen im Abstand von 2 s je Seite
 waren zeichengleich – die Seiten stehen still.
 
-/                          146fa1f4dfd0a092
-/for-teachers              85756b8406acf971
-/for-school-leadership     7e82b96d469bfe6b
-/security                  acec78e88e348cbf
-/preview                   b5d2db3cc7b2cbfb
+/                          4bf4198021c991f1
+/for-teachers              a1fa17ae11a25797
+/for-school-leadership     9b152876c1a6a507
+/security                  5e07b34e1d8436fe
+/preview                   1688adfe4fd791c8

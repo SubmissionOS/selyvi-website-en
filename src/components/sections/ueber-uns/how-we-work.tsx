@@ -28,14 +28,14 @@ const practices = [
     // Deutschland (siehe PRODUCT_HOSTING_NOTE), und diese Karte ist nicht der
     // Ort, an dem das mit einem Halbsatz geklaert werden koennte.
     description:
-      "Only what the particular function needs is processed. Every teacher sees only their own data.",
+      "We process only what a function needs. Every teacher sees only their own data.",
     action: { label: "Security & data protection", href: "/security" },
   },
   {
     icon: Eye,
     title: "Honest about where we stand",
     description:
-      "What is open we mark visibly, instead of glossing over it. On this page too.",
+      "What is open we mark, in plain sight, instead of glossing over it. On this page too.",
   },
 ];
 

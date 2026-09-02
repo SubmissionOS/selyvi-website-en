@@ -55,19 +55,19 @@ const traits = [
     icon: PenLine,
     title: "Your style",
     description:
-      "Learns how you write and work. What comes out sounds like you – not like a language model.",
+      "It learns how you write and work. What comes out sounds like you, not like a language model.",
   },
   {
     icon: Users,
     title: "Your class",
     description:
-      "Follows the development over months. Observations, subject progress and competencies grow together rather than side by side.",
+      "It follows one child over months. Notes, subject progress and competencies grow together instead of side by side.",
   },
   {
     icon: BookOpenCheck,
     title: "Where things stand today",
     description:
-      "Guided by current education standards such as framework and subject curricula – so that well-proven teaching and today's requirements meet, with no marathon of training days.",
+      "Guided by current education standards, framework and subject curricula among them — so that teaching that already works and today’s requirements meet, without a marathon of training days.",
   },
 ];
 

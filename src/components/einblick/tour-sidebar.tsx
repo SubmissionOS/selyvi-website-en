@@ -76,7 +76,7 @@ const ENTRIES: Entry[] = [
   { key: "klassenanalyse", label: "Class analysis", icon: TrendingUp },
 ];
 
-export const LOCKED_HINT = "We show you this area in person, when we meet.";
+export const LOCKED_HINT = "This area we show in person, when we meet.";
 
 /** Wie viele Einträge tragen ein Schloss? Für den Satz unter dem Fenster. */
 export const LOCKED_COUNT = ENTRIES.filter((entry) => !entry.area).length;

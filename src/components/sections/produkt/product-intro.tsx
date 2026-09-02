@@ -31,8 +31,8 @@ export function ProductIntro() {
             Die Sektion „In Arbeit", auf die hier frueher verwiesen wurde, gibt
             es nicht mehr – siehe CLAUDE.md, Regel D. */}
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          Report season means weekends at the desk, parent post means evenings. That is
-          the work {PRODUCT_NAME} takes off you – not the decisions.
+          Report season eats weekends. Parent post eats evenings. That is the work
+          {PRODUCT_NAME} takes off you — not the decisions.
         </p>
 
         <p className="mt-4 max-w-2xl text-lg text-gray-500">{SCHOOL_TYPE_ANSWER}</p>

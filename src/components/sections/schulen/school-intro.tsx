@@ -19,9 +19,9 @@ export function SchoolIntro() {
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          {PRODUCT_NAME} takes off your staff the writing that piles up on report day and
-          before parents’ evenings – and shows you at the end of the month how many hours
-          that was.
+          {PRODUCT_NAME} takes the writing off your staff — the pile that builds up before
+          report day and before parents’ evenings. At the end of the month it shows you
+          how many hours that was.
         </p>
       </div>
     </section>

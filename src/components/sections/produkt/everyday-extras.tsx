@@ -31,9 +31,9 @@ export function EverydayExtras() {
         </h2>
 
         <p className="mt-5 max-w-2xl text-lg text-gray-500">
-          Not every job in the school year is a piece of writing. The seating plan
-          belongs here too, the class timetable and the filing of pupils’ work – the
-          small things that should not cost an hour.
+          Not every job in the school year is writing. The seating plan counts too, and
+          the timetable, and filing pupils’ work — the small things that should never
+          cost an hour.
         </p>
 
         <div className="mt-10">

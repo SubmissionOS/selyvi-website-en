@@ -86,17 +86,15 @@ Ein Wert unter 100 ohne Namen ist eine Zahl, die niemand nachvollziehen kann.
 Hier steht, welches Audit es war. Aufgenommen wird nur, was in **jedem** der
 fünf Läufe fiel — ein einmaliger Ausreisser ist Rauschen, kein Befund.
 
-| Audit                             | Kategorie   | Ansicht | Seiten                                                                                                                                         |
-| --------------------------------- | ----------- | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `forced-reflow-insight`           | performance | mobil   | `/preview`                                                                                                                                     |
-| `is-crawlable`                    | seo         | mobil   | `/privacy`                                                                                                                                     |
-| `max-potential-fid`               | performance | mobil   | `/`, `/for-teachers`, `/security`, `/preview`                                                                                                  |
-| `largest-contentful-paint`        | performance | mobil   | `/for-teachers`, `/for-school-leadership`, `/research`, `/security`, `/our-story`, `/preview`, `/co-create`, `/meet`, `/impressum`, `/privacy` |
-| `interactive`                     | performance | mobil   | alle 11                                                                                                                                        |
-| `legacy-javascript-insight`       | performance | mobil   | alle 11                                                                                                                                        |
-| `network-dependency-tree-insight` | performance | mobil   | alle 11                                                                                                                                        |
-| `render-blocking-insight`         | performance | mobil   | alle 11                                                                                                                                        |
-| `unused-javascript`               | performance | mobil   | alle 11                                                                                                                                        |
+| Audit                             | Kategorie   | Ansicht | Seiten     |
+| --------------------------------- | ----------- | ------- | ---------- |
+| `is-crawlable`                    | seo         | mobil   | `/privacy` |
+| `interactive`                     | performance | mobil   | alle 11    |
+| `largest-contentful-paint`        | performance | mobil   | alle 11    |
+| `legacy-javascript-insight`       | performance | mobil   | alle 11    |
+| `network-dependency-tree-insight` | performance | mobil   | alle 11    |
+| `render-blocking-insight`         | performance | mobil   | alle 11    |
+| `unused-javascript`               | performance | mobil   | alle 11    |
 
 ### Zu den Performance-Audits
 

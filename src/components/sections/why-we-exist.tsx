@@ -75,7 +75,7 @@ const findings = [
   {
     prefix: "",
     value: 84,
-    statement: "feel heavily or very heavily burdened.",
+    statement: "feel under heavy or very heavy strain.",
   },
 ];
 
@@ -116,8 +116,8 @@ export function WhyWeExist() {
             stehen: Der erste Wert widerspricht den beiden anderen nur
             scheinbar. */}
         <p className="mt-14 max-w-3xl text-lg text-ink sm:text-xl">
-          It is not the teaching that wears people out. It is everything around it. That
-          is exactly where {PRODUCT_NAME} starts.
+          It is not the teaching that wears people down. It is everything around it. That
+          is where {PRODUCT_NAME} starts.
         </p>
 
         <p className="mt-8 text-xs text-gray-500">

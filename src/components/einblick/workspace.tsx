@@ -55,7 +55,7 @@ import {
  * setTimeout und hoert nach dem letzten Wort auf.
  */
 const BANNER =
-  "A look with sample data – not the real application, nothing is saved.";
+  "Sample data, not the real application. Nothing here is saved.";
 
 const SEATS: Seat[] = [
   { id: "s1", initials: "EK", locked: false },

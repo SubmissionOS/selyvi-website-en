@@ -46,12 +46,12 @@ const facts = [
   {
     icon: ScanLine,
     title: "Data minimisation as a principle",
-    description: "What is collected is what the particular function needs – no more.",
+    description: "We collect what a function needs to work. Nothing beyond that.",
   },
   {
     icon: Ban,
     title: "No sharing of pupil data",
-    description: "No passing on to third parties, no use for advertising purposes.",
+    description: "Never passed to third parties, never used for advertising.",
   },
   {
     icon: UserX,

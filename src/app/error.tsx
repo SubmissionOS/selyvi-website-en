@@ -42,8 +42,7 @@ export default function Error({
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          Please reload the page. If the error persists, you can reach us through the
-          request form.
+          Reload the page. If it happens again, the request form reaches us directly.
         </p>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">

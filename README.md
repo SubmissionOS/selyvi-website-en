@@ -13,16 +13,16 @@
 >
 > **Was hier anders ist als in der deutschen Fassung:**
 >
-> | | selyvi.de | selyvi.com |
-> | --- | --- | --- |
-> | Domain | `SITE_URL = https://selyvi.de` | `SITE_URL = https://selyvi.com` |
-> | `<html lang>` | `de` | `en` |
-> | `og:locale` | `de_DE` | `en_GB` (Begründung in [seo.ts](src/config/seo.ts)) |
-> | Routen | `/fuer-lehrkraefte` … | `/for-teachers` … (deutsche Pfade → 308) |
-> | Ausgelieferter Text | deutsch | englisch — **außer /impressum** |
-> | Impressum | deutsch | **deutsch**, plus ein englischer Sprachhinweis |
-> | Datenschutzerklärung | deutsch | englisch (`/privacy`) |
-> | Kommentare, `docs/`, CLAUDE.md | deutsch | **weiterhin deutsch** |
+> |                                | selyvi.de                      | selyvi.com                                          |
+> | ------------------------------ | ------------------------------ | --------------------------------------------------- |
+> | Domain                         | `SITE_URL = https://selyvi.de` | `SITE_URL = https://selyvi.com`                     |
+> | `<html lang>`                  | `de`                           | `en`                                                |
+> | `og:locale`                    | `de_DE`                        | `en_GB` (Begründung in [seo.ts](src/config/seo.ts)) |
+> | Routen                         | `/fuer-lehrkraefte` …          | `/for-teachers` … (deutsche Pfade → 308)            |
+> | Ausgelieferter Text            | deutsch                        | englisch — **außer /impressum**                     |
+> | Impressum                      | deutsch                        | **deutsch**, plus ein englischer Sprachhinweis      |
+> | Datenschutzerklärung           | deutsch                        | englisch (`/privacy`)                               |
+> | Kommentare, `docs/`, CLAUDE.md | deutsch                        | **weiterhin deutsch**                               |
 >
 > Die Kommentare bleiben deutsch, weil die Wahrheitsquelle
 > [docs/produktstand-2026-08.md](docs/produktstand-2026-08.md) deutsch ist. Wer
@@ -32,6 +32,13 @@
 > Verbindlich für jede Formulierung: [docs/glossar-en.md](docs/glossar-en.md).
 > Die bereits getroffenen Übersetzungsentscheidungen stehen in
 > [docs/en-review.md](docs/en-review.md).
+>
+> Die Seite ist für ihre Leserin GESCHRIEBEN, nicht übersetzt: jede
+> Umformulierung mit Begründung in
+> [docs/en-copy-pass.md](docs/en-copy-pass.md). Dort steht auch die Grenze,
+> die dabei gehalten wurde — Selyvi ist mit deutschen Grundschullehrkräften
+> gebaut, und kein Satz behauptet eine Lehrplan-Abdeckung außerhalb
+> Deutschlands.
 
 Fundament der Marketing-Website (B2B-SaaS für Schulen).
 Next.js 16 (App Router, TypeScript) · Tailwind CSS 4 · shadcn/ui · IBM Plex Sans.
@@ -100,6 +107,7 @@ npm run redundanz:en <url>      # Redundanz-Tabelle
   `--nur-bericht` baut das Markdown allein daraus neu. Wer die **Darstellung**
   ändert, muss also nicht neu messen; und wer sie ändert, kommt nicht in
   Versuchung, die Zahlen dabei von Hand anzupassen.
+
 - `qa:en` misst, was englische Beschriftungen kaputt machen: überlaufende
   Kästen bei 390 und 1440, Kontrast **innerhalb** der nachgebauten
   App-Fenster (dorthin kommt axe nicht, siehe CLAUDE.md), CLS, laufende
@@ -873,15 +881,15 @@ Diese Punkte gibt es auf selyvi.de nicht. Sie entstehen daraus, dass diese
 Seite eine **Übersetzung** ist — und eine Übersetzung erbt die Prüfungen des
 Originals nicht.
 
-| #    | Punkt                                                                                                                                                                                                                                                                                                        | Wo einzutragen                                                | Zuständigkeit |
-| ---- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------- | ------------- |
-| E1   | **EN-Datenschutzerklärung vom Anwalt prüfen lassen.** /privacy ist die Übersetzung der deutschen Vorlage und trägt den Satz „German law applies; this is a translation…" — das ersetzt keine Prüfung. **/impressum ist seit dieser Runde wieder deutsch** und braucht keine EN-Prüfung mehr | [legal.ts](src/config/legal.ts), danach `PRIVACY_APPROVED`     | Anwalt        |
-| E2   | **hreflang von selyvi.de zurück auf selyvi.com setzen.** hreflang wirkt nur beidseitig. Diese Seite zeigt vollständig auf die deutsche (en, de, x-default); solange die deutsche nicht zurückzeigt, ist die Auszeichnung einseitig und wirkungslos                                                            | selyvi.de, `src/config/seo.ts` dort                           | SEO           |
-| E3   | **Freigabe der offenen Punkte in [docs/en-review.md](docs/en-review.md).** Wirkungszeile, Serverstandort-Wortlaut, Manifest-Schwüre und die drei Erzähl-Zeilen liegen dort mit Vorschlag und Alternative                                                                                                       | docs/en-review.md, danach der jeweilige Quellort               | CEO + CMO     |
-| E4   | **Der Satz fürs Verkaufsgespräch.** Die gezeigte Oberfläche ist englisch, die echte Anwendung ist deutsch (en-review.md, Punkt 9). Wer nach dieser Seite eine Demo zeigt, sagt das — sonst sagt es die Demo                                                                                                    | Verkaufsleitfaden, nicht die Website                          | Vertrieb      |
-| ~~E5~~ | ~~**Lighthouse und axe für die englische Fassung.**~~ **Erledigt:** `npm run audit:en` liefert Lighthouse-Median aus 5 Läufen (mobil, alle Kategorien; Desktop, Accessibility) und axe bei 390 und 1440. Werkzeuge außerhalb des Projekts, exakt die Versionen aus dem deutschen AUDIT.md — keine neue Paket-Entscheidung. Ergebnis: [docs/mess-basis-en.md](docs/mess-basis-en.md) | —                                                             | erledigt      |
-| E6   | **Vierte Sprache in der Elternpost.** Die deutsche Fassung zeigt vier Sprachen (DE, EN, TR, AR), die englische drei (EN, TR, AR) — eine ukrainische oder polnische Zeile müsste jemand gegenlesen. Sobald jemand das tut, kommt sie zurück                                                                     | `DEMO_TOUR_OBSERVATIONS` in [demo-data.ts](src/config/demo-data.ts) | Team          |
-| E7   | **„Drei Bereiche sind offen" auf der deutschen Seite korrigieren.** Offen sind VIER (workspace.tsx). Die englische Fassung sagt vier; auf selyvi.de steht in `take-a-look.tsx` noch drei                                                                                                                      | selyvi.de, `take-a-look.tsx`                                  | Inhalt        |
+| #      | Punkt                                                                                                                                                                                                                                                                                                                                                                               | Wo einzutragen                                                      | Zuständigkeit |
+| ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------- |
+| E1     | **EN-Datenschutzerklärung vom Anwalt prüfen lassen.** /privacy ist die Übersetzung der deutschen Vorlage und trägt den Satz „German law applies; this is a translation…" — das ersetzt keine Prüfung. **/impressum ist seit dieser Runde wieder deutsch** und braucht keine EN-Prüfung mehr                                                                                         | [legal.ts](src/config/legal.ts), danach `PRIVACY_APPROVED`          | Anwalt        |
+| E2     | **hreflang von selyvi.de zurück auf selyvi.com setzen.** hreflang wirkt nur beidseitig. Diese Seite zeigt vollständig auf die deutsche (en, de, x-default); solange die deutsche nicht zurückzeigt, ist die Auszeichnung einseitig und wirkungslos                                                                                                                                  | selyvi.de, `src/config/seo.ts` dort                                 | SEO           |
+| E3     | **Freigabe der offenen Punkte in [docs/en-review.md](docs/en-review.md).** Wirkungszeile, Serverstandort-Wortlaut, Manifest-Schwüre und die drei Erzähl-Zeilen liegen dort mit Vorschlag und Alternative                                                                                                                                                                            | docs/en-review.md, danach der jeweilige Quellort                    | CEO + CMO     |
+| E4     | **Der Satz fürs Verkaufsgespräch.** Die gezeigte Oberfläche ist englisch, die echte Anwendung ist deutsch (en-review.md, Punkt 9). Wer nach dieser Seite eine Demo zeigt, sagt das — sonst sagt es die Demo                                                                                                                                                                         | Verkaufsleitfaden, nicht die Website                                | Vertrieb      |
+| ~~E5~~ | ~~**Lighthouse und axe für die englische Fassung.**~~ **Erledigt:** `npm run audit:en` liefert Lighthouse-Median aus 5 Läufen (mobil, alle Kategorien; Desktop, Accessibility) und axe bei 390 und 1440. Werkzeuge außerhalb des Projekts, exakt die Versionen aus dem deutschen AUDIT.md — keine neue Paket-Entscheidung. Ergebnis: [docs/mess-basis-en.md](docs/mess-basis-en.md) | —                                                                   | erledigt      |
+| E6     | **Vierte Sprache in der Elternpost.** Die deutsche Fassung zeigt vier Sprachen (DE, EN, TR, AR), die englische drei (EN, TR, AR) — eine ukrainische oder polnische Zeile müsste jemand gegenlesen. Sobald jemand das tut, kommt sie zurück                                                                                                                                          | `DEMO_TOUR_OBSERVATIONS` in [demo-data.ts](src/config/demo-data.ts) | Team          |
+| E7     | **„Drei Bereiche sind offen" auf der deutschen Seite korrigieren.** Offen sind VIER (workspace.tsx). Die englische Fassung sagt vier; auf selyvi.de steht in `take-a-look.tsx` noch drei                                                                                                                                                                                            | selyvi.de, `take-a-look.tsx`                                        | Inhalt        |
 
 ### Rechtlich / vertraglich
 

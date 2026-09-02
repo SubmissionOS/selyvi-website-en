@@ -42,19 +42,19 @@ export function ResearchAccessBand() {
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            We only release data once three things are in place: legally reviewed consent
-            from those involved, granular by purpose – aggregation with minimum case
-            counts instead of raw data – and a documented survey model.
+            Three things have to be in place before any data leaves us: consent that has
+            been legally reviewed and is granular by purpose; aggregation with minimum
+            case counts instead of raw data; and a documented survey model.
           </p>
 
           <p className="mt-4 text-lg text-gray-500">
-            The survey model is documented, the minimum case counts are laid down in it,
+            The survey model is documented, the minimum case counts are written into it,
             and the impact line in the product already works to them.
           </p>
 
           <p className="mt-6 text-lg text-ink">
-            This order is slower. It is also the reason you can do research with us with
-            a clear conscience.
+            That order is the slower one. It is also the reason you can put your name on
+            the result.
           </p>
         </div>
       </div>

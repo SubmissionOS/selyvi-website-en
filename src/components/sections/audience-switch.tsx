@@ -32,18 +32,18 @@ import { PRODUCT_NAME } from "@/config/brand";
 const audiences = [
   {
     title: "I teach",
-    description: `What ${PRODUCT_NAME} takes off your hands on an entirely ordinary Tuesday.`,
+    description: `What ${PRODUCT_NAME} takes off your hands on an ordinary Tuesday.`,
     href: "/for-teachers",
   },
   {
     title: "I lead a school",
     description:
-      "What takes the load off your staff – and what you can put in front of your school authority.",
+      "What lightens the load for your staff — and what you can put in front of your school authority.",
     href: "/for-school-leadership",
   },
   {
     title: "I do research",
-    description: "How we want to measure together what actually takes the load off.",
+    description: "What we want to find out together: which parts of the job actually get lighter.",
     href: "/research",
   },
 ];

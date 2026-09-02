@@ -23,8 +23,8 @@ export function ExcerptNote() {
     <div className="border-b border-gray-200">
       <div className="mx-auto w-full max-w-6xl px-6 py-8 lg:px-8">
         <p className="max-w-2xl text-xs text-gray-500">
-          The four areas here are the core – the sidebar shows what else belongs to it.
-          Much of that you can{" "}
+          These four areas are the core; the sidebar shows what else belongs to it. Much
+          of it you can{" "}
           <Link href="/preview" className="text-brand-600 underline underline-offset-4">
             try for yourself
           </Link>

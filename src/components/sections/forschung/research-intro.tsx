@@ -23,13 +23,13 @@ export function ResearchIntro() {
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          {PRODUCT_NAME} is being built in the middle of everyday school life, and that
-          raises the question that interests us most: what actually takes the load off?
+          {PRODUCT_NAME} is being built in the middle of everyday school life. That raises
+          the question we care about most: what actually takes the load off?
         </p>
 
         <p className="mt-4 max-w-2xl text-lg text-gray-500">
-          So we build impact measurement in from the start – and are looking for research
-          partners who want to look more closely.
+          So we build the measurement in from the start — and look for research partners
+          willing to look harder than we can on our own.
         </p>
       </div>
     </section>

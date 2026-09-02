@@ -48,8 +48,8 @@ export function ImpactLineQuote() {
             </blockquote>
 
             <p className="mt-6 text-base text-gray-500">
-              It is the counterweight to „140 hours saved“ otherwise being read as
-              evidenced impact.
+              Without it, “140 hours saved” reads like evidence. It is not, and the line
+              says so.
             </p>
           </div>
         </div>

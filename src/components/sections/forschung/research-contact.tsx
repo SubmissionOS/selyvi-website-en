@@ -33,8 +33,8 @@ export function ResearchContact() {
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            For questions about schools, teaching and the work of teachers. Write to us –
-            we answer ourselves.
+            For questions about schools, teaching and the work of teachers. Write to us —
+            you will get an answer from one of us, not from a queue.
           </p>
 
           {/* Gegenwart, und produktstand-gedeckt: Konten legt die Schulleitung
@@ -43,7 +43,7 @@ export function ResearchContact() {
               verspricht keinen Datenexport; der ist nicht gebaut und steht
               deshalb nirgends. */}
           <p className="mt-4 text-lg text-ink">
-            Access for your research we set up after we have met.
+            Access for a research project is something we set up after we have met.
           </p>
 
           <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">

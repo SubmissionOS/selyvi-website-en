@@ -19,7 +19,7 @@ export function AboutIntro() {
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          Behind {PRODUCT_NAME} stands a team from product, engineering and classroom
+          Behind {PRODUCT_NAME} is a team from product, engineering and classroom
           practice.
         </p>
 

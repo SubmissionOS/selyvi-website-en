@@ -15,7 +15,7 @@ const features = [
     icon: ClipboardList,
     title: "Documentation",
     description:
-      "Observations are made during the lesson – typed or dictated – and build up a timeline per child, with competencies and support notes.",
+      "You record what you notice during the lesson, typed or dictated. Each child builds up a timeline, with competencies and support notes.",
   },
   {
     icon: Mail,
@@ -24,19 +24,19 @@ const features = [
     // Die Stil-Aussage traegt seit der Straffung die Spalte „For teachers“,
     // und zwar als einzige Stelle der Startseite. Diese Karte beschreibt den
     // BEREICH Kommunikation; dafuer braucht sie das Merkmal nicht.
-    description: `Report comments and parent emails come out of your own observations – parent emails in ${TRANSLATION_LANGUAGE_COUNT} languages on request.`,
+    description: `Report comments and parent emails come from your own notes. Parent emails translate into ${TRANSLATION_LANGUAGE_COUNT} languages on request.`,
   },
   {
     icon: BookOpen,
     title: "Teaching",
     description:
-      "Teaching materials and lesson drafts come out of a searchable subject corpus. Every generated document states its sources.",
+      "Materials and lesson drafts are built from a searchable subject corpus. Every document states where it came from.",
   },
   {
     icon: BarChart3,
     title: "Steering",
     description:
-      "In the workload relief report, school leadership sees how many hours that has given back to the staff – month by month, as a PDF.",
+      "School leadership sees the hours this gives back, month by month, in a report they can export as a PDF.",
   },
 ];
 

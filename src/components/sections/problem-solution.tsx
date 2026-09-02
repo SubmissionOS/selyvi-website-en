@@ -16,9 +16,9 @@ import { TRANSLATION_LANGUAGE_COUNT } from "@/config/product";
 const pairs = [
   {
     problem:
-      "On report day the very documentation you did on the side all year is nowhere to be found",
+      "Report day arrives, and the notes you made all year are nowhere to be found",
     solution:
-      "Observations from the lesson – typed or dictated – become the basis of the text on report day.",
+      "Notes from the lesson — typed or dictated — become the basis for the text.",
   },
   {
     // „in Ihrem Stil“ / „in your style“ stand bis zur Straffung in diesem Satz. Die Stil-Aussage
@@ -29,13 +29,13 @@ const pairs = [
     // sagt: Die Mail entsteht auf DEUTSCH und wird in einem zweiten Schritt
     // uebersetzt. Das bleibt auch auf der englischen Seite so – es ist eine
     // Tatsache ueber das Produkt, keine ueber die Website.
-    problem: "Parent emails cost evenings, and in several languages all the more",
-    solution: `The email is written in German and translated on request – into ${TRANSLATION_LANGUAGE_COUNT} languages.`,
+    problem: "Parent emails eat evenings. In several languages, they eat more",
+    solution: `The email is drafted in German, then translated on request — into ${TRANSLATION_LANGUAGE_COUNT} languages.`,
   },
   {
     problem: "Off-the-shelf materials never fit your own class",
     solution:
-      "Materials come out of what you have documented about your class – with sources stated.",
+      "Materials are built from what you have already recorded about your class — and each one states its sources.",
   },
 ];
 

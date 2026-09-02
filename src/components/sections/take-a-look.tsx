@@ -50,8 +50,8 @@ export function TakeALook() {
           </h2>
 
           <p className="mt-6 max-w-xl text-lg text-gray-500">
-            The quickest way to understand {PRODUCT_NAME} is to click through it briefly
-            yourself. Four areas are open – the rest we show you in person.
+            The quickest way to understand {PRODUCT_NAME} is to click through it. Four
+            areas are open; the rest we show you in person.
           </p>
 
           <div className="mt-10">

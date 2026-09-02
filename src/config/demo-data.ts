@@ -205,10 +205,10 @@ export type DemoObservation = {
  */
 export const DEMO_READING: DemoObservation = {
   child: "Emma K.",
-  input: "Emma read aloud to the class fluently for the first time today – she is trusting herself more.",
+  input: "Emma read to the class fluently today, first time — and she is trusting herself more.",
   chips: ["German · Reading", "Observation", "Strength"],
   reportDraft:
-    "Emma reads aloud to the class with growing fluency and assurance. She trusts herself more as she does so and contributes to German lessons of her own accord more and more often.",
+    "Emma reads to the class with growing fluency and assurance. She trusts herself more as she does, and she joins in German lessons of her own accord more and more often.",
 };
 
 /* ==========================================================================
@@ -417,12 +417,12 @@ export const DEMO_TOUR_OBSERVATIONS = [
     id: "emma",
     child: "Emma K.",
     initials: "EK",
-    note: "Emma read aloud to the class fluently for the first time today – she is trusting herself more.",
+    note: "Emma read to the class fluently today, first time — and she is trusting herself more.",
     chips: ["German · Reading", "Observation"],
     report:
-      "Emma now reads aloud to the class fluently and with assurance, and she trusts herself more as she does so. Since May she has been contributing to German lessons of her own accord more and more often.",
+      "Emma now reads to the class fluently and with assurance, and she trusts herself more as she does. Since May she has joined in German lessons of her own accord more and more often.",
     report2:
-      "Emma reads aloud to the class confidently and in a steady voice. She puts her hand up often in German lessons and brings her own contributions into the discussion.",
+      "Emma reads to the class confidently and in a steady voice. She puts her hand up often in German lessons and brings her own thoughts into the discussion.",
     mail: {
       subject: "Emma in German lessons",
       lines: {
@@ -444,17 +444,17 @@ export const DEMO_TOUR_OBSERVATIONS = [
       {
         date: "12 May",
         title: "Reads along in the reading circle",
-        text: "Emma reads a passage aloud in the reading circle and takes her time over it.",
+        text: "Emma reads a passage aloud in the reading circle, and takes her time over it.",
       },
       {
         date: "3 Jul",
         title: "Reads aloud to the class",
-        text: "Fluently in front of the whole class for the first time – she is trusting herself more.",
+        text: "Fluently, in front of the whole class, for the first time. She is trusting herself more.",
       },
       {
         date: "18 Sep",
         title: "Speaks up of her own accord",
-        text: "Brings her own contributions into the lesson discussion without being asked.",
+        text: "Brings her own thoughts into the lesson discussion without being asked.",
       },
     ],
   },
@@ -462,12 +462,12 @@ export const DEMO_TOUR_OBSERVATIONS = [
     id: "yusuf",
     child: "Yusuf A.",
     initials: "YA",
-    note: "Yusuf works confidently with numbers to 100 and explains his method to the girl next to him.",
+    note: "Yusuf works confidently with numbers to 100 and talks his method through with the girl next to him.",
     chips: ["Maths · Number range", "Observation"],
     report:
-      "Yusuf works confidently with numbers up to 100. He can explain his method in his own words and in doing so helps other children along as well.",
+      "Yusuf works confidently with numbers up to 100. He explains his method in his own words, and that carries other children along with him.",
     report2:
-      "Yusuf calculates reliably with numbers up to 100 and describes his solution clearly. He supports the children sitting next to him in lessons that way.",
+      "Yusuf works reliably with numbers up to 100 and describes his solution clearly. That is how he helps the children sitting next to him.",
     mail: {
       subject: "Yusuf in maths lessons",
       lines: {
@@ -489,12 +489,12 @@ export const DEMO_TOUR_OBSERVATIONS = [
       {
         date: "22 Apr",
         title: "Breaks numbers down securely",
-        text: "Yusuf breaks two-digit numbers down and talks through the steps out loud.",
+        text: "Yusuf breaks two-digit numbers down and talks the steps through out loud.",
       },
       {
         date: "9 Jun",
         title: "Helps at the next table",
-        text: "Explains his method to another child without giving the answer away.",
+        text: "Explains his method to another child, without giving the answer away.",
       },
       {
         date: "1 Oct",
@@ -507,12 +507,12 @@ export const DEMO_TOUR_OBSERVATIONS = [
     id: "lotta",
     child: "Lotta B.",
     initials: "LB",
-    note: "Lotta took charge of dividing up the tasks in group work, entirely on her own initiative.",
+    note: "Lotta took charge of dividing up the tasks in group work, entirely off her own bat.",
     chips: ["Social behaviour", "Observation"],
     report:
-      "Lotta takes on responsibility in group work of her own accord and divides up the tasks thoughtfully. She makes a point of keeping every child involved.",
+      "Lotta takes charge in group work of her own accord and divides up the tasks thoughtfully. She makes a point of keeping every child involved.",
     report2:
-      "Lotta organises group work independently and keeps the whole group in view while she does. She sees to it that every child gets a task.",
+      "Lotta organises group work on her own and keeps the whole group in view while she does. She sees to it that every child gets a task.",
     mail: {
       subject: "Lotta in group work",
       lines: {
@@ -534,17 +534,17 @@ export const DEMO_TOUR_OBSERVATIONS = [
       {
         date: "5 May",
         title: "Divides up the tasks",
-        text: "Lotta hands out the tasks in the group and asks each child first.",
+        text: "Lotta hands the tasks out in the group, asking each child first.",
       },
       {
         date: "17 Jun",
         title: "Brings a quiet child in",
-        text: "Includes a child who usually holds back and gives them a role.",
+        text: "Brings in a child who usually holds back, and gives them a role.",
       },
       {
         date: "24 Sep",
         title: "Leads a group on her own",
-        text: "Organises a piece of group work from start to finish without support.",
+        text: "Runs a piece of group work from start to finish without support.",
       },
     ],
   },
@@ -561,7 +561,7 @@ export type DemoTourObservation = (typeof DEMO_TOUR_OBSERVATIONS)[number];
  * Mikrofon.
  */
 export const DEMO_DICTATION =
-  "Frida set up her experiment herself in general studies and explained the steps.";
+  "Frida set her experiment up herself in general studies and talked us through it.";
 
 /**
  * Sprachen des Umschalters in der Elternpost.
@@ -653,23 +653,23 @@ export const DEMO_CHAT = {
   questions: [
     {
       id: "lesen",
-      text: "How has Emma developed in reading?",
+      text: "How has Emma come on in reading?",
       answer:
-        "Emma now reads aloud to the class fluently and with assurance, and she trusts herself more as she does so. Since May she has been contributing to German lessons of her own accord more and more often.",
+        "Emma now reads to the class fluently and with assurance, and she trusts herself more as she does. Since May she has joined in German lessons of her own accord more and more often.",
       references: ["Observation, 12 May", "Observation, 3 Jul"],
     },
     {
       id: "mathe",
       text: "Who likes explaining things to other children in maths?",
       answer:
-        "Yusuf regularly passes on his method, most recently at the next table. He gives pointers rather than saying the answer out loud.",
+        "Yusuf passes his method on regularly, most recently at the next table. He gives pointers rather than saying the answer out loud.",
       references: ["Observation, 22 Apr", "Observation, 9 Jun"],
     },
     {
       id: "gruppen",
       text: "Who takes on responsibility in group work?",
       answer:
-        "Lotta divides up the tasks in group work of her own accord and makes sure everyone is involved. Most recently she led a group on her own.",
+        "Lotta divides the tasks up in group work of her own accord and makes sure everyone is involved. Most recently she ran a group on her own.",
       references: ["Observation, 5 May", "Observation, 24 Sep"],
     },
   ],

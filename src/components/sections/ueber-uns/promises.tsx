@@ -39,10 +39,10 @@ import { DECISION_PROMISE } from "@/config/product";
  */
 const promises = [
   `${DECISION_PROMISE} Always.`,
-  "We show usage as a distribution – never as a ranking. Nobody is put on the spot.",
-  "Open points we mark, instead of glossing over them – on this website and in the product.",
+  "We show usage as a distribution, never as a ranking. Nobody is put on the spot.",
+  "Open points get marked, not glossed over — on this website and in the product.",
   "Sample data is called sample data here.",
-  "No child is exposed – not in the software, not in our marketing, not even an invented one.",
+  "No child is put on display: not in the software, not in our marketing, not even an invented one.",
 ];
 
 export function Promises() {
@@ -65,8 +65,8 @@ export function Promises() {
         </ul>
 
         <p className="mt-10 max-w-3xl text-lg text-gray-500">
-          These are not marketing lines. They are the rules this website was built by –
-          hold us to them.
+          These are not marketing lines. They are the rules this website was built by.
+          Hold us to them.
         </p>
       </div>
     </section>

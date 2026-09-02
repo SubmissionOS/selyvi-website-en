@@ -28,7 +28,7 @@ const points = [
   {
     icon: FlaskConical,
     title: "Trying it out in real everyday work",
-    description: `${PRODUCT_NAME} runs in your own class, during the school year – not in a test environment, but where it shows whether it holds up.`,
+    description: `${PRODUCT_NAME} runs in your own class, during the school year. Not in a test environment — where it either holds up or does not.`,
   },
   {
     icon: MessageSquareQuote,
@@ -41,13 +41,13 @@ const points = [
      * ein Versprechen, das eine groessere Anfrage sofort bricht.
      */
     description:
-      "Your feedback does not land in a ticket system but with the team. Small things are often in the product the same week.",
+      "What you send lands with the team, not in a ticket queue. Small things are often in the product the same week.",
   },
   {
     icon: Unlock,
     title: "Nothing to sell",
     description:
-      "Co-creating commits you to nothing: no contract, no pressure to buy. You can stop at any time, without giving a reason.",
+      "Co-creating commits you to nothing. No contract, no pressure to buy, and you can stop at any time without giving a reason.",
   },
 ];
 

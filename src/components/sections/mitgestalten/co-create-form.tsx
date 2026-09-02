@@ -34,8 +34,8 @@ export function CoCreateForm() {
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            Write to us briefly about what you teach and what you are hoping for. We
-            reply on working days – and say plainly whether it fits right now.
+            A few lines about what you teach and what you are hoping for. We reply on
+            working days, and we say plainly whether it fits right now.
           </p>
 
           <div className="mt-12">

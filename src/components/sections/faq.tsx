@@ -12,7 +12,7 @@ import { FaqAccordion, type FaqItem } from "@/components/faq-accordion";
 const faqItems: FaqItem[] = [
   {
     question: `What is ${PRODUCT_NAME}?`,
-    answer: `${PRODUCT_NAME} is the AI assistant for primary school teachers. It takes in observations from the lesson – typed or dictated – and turns them into report comments, parent emails and teaching materials.`,
+    answer: `${PRODUCT_NAME} is the AI assistant for primary school teachers. You record what you notice in the lesson, typed or dictated. It turns those notes into report comments, parent emails and teaching materials.`,
   },
   {
     // Diese Frage war eine Zeit lang entfernt, weil die Antwort nicht
@@ -27,11 +27,11 @@ const faqItems: FaqItem[] = [
     // gerade." Das Modell steht – und zwar restriktiver, als Interessierte
     // erwarten. Genau deshalb gehoert es hierher und nicht ins Kleingedruckte.
     question: "Who sees my class's data?",
-    answer: `${DATA_SEPARATION_NOTE} There is no role with an overall view of several teachers' data. School leadership sees aggregated figures on usage – no individual observations.`,
+    answer: `${DATA_SEPARATION_NOTE} No role has an overall view across several teachers. School leadership sees figures on usage, never a single observation.`,
   },
   {
     question: "Do parents or children need an account?",
-    answer: `No. ${PRODUCT_NAME} is purely a tool for teachers and school leadership – there is deliberately no parent or pupil portal.`,
+    answer: `No. ${PRODUCT_NAME} is a tool for teachers and school leadership. There is deliberately no parent or pupil portal.`,
   },
   {
     // Regel C: „prices are currently being set with pilot schools" sagt in
@@ -41,16 +41,16 @@ const faqItems: FaqItem[] = [
     // nennt auch keinen – er nennt den Weg zu ihm.
     question: "What does it cost?",
     answer:
-      "We discuss the price in the first conversation – together with the scope your school needs.",
+      "We settle the price in the first conversation, together with the scope your school needs.",
   },
   {
     question: `Does ${PRODUCT_NAME} replace my assessment?`,
-    answer: `No. Every suggestion is a suggestion – every decision stays with the teacher. ${PRODUCT_NAME} deliberately does not derive competency assessments automatically from marks: a mark in German does not tell you whether a child reads fluently.`,
+    answer: `No. A suggestion stays a suggestion; the decision stays with the teacher. ${PRODUCT_NAME} deliberately never derives competencies from marks — a mark in German does not tell you whether a child reads fluently.`,
   },
   {
     question: "How do I start?",
     answer:
-      "It starts with a first conversation. Everything after that – pilot phase, data processing agreement, introducing it to the staff – we go through with you there.",
+      "It starts with a conversation. The pilot phase, the data processing agreement, introducing it to your staff — we go through all of that there.",
   },
 ];
 

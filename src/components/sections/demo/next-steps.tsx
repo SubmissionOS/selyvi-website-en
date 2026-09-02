@@ -15,17 +15,17 @@ const steps = [
   {
     title: "Your request",
     description:
-      "You describe briefly what it is about. We get in touch to arrange a time.",
+      "A few lines about what you are after. We get in touch to arrange a time.",
   },
   {
     title: "A personal demo",
     description:
-      "20 minutes on the real interface. Your questions decide what we show.",
+      "Twenty minutes on the real interface. Your questions decide what we show.",
   },
   {
     title: "Pilot conversation",
     description:
-      "If it fits, we talk about a pilot phase at your school. With no obligation.",
+      "If it fits, we talk about a pilot at your school. Nothing binding.",
   },
 ];
 
@@ -67,8 +67,8 @@ export function NextSteps() {
         <h2 className="text-sm font-semibold text-ink">Rather build along right away?</h2>
 
         <p className="mt-3 text-sm text-gray-500">
-          If you want not just to see {PRODUCT_NAME} but to help develop it, this route
-          takes you there more directly.
+          If seeing {PRODUCT_NAME} is not enough and you would rather help shape it, this
+          is the shorter route.
         </p>
 
         <Link

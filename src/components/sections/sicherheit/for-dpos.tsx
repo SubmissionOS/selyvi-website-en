@@ -24,9 +24,8 @@ export function ForDpos() {
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            Questions from a data protection review of {PRODUCT_NAME} we answer directly
-            and without a sales conversation. Write to us through the request form – we
-            will get back to you.
+            A data protection review of {PRODUCT_NAME} gets direct answers, and no sales
+            conversation attached. Write to us through the request form.
           </p>
 
           <div className="mt-10">

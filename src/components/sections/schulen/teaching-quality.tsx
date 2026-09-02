@@ -43,18 +43,18 @@ export function TeachingQuality() {
             id="unterrichtsqualitaet-titel"
             className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
           >
-            Relief is not an end in itself: this is about teaching.
+            Relief is not the point. Teaching is.
           </h2>
 
           <p className="mt-5 text-lg text-gray-500">
-            Fewer evenings spent on administration means more energy for the lesson the
-            next morning. And {PRODUCT_NAME} is guided by current education standards, so
-            that relief and today’s requirements come together.
+            An evening not spent on admin is energy left for the lesson next morning. And
+            {PRODUCT_NAME} stays guided by current education standards, so that the time
+            you win back goes into teaching that holds up.
           </p>
 
           <p className="mt-4 text-lg text-ink">
-            Whether that reaches the classroom is something we measure – from the start,
-            with our impact model.
+            Whether that reaches the classroom, we measure — from the start, with our
+            impact model.
           </p>
 
           <p className="mt-6">

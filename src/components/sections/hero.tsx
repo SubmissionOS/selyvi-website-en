@@ -89,10 +89,10 @@ export function Hero() {
               „competencies", nicht „skills" (docs/glossar-en.md): Es geht um
               das Kompetenzmodell des Lehrplans, nicht um Fertigkeiten. */}
           <p className="mt-6 max-w-xl text-lg text-gray-500">
-            {PRODUCT_NAME} is the assistant that keeps learning, built for primary school
-            teachers: it learns your style, grows with your class and is guided by current
-            education standards – from the observation in the lesson to the report
-            comment.
+            {PRODUCT_NAME} is built for primary school teachers, and it keeps learning. It
+            picks up how you write. It grows with your class. And it stays guided by
+            current education standards — from the note you make mid-lesson to the
+            comment on the report.
           </p>
 
           {/* Der Satz bleibt: Er ist das Unterscheidungsmerkmal, an dem
@@ -104,7 +104,7 @@ export function Hero() {
           {/* Herkunftszeile. Nennt bewusst keinen Namen – die Person bleibt
               anonym, so wie im Erzaehltext auf /our-story. */}
           <p className="mt-6 max-w-xl text-sm text-gray-500">
-            Born at the kitchen table of a trainee primary school teacher{" "}
+            It started at a trainee primary teacher’s kitchen table{" "}
             <span aria-hidden="true">→</span>{" "}
             <Link
               href="/our-story#why"

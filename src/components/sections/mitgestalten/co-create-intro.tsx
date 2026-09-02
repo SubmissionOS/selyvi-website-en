@@ -32,8 +32,8 @@ export function CoCreateIntro() {
         </p>
 
         <p className="mt-4 max-w-2xl text-lg text-gray-500">
-          Whoever is there early shapes what gets built – as plainly as this website is
-          written.
+          Whoever is there early shapes what gets built — and hears back as plainly as
+          this website is written.
         </p>
 
         <p className="mt-6 max-w-2xl text-lg">

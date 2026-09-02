@@ -27,11 +27,11 @@ export default function NotFound() {
           id="not-found-title"
           className="mt-4 max-w-3xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl"
         >
-          This page does not exist.
+          There is nothing at this address.
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          The address may have changed, or the link is out of date.
+          The page may have moved, or the link has grown old.
         </p>
 
         <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">

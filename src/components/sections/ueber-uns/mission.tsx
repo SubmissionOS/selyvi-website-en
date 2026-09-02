@@ -29,7 +29,7 @@ export function Mission() {
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            Teachers spend too much time on administration. {MISSION_PROMISE}
+            Teachers spend too much of their time on administration. {MISSION_PROMISE}
           </p>
         </div>
       </div>

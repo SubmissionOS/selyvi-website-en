@@ -27,14 +27,13 @@ export function SecurityIntro() {
         </h1>
 
         <p className="mt-6 max-w-2xl text-lg text-gray-500">
-          We process personal data only as far as the particular function requires, and
-          only for the purpose your school entrusted it to us for: providing the service.
-          No processing beyond that – no analysis for our own purposes, no passing on for
-          advertising.
+          We process personal data only as far as a function requires it, and only for the
+          purpose your school handed it to us for: running the service. Nothing beyond
+          that — no analysis for our own ends, no passing it on for advertising.
         </p>
 
         <p className="mt-4 max-w-2xl text-lg text-gray-500">
-          What stands here is secured contractually and technically.
+          What stands here is backed contractually and technically.
         </p>
       </div>
     </section>

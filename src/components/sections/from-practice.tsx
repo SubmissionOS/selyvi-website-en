@@ -5,8 +5,8 @@ import { PRACTICE_CLAIM } from "@/config/brand";
 import { Button } from "@/components/ui/button";
 
 /**
- * Sektion „From practice“ – zwischen „Try it for yourself.“ und „What gets
- * taken off your hands“.
+ * Sektion „Where the ideas come from“ – zwischen „Try it for yourself.“ und
+ * „What gets taken off your hands“.
  *
  * Bewusst ohne Karten-Raster: Die Aussage traegt sich selbst, ein Raster wuerde
  * sie zu einem weiteren Feature-Block machen. Zwei Saetze, viel Weissraum, ein
@@ -32,13 +32,13 @@ export function FromPractice() {
             id="aus-der-praxis-titel"
             className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
           >
-            From practice
+            Where the ideas come from
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">{PRACTICE_CLAIM}</p>
 
           <p className="mt-4 text-lg text-gray-500">
-            Many features go straight back to remarks from that collaboration.
+            Plenty of what Selyvi does started as a remark from a teacher.
           </p>
 
           <div className="mt-8">

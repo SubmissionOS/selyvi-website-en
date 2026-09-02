@@ -57,7 +57,7 @@ const stages = [
   {
     name: "Input",
     description:
-      "What goes in: development work, the subject corpus, the introduction at a school.",
+      "What goes in: development work, the subject corpus, the rollout at a school.",
     /** Aufsteigende Balkenlaengen – die Treppe entsteht hier und nirgends sonst. */
     width: "w-[40%]",
   },
@@ -70,13 +70,13 @@ const stages = [
   {
     name: "Outcome",
     description:
-      "What changes for those involved: time spent, perceived workload, feedback to parents.",
+      "What changes for the people involved: time spent, perceived workload, what parents hear back.",
     width: "w-[80%]",
   },
   {
     name: "Impact",
     description:
-      "What remains beyond that. The stage for which three survey waves alone are not enough – here we need research partners.",
+      "What is left after all that. Three survey waves cannot reach this stage on their own — this is where research partners come in.",
     width: "w-full",
   },
 ];
@@ -130,18 +130,16 @@ export function ImpactModel() {
         <div className="mt-8 grid gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="space-y-4 text-lg text-gray-500 lg:col-span-5">
             <p>
-              The survey model follows the PHINEO impact staircase and distinguishes
-              input, output, outcome and impact. Data is collected across three survey
-              waves – not once, because a single snapshot cannot separate habituation
-              effects from relief.
+              The survey model follows the PHINEO impact staircase: input, output, outcome,
+              impact. We collect across three waves rather than once. A single snapshot
+              cannot tell relief apart from people simply getting used to a tool.
             </p>
 
             <p>
-              Whoever takes part consents granularly by purpose: not to “research” in
-              general, but to each purpose separately. How the analysis works is set out
-              in a codebook beforehand. And a value is only reported above a defined
-              minimum case count – below that the field stays empty, rather than showing a
-              figure that carries nobody.
+              Consent is granular by purpose: not to “research” in general, but to each
+              purpose on its own. The analysis follows a codebook written in advance. And
+              a value only appears above a defined minimum case count — below it the field
+              stays empty rather than showing a number that carries nobody.
             </p>
           </div>
 

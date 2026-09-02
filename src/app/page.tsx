@@ -42,9 +42,9 @@ export default function HomePage() {
       </Reveal>
 
       <StoryLine>
-        We do not know those evenings from a market report. We know them from the kitchen
-        table – from a trainee primary school teacher who showed us where the time
-        actually goes.
+        We did not learn about those evenings from a market report. We learned about them
+        at a kitchen table, from a trainee teacher who showed us where the time really
+        goes.
       </StoryLine>
 
       <Reveal>
@@ -62,8 +62,8 @@ export default function HomePage() {
       </Reveal>
 
       <StoryLine>
-        Everything in here goes back to a remark from a real staffroom. Some of it we
-        built because one single teacher would not let it go.
+        Every part of this started as something said in a staffroom. Some of it exists
+        because one teacher would not let it drop.
       </StoryLine>
 
       <Reveal>
@@ -78,8 +78,8 @@ export default function HomePage() {
       </Reveal>
 
       <StoryLine>
-        We were pupils ourselves for long enough. Now we build for the people who stayed
-        late for us back then.
+        We sat in those classrooms ourselves, long enough. Now we build for the people
+        who stayed late for us.
       </StoryLine>
 
       <FinalCta withMission />

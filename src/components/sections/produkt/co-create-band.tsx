@@ -27,7 +27,7 @@ export function CoCreateBand() {
           </h2>
 
           <p className="mt-5 text-lg text-gray-500">
-            That is the most interesting sentence we can hear today. Part of what stands
+            That is the most useful sentence anyone can send us. Part of what stands
             above exists because a teacher said exactly that.
           </p>
 

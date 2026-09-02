@@ -20,12 +20,12 @@ const steps = [
   {
     title: "First conversation and demo",
     description:
-      "We show where things stand on the real interface and work out what your school needs. After that, you decide whether a pilot phase makes sense.",
+      "We show you the real interface and work out what your school needs. Then you decide whether a pilot makes sense.",
   },
   {
     title: "School leadership sets up the accounts",
     description:
-      "There is deliberately no self-registration: school leadership creates the accounts for your staff and can reset passwords at any time. A pilot therefore always begins with a conversation, not with a sign-up link.",
+      "There is deliberately no self-registration. School leadership creates the accounts and can reset passwords at any time — so a pilot begins with a conversation, never with a sign-up link.",
   },
   {
     title: "Setting up the classes together",
@@ -34,12 +34,12 @@ const steps = [
   {
     title: "A personal walkthrough",
     description:
-      "Instead of an onboarding tour inside the product, we accompany the start in person, together with the teachers who are beginning.",
+      "There is no onboarding tour inside the product. We walk through the start in person, with the teachers who are beginning.",
   },
   {
     title: "Roll-out across the staff",
     description:
-      "After the pilot phase we introduce Selyvi across the whole teaching staff.",
+      "After the pilot, Selyvi goes to the whole teaching staff.",
   },
 ];
 
@@ -54,7 +54,7 @@ export function RolloutTimeline() {
           id="ablauf-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
         >
-          How the introduction runs
+          How a rollout actually runs
         </h2>
 
         <ol className="mt-14 max-w-3xl">

@@ -39,7 +39,7 @@ export default function EinblickPage() {
           </h1>
 
           <p className="mt-5 max-w-2xl text-lg text-gray-500">
-            Four areas are open – click through them in any order. What you select stays
+            Four areas are open. Click through them in any order — what you select stays
             when you switch.
           </p>
 
@@ -58,7 +58,7 @@ export default function EinblickPage() {
               id="preview-closing"
               className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl"
             >
-              That was a slice of four out of eight areas.
+              That was four areas out of eight.
             </h2>
 
             <div className="mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6">

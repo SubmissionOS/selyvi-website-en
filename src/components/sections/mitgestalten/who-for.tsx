@@ -31,15 +31,15 @@ export function WhoFor() {
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            First for primary school teachers, years 1 to 4 (grades 1 to 4) – that is
-            what {PRODUCT_NAME} is built for today. Anyone teaching there works with the
-            tool in exactly the form it is meant to take.
+            First for primary school teachers, years 1 to 4 (grades 1 to 4). That is what
+            {PRODUCT_NAME} is built for today, and that is where it works in the form it
+            was meant to take.
           </p>
 
           <p className="mt-4 text-lg text-gray-500">
-            Teachers from other school types are expressly welcome – for the further
-            development. {PRACTICE_CLAIM} What the application can do today is, however,
-            tailored to primary school; that belongs said beforehand and not afterwards.
+            Teachers from other school types are welcome — for the development.
+            {PRACTICE_CLAIM} What the application does today is cut for primary school,
+            though, and that belongs said beforehand rather than afterwards.
           </p>
 
           <p className="mt-4 text-lg text-gray-500">

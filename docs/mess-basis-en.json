@@ -1,12 +1,17 @@
 {
-  "gemessenAm": "2026-09-01T17:41:09.554Z",
-  "base": "http://127.0.0.1:3424",
+  "gemessenAm": "2026-09-02T07:25:14.992Z",
+  "base": "http://127.0.0.1:3430",
   "laeufe": 5,
   "mobil": [
     {
       "pfad": "/",
       "laeufe": 5,
       "durchgefallen": [
+        {
+          "kategorie": "performance",
+          "id": "largest-contentful-paint",
+          "titel": "Largest Contentful Paint"
+        },
         {
           "kategorie": "performance",
           "id": "legacy-javascript-insight",
@@ -26,11 +31,6 @@
           "kategorie": "performance",
           "id": "interactive",
           "titel": "Time to Interactive"
-        },
-        {
-          "kategorie": "performance",
-          "id": "max-potential-fid",
-          "titel": "Max Potential First Input Delay"
         },
         {
           "kategorie": "performance",
@@ -73,11 +73,6 @@
           "kategorie": "performance",
           "id": "interactive",
           "titel": "Time to Interactive"
-        },
-        {
-          "kategorie": "performance",
-          "id": "max-potential-fid",
-          "titel": "Max Potential First Input Delay"
         },
         {
           "kategorie": "performance",
@@ -207,11 +202,6 @@
         },
         {
           "kategorie": "performance",
-          "id": "max-potential-fid",
-          "titel": "Max Potential First Input Delay"
-        },
-        {
-          "kategorie": "performance",
           "id": "unused-javascript",
           "titel": "Reduce unused JavaScript"
         }
@@ -276,11 +266,6 @@
         },
         {
           "kategorie": "performance",
-          "id": "forced-reflow-insight",
-          "titel": "Forced reflow"
-        },
-        {
-          "kategorie": "performance",
           "id": "legacy-javascript-insight",
           "titel": "Legacy JavaScript"
         },
@@ -298,11 +283,6 @@
           "kategorie": "performance",
           "id": "interactive",
           "titel": "Time to Interactive"
-        },
-        {
-          "kategorie": "performance",
-          "id": "max-potential-fid",
-          "titel": "Max Potential First Input Delay"
         },
         {
           "kategorie": "performance",

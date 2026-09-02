@@ -9,6 +9,8 @@ Es gibt keinen Merge und keine gemeinsame Sprachschicht. Wer auf selyvi.de einen
 
 **Verbindlich für jede Formulierung: `docs/glossar-en.md`.** Wer einen Begriff anders übersetzt, ändert ihn dort mit Begründung. Die bereits getroffenen Entscheidungen stehen in `docs/en-review.md` — sie werden angewendet, nicht neu verhandelt.
 
+**Die Seite ist GESCHRIEBEN, nicht übersetzt.** Der Copy-Pass steht mit jeder einzelnen Änderung in `docs/en-copy-pass.md`. Eine Regel daraus gilt dauerhaft und ist die heikelste der ganzen Seite: **Wo Internationalität genannt wird, wird im selben Absatz die Grenze genannt.** Selyvi ist mit deutschen Grundschullehrkräften gebaut und arbeitet mit deutschen Lehrplanbezügen. Herkunft und DSGVO dürfen als Stärke auftreten, Elternmails in neun Sprachen sind belegt — aber kein Satz darf klingen, als sei heute ein Lehrplan außerhalb Deutschlands abgedeckt. Das Schulbarometer bleibt `German teachers`.
+
 **Der Deutsch-Detektor muss 0 melden:** `npm run check:german <url>`. Er prüft das gerenderte HTML aller Seiten. Ausnahmen sind abschließend drei Eigennamen (Selyvi, Waldstetten, Robert Bosch Stiftung); alles andere, was deutsch bleiben muss, trägt `lang="de"` — das ist zugleich WCAG 3.1.2.
 
 **Und der HTML-Detektor allein reicht nicht:** `npm run check:animation <url>` prüft den Text, der erst durch Zeit (Animationsschritte, ohne reduced motion) oder durch Klicks (/preview) entsteht. Beide Skripte teilen sich die Muster in `scripts/lib/deutsch-muster.mjs`.

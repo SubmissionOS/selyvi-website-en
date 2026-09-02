@@ -30,7 +30,7 @@ import { SampleDataNote } from "@/components/scenes/sample-data-note";
  */
 const details = [
   "Hours saved, automation rates and cases per process",
-  "Last completed month compared with the month before; the current month separately as an interim figure",
+  "Last completed month against the one before, with the current month shown separately as an interim figure",
   "Use across the staff as a distribution – deliberately no ranking by name",
 ];
 
@@ -51,9 +51,9 @@ export function ReliefReport() {
             </h2>
 
             <p className="mt-6 max-w-xl text-lg text-gray-500">
-              At the end of the month, the leadership view shows what the application has
-              given back to the staff. Exportable as a PDF – the document you put in front
-              of your school authority.
+              At the end of the month, the leadership view shows what the application gave
+              back to your staff. Export it as a PDF — that is the document you put in
+              front of your school authority.
             </p>
 
             <ul className="mt-8 space-y-3">
@@ -81,8 +81,8 @@ export function ReliefReport() {
                 Leitungsbereiche, erklaert wird hier einer – das gehoert
                 gesagt, und zwar als Feststellung, nicht als Anreisser. */}
             <p className="mt-2 text-xs text-gray-500">
-              The workload relief report is one of several analyses in the leadership
-              view.
+              The workload relief report is one of several views the leadership mode
+              offers.
             </p>
 
             {/* Verweis in den gefuehrten Einblick. Bewusst ALLGEMEIN
@@ -107,15 +107,15 @@ export function ReliefReport() {
         <div className="mt-12 grid gap-8 md:grid-cols-2">
           <p className="text-gray-500">
             <span className="font-medium text-ink">Deliberately without a euro figure.</span>{" "}
-            The calculation rests on stored assumptions about minutes. Those are labelled
-            as estimates and are not extrapolated into a total that would not survive a
-            follow-up question.
+            The figures rest on stored assumptions about minutes. They are labelled as
+            estimates, and we do not extrapolate them into a total that would fall apart
+            under one follow-up question.
           </p>
 
           <p className="text-gray-500">
             <span className="font-medium text-ink">The impact line.</span>{" "}
-            {IMPACT_LINE_PRINCIPLE} Because hours saved are a process metric, not evidence
-            of impact.
+            {IMPACT_LINE_PRINCIPLE} Hours saved are a process metric. They are not evidence
+            of impact, and the line says so.
           </p>
         </div>
 
@@ -131,9 +131,9 @@ export function ReliefReport() {
             inhaltlich richtiger als vorher: direkt neben den Zahlen, die die
             Schulleitung tatsaechlich sieht. */}
         <p className="mt-12 max-w-3xl border-l-2 border-gray-200 pl-6 text-gray-500">
-          What school leadership explicitly does not see: individual observations and
-          assessments. {DATA_SEPARATION_NOTE} There is no role with an overall view of
-          several teachers’ data – not for school leadership either.
+          What school leadership does not see: single observations and assessments.
+          {DATA_SEPARATION_NOTE} No role has an overall view across several teachers — not
+          school leadership either.
         </p>
       </div>
     </section>

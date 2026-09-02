@@ -32,8 +32,8 @@ export function SeparationBand() {
             <p className="mt-5 text-lg text-gray-500">{DATA_SEPARATION_NOTE}</p>
 
             <p className="mt-4 text-lg text-gray-500">
-              The leadership view shows aggregated figures. Individual observations and
-              assessments are not hidden there – they are not present.
+              The leadership view shows figures, not entries. Single observations and
+              assessments are not hidden there. They are not there at all.
             </p>
           </div>
 

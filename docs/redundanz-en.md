@@ -21,11 +21,11 @@ Mensch.
 
 | Aussage                           | Soll    | Start | Teachers | Leadership | Research | Security | Story | Preview | Co-create | Meet |
 | --------------------------------- | ------- | ----- | -------- | ---------- | -------- | -------- | ----- | ------- | --------- | ---- |
-| Report comments                   | 1/Seite | 3     | 2        | –          | 1        | –        | –     | –       | –         | –    |
+| Report comments                   | 1/Seite | 2     | 2        | –          | 1        | –        | –     | –       | –         | –    |
 | Parent emails                     | 1/Seite | 3     | 3        | –          | 1        | –        | –     | –       | –         | –    |
-| Materials with sources            | 1/Seite | 2     | 2        | –          | –        | –        | –     | –       | –         | –    |
+| Materials with sources            | 1/Seite | 1     | 2        | –          | –        | –        | –     | –       | –         | –    |
 | Learned writing style             | 1/Seite | 1     | 2        | –          | –        | –        | –     | –       | –         | –    |
-| Workload relief report            | geteilt | 4     | 4        | 5          | 1        | –        | –     | –       | –         | –    |
+| Workload relief report            | geteilt | 3     | 4        | 5          | 1        | –        | –     | –       | –         | –    |
 | Data separation                   | geteilt | 2     | –        | 1          | –        | 3        | 1     | –       | –         | 2    |
 | No parent/pupil portal            | geteilt | 2     | 1        | –          | –        | 1        | –     | –       | –         | 1    |
 | Practice claim (across Germany)   | geteilt | 2     | 1        | –          | –        | –        | 3     | –       | 1         | –    |

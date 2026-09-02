@@ -87,9 +87,9 @@ const columns: ValueColumn[] = [
     audience: "For teachers",
     headline: "The writing, not the judgement.",
     points: [
-      "Observations for several children at once, while the lesson is running – instead of from memory in the evening",
-      "No automatic step from marks to competencies – a mark in German does not tell you whether a child reads fluently. What gets assessed is what you observed",
-      "Which sources from the subject corpus feed in is yours to choose, if you want – instead of letting them be pulled automatically",
+      "Record several children at once while the lesson runs, instead of from memory that evening",
+      "No automatic step from marks to competencies. A mark in German does not tell you whether a child reads fluently — what gets assessed is what you saw",
+      "You pick which sources from the subject corpus feed in, rather than letting them be pulled automatically",
     ],
   },
   {
@@ -99,7 +99,7 @@ const columns: ValueColumn[] = [
     points: [
       "The workload relief report shows the time gained, month by month",
       "Use across the staff as a distribution – never as a ranking by name",
-      "Trends across real months; the current month is marked as “running”",
+      "Trends across real months, with the current one marked as still running",
     ],
   },
   {
@@ -107,7 +107,7 @@ const columns: ValueColumn[] = [
     audience: "For school authorities",
     headline: "Something to put on the table instead of a gut feeling.",
     points: [
-      "School leadership can submit the workload relief report as a PDF",
+      "School leadership can hand the workload relief report over as a PDF",
       "Estimated figures are labelled as estimates, not as measured values",
       "The impact line places every figure: measured value or estimate",
     ],
@@ -160,8 +160,8 @@ export function ValueForAll() {
         {/* Abschlusszeile ueber die volle Breite – bewusst KEINE vierte Spalte.
             Siehe Kopfkommentar: ein Schuelerportal gibt es nicht. */}
         <p className="mt-14 border-t border-gray-200 pt-10 text-lg text-ink">
-          And the children? They benefit indirectly – from a teacher who has time for
-          them again.
+          And the children? They gain indirectly — from a teacher who has time for them
+          again.
         </p>
       </div>
     </section>

@@ -25,8 +25,7 @@ export function PrincipleBand() {
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            Every suggestion is transparent, editable, and never takes effect without the
-            teacher.
+            Every suggestion is visible, editable, and goes nowhere without the teacher.
           </p>
 
           <p className="mt-4 text-lg text-gray-500">{PRACTICE_CLAIM}</p>
