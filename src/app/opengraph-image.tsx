@@ -20,7 +20,7 @@ import { PRODUCT_NAME } from "@/config/brand";
  */
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = `${PRODUCT_NAME} – the AI assistant for primary school teachers`;
+export const alt = `${PRODUCT_NAME} – the AI assistant for teachers`;
 
 // Tokens als Literale: ImageResponse rendert ausserhalb des Dokuments und
 // kennt die CSS-Variablen aus globals.css nicht.
@@ -95,7 +95,7 @@ export default function OpengraphImage() {
             maxWidth: "820px",
           }}
         >
-          The AI assistant for primary school teachers, years 1–4.
+          The AI assistant for teachers, from year 1 to upper secondary.
         </div>
       </div>
 

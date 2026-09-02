@@ -12,12 +12,12 @@ import { FaqAccordion, type FaqItem } from "@/components/faq-accordion";
 const faqItems: FaqItem[] = [
   {
     question: `What is ${PRODUCT_NAME}?`,
-    answer: `${PRODUCT_NAME} is the AI assistant for primary school teachers. You record what you notice in the lesson, typed or dictated. It turns those notes into report comments, parent emails and teaching materials.`,
+    answer: `${PRODUCT_NAME} is the AI assistant for teachers. You record what you notice in the lesson, typed or dictated. It turns those notes into report comments, parent emails and teaching materials.`,
   },
   {
     // Diese Frage war eine Zeit lang entfernt, weil die Antwort nicht
-    // feststand. Sie steht fest: Grundschule, Klassen 1–4 („primary school,
-    // years 1 to 4“).
+    // feststand. Sie steht fest – seit dem 2.9.2026 weiter gefasst: alle
+    // Schularten und Schulformen, von Klasse 1 bis zum Abitur.
     question: "Which school types is it meant for?",
     // Geteilte Formulierung – Quelle ist src/config/brand.ts.
     answer: SCHOOL_TYPE_ANSWER,

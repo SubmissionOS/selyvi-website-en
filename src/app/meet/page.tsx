@@ -60,10 +60,28 @@ export default function DemoPage() {
               schools across Europe", „international from day one" oder jede
               Formulierung, die eine Abdeckung ausserhalb Deutschlands
               behauptet. Es gibt sie nicht, und eine Schule in Amsterdam
-              merkt das in der ersten Demo. */}
+              merkt das in der ersten Demo.
+
+              ERWEITERT AM 2.9.2026 (CMO-Direktive): Die Zeile nennt jetzt die
+              Wachstumsrichtung. Der Unterschied, an dem alles haengt, liegt in
+              den Zeitformen — „built around German education plans TODAY" ist
+              die heutige Zusage, „built to grow with each country’s guidelines,
+              country by country" ist die RICHTUNG. Sie nennt bewusst kein Land,
+              keinen Zeitpunkt und keine Abdeckung.
+
+              Regel D ist damit nicht beruehrt: „built to grow" beschreibt im
+              Praesens, WIE das Produkt gebaut ist – nicht, was noch kommt.
+
+              DER LETZTE HALBSATZ MUSS JEDE UMFORMULIERUNG UEBERLEBEN. „We will
+              say plainly what fits now and what does not" ist eine Zusage ueber
+              unser Verhalten im Gespraech. Sie ist der Grund, warum die
+              Wachstumsrichtung ueberhaupt dastehen darf: Wer sie streicht,
+              behaelt die Oeffnung und verliert die Ehrlichkeit. */}
           <p className="mt-4 text-lg text-gray-500">
             Schools outside Germany are welcome to write. {PRODUCT_NAME} is built around
-            German curricula, and we will say plainly what fits today and what does not.
+            German education plans today — and built to grow with each country’s
+            guidelines, country by country. We will say plainly what fits now and what
+            does not.
           </p>
         </div>
 

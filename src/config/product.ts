@@ -28,15 +28,17 @@
 /**
  * Zielgruppe in Kurzform, fuer die Trust-Zeile.
  *
- * Selyvi ist fuer die Grundschule gebaut – Kompetenzen, Faecher und
- * Zeugnistexte sind darauf zugeschnitten. Weiter gefasste Formulierungen
- * („for teachers") waren vor dem Abgleich mit dem Produktstand im Umlauf und
- * sind bewusst verschwunden.
+ * GEAENDERT AM 2.9.2026 – CMO-DIREKTIVE, ALLE SCHULARTEN.
+ * Vorher: „For primary school teachers, years 1–4". Die Begrenzung auf die
+ * Grundschule ist entfallen (docs/produktstand-2026-08.md, Abschnitt
+ * „Zielgruppe · Aktualisierung vom 2. September 2026").
  *
- * „primary school", nicht „elementary school": Letzteres ist US-spezifisch,
- * Ersteres versteht man auch dort (docs/glossar-en.md).
+ * Die Kurzform nennt jetzt die Spanne statt der Schulart: „from year 1 to
+ * upper secondary" sagt dasselbe wie „alle Schularten", ist aber konkret und
+ * ueberall gleich lang. „upper secondary" fuer „Abitur" ist gesetzt
+ * (docs/en-review.md, Punkt 7).
  */
-export const AUDIENCE_SHORT = "For primary school teachers, years 1–4";
+export const AUDIENCE_SHORT = "For teachers, from year 1 to upper secondary";
 
 /**
  * Serverstandort und Auftragsverarbeitung – DIE heikelste Aussage der Website.
@@ -184,7 +186,7 @@ export const IMPACT_LINE_PRINCIPLE =
  *
  * „Die KI" ist hier bewusst zu „Selyvi" geworden: Als handelnder Akteur in
  * einer Vertrauensformel loest „the AI" Misstrauen aus, der Produktname nicht.
- * Die Technologie-Kategorie („AI assistant for primary school teachers") bleibt
+ * Die Technologie-Kategorie („AI assistant for teachers") bleibt
  * davon unberuehrt – sie sagt, WAS das Produkt ist, und nicht, wer entscheidet.
  *
  * ENGLISCHE FASSUNG GESETZT (docs/en-review.md, Punkt 4): „Selyvi suggests. You

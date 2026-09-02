@@ -1,5 +1,5 @@
 {
-  "gemessenAm": "2026-09-02T07:25:14.992Z",
+  "gemessenAm": "2026-09-02T18:41:59.121Z",
   "base": "http://127.0.0.1:3430",
   "laeufe": 5,
   "mobil": [
@@ -118,6 +118,11 @@
         },
         {
           "kategorie": "performance",
+          "id": "max-potential-fid",
+          "titel": "Max Potential First Input Delay"
+        },
+        {
+          "kategorie": "performance",
           "id": "unused-javascript",
           "titel": "Reduce unused JavaScript"
         }
@@ -202,6 +207,11 @@
         },
         {
           "kategorie": "performance",
+          "id": "max-potential-fid",
+          "titel": "Max Potential First Input Delay"
+        },
+        {
+          "kategorie": "performance",
           "id": "unused-javascript",
           "titel": "Reduce unused JavaScript"
         }
@@ -241,6 +251,11 @@
           "kategorie": "performance",
           "id": "interactive",
           "titel": "Time to Interactive"
+        },
+        {
+          "kategorie": "performance",
+          "id": "max-potential-fid",
+          "titel": "Max Potential First Input Delay"
         },
         {
           "kategorie": "performance",
@@ -451,6 +466,11 @@
           "kategorie": "performance",
           "id": "interactive",
           "titel": "Time to Interactive"
+        },
+        {
+          "kategorie": "performance",
+          "id": "max-potential-fid",
+          "titel": "Max Potential First Input Delay"
         },
         {
           "kategorie": "performance",

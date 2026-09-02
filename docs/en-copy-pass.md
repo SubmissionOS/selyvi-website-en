@@ -269,3 +269,78 @@ Der Auftrag verlangte, dass der Pass keine Aussage doppelt.
 Wiederholungen sichtbar gemacht hat, die in der Übersetzung mitgelaufen
 waren — etwa „on report day" in Problem und Lösung desselben Paares, oder
 „parent emails" zweimal in einem Satz.
+
+---
+
+# Nachtrag · 2. September 2026 — Zielgruppe: alle Schularten
+
+Eine CMO-Direktive hat die Zielgruppe geweitet: **alle Schularten und
+Schulformen, von Klasse 1 bis zum Abitur.** Das ist kein Copy-Pass, sondern
+eine Änderung der Wahrheit — deshalb steht sie zuerst in
+[docs/produktstand-2026-08.md](produktstand-2026-08.md), datiert und als
+Direktive gekennzeichnet, und erst danach im Text.
+
+> **Dieses Dokument ist ein Verlauf, kein Spiegel des heutigen Textes.** Drei
+> Zeilen der Tabelle oben sind durch diesen Nachtrag überholt: die
+> Hero-Subline, der „Who this is for"-Absatz auf /co-create und die
+> internationale Zeile auf /meet. Ihre „Neu"-Spalte beschreibt den Stand vom
+> Copy-Pass, nicht den von heute — was heute dasteht, steht unten.
+
+## Die Grenze, die dabei NICHT gefallen ist
+
+Der Produktstand sagt an einer Stelle etwas sehr Deutliches: Die Lehrpläne
+aller 16 Bundesländer liegen erhoben vor, sind aus Lizenzgründen aber
+**bewusst nicht angebunden**. Deshalb steht in `hero.tsx` seit Längerem eine
+Wortlaut-Sperre: niemals eine Formulierung, die einen ZUGRIFF behauptet.
+
+Die Direktive schlug für die geteilte Konstante vor:
+„It **follows** the education plans and curricula of the German states."
+
+Das liest sich als Anbindung. Eine Zielgruppen-Entscheidung ändert die
+Lizenzlage nicht, also steht dort jetzt **„It is guided by …"** — ein Verb
+Unterschied, dieselbe Aussage, dieselbe Formulierung wie in der Hero-Subline,
+deren Sperre denselben Grund hat. Die Sperre ist zugleich in
+[CLAUDE.md](../CLAUDE.md) und im Glossar festgeschrieben worden, damit sie
+nicht beim nächsten Mal wieder einzeln erstritten werden muss.
+
+## Die Änderungen
+
+| Sektion                                             | Alt                                                                                                                                                                                                   | Neu                                                                                                                                                                                                                              | Warum                                                                                                                                                                                                                                                                                        |
+| --------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `SCHOOL_TYPE_ANSWER` (FAQ + /for-teachers)          | „Selyvi is built for primary school today, years 1 to 4 (grades 1 to 4) – developed together with teachers from primary through to upper secondary. More school types follow."                        | „Selyvi is built for all school types and forms – from year 1 to upper secondary. It is guided by the education plans and curricula of the German states."                                                                       | **Wahrheit.** Drei Teile mit drei Geltungsbereichen sind zu zwei Sätzen im Präsens geworden. Der Ausblick entfällt ersatzlos — er beschrieb eine Grenze, die es nicht mehr gibt.                                                                                                             |
+| `AUDIENCE_SHORT` (Hero-Eyebrow)                     | „For primary school teachers, years 1–4"                                                                                                                                                              | „For teachers, from year 1 to upper secondary"                                                                                                                                                                                   | **Wahrheit.** Die Spanne statt der Schulart: konkret, und keine Liste, die jemand auf Vollständigkeit prüft.                                                                                                                                                                                 |
+| Hero-Subline                                        | „Selyvi is built for primary school teachers, and it keeps learning."                                                                                                                                 | „Selyvi is built for teachers, and it keeps learning."                                                                                                                                                                           | **Wahrheit.** Der Rest der Subline ist unberührt — die drei geprüften Teilaussagen dahinter gelten unverändert.                                                                                                                                                                              |
+| Seitentitel, OG-Alt, OG-Bild, FAQ „What is Selyvi?" | „the AI assistant for primary school teachers"                                                                                                                                                        | „the AI assistant for teachers"                                                                                                                                                                                                  | **Wahrheit.** Vier Stellen, eine Formulierung.                                                                                                                                                                                                                                               |
+| OG-Bild, zweite Zeile                               | „The AI assistant for primary school teachers, years 1–4."                                                                                                                                            | „The AI assistant for teachers, from year 1 to upper secondary."                                                                                                                                                                 | **Wahrheit.**                                                                                                                                                                                                                                                                                |
+| /co-create, „Who this is for"                       | „First for primary school teachers, years 1 to 4 (grades 1 to 4). That is what Selyvi is built for today, and that is where it works in the form it was meant to take."                               | „For teachers, from year 1 to upper secondary. Selyvi is guided by the education plans of the German states, and it grows with the class in front of you."                                                                       | **Wahrheit.** Die Sektion existierte, um eine Grenze zu ziehen. Ohne die Grenze nennt sie die Spanne.                                                                                                                                                                                        |
+| /co-create, zweiter Absatz                          | „Teachers from other school types are welcome — for the development. […] What the application does today is cut for primary school, though, and that belongs said beforehand rather than afterwards." | „[…] We built Selyvi for primary schools first — that is where it comes from, and it belongs said beforehand rather than afterwards."                                                                                            | **Wahrheit + Herkunft.** Die Einladung „andere Schulformen willkommen, aber nur für die Weiterentwicklung" war die Grenze in Höflichkeitsform und ist hinfällig. An ihre Stelle tritt die Herkunft — und der Halbsatz „beforehand rather than afterwards" bleibt, weil er die Haltung trägt. |
+| /meet, internationale Zeile                         | „Schools outside Germany are welcome to write. Selyvi is built around German curricula, and we will say plainly what fits today and what does not."                                                   | „Schools outside Germany are welcome to write. Selyvi is built around German education plans today — and built to grow with each country’s guidelines, country by country. We will say plainly what fits now and what does not." | **Richtung, nicht Abdeckung.** Alles hängt an den Zeitformen: „today" ist die Zusage, „built to grow" die Richtung — im Präsens, ohne Land und ohne Zeitpunkt. Der Schlusssatz über unser Verhalten musste überleben, und er hat.                                                            |
+
+## Was ausdrücklich geblieben ist
+
+- **Die Herkunftsgeschichte.** Die Referendarin am Küchentisch, auf `/`,
+  /our-story und in der Meta-Beschreibung. Das ist Geschichte, keine
+  Positionierung.
+- **„We built Selyvi for primary schools first."** Auf /our-story und
+  /co-create. Genau dieser Satz macht die Weitung glaubhaft statt beliebig.
+- **Die Klasse 3b, Emma, Yusuf, Lotta.** Eine konkrete Erzählung überzeugt
+  mehr als eine, die jede Schulart abdecken will. Sie zeigt ein Beispiel,
+  nicht die Grenze — die Spanne steht im Text daneben.
+- **Das Schulbarometer bleibt „German teachers".**
+- **„43 Fächer"** trägt keine Aussage über Schulformen jenseits der
+  Grundschule. Wer eine Fächerabdeckung für die Sekundarstufe behaupten will,
+  braucht dafür einen Eintrag im Produktstand.
+
+## Eine Ausnahme weniger
+
+`SCHOOL_TYPE_ANSWER` war eine der **drei** Ausnahmen von Regel D (keine
+Zukunftsform über die Produktreife) — wegen „More school types follow." Es
+sind jetzt **zwei**, und die dritte ist nicht ersetzt, sondern weg. Das ist
+der bessere Zustand: Der Satz stand dort, weil es eine Einschränkung zu
+benennen gab.
+
+Angepasst in [CLAUDE.md](../CLAUDE.md) (beide Fassungen der Regel) und in
+`scripts/smoke-test.mjs`, wo die Ausnahmeliste vor der Prüfung aus dem Text
+geschnitten wird. Dass „built to grow" auf /meet **keine** Zukunftsform ist,
+steht dort jetzt ebenfalls: Es beschreibt im Präsens die Bauweise, nicht eine
+Ankündigung.

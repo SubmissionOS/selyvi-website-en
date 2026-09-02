@@ -8,10 +8,12 @@ import { TRANSLATION_LANGUAGE_COUNT } from "@/config/product";
  * Sektion 3 – Problem → Lösung.
  * Drei Gegenüberstellungen, links der Schmerz, rechts die Antwort.
  *
- * Die drei Schmerzen sind die aus dem Grundschulalltag, nicht die generischen
- * einer weiterfuehrenden Schule: Der Zeugnistag, die Elternmail am Abend und
- * das Material, das nicht zur eigenen Klasse passt. Jede Antwort rechts
- * beschreibt eine Funktion, die laut docs/produktstand-2026-08.md live ist.
+ * Die drei Schmerzen sind die konkreten, nicht die generischen: Der Zeugnistag,
+ * die Elternmail am Abend und das Material, das nicht zur eigenen Klasse passt.
+ * Sie gelten in jeder Schulart – deshalb bleiben sie unveraendert, auch nachdem
+ * die Zielgruppe am 2.9.2026 auf alle Schularten erweitert wurde. Jede Antwort
+ * rechts beschreibt eine Funktion, die laut docs/produktstand-2026-08.md live
+ * ist.
  */
 const pairs = [
   {

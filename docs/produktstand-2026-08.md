@@ -13,7 +13,43 @@
 > Planungsdokumenten. Jede als „Live" markierte Funktion ist im ausgelieferten Code
 > vorhanden.
 
-Selyvi ist die KI-Assistenz für Grundschullehrkräfte, Klassen 1–4. Selyvi strukturiert
+## Zielgruppe · Aktualisierung vom 2. September 2026 (CMO-Direktive)
+
+> **Diese Aktualisierung ändert die Zielgruppen-Definition, nicht den
+> Funktionsstand.** Sie ist eine Festlegung der Geschäftsleitung, kein Befund aus
+> dem Production-Branch. Alle Funktions-Markierungen weiter unten (Live, Rollout
+> offen, Teilweise, Nicht gebaut) gelten unverändert.
+
+**Selyvi ist für alle Schularten und Schulformen – von Klasse 1 bis zum Abitur.**
+Gebaut entlang der deutschen Bildungs- und Rahmenpläne, angelegt darauf, mit den
+Vorgaben weiterer Länder mitzuwachsen, Land für Land.
+
+Die frühere Fassung lautete „KI-Assistenz für Grundschullehrkräfte, Klassen 1–4“
+und ist damit überholt. Die Grundschule bleibt die HERKUNFT und darf als solche
+erzählt werden („Wir haben Selyvi zuerst für Grundschulen gebaut“); sie ist keine
+Begrenzung der Zielgruppe mehr. Formulierungen wie „weitere Schulformen folgen“
+entfallen ersatzlos – sie beschrieben eine Einschränkung, die es nicht mehr gibt.
+
+### Was diese Aktualisierung ausdrücklich NICHT ändert
+
+**Die Lehrpläne bleiben aus Lizenzgründen nicht angebunden.** Der Abschnitt „Der
+Fachkorpus ist noch dünn“ gilt unverändert. Die Website darf sagen, dass Selyvi
+sich an Bildungs- und Rahmenplänen ORIENTIERT – niemals, dass es auf sie
+ZUGREIFT. Die Wortlaut-Sperre in src/components/sections/hero.tsx bleibt in
+Kraft: „is guided by“ ist die zulässige Formulierung, „follows the curricula of
+the German states“ wäre eine Zugriffszusage und ist deshalb ausgeschlossen.
+
+**Die Kennzahl „16 Bundesländer“ gehört weiterhin nicht auf die Website.** Sie
+beschreibt die erhobene Datenlage, nicht den ausgelieferten Funktionsumfang.
+
+**Der Fachkorpus deckt 43 Fächer ab.** Diese Zahl ist unverändert und trägt keine
+Aussage über Schulformen jenseits der Grundschule. Wer eine Fächerabdeckung für
+die Sekundarstufe behaupten will, braucht dafür einen neuen Eintrag hier.
+
+---
+
+Selyvi ist die KI-Assistenz für Lehrkräfte aller Schularten und Schulformen, von
+Klasse 1 bis zum Abitur. Selyvi strukturiert
 Beobachtungen, schreibt Zeugnisbemerkungen und Elternmails im Schreibstil der Lehrkraft,
 erzeugt Unterrichtsmaterial aus einem Fachkorpus und zeigt der Schulleitung, wie viel Zeit
 das der Schule zurückgibt.

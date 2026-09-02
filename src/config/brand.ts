@@ -44,12 +44,17 @@ export const PRODUCT_NAME = "Selyvi";
  * Satzbau zu zerstoeren – dieser Absatz muss bei einer Aenderung von Hand
  * nachgezogen werden.
  *
- * KEIN SCHULARTEN-ZUSATZ MEHR: Bis zum Abgleich mit dem Produktstand endete
- * dieser Satz auf „von der Grundschule bis zum Abitur". Das stimmt fuer die
- * ENTSTEHUNG – so ist das Produkt gewachsen – liest sich an dieser Stelle aber
- * als Aussage ueber die Eignung, und Selyvi ist fuer die Grundschule gebaut,
- * Klassen 1–4. Der Zusatz steht deshalb nur noch dort, wo er die Entstehung
- * erzaehlt: im Fliesstext auf /our-story.
+ * KEIN SCHULARTEN-ZUSATZ – DER GRUND HAT SICH GEAENDERT (2.9.2026):
+ * Bis zum Abgleich mit dem Produktstand endete dieser Satz auf „von der
+ * Grundschule bis zum Abitur". Er wurde gekuerzt, weil er sich damals als
+ * Aussage ueber die EIGNUNG las, waehrend das Produkt fuer die Grundschule
+ * gebaut war. Diese Begrenzung gibt es seit der CMO-Direktive nicht mehr.
+ *
+ * Der Zusatz bleibt trotzdem draussen, jetzt aus einem anderen Grund: Die
+ * Spanne steht in SCHOOL_TYPE_ANSWER und in AUDIENCE_SHORT. Hier waere sie
+ * die dritte Stelle – und PRACTICE_CLAIM ist ein Satz ueber die ENTSTEHUNG,
+ * nicht ueber die Zielgruppe. Der Fliesstext auf /our-story nennt die Spanne
+ * weiterhin dort, wo er die Entstehung erzaehlt.
  */
 export const PRACTICE_CLAIM = "Built together with teachers across Germany.";
 
@@ -70,30 +75,45 @@ export const PRACTICE_CLAIM_SHORT = "Built with teachers across Germany";
  * die erste, die eine Lehrkraft stellt, und zwei leicht verschiedene Antworten
  * darauf waeren genau die Art Widerspruch, die im Erstgespraech auffaellt.
  *
- * DREI TEILE, DREI VERSCHIEDENE GELTUNGSBEREICHE – bitte nicht vermischen:
+ * ======================================================================
+ * GEAENDERT AM 2.9.2026 – CMO-DIREKTIVE, ALLE SCHULARTEN
+ * ======================================================================
+ * Bis dahin stand hier „built for primary school today, years 1 to 4 …
+ * More school types follow." Die Zielgruppe ist seither nicht mehr auf die
+ * Grundschule begrenzt: docs/produktstand-2026-08.md, Abschnitt „Zielgruppe ·
+ * Aktualisierung vom 2. September 2026".
  *
- *   1. „built for primary school today, years 1 to 4" ist eine Tatsachenaussage
- *      und durch docs/produktstand-2026-08.md gedeckt.
- *   2. „developed together with teachers from primary through to upper
- *      secondary" beschreibt die ENTSTEHUNG, nicht die Eignung. Gedeckt durch
- *      PRACTICE_CLAIM. Deshalb steht der Zusatz hier und nur hier – im
- *      Trust-Band und auf /for-school-leadership bleibt PRACTICE_CLAIM ohne ihn.
- *   3. „More school types follow." ist AUSBLICK, keine Funktionszusage. Der
- *      Produktstand sagt dazu nichts; das Wort „follow" macht die Aussage als
- *      Zukunft erkennbar und nennt bewusst weder Schulform noch Zeitpunkt.
- *      Sobald eine zweite Schulform ausgeliefert ist, gehoert hier eine
- *      Tatsache hin – kein Ausblick mehr.
+ * Der Ausblick „More school types follow." ist ERSATZLOS entfallen. Er
+ * beschrieb eine Einschraenkung, die es nicht mehr gibt – und war zugleich
+ * eine der drei Ausnahmen von Regel D (keine Zukunftsform ueber die
+ * Produktreife). Diese Ausnahme ist damit weg, nicht ersetzt: Wer sie in
+ * CLAUDE.md oder scripts/smoke-test.mjs wieder auftauchen sieht, hat einen
+ * Rueckschritt vor sich.
  *
- * ZWEI UEBERSETZUNGSENTSCHEIDUNGEN (docs/glossar-en.md, docs/en-review.md 7):
- *   - „Abitur" hat kein Gegenstueck. „upper secondary" ist der Begriff aus der
- *     OECD- und Eurydice-Statistik; „A-levels" waere britisch und fuer einen
- *     deutschen Abschluss schlicht falsch.
- *   - „years 1 to 4 (grades 1 to 4)": „years" ist die weiter verbreitete
- *     Zaehlung, „grades" steht beim ERSTEN Vorkommen einer Seite in Klammern,
- *     damit US-Leserinnen nicht stolpern. Danach nur noch „years".
+ * ======================================================================
+ * WORTLAUT-SPERRE – „is guided by", NIEMALS „follows the curricula"
+ * ======================================================================
+ * Der zweite Satz sagt, WONACH Selyvi gebaut ist, und behauptet keinen
+ * ZUGRIFF auf die Lehrplaene. Das ist kein Stilfrage, sondern die Lizenzlage:
+ * Die Lehrplaene aller 16 Bundeslaender liegen erhoben vor, sind aber
+ * BEWUSST NICHT ANGEBUNDEN (Produktstand, „Der Fachkorpus ist noch duenn").
+ *
+ * Die CMO-Direktive schlug „It follows the education plans and curricula of
+ * the German states." vor. „follows" liest sich als Anbindung und ist
+ * deshalb zu „is guided by" geworden – dieselbe Aussage, dieselbe
+ * Formulierung wie in der Hero-Subline, deren Sperre denselben Grund hat.
+ * Wer das zurueckdreht, liest vorher beide genannten Abschnitte.
+ *
+ * UEBERSETZUNGSENTSCHEIDUNG (docs/glossar-en.md, docs/en-review.md 7):
+ *   „Abitur" hat kein Gegenstueck. „upper secondary" ist der Begriff aus der
+ *   OECD- und Eurydice-Statistik; „A-levels" waere britisch und fuer einen
+ *   deutschen Abschluss schlicht falsch.
+ *
+ *   „year 1" statt „grade 1": Die Klammerform „(grades 1 to 4)" ist mit der
+ *   Jahrgangsspanne entfallen – es gibt keine Spanne mehr zu erklaeren.
  */
 export const SCHOOL_TYPE_ANSWER =
-  "Selyvi is built for primary school today, years 1 to 4 (grades 1 to 4) – developed together with teachers from primary through to upper secondary. More school types follow.";
+  "Selyvi is built for all school types and forms – from year 1 to upper secondary. We are guided by the education and framework plans of the German states.";
 
 /**
  * CTA-Farbvariante.

@@ -9,7 +9,16 @@ Es gibt keinen Merge und keine gemeinsame Sprachschicht. Wer auf selyvi.de einen
 
 **Verbindlich für jede Formulierung: `docs/glossar-en.md`.** Wer einen Begriff anders übersetzt, ändert ihn dort mit Begründung. Die bereits getroffenen Entscheidungen stehen in `docs/en-review.md` — sie werden angewendet, nicht neu verhandelt.
 
-**Die Seite ist GESCHRIEBEN, nicht übersetzt.** Der Copy-Pass steht mit jeder einzelnen Änderung in `docs/en-copy-pass.md`. Eine Regel daraus gilt dauerhaft und ist die heikelste der ganzen Seite: **Wo Internationalität genannt wird, wird im selben Absatz die Grenze genannt.** Selyvi ist mit deutschen Grundschullehrkräften gebaut und arbeitet mit deutschen Lehrplanbezügen. Herkunft und DSGVO dürfen als Stärke auftreten, Elternmails in neun Sprachen sind belegt — aber kein Satz darf klingen, als sei heute ein Lehrplan außerhalb Deutschlands abgedeckt. Das Schulbarometer bleibt `German teachers`.
+**Die Seite ist GESCHRIEBEN, nicht übersetzt.** Der Copy-Pass steht mit jeder einzelnen Änderung in `docs/en-copy-pass.md`.
+
+**ZIELGRUPPE (CMO-Direktive vom 2.9.2026): alle Schularten und Schulformen, von Klasse 1 bis zum Abitur.** Der Wortlaut steht einmal, in `SCHOOL_TYPE_ANSWER`. Die Grundschule ist seither **Herkunft, nicht Positionierung** — "We built Selyvi for primary schools first." bleibt und wird erzählt; "primary school teachers" als Zielgruppen-Angabe ist überall verschwunden. Ausnahmen sind abschließend die Herkunftsgeschichte (die Referendarin am Küchentisch) und die Klasse `3b` in den Szenen: ein konkretes Beispiel, nicht die Grenze des Produkts.
+
+**Wo Internationalität genannt wird, wird im selben Absatz die Grenze genannt.** Das ist die heikelste Regel der ganzen Seite, und sie hängt an einer Zeitform:
+- **Heute ist die Zusage:** gebaut entlang der deutschen Bildungs- und Rahmenpläne. Herkunft und DSGVO dürfen als Stärke auftreten, Elternmails in neun Sprachen sind belegt. Das Schulbarometer bleibt `German teachers`.
+- **Die Wachstumsrichtung ist Richtung, nie Abdeckung:** "built to grow with each country’s guidelines, country by country" — ohne Land, ohne Zeitpunkt. Kein Satz darf klingen, als sei heute ein Lehrplan außerhalb Deutschlands abgedeckt.
+- **Und die Zusage über unser Verhalten muss stehen bleiben:** "We will say plainly what fits now and what does not." Wer sie streicht, behält die Öffnung und verliert die Ehrlichkeit.
+
+**ORIENTIEREN, NICHT ZUGREIFEN.** `is guided by` ist die zulässige Formulierung, `follows the curricula` / `accesses the curricula` / `uses the state syllabuses` sind es nicht. Grund ist die Lizenzlage, nicht der Stil: Die Lehrpläne aller 16 Bundesländer liegen erhoben vor, sind aber **bewusst nicht angebunden** (`docs/produktstand-2026-08.md`, „Der Fachkorpus ist noch dünn"). Die Sperre steht ausformuliert in `hero.tsx` und `brand.ts`.
 
 **Der Deutsch-Detektor muss 0 melden:** `npm run check:german <url>`. Er prüft das gerenderte HTML aller Seiten. Ausnahmen sind abschließend drei Eigennamen (Selyvi, Waldstetten, Robert Bosch Stiftung); alles andere, was deutsch bleiben muss, trägt `lang="de"` — das ist zugleich WCAG 3.1.2.
 
@@ -92,10 +101,11 @@ Gemessen wird mit `leerraum.js`: Es geht die Seite in 900-px-Schritten durch und
 ### Regel D — Keine Zukunftsform über die Produktreife
 Kein "geplant", "in Arbeit", "in Entwicklung", "entsteht gerade", "folgt", "vor dem Produktstart", "Rollout steht aus", "im Aufbau", "bald", "demnächst", "in Vorbereitung". **Was es nicht gibt, wird nicht angekündigt, sondern weggelassen.** Jede Produktaussage steht im Präsens und beschreibt Vorhandenes.
 
-DREI AUSNAHMEN, abschließend:
+ZWEI AUSNAHMEN, abschließend:
 - `PRODUCT_HOSTING_NOTE` — der Serverstandort. Die einzige erlaubte Einschränkung, unverändert im Wortlaut.
-- `SCHOOL_TYPE_ANSWER` — "Weitere Schulformen folgen." Das ist Ausbau, keine Reife; von CEO und CMO so gewollt.
 - Rechtstexte (/impressum, /datenschutz). Wortlaut nach Vorlage, nicht nach Marketing-Ton.
+
+**Es waren bis zum 2.9.2026 drei.** `SCHOOL_TYPE_ANSWER` durfte "Weitere Schulformen folgen." sagen, solange die Zielgruppe auf die Grundschule begrenzt war. Diese Begrenzung gibt es nicht mehr, und die Ausnahme ist deshalb **ersatzlos entfallen** — nicht umformuliert. Eine Ausnahme weniger ist der bessere Zustand; wer den Satz wieder auftauchen sieht, sieht einen Rückschritt.
 
 "Pilot" und "Pilotkreis" bleiben: Sie beschreiben den Einstieg, nicht die Reife. Ein temporales "folgt" ist verboten, ein logisches nicht ("aus einer Deutschnote folgt nicht, ob ein Kind flüssig liest").
 
@@ -116,11 +126,12 @@ Eine definitive Aussage über eine gewollte Produktgrenze bleibt: "There is deli
 **Regel C — kein Reifegrad-Geständnis.** Verboten: "no pilot schools", "no references", "we have been … only since", "small team", "young company", "early-stage", "not yet certified", "prices are being set with pilot schools".
 
 **Regel D — keine Zukunftsform über die Produktreife.** Verboten: "is planned", "planned feature", "in progress", "in development", "being built", "coming soon", "shortly", "in the near future", "in preparation", "before launch", "rollout pending", "prototype", "follows later/soon", "is pending", "will soon be".
-**DREI AUSNAHMEN, abschließend** — dieselben wie im Deutschen:
+**ZWEI AUSNAHMEN, abschließend** — dieselben wie im Deutschen:
 - `PRODUCT_HOSTING_NOTE` — enthält "in preparation". Unverändert im Wortlaut.
-- `SCHOOL_TYPE_ANSWER` — "More school types follow."
 - Rechtstexte (/impressum, /privacy).
-Beide Sätze stehen wortgleich in der Ausnahmeliste von `scripts/smoke-test.mjs`. Wer sie in `product.ts` bzw. `brand.ts` ändert, ändert sie dort mit.
+Der Satz steht wortgleich in der Ausnahmeliste von `scripts/smoke-test.mjs`. Wer ihn in `product.ts` ändert, ändert ihn dort mit. `SCHOOL_TYPE_ANSWER` ist am 2.9.2026 aus dieser Liste entfallen (siehe oben) und steht jetzt im Präsens: "Selyvi is built for all school types and forms – from year 1 to upper secondary."
+
+**Und „built to grow" ist keine Zukunftsform.** Die /meet-Zeile sagt "built to grow with each country’s guidelines, country by country". Das beschreibt im Präsens, WIE das Produkt gebaut ist — nicht, was noch kommt. Der Unterschied zu einem verbotenen "support for more countries is planned" ist genau der zwischen Bauweise und Ankündigung.
 Ein temporales "follows" ist verboten, ein logisches nicht ("the analysis follows a codebook", "a mark in German does not tell you whether a child reads fluently"). "Selyvi is being built in the middle of everyday school life" auf /research beschreibt die ENTSTEHUNG und ist ausgenommen.
 
 ### VERKAUFSSPRACHE – ENGLISCHE LISTE (docs/glossar-en.md)

@@ -47,8 +47,14 @@
  * ==========================================================================
  *
  * Die Inhalte müssen zum Produktstand passen (docs/produktstand-2026-08.md):
- * Grundschule, Klassen 1–4, Kompetenzen statt Notendurchschnitt. Die Quelle
- * ist deutsch; diese Datei uebersetzt sie, sie erweitert sie nicht.
+ * Kompetenzen statt Notendurchschnitt. Die Quelle ist deutsch; diese Datei
+ * uebersetzt sie, sie erweitert sie nicht.
+ *
+ * DIE SZENEN BLEIBEN GRUNDSCHULE, auch nach der Zielgruppen-Weitung vom
+ * 2.9.2026 (Klasse 1 bis Abitur). Klasse 3b, Emma, Yusuf, Lotta – das ist
+ * eine konkrete Erzaehlung, und eine konkrete Erzaehlung ist glaubhafter als
+ * eine, die jede Schulart abdecken will. Sie zeigt EIN Beispiel, nicht die
+ * Grenze des Produkts; die Spanne steht im Text daneben.
  */
 
 /** Fiktive Klasse, auf die sich alle Szenen beziehen. */
@@ -205,7 +211,8 @@ export type DemoObservation = {
  */
 export const DEMO_READING: DemoObservation = {
   child: "Emma K.",
-  input: "Emma read to the class fluently today, first time — and she is trusting herself more.",
+  input:
+    "Emma read to the class fluently today, first time — and she is trusting herself more.",
   chips: ["German · Reading", "Observation", "Strength"],
   reportDraft:
     "Emma reads to the class with growing fluency and assurance. She trusts herself more as she does, and she joins in German lessons of her own accord more and more often.",

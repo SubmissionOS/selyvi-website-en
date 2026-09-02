@@ -84,11 +84,11 @@ export const OG_IMAGE = {
   url: "/opengraph-image?v=4",
   width: 1200,
   height: 630,
-  alt: `${PRODUCT_NAME} – the AI assistant for primary school teachers`,
+  alt: `${PRODUCT_NAME} – the AI assistant for teachers`,
 };
 
 /** Titel der Startseite. Alle anderen Seiten: "Seitentitel – <Produktname>". */
-export const HOME_TITLE = `${PRODUCT_NAME} – the AI assistant for primary school teachers`;
+export const HOME_TITLE = `${PRODUCT_NAME} – the AI assistant for teachers`;
 
 export type RouteMeta = {
   path: string;
@@ -139,7 +139,7 @@ export const routes: RouteMeta[] = [
     title: "",
     // Beginnt wortgleich mit der H1: Wer den Teilen-Vorschau-Text liest und
     // danach die Seite oeffnet, findet denselben Satz wieder.
-    description: `Paperwork just got an assistant. ${PRODUCT_NAME} is the AI assistant for primary school teachers that keeps learning – observations from the lesson turn into report comments, parent emails and matching materials. In your words, not in AI words.`,
+    description: `Paperwork just got an assistant. ${PRODUCT_NAME} is the AI assistant for teachers that keeps learning – observations from the lesson turn into report comments, parent emails and matching materials. In your words, not in AI words.`,
     priority: 1,
   },
   {

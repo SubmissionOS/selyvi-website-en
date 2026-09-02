@@ -433,14 +433,23 @@ const RULES = [
  * Ausnahmen von Regel D, abschliessend (CLAUDE.md):
  *   - PRODUCT_HOSTING_NOTE: der Serverstandort, die einzige erlaubte
  *     Einschraenkung. Enthaelt „in preparation".
- *   - SCHOOL_TYPE_ANSWER: „More school types follow." Ausbau, keine Reife –
- *     von CEO und CMO so gewollt.
- * Beide werden vor der Pruefung aus dem Text geschnitten. Wer den Wortlaut in
- * src/config/product.ts bzw. src/config/brand.ts aendert, aendert ihn hier mit.
+ *
+ * ES SIND SEIT DEM 2.9.2026 NUR NOCH ZWEI STATT DREI – und die dritte ist
+ * nicht ersetzt worden, sondern weg. „More school types follow." stand hier,
+ * weil die Zielgruppe auf die Grundschule begrenzt war und der Ausbau benannt
+ * werden sollte. Mit der CMO-Direktive gibt es diese Begrenzung nicht mehr:
+ * SCHOOL_TYPE_ANSWER nennt jetzt die volle Spanne im Praesens und braucht
+ * keinen Ausblick. Eine Ausnahme weniger ist ein besserer Zustand, kein
+ * Verlust — wer den Satz wieder auftauchen sieht, sieht einen Rueckschritt.
+ *
+ * (Die dritte Ausnahme der CLAUDE.md, die Rechtstexte, steht nicht hier: Sie
+ * ist eine SEITEN-Ausnahme und wird ueber die Seitenliste geregelt.)
+ *
+ * Die Ausnahme wird vor der Pruefung aus dem Text geschnitten. Wer den
+ * Wortlaut in src/config/product.ts aendert, aendert ihn hier mit.
  */
 const AUSNAHMEN = [
   "Before Selyvi is used with real pupil data, the product servers move to Germany and every school has a data processing agreement in place — both are in preparation.",
-  "More school types follow.",
 ];
 
 /* ==========================================================================
@@ -598,9 +607,7 @@ for (const path of HREFLANG_PAGES) {
     fail(`${path}: x-default weicht von en ab`);
   }
 }
-console.log(
-  `  ${HREFLANG_PAGES.length} Seiten geprüft: en, de und x-default vorhanden`,
-);
+console.log(`  ${HREFLANG_PAGES.length} Seiten geprüft: en, de und x-default vorhanden`);
 console.log("  /impressum: bewusst ohne hreflang (deutsche Seite)");
 
 // --- 9: Umleitungen der deutschen Pfade ---

@@ -5,11 +5,17 @@ import { PRACTICE_CLAIM, PRODUCT_NAME } from "@/config/brand";
 /**
  * Sektion 3 – Für wen.
  *
- * Die Reihenfolge ist die Wahrheit aus docs/produktstand-2026-08.md: gebaut
- * fuer die Grundschule, Klassen 1–4. Andere Schulformen sind ausdruecklich
- * willkommen – aber fuer die WEITERENTWICKLUNG, nicht als heutige Zielgruppe.
- * Genau diese Unterscheidung ist der Grund, warum die Sektion existiert; ohne
- * sie liest eine Gymnasiallehrkraft die Einladung als Zusage.
+ * GEAENDERT AM 2.9.2026 – CMO-DIREKTIVE, ALLE SCHULARTEN.
+ * Diese Sektion existierte, um eine Grenze zu ziehen: gebaut fuer die
+ * Grundschule, andere Schulformen willkommen fuer die WEITERENTWICKLUNG,
+ * nicht als heutige Zielgruppe. Diese Grenze gibt es nicht mehr
+ * (docs/produktstand-2026-08.md, „Zielgruppe · Aktualisierung vom 2.
+ * September 2026"). Der Absatz nennt jetzt die Spanne – Klasse 1 bis Abitur –
+ * und keine Einschraenkung.
+ *
+ * Die Herkunft bleibt und wird erzaehlt: „We built Selyvi for primary schools
+ * first." Das ist Geschichte, keine Positionierung – und es ist der Satz, der
+ * verhindert, dass die Weitung wie eine nachtraegliche Behauptung wirkt.
  *
  * Der zweite Absatz ist durch PRACTICE_CLAIM gedeckt: An der Entwicklung
  * waren Lehrkraefte von der Grundschule bis zum Abitur beteiligt. Das ist
@@ -31,15 +37,14 @@ export function WhoFor() {
           </h2>
 
           <p className="mt-6 text-lg text-gray-500">
-            First for primary school teachers, years 1 to 4 (grades 1 to 4). That is what
-            {PRODUCT_NAME} is built for today, and that is where it works in the form it
-            was meant to take.
+            For teachers, from year 1 to upper secondary. We are guided by the education
+            and framework plans of the German states, and {PRODUCT_NAME} grows with the
+            class in front of you.
           </p>
 
           <p className="mt-4 text-lg text-gray-500">
-            Teachers from other school types are welcome — for the development.
-            {PRACTICE_CLAIM} What the application does today is cut for primary school,
-            though, and that belongs said beforehand rather than afterwards.
+            {PRACTICE_CLAIM} We built {PRODUCT_NAME} for primary schools first — that is
+            where it comes from, and it belongs said beforehand rather than afterwards.
           </p>
 
           <p className="mt-4 text-lg text-gray-500">
