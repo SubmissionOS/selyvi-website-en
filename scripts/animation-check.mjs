@@ -302,6 +302,48 @@ function klickText(text, tag = "button") {
   })()`;
 }
 
+/**
+ * Tippt in ein Feld und loest die React-Zustandsaenderung aus.
+ *
+ * ==========================================================================
+ * WARUM NICHT EINFACH el.value = "…"
+ * ==========================================================================
+ * React haengt einen eigenen Setter vor die `value`-Eigenschaft des Elements.
+ * Wer direkt zuweist, aendert das DOM, aber NICHT den React-Zustand – das
+ * `input`-Ereignis traegt dann den alten Wert, und die Komponente rendert
+ * nichts Neues. Der Aufruf ueber den Prototyp-Setter umgeht Reacts Abfangen
+ * und macht die Aenderung fuer den Ereignis-Verteiler sichtbar.
+ *
+ * Das ist der Grund, warum dieser Crawler bis zum Ausbau nur KLICKEN konnte:
+ * Die drei ehrlichen Grenz-Zeilen der Vorschau erscheinen erst nach einer
+ * Eingabe und waeren sonst nie geprueft worden.
+ */
+function tippe(selektor, text) {
+  return `(() => {
+    const el = document.querySelector(${JSON.stringify(selektor)});
+    if (!el) return false;
+    const proto = el.tagName === 'TEXTAREA'
+      ? window.HTMLTextAreaElement.prototype
+      : window.HTMLInputElement.prototype;
+    const setter = Object.getOwnPropertyDescriptor(proto, 'value').set;
+    setter.call(el, ${JSON.stringify(text)});
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+    return true;
+  })()`;
+}
+
+/** Enter im Feld – fuer die Eingaben, die auf Enter reagieren. */
+function druckeEnter(selektor) {
+  return `(() => {
+    const el = document.querySelector(${JSON.stringify(selektor)});
+    if (!el) return false;
+    el.dispatchEvent(new KeyboardEvent('keydown', {
+      key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true, cancelable: true,
+    }));
+    return true;
+  })()`;
+}
+
 async function teilB(browser) {
   const { lies, gehe } = browser;
   console.log("\n=== B) /preview – jeder bedienbare Zustand ===\n");
@@ -389,6 +431,58 @@ async function teilB(browser) {
     await schritt(`Chat-Antwort ${i + 1}`, klickAusdruck("button[aria-expanded]", i));
   }
 
+  /* ==========================================================================
+   * DIE EIGENEN EINGABEN – KLICKEN REICHT HIER NICHT
+   * ==========================================================================
+   * Alles darunter erscheint erst, NACHDEM jemand getippt hat. Ein Crawler,
+   * der nur klickt, haette die drei ehrlichen Grenz-Zeilen der Vorschau nie
+   * zu Gesicht bekommen – und genau die sind der heikelste Text der Seite.
+   */
+
+  /* ---- Freie Frage: einmal mit Treffer, einmal ohne ---- */
+  await schritt(
+    "Freie Frage tippen (Treffer erwartet)",
+    tippe("#einblick-frage", "How has Emma come on in reading?"),
+  );
+  await schritt("Freie Frage senden (Enter)", druckeEnter("#einblick-frage"));
+
+  await schritt(
+    "Freie Frage tippen (kein Treffer erwartet)",
+    tippe("#einblick-frage", "Which children were off sick in May?"),
+  );
+  await schritt("Freie Frage senden – Rückfall-Antwort", druckeEnter("#einblick-frage"));
+
+  /* Die Stelle, an der eine naive Teilzeichenketten-Suche falsch laege: Das
+     Wort „already" enthaelt die Zeichenfolge „read". Erwartet wird trotzdem
+     die MATHE-Antwort, weil ueber Wortgrenzen verglichen wird. */
+  await schritt(
+    `Freie Frage mit already – Wortgrenzen-Probe`,
+    tippe("#einblick-frage", "Has Yusuf already improved?"),
+  );
+  await schritt("Freie Frage senden – Wortgrenzen", druckeEnter("#einblick-frage"));
+
+  await schritt("Frage per Knopf senden", klickText("Send question"));
+
+  /* ---- Eigene Beobachtung: tippen, übernehmen, in Liste und Timeline ---- */
+  await schritt(
+    "Eigene Beobachtung tippen",
+    tippe("#einblick-eigene-beobachtung", "Lotta led the group work today."),
+  );
+  await schritt("Eigene Beobachtung übernehmen", klickText("Add"));
+  await aufnehmen("Eigene Beobachtung in der Liste");
+
+  await schritt(
+    "Eigene Beobachtung auswählen",
+    `(() => {
+    const el = [...document.querySelectorAll('button')].find(
+      (b) => (b.textContent || '').includes('Lotta led the group work today.'),
+    );
+    if (!el) return false;
+    el.click();
+    return true;
+  })()`,
+  );
+
   /* ---- Diktat: laeuft Wort fuer Wort ein ---- */
   {
     const ok = await lies(klickText("Dictate an observation"));
@@ -411,7 +505,13 @@ async function teilB(browser) {
   await schritt("Bereich My classes", klickText("My classes"));
   await schritt("Reiter All classes (gesperrt)", klickText("All classes"));
 
-  for (const reiter of ["Overview", "Timetable", "Documents", "Plan a lesson", "German"]) {
+  for (const reiter of [
+    "Overview",
+    "Timetable",
+    "Documents",
+    "Plan a lesson",
+    "German",
+  ]) {
     await schritt(`Reiter ${reiter}`, klickText(reiter));
   }
 
@@ -429,11 +529,50 @@ async function teilB(browser) {
     })()`,
   );
 
+  /* ==========================================================================
+   * ZUERST DIE EHRLICHE ZEILE, DANN DIE ENTWUERFE
+   * ==========================================================================
+   * Solange die EIGENE Beobachtung ausgewaehlt ist, zeigt der Zeugnis-Reiter
+   * die ehrliche Zeile statt der Entwuerfe – genau so gebaut, damit die
+   * Vorschau keinen Text im „gelernten Schreibstil" erfindet.
+   *
+   * Der Crawler hat das selbst gemeldet: In der ersten Fassung dieses Laufs
+   * standen hier drei UEBERSPRUNGENE Schritte, weil „Generate a draft" nicht
+   * existierte. Deshalb erst diesen Zustand aufnehmen, dann zurueck auf eine
+   * Beispiel-Beobachtung – sonst bliebe der halbe Bereich ungeprueft.
+   */
+  await schritt(
+    "Reiter Report comment (eigene Beobachtung)",
+    klickText("Report comment"),
+  );
+
+  await schritt("Zurück zur Liste", klickText("Live lesson"));
+  await schritt(
+    "Beispiel-Beobachtung wählen",
+    klickAusdruck("ul li button[aria-pressed]", 0),
+  );
+  await schritt("Bereich My classes erneut", klickText("My classes"));
+  await schritt("Reiter Overview erneut", klickText("Overview"));
+  await schritt(
+    "Schüler-Detail Emma K. erneut",
+    `(() => {
+      const el = [...document.querySelectorAll('button')].find(
+        (b) => (b.textContent || '').includes('Emma K.'),
+      );
+      if (!el) return false;
+      el.click();
+      return true;
+    })()`,
+  );
+
   // Zeugnisbemerkung: erzeugen, zweite Formulierung
   await schritt("Reiter Report comment", klickText("Report comment"));
   await schritt("Entwurf erzeugt", klickText("Generate a draft"));
   await schritt("Zweite Formulierung", klickText("Another wording"));
-  await schritt("Dritte Formulierung (zurück auf Variante 1)", klickText("Another wording"));
+  await schritt(
+    "Dritte Formulierung (zurück auf Variante 1)",
+    klickText("Another wording"),
+  );
 
   // Elternpost: entwerfen, jede Sprache
   await schritt("Reiter Parent email", klickText("Parent email"));
@@ -457,20 +596,20 @@ async function teilB(browser) {
   await schritt("Kind aufgenommen", klickText("Seat of EK"));
   await schritt("Auf freien Platz gesetzt", klickText("Free seat"));
   await schritt("Gesperrter Platz angetippt", klickText("Locked seat"));
-  await schritt(
-    "Platz gesperrt",
-    klickAusdruck("button[aria-label^='Lock seat']", 0),
-  );
-  await schritt(
-    "Platz freigegeben",
-    klickAusdruck("button[aria-label^='Unlock']", 0),
-  );
+  await schritt("Platz gesperrt", klickAusdruck("button[aria-label^='Lock seat']", 0));
+  await schritt("Platz freigegeben", klickAusdruck("button[aria-label^='Unlock']", 0));
 
   /* ---- Timeline ---- */
   await schritt("Bereich Timeline", klickText("Timeline"));
   for (const kind of ["Emma K.", "Yusuf A.", "Lotta B."]) {
     await schritt(`Timeline ${kind}`, klickText(kind));
-    for (let i = 0; i < 3; i++) {
+    /* So viele Eintraege, wie das Kind HAT – nicht eine feste Zahl. Bei Lotta
+       haengt die eben getippte eigene Beobachtung als neuester Eintrag hinten
+       an, die anderen beiden haben drei. Eine feste Vier hat hier zwei
+       „übersprungen"-Meldungen erzeugt, die nichts bedeuteten – und genau
+       solche Meldungen stumpfen den Blick fuer die ab, die etwas bedeuten. */
+    const anzahl = await lies(`document.querySelectorAll('ol li button').length`);
+    for (let i = 0; i < Number(anzahl); i++) {
       await schritt(`Timeline-Eintrag ${i + 1}`, klickAusdruck("ol li button", i));
     }
   }
@@ -485,11 +624,65 @@ async function teilB(browser) {
   }
   await schritt("Material erzeugt", klickText("Generate materials"));
 
+  /* Freies Materialthema – die ehrliche Zeile statt eines erfundenen
+     Arbeitsblatts. Zweimal, weil es zwei Wege dorthin gibt. */
+  await schritt(
+    "Eigenes Thema tippen",
+    tippe("#einblick-thema", "The water cycle in year 4"),
+  );
+  await schritt("Eigenes Thema per Enter", druckeEnter("#einblick-thema"));
+  await schritt("Eigenes Thema erneut tippen", tippe("#einblick-thema", "Fractions"));
+  await schritt("Eigenes Thema per Knopf", klickText("Use this topic"));
+
+  /* ---- Elternpost: Empfänger wechseln, Anrede wechselt mit ---- */
+  await schritt("Bereich My classes für Elternpost", klickText("My classes"));
+  await schritt("Reiter Documents", klickText("Documents"));
+
   /* ---- Zurücksetzen ---- */
   await schritt("Zurücksetzen", klickText("Reset"));
 
-  /* ---- Prüfung ---- */
+  /* ==========================================================================
+   * PFLICHT-ZEILEN: WAS DER LAUF GESEHEN HABEN MUSS
+   * ==========================================================================
+   * Ein Crawl mit 0 deutschen Fundstellen beweist nur, dass er lief – nicht,
+   * dass er an den heiklen Stellen VORBEIGEKOMMEN ist. Ein Tippfeld, das sich
+   * umbenennt, ein Selektor, der ins Leere greift: Der Lauf bliebe gruen und
+   * haette nichts geprueft.
+   *
+   * Diese Liste dreht das um. Jede Zeile MUSS in einem der aufgenommenen
+   * Zustaende vorgekommen sein. Es sind genau die drei ehrlichen Grenz-Zeilen
+   * plus die Belege dafuer, dass eine eigene Eingabe wirklich ankommt.
+   */
+  const PFLICHT = [
+    // Die Rueckfall-Antwort auf eine Frage, die die Vorschau nicht kennt.
+    "In this preview I only know the sample data for class 3b",
+    // Kein erfundener Zeugnisentwurf aus einer eigenen Beobachtung.
+    "In this preview, drafts come from the three samples",
+    // Kein erfundenes Arbeitsblatt aus einem eigenen Thema.
+    "In this preview, materials are ready for the three sample topics",
+    // Der selbst getippte Satz – in der Liste und in der Timeline des Kindes.
+    "Lotta led the group work today.",
+    "Your observation",
+    /* Der Wortgrenzen-Beweis. Auf „Has Yusuf already improved?" muss die
+       MATHE-Antwort kommen. Eine Teilzeichenketten-Suche haette hier die
+       LESE-Antwort gezogen, weil „already" die Folge „read" enthaelt. */
+    "Yusuf passes his method on regularly",
+    // Die Anrede wechselt mit dem Empfaenger.
+    "Dear K. family,",
+  ];
+
   let treffer = 0;
+  const alleZeilen = [...gesehen].join("   ");
+  const fehlend = PFLICHT.filter((p) => !alleZeilen.includes(p));
+  if (fehlend.length > 0) {
+    for (const f of fehlend) {
+      probleme++;
+      console.log(`   NICHT GESEHEN: „${f}" – der Lauf hat diesen Zustand verfehlt`);
+    }
+  } else {
+    console.log(`  ${PFLICHT.length} Pflicht-Zeilen: alle im Lauf vorgekommen`);
+  }
+
   for (const zeile of gesehen) {
     for (const t of findeDeutsch(zeile)) {
       treffer++;

@@ -49,11 +49,21 @@
  *   4. CLS (Cumulative Layout Shift) ueber einen PerformanceObserver.
  *   5. LAUFENDE requestAnimationFrame-SCHLEIFEN im Ruhezustand. Eine Szene,
  *      die ausserhalb des Sichtbereichs weiterrechnet, kostet Akku.
- *   6. TASTATUR-PROTOKOLL auf /preview: Was bekommt in welcher Reihenfolge
- *      den Fokus, und hat jedes Ziel einen Namen?
+ *      Dazu die FACHFARBEN des Stundenplans: Sie liegen auf /preview hinter
+ *      zwei Klicks und werden vom Bildschirm-Lauf nie erreicht, also werden
+ *      sie aus demo-data.ts gelesen und direkt gerechnet.
+ *   6. TASTATUR-PROTOKOLL auf /preview, in BEIDEN Ansichten: Startansicht
+ *      („My classes") und Beobachtungs-Bereich („Live lesson") mit den
+ *      Eingabefeldern. Was bekommt in welcher Reihenfolge den Fokus, und hat
+ *      jedes Ziel einen Namen?
  *   7. REDUCED MOTION: Zwei Aufnahmen im Abstand von zwei Sekunden. Bei
  *      `prefers-reduced-motion: reduce` muessen sie ZEICHENGLEICH sein.
  *   8. SCREENSHOTS der angeforderten Seiten in beiden Breiten.
+ *   9. SCREENSHOTS DER EIGENEN EINGABEN: Chat mit Treffer, Chat mit der
+ *      ehrlichen Rueckfall-Antwort, die eigene Beobachtung in der Liste und
+ *      dieselbe in der Timeline des Kindes – je in beiden Breiten. Der
+ *      Zustand wird vor der Aufnahme in die Bildmitte gescrollt; ein Bild
+ *      vom Seitenkopf beweist nichts.
  */
 import { spawn } from "node:child_process";
 import fs from "node:fs";
@@ -159,9 +169,7 @@ async function starteBrowser() {
       awaitPromise: true,
     });
     if (antwort?.exceptionDetails) {
-      throw new Error(
-        "Auswertung fehlgeschlagen: " + antwort.exceptionDetails.text,
-      );
+      throw new Error("Auswertung fehlgeschlagen: " + antwort.exceptionDetails.text);
     }
     return antwort?.result?.value;
   };
@@ -265,6 +273,145 @@ const UEBERLAUF = `(() => {
  * Der Hintergrund wird die Elternkette hinaufgesucht, bis eine deckende
  * Farbe kommt – `transparent` ist kein Hintergrund, sondern der des Elternteils.
  */
+/**
+ * Strukturelle Barrierefreiheits-Pruefung – ERSATZ, NICHT ERSATZTEIL.
+ *
+ * ==========================================================================
+ * WARUM ES DAS GIBT
+ * ==========================================================================
+ * axe-core und Lighthouse liegen ausserhalb des Projekts, in einem
+ * Temp-Verzeichnis. Die Windows-Bereinigung hat beide Pakete ausgeweidet:
+ * lighthouse/core/index.js fehlt, axe-core hat keine einzige .js-Datei mehr.
+ * Ohne Auftrag wird hier nichts nachinstalliert.
+ *
+ * Diese Pruefung faengt einen TEIL dessen auf, was axe sonst meldet – die
+ * Regeln, die sich ohne Fremdpaket zuverlaessig nachbauen lassen. Sie ist
+ * AUSDRUECKLICH KEIN axe-Ersatz: Sie kennt keine ARIA-Rollen-Matrix, keine
+ * Tabellen-Semantik und keine der rund neunzig weiteren Regeln.
+ *
+ * Was sie prueft, prueft sie aber vollstaendig und an beiden Breiten.
+ */
+const A11Y_STRUKTUR = `(() => {
+  const befunde = [];
+  const melde = (regel, text) => befunde.push({ regel, text: String(text).slice(0, 80) });
+
+  const sichtbar = (el) => {
+    const s = getComputedStyle(el);
+    if (s.display === 'none' || s.visibility === 'hidden') return false;
+    const r = el.getBoundingClientRect();
+    return r.width > 0 || r.height > 0 || el.classList.contains('skip-link');
+  };
+
+  /* Zugaenglicher Name, so wie ihn ein Vorleseprogramm bildet – vereinfacht:
+     aria-label, aria-labelledby, ein verknuepftes <label>, der Textinhalt,
+     bei Bildern das alt-Attribut, bei <input> der Wert eines Knopfes. */
+  const name = (el) => {
+    const label = el.getAttribute('aria-label');
+    if (label && label.trim()) return label.trim();
+
+    const von = el.getAttribute('aria-labelledby');
+    if (von) {
+      const t = von
+        .split(/\\s+/)
+        .map((id) => document.getElementById(id))
+        .filter(Boolean)
+        .map((n) => n.textContent || '')
+        .join(' ')
+        .trim();
+      if (t) return t;
+    }
+
+    if (el.labels && el.labels.length > 0) {
+      const t = [...el.labels].map((l) => l.textContent || '').join(' ').trim();
+      if (t) return t;
+    }
+
+    if (el.tagName === 'IMG') return (el.getAttribute('alt') || '').trim();
+    if (el.tagName === 'INPUT' && /^(submit|button|reset)$/i.test(el.type)) {
+      return (el.value || '').trim();
+    }
+
+    const text = (el.textContent || '').replace(/\\s+/g, ' ').trim();
+    if (text) return text;
+
+    /* Ein Element, dessen einziger Inhalt ein Bild mit alt-Text ist, traegt
+       dessen Namen. Ohne diesen Zweig meldet die Pruefung jeden Bild-Link. */
+    const bild = el.querySelector('img[alt]');
+    if (bild && (bild.getAttribute('alt') || '').trim()) {
+      return bild.getAttribute('alt').trim();
+    }
+    return '';
+  };
+
+  /* --- 1. Bilder ohne alt ------------------------------------------------ */
+  for (const img of document.querySelectorAll('img')) {
+    if (!img.hasAttribute('alt')) melde('bild-ohne-alt', img.getAttribute('src') || '<img>');
+  }
+
+  /* --- 2. Bedienelemente ohne zugaenglichen Namen ------------------------ */
+  const bedienbar = 'a[href], button, input:not([type="hidden"]), select, textarea, ' +
+    '[role="button"], [role="link"], [tabindex]:not([tabindex="-1"])';
+  for (const el of document.querySelectorAll(bedienbar)) {
+    if (!sichtbar(el)) continue;
+    if (el.getAttribute('aria-hidden') === 'true') continue;
+    if (name(el).length === 0) {
+      melde('ohne-namen', el.tagName.toLowerCase() + (el.className ? '.' + String(el.className).slice(0, 40) : ''));
+    }
+  }
+
+  /* --- 3. Doppelte id-Attribute ------------------------------------------ */
+  const ids = new Map();
+  for (const el of document.querySelectorAll('[id]')) {
+    const id = el.id;
+    ids.set(id, (ids.get(id) || 0) + 1);
+  }
+  for (const [id, n] of ids) if (n > 1) melde('doppelte-id', id + ' (' + n + 'x)');
+
+  /* --- 4. aria-Verweise ins Leere ---------------------------------------- */
+  for (const attr of ['aria-labelledby', 'aria-describedby', 'aria-controls']) {
+    for (const el of document.querySelectorAll('[' + attr + ']')) {
+      for (const id of (el.getAttribute(attr) || '').split(/\\s+/).filter(Boolean)) {
+        if (!document.getElementById(id)) melde('aria-verweis-leer', attr + '="' + id + '"');
+      }
+    }
+  }
+
+  /* --- 5. Ueberschriften: genau eine h1, keine uebersprungene Stufe ------ */
+  const ueber = [...document.querySelectorAll('h1,h2,h3,h4,h5,h6')].filter(sichtbar);
+  const h1 = ueber.filter((h) => h.tagName === 'H1');
+  if (h1.length === 0) melde('keine-h1', document.title);
+  if (h1.length > 1) melde('mehrere-h1', h1.length + ' Stueck');
+  let vorige = 0;
+  for (const h of ueber) {
+    const stufe = Number(h.tagName[1]);
+    if (vorige > 0 && stufe > vorige + 1) {
+      melde('stufe-uebersprungen', 'h' + vorige + ' -> h' + stufe + ': ' + (h.textContent || '').trim());
+    }
+    vorige = stufe;
+  }
+
+  /* --- 6. Landmarken und Sprache ----------------------------------------- */
+  if (!document.querySelector('main')) melde('kein-main', document.title);
+  const lang = document.documentElement.getAttribute('lang');
+  if (!lang) melde('html-ohne-lang', document.title);
+
+  /* --- 7. Verschachtelte Bedienelemente ---------------------------------- */
+  for (const el of document.querySelectorAll('a[href] a[href], button button, a[href] button, button a[href]')) {
+    melde('verschachtelt-bedienbar', el.tagName.toLowerCase());
+  }
+
+  /* --- 8. Listen mit fremden Kindern ------------------------------------- */
+  for (const liste of document.querySelectorAll('ul, ol')) {
+    for (const kind of liste.children) {
+      if (!['LI', 'SCRIPT', 'TEMPLATE'].includes(kind.tagName)) {
+        melde('liste-fremdes-kind', liste.tagName.toLowerCase() + ' > ' + kind.tagName.toLowerCase());
+      }
+    }
+  }
+
+  return befunde;
+})()`;
+
 const KONTRAST = `(() => {
   const zuRgb = (s) => {
     const m = s.match(/rgba?\\(([^)]+)\\)/);
@@ -452,7 +599,9 @@ try {
         fail(`${pfad} @ ${b.width}: „${k.text}" läuft ${k.ueber} px über (${k.marke})`);
       }
     }
-    console.log(`  ${b.name.padEnd(14)} ${PAGES.length} Seiten, ${kaestenGesamt} Kästen mit Überlauf`);
+    console.log(
+      `  ${b.name.padEnd(14)} ${PAGES.length} Seiten, ${kaestenGesamt} Kästen mit Überlauf`,
+    );
   }
 
   /* --- 3: Kontrast in den App-Fenstern ------------------------------------- */
@@ -460,7 +609,13 @@ try {
   for (const b of BREITEN) {
     await breite(b);
     let treffer = 0;
-    for (const pfad of ["/", "/for-teachers", "/for-school-leadership", "/security", "/preview"]) {
+    for (const pfad of [
+      "/",
+      "/for-teachers",
+      "/for-school-leadership",
+      "/security",
+      "/preview",
+    ]) {
       await gehe(pfad, 2200);
       const r = await lies(KONTRAST);
       for (const t of r.treffer) {
@@ -471,6 +626,81 @@ try {
       }
     }
     console.log(`  ${b.name.padEnd(14)} ${treffer} Kontrast-Verstöße`);
+  }
+
+  /* ==========================================================================
+   * DIE FACHFARBEN DES STUNDENPLANS – GERECHNET, NICHT ABGELAUFEN
+   * ==========================================================================
+   * Der Lauf oben misst, was AUF DEM BILDSCHIRM STEHT. Die Fachfarben stehen
+   * dort nicht: Der Stundenplan liegt auf /preview hinter zwei Klicks, und
+   * eine Farbe, die niemand aufgeklappt hat, wird auch nicht gemessen. Ein
+   * gruener Lauf haette ueber sie nichts ausgesagt.
+   *
+   * Deshalb hier zusaetzlich der direkte Weg: die Werte aus demo-data.ts,
+   * gegen die WCAG-Formel gerechnet. Die Zellenschrift ist 10 px, also gilt
+   * die Schwelle fuer normalen Text – 4,5:1.
+   */
+  /* --- 3b: strukturelle Barrierefreiheit (Ersatz, solange axe fehlt) ------ */
+  console.log("\n=== Barrierefreiheit, strukturell (Ersatz für axe) ===");
+  for (const b of BREITEN) {
+    await breite(b);
+    let treffer = 0;
+    for (const pfad of PAGES) {
+      await gehe(pfad, 1800);
+      const befunde = await lies(A11Y_STRUKTUR);
+      for (const f of befunde) {
+        treffer++;
+        fail(`${pfad} @ ${b.width}: ${f.regel} – ${f.text}`);
+      }
+    }
+    console.log(`  ${b.name.padEnd(14)} ${PAGES.length} Seiten, ${treffer} Befunde`);
+  }
+  console.log("  Geprüft: alt-Texte · Namen von Bedienelementen · doppelte ids ·");
+  console.log("  ins Leere zeigende aria-Verweise · Überschriften-Stufen · main ·");
+  console.log("  html[lang] · verschachtelte Bedienelemente · Listen-Struktur.");
+  console.log("  NICHT geprüft: alles Übrige, was axe kennt – siehe Kopfkommentar.");
+
+  console.log("\n=== Fachfarben im Stundenplan (aus demo-data.ts, gerechnet) ===");
+  {
+    const kanal = (c) => {
+      const x = c / 255;
+      return x <= 0.03928 ? x / 12.92 : Math.pow((x + 0.055) / 1.055, 2.4);
+    };
+    const luminanz = (hex) => {
+      const n = parseInt(hex.slice(1), 16);
+      return (
+        0.2126 * kanal((n >> 16) & 255) +
+        0.7152 * kanal((n >> 8) & 255) +
+        0.0722 * kanal(n & 255)
+      );
+    };
+    const verhaeltnis = (a, b2) => {
+      const l1 = luminanz(a);
+      const l2 = luminanz(b2);
+      const [hoch, tief] = l1 > l2 ? [l1, l2] : [l2, l1];
+      return (hoch + 0.05) / (tief + 0.05);
+    };
+
+    const quelle = fs.readFileSync("src/config/demo-data.ts", "utf8");
+    const block = quelle.slice(quelle.indexOf("DEMO_SUBJECT_COLORS"));
+    const eintraege = [
+      ...block
+        .slice(0, block.indexOf("};"))
+        .matchAll(
+          /"?([\w\s]+)"?:\s*\{\s*bg:\s*"(#[0-9a-fA-F]{6})",\s*text:\s*"(#[0-9a-fA-F]{6})"/g,
+        ),
+    ];
+
+    if (eintraege.length === 0) {
+      fail("DEMO_SUBJECT_COLORS nicht lesbar – die Fachfarben blieben ungeprüft");
+    }
+    for (const [, fach, bg, text] of eintraege) {
+      const v = verhaeltnis(bg, text);
+      if (v < 4.5) {
+        fail(`Fachfarbe ${fach}: ${text} auf ${bg} nur ${v.toFixed(2)}:1 statt 4,5:1`);
+      }
+      console.log(`  ${fach.trim().padEnd(16)} ${v.toFixed(2)}:1`);
+    }
   }
 
   /* --- 4: CLS -------------------------------------------------------------- */
@@ -509,28 +739,95 @@ try {
     // Die eigene Messschleife liefert bei 60 Hz rund 36 Frames in 600 ms.
     const zusatz = frames > 60;
     if (zusatz) fail(`${pfad}: ${frames} Frames in 600 ms – zusätzliche Schleife aktiv`);
-    console.log(`  ${pfad.padEnd(26)} ${frames} Frames/600 ms${zusatz ? "  ← auffällig" : ""}`);
+    console.log(
+      `  ${pfad.padEnd(26)} ${frames} Frames/600 ms${zusatz ? "  ← auffällig" : ""}`,
+    );
   }
 
   /* --- 6: Tastatur-Protokoll /preview -------------------------------------- */
   console.log("\n=== Tastatur-Protokoll /preview ===");
   await breite(BREITEN[0]);
   await gehe("/preview", 2200);
-  {
-    const ziele = await lies(TAB_PROTOKOLL);
-    const namenlos = ziele.filter((z) => z.namenlos);
-    for (const z of namenlos) fail(`/preview: fokussierbares <${z.tag}> ohne Namen`);
-    console.log(`  ${ziele.length} fokussierbare Elemente, ${namenlos.length} ohne Namen`);
 
-    const protokoll = ziele
-      .map((z, i) => `${String(i + 1).padStart(3)}. <${z.tag}> ${z.name || "— OHNE NAMEN —"}`)
-      .join("\n");
+  /* ==========================================================================
+   * ERST IN DEN BEOBACHTUNGS-BEREICH – SONST FEHLT DIE HAELFTE
+   * ==========================================================================
+   * Die Startansicht von /preview ist „My classes". Die Eingabefelder – freie
+   * Frage, eigene Beobachtung, Senden-Schalter – stehen unter „Live lesson"
+   * und sind vorher gar nicht im DOM.
+   *
+   * Bis zum Ausbau meldete dieser Abschnitt 49 fokussierbare Elemente und
+   * war gruen. Er hatte die neuen Felder schlicht nie gesehen. Ein Protokoll,
+   * das nur die Startansicht kennt, sagt nichts ueber eine Seite, deren Zweck
+   * das Klicken ist.
+   */
+  {
+    /* BEIDE ANSICHTEN, nicht eine. Die Startansicht „My classes" traegt die
+       Schuelerliste, die Reiter und das Suchfeld; „Live lesson" traegt die
+       Eingabefelder. Nur eine davon zu protokollieren heisst, die andere
+       Haelfte fuer geprueft zu halten – und nach dem Ausbau waere das die
+       Haelfte mit den neuen Feldern gewesen. */
+    const ANSICHTEN = [
+      ["Startansicht (My classes)", null],
+      ["Bereich Live lesson", "Live lesson"],
+    ];
+
+    const teile = [];
+    let gesamt = 0;
+    let namenlosGesamt = 0;
+
+    for (const [name, schalter] of ANSICHTEN) {
+      if (schalter) {
+        await lies(`(() => {
+          const el = [...document.querySelectorAll('button')].find(
+            (b) => ((b.textContent || '') + (b.getAttribute('aria-label') || ''))
+              .includes(${JSON.stringify(schalter)}),
+          );
+          if (!el) return false;
+          el.click();
+          return true;
+        })()`);
+        await sleep(700);
+      }
+
+      const ziele = await lies(TAB_PROTOKOLL);
+      const namenlos = ziele.filter((z) => z.namenlos);
+      for (const z of namenlos) {
+        fail(`/preview (${name}): fokussierbares <${z.tag}> ohne Namen`);
+      }
+      gesamt += ziele.length;
+      namenlosGesamt += namenlos.length;
+      console.log(
+        `  ${name.padEnd(26)} ${String(ziele.length).padStart(3)} fokussierbar, ${namenlos.length} ohne Namen`,
+      );
+
+      teile.push(
+        name +
+          "\n" +
+          "-".repeat(name.length) +
+          "\n" +
+          ziele
+            .map(
+              (z, i) =>
+                `${String(i + 1).padStart(3)}. <${z.tag}> ${z.name || "— OHNE NAMEN —"}`,
+            )
+            .join("\n"),
+      );
+    }
+
+    console.log(
+      `  zusammen                    ${String(gesamt).padStart(3)} fokussierbar, ${namenlosGesamt} ohne Namen`,
+    );
+
     fs.writeFileSync(
       path.join(SHOTS, "tastatur-protokoll-preview.txt"),
-      "Tastatur-Protokoll /preview (englische Fassung)\n" +
-        "Reihenfolge der fokussierbaren Elemente, 1440 px\n\n" +
-        protokoll +
-        "\n",
+      [
+        "Tastatur-Protokoll /preview (englische Fassung)",
+        "Reihenfolge der fokussierbaren Elemente, 1440 px",
+        "",
+        teile.join("\n\n"),
+        "",
+      ].join("\n"),
       "utf8",
     );
     console.log(`  Protokoll: ${SHOTS}/tastatur-protokoll-preview.txt`);
@@ -542,7 +839,13 @@ try {
     features: [{ name: "prefers-reduced-motion", value: "reduce" }],
   });
   const hashes = {};
-  for (const pfad of ["/", "/for-teachers", "/for-school-leadership", "/security", "/preview"]) {
+  for (const pfad of [
+    "/",
+    "/for-teachers",
+    "/for-school-leadership",
+    "/security",
+    "/preview",
+  ]) {
     await gehe(pfad, 2500);
     const a = await send("Page.captureScreenshot", { format: "png" });
     await sleep(2000);
@@ -554,7 +857,9 @@ try {
     if (ha !== hb) {
       fail(`${pfad}: bewegt sich trotz prefers-reduced-motion (Hashes weichen ab)`);
     }
-    console.log(`  ${pfad.padEnd(26)} ${ha.slice(0, 16)}  ${ha === hb ? "still" : "BEWEGT"}`);
+    console.log(
+      `  ${pfad.padEnd(26)} ${ha.slice(0, 16)}  ${ha === hb ? "still" : "BEWEGT"}`,
+    );
   }
   fs.writeFileSync(
     path.join(SHOTS, "reduced-motion-hashes.txt"),
@@ -619,6 +924,127 @@ try {
           : {}),
       });
       const datei = path.join(SHOTS, `en-${name}-${b.name}.png`);
+      fs.writeFileSync(datei, Buffer.from(bild.data, "base64"));
+      console.log(`  ${datei}`);
+    }
+  }
+
+  /* ==========================================================================
+   * 9: DIE EIGENEN EINGABEN – BILDER VON ZUSTAENDEN, NICHT VON SEITEN
+   * ==========================================================================
+   * Die Bilder oben zeigen /preview so, wie es LAEDT. Was der Ausbau gebracht
+   * hat, sieht man dort nicht: eine Antwort auf eine frei getippte Frage, die
+   * ehrliche Rueckfall-Antwort, den eigenen Satz in der Liste und denselben
+   * Satz in der Timeline des Kindes.
+   *
+   * Ein Bild pro Zustand, in beiden Breiten. Wer den Ausbau abnimmt, soll ihn
+   * ansehen koennen, ohne selbst zu klicken.
+   */
+  console.log("\n=== Screenshots der eigenen Eingaben ===");
+
+  const tippenIn = (selektor, text) => `(() => {
+    const el = document.querySelector(${JSON.stringify(selektor)});
+    if (!el) return false;
+    const proto = el.tagName === 'TEXTAREA'
+      ? window.HTMLTextAreaElement.prototype
+      : window.HTMLInputElement.prototype;
+    Object.getOwnPropertyDescriptor(proto, 'value').set.call(el, ${JSON.stringify(text)});
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+    return true;
+  })()`;
+
+  const klickeText = (text) => `(() => {
+    const el = [...document.querySelectorAll('button')].find((b) =>
+      ((b.textContent || '') + ' ' + (b.getAttribute('aria-label') || '')).includes(
+        ${JSON.stringify(text)},
+      ),
+    );
+    if (!el) return false;
+    el.click();
+    return true;
+  })()`;
+
+  const enterIn = (selektor) => `(() => {
+    const el = document.querySelector(${JSON.stringify(selektor)});
+    if (!el) return false;
+    el.dispatchEvent(new KeyboardEvent('keydown', {
+      key: 'Enter', code: 'Enter', keyCode: 13, bubbles: true, cancelable: true,
+    }));
+    return true;
+  })()`;
+
+  /* Ein Bild vom Seitenkopf beweist nichts. Der interessante Zustand steht
+     weiter unten im Fenster, also wird er vor der Aufnahme in die Mitte
+     gescrollt – gesucht ueber seinen sichtbaren Text, nicht ueber eine
+     Position, die sich mit dem naechsten Satz verschiebt. */
+  const scrolleZu = (text) => `(() => {
+    const treffer = [...document.querySelectorAll('div, li, p')].filter(
+      (el) => (el.textContent || '').includes(${JSON.stringify(text)}),
+    );
+    const el = treffer[treffer.length - 1];
+    if (!el) return false;
+    el.scrollIntoView({ block: 'center', behavior: 'instant' });
+    return true;
+  })()`;
+
+  const ZUSTAENDE = [
+    [
+      "chat-treffer",
+      [
+        klickeText("Live lesson"),
+        tippenIn("#einblick-frage", "How has Emma come on in reading?"),
+        enterIn("#einblick-frage"),
+        scrolleZu("Since May she has joined in German lessons"),
+      ],
+    ],
+    [
+      "chat-rueckfall",
+      [
+        klickeText("Live lesson"),
+        tippenIn("#einblick-frage", "Which children were off sick in May?"),
+        enterIn("#einblick-frage"),
+        scrolleZu("In this preview I only know the sample data"),
+      ],
+    ],
+    [
+      "eigene-beobachtung-liste",
+      [
+        klickeText("Live lesson"),
+        tippenIn("#einblick-eigene-beobachtung", "Lotta led the group work today."),
+        klickeText("Add"),
+        scrolleZu("Lotta led the group work today."),
+      ],
+    ],
+    [
+      "eigene-beobachtung-timeline",
+      [
+        klickeText("Live lesson"),
+        tippenIn("#einblick-eigene-beobachtung", "Lotta led the group work today."),
+        klickeText("Add"),
+        klickeText("Timeline"),
+        klickeText("Lotta B."),
+        scrolleZu("Your observation"),
+      ],
+    ],
+  ];
+
+  for (const b of BREITEN) {
+    await breite(b);
+    for (const [name, schritte] of ZUSTAENDE) {
+      // Jedes Bild aus einem FRISCHEN Zustand: sonst traegt das zweite Bild
+      // die Eingabe des ersten mit sich herum.
+      await gehe("/preview", 2200);
+      let ok = true;
+      for (const schritt of schritte) {
+        const r = await lies(schritt);
+        if (!r) ok = false;
+        await sleep(450);
+      }
+      if (!ok) {
+        fail(`Screenshot „${name}" @ ${b.width}: ein Schritt lief ins Leere`);
+      }
+      const bild = await send("Page.captureScreenshot", { format: "png" });
+      const datei = path.join(SHOTS, `en-preview-${name}-${b.name}.png`);
       fs.writeFileSync(datei, Buffer.from(bild.data, "base64"));
       console.log(`  ${datei}`);
     }

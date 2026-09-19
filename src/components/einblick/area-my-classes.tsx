@@ -119,7 +119,7 @@ export function AreaMyClasses({ state, actions }: Props) {
           aria-describedby={
             hinweis === "alle-klassen" ? "einblick-alle-klassen" : undefined
           }
-          className="rounded-[var(--app-radius-control)] px-3 py-1.5 text-[11px] text-[var(--app-text-muted)] hover:text-[var(--app-blue)]"
+          className="inline-flex min-h-11 items-center rounded-[var(--app-radius-control)] px-3 py-1.5 text-[11px] text-[var(--app-text-muted)] hover:text-[var(--app-blue)] sm:min-h-0"
         >
           All classes
         </button>
@@ -155,15 +155,22 @@ export function AreaMyClasses({ state, actions }: Props) {
               value={suche}
               onChange={(event) => setSuche(event.target.value)}
               placeholder="Search for a name…"
-              className="w-full bg-transparent text-[12px] text-[var(--app-text)] outline-none placeholder:text-[var(--app-text-muted)]"
-              /* outline-none nur, weil der Ring am Label sitzt – siehe oben. */
+              /* outline-none nur, weil der Ring am Label sitzt – siehe oben.
+                 min-h, weil das Feld selbst nur 19 px hoch war: Der Klick auf
+                 das Label trifft zwar, aber ein Ziel, das nur ueber seinen
+                 Rahmen erreichbar ist, ist keines.
+
+                 16 px auf dem Telefon, sonst zoomt Safari in das Feld hinein
+                 und danach nicht wieder heraus – dieselbe Regel wie bei den
+                 Eingabefeldern in areas.tsx. */
+              className="min-h-11 w-full bg-transparent text-[16px] text-[var(--app-text)] outline-none placeholder:text-[var(--app-text-muted)] sm:min-h-6 sm:text-[12px]"
             />
           </label>
 
           <button
             type="button"
             onClick={() => actions.notify("Example – nothing is created")}
-            className="mt-2 w-full rounded-[var(--app-radius-control)] bg-[var(--app-blue)] px-3 py-2 text-[12px] font-semibold text-white"
+            className="mt-2 inline-flex min-h-11 w-full items-center justify-center rounded-[var(--app-radius-control)] bg-[var(--app-blue)] px-3 py-2 text-[12px] font-semibold text-white sm:min-h-0"
           >
             Add a pupil
           </button>
@@ -220,7 +227,7 @@ export function AreaMyClasses({ state, actions }: Props) {
                     eintrag.gesperrt ? setHinweis(eintrag.key) : setTab(eintrag.key)
                   }
                   className={cn(
-                    "-mb-px border-b-2 px-1 pb-2 text-[12px]",
+                    "-mb-px inline-flex min-h-11 items-end border-b-2 px-1 pb-2 text-[12px] sm:min-h-0",
                     aktiv
                       ? "border-[var(--app-blue)] font-semibold text-[var(--app-blue)]"
                       : "border-transparent text-[var(--app-text-muted)] hover:text-[var(--app-blue)]",
@@ -419,7 +426,10 @@ function SchuelerDetail({
         <button
           type="button"
           onClick={onClose}
-          className="text-[11px] text-[var(--app-blue)] underline underline-offset-4"
+          /* 18 px hoch, gemessen – unter dem Pflichtmass von 24 px. Der
+             Rueckweg ist der wichtigste Schalter dieser Ansicht; er darf nicht
+             der kleinste sein. */
+          className="inline-flex min-h-11 items-center text-[11px] text-[var(--app-blue)] underline underline-offset-4 sm:min-h-6"
         >
           Back to the class view
         </button>
@@ -443,7 +453,7 @@ function SchuelerDetail({
             aria-selected={tat === key}
             onClick={() => setTat(key)}
             className={cn(
-              "-mb-px border-b-2 px-1 pb-2 text-[12px]",
+              "-mb-px inline-flex min-h-11 items-end border-b-2 px-1 pb-2 text-[12px] sm:min-h-0",
               tat === key
                 ? "border-[var(--app-blue)] font-semibold text-[var(--app-blue)]"
                 : "border-transparent text-[var(--app-text-muted)] hover:text-[var(--app-blue)]",

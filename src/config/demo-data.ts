@@ -580,6 +580,31 @@ export const DEMO_DICTATION =
  * `lang` traegt den BCP-47-Code fuer das ausgegebene Element: WCAG 3.1.2, und
  * die Marke, an der scripts/german-check.mjs fremdsprachige Zeilen ueberspringt.
  */
+/**
+ * Anrede der Eltern je Kind.
+ *
+ * ==========================================================================
+ * ABWEICHUNG VON DER VORLAGE – MIT GRUND
+ * ==========================================================================
+ * Die deutsche Fassung schreibt „Familie K.". Der Auftrag nannte als Beispiel
+ * „Dear Ms Kaya," – ein ausgeschriebener Nachname. Beides geht hier nicht:
+ *
+ *   1. Der Cast traegt abgekuerzte Nachnamen (Emma K., Yusuf A., Lotta B.).
+ *      Ein ausgeschriebener Elternname waere der einzige volle Nachname der
+ *      ganzen Seite und wuerde aus einer Anrede einen Datensatz machen.
+ *   2. „Ms" legt Geschlecht und Familienstand einer erfundenen Person fest,
+ *      ohne dass die Demo das braeuchte.
+ *
+ * „Dear K. family," haelt beides: Der Name wechselt sichtbar mit dem Kind –
+ * genau der Punkt, den der Produktstand macht („Namen und Signatur bleiben
+ * unangetastet") – und erfindet nichts dazu.
+ */
+export const DEMO_PARENTS: Record<string, string> = {
+  emma: "Dear K. family,",
+  yusuf: "Dear A. family,",
+  lotta: "Dear B. family,",
+};
+
 export const DEMO_MAIL_LANGS = [
   { key: "en", label: "EN", lang: "en", rtl: false },
   { key: "tr", label: "TR", lang: "tr", rtl: false },
@@ -640,6 +665,27 @@ export const DEMO_TIMETABLE_SLOTS = ["P1", "P2", "P3", "P4"] as const;
 export const DEMO_TIMETABLE_SUBJECTS = ["German", "Maths", "General studies"] as const;
 
 /** Vorbelegung: Was schon im Plan steht, bevor jemand klickt. */
+/**
+ * Eine Farbe je Fach.
+ *
+ * Die Werte kommen aus src/config/app-reference.ts – dieselbe Familie wie der
+ * Rest des Fensters, nur drei Abstufungen. KEINE neuen Marken-Farben: Was hier
+ * steht, ist entweder ein Referenzwert oder eine Ableitung davon, und jede
+ * Kombination haelt WCAG AA (geprueft mit qa-en.mjs, Abschnitt Kontrast im
+ * App-Fenster).
+ *
+ * Warum ueberhaupt Farben: Eine Woche in einer einzigen Blauabstufung sieht
+ * leer aus, obwohl sie voll ist. Drei Faecher, drei Toene – dieselbe
+ * Information, nur schneller erfassbar.
+ *
+ * Die Schluessel sind die Faecher aus DEMO_TIMETABLE_SUBJECTS, also englisch.
+ */
+export const DEMO_SUBJECT_COLORS: Record<string, { bg: string; text: string }> = {
+  German: { bg: "#c7ecff", text: "#015b97" },
+  Maths: { bg: "#e7f2e7", text: "#107c10" },
+  "General studies": { bg: "#f3e8d6", text: "#7a4d05" },
+};
+
 export const DEMO_TIMETABLE_PRESET: Record<string, string> = {
   "Mon-P1": "German",
   "Tue-P2": "Maths",
@@ -656,6 +702,212 @@ export const DEMO_TIMETABLE_PRESET: Record<string, string> = {
  * die sie sich stuetzt. Die Verweis-Chips sind der Punkt: Sie zeigen, DASS
  * die Antwort auf Eintraegen beruht.
  */
+/**
+ * Schlagworte je vorbereiteter Antwort.
+ *
+ * ==========================================================================
+ * WAS DAS IST – UND WAS NICHT
+ * ==========================================================================
+ * Eine Wortliste, gegen die eine frei getippte Frage geprueft wird. Trifft
+ * eines der Worte, zeigt die Vorschau die dazu vorbereitete Antwort. Das ist
+ * KEINE Suche und kein Sprachmodell: Es ist ein Vergleich mit einer Liste,
+ * damit eine eigene Frage nicht ins Leere laeuft.
+ *
+ * Trifft nichts, sagt die Vorschau genau das (siehe CHAT_FALLBACK). Eine
+ * erfundene Antwort waere hier der teuerste Fehler: Wer in der Vorschau eine
+ * Antwort bekommt, die es im Produkt so nicht gaebe, glaubt danach keiner
+ * anderen mehr.
+ *
+ * ==========================================================================
+ * WORTGRENZEN, NICHT TEILZEICHENKETTEN – DAS IST DER UNTERSCHIED ZUM DEUTSCHEN
+ * ==========================================================================
+ * Die deutsche Fassung vergleicht mit includes(). Im Englischen geht das
+ * schief, und zwar messbar:
+ *
+ *   „read"  steckt in „al-read-y"
+ *   „team"  steckt in „s-team"
+ *   „task"  steckt in „multi-task-ing"
+ *   „math"  steckt in „math-ematics" (hier erwuenscht – deshalb steht die
+ *           laengere Form zusaetzlich in der Liste)
+ *
+ * „Has Yusuf already improved?" haette also die Lese-Antwort gezogen. Der
+ * Vergleich laeuft deshalb ueber WORTE: Ein Eintrag ohne Leerzeichen muss als
+ * ganzes Wort vorkommen, ein Eintrag MIT Leerzeichen wird als Wortfolge
+ * gesucht. Beides steht in areas.tsx, findeAntwort().
+ *
+ * Die Tippvarianten am Ende jeder Liste sind kein Zierrat: Wer frei tippt,
+ * vertippt sich, und ein Vertipper darf nicht wie eine unbekannte Frage
+ * aussehen.
+ */
+export const DEMO_CHAT_KEYWORDS: Record<string, string[]> = {
+  lesen: [
+    "read",
+    "reads",
+    "reading",
+    "reader",
+    "aloud",
+    "fluent",
+    "fluently",
+    "german",
+    "emma",
+    "book",
+    "books",
+    "story",
+    "read aloud",
+    "read-aloud",
+    "reading circle",
+    "german lesson",
+    "german lessons",
+    // Tippvarianten
+    "raeding",
+    "redaing",
+    "readng",
+    "flunet",
+    "emmma",
+    "ema",
+  ],
+  mathe: [
+    "maths",
+    "math",
+    "mathematics",
+    "number",
+    "numbers",
+    "calculate",
+    "calculates",
+    "calculating",
+    "arithmetic",
+    "sums",
+    "explain",
+    "explains",
+    "explaining",
+    "yusuf",
+    "neighbour",
+    "neighbor",
+    "number range",
+    "numbers to 100",
+    // Tippvarianten
+    "mahts",
+    "matsh",
+    "mtah",
+    "yusef",
+    "yussuf",
+    "youssef",
+    "neigbour",
+    "nieghbour",
+    "explians",
+  ],
+  gruppen: [
+    "group",
+    "groups",
+    "groupwork",
+    "responsibility",
+    "responsible",
+    "team",
+    "teams",
+    "task",
+    "tasks",
+    "lotta",
+    "leads",
+    "leading",
+    "organise",
+    "organises",
+    "group work",
+    "takes charge",
+    "divides up",
+    // Tippvarianten
+    "gorup",
+    "grpup",
+    "gruop",
+    "groupp",
+    "lota",
+    "lotte",
+    "resposibility",
+    "responsibilty",
+  ],
+};
+
+/**
+ * Die ehrliche Rueckfall-Antwort.
+ *
+ * Sie sagt zwei Dinge in zwei Saetzen: was die Vorschau kennt, und was das
+ * Produkt an dieser Stelle tut. Kein Fehlerton, keine Entschuldigung – der
+ * zweite Satz steht im Praesens und ist durch „Freie Fragen an die eigenen
+ * Daten — Live" gedeckt.
+ *
+ * REGEL B IST NICHT VERLETZT, und das ist der Grund: Der Satz beschreibt die
+ * Grenze DIESER VORSCHAU, nicht die Reife des Produkts. „I only know the
+ * sample data" sagt etwas ueber eine Demo mit drei Beispielkindern – der
+ * zweite Satz sagt im selben Atemzug, dass das Produkt genau diese Frage
+ * beantwortet. Die Begruendung steht auch im Muster-Kommentar von
+ * scripts/smoke-test.mjs, damit sie nicht verlorengeht.
+ */
+export const CHAT_FALLBACK =
+  "In this preview I only know the sample data for class 3b. In Selyvi, this question searches your own entries.";
+
+/**
+ * Schlagworte fuer die Chip-Erkennung einer selbst getippten Beobachtung.
+ *
+ * Dieselbe Bauweise, derselbe Vorbehalt: eine Wortliste, kein Modell. Was das
+ * Produkt daraus macht – Fach, Kategorie, Prioritaet, Foerderhinweis – steht
+ * im Produktstand unter „Beobachtungen strukturieren — Live". Die Vorschau
+ * zeigt davon den sichtbaren Teil: den Chip.
+ *
+ * Die Schluessel sind die Faecher aus DEMO_TIMETABLE_SUBJECTS – wer dort ein
+ * Fach umbenennt, benennt es hier mit um.
+ */
+export const DEMO_SUBJECT_KEYWORDS: Record<string, string[]> = {
+  German: [
+    "read",
+    "reads",
+    "reading",
+    "aloud",
+    "write",
+    "writes",
+    "writing",
+    "wrote",
+    "text",
+    "german",
+    "book",
+    "story",
+    "spelling",
+    "letter",
+    "read aloud",
+    "reading circle",
+  ],
+  Maths: [
+    "maths",
+    "math",
+    "number",
+    "numbers",
+    "calculate",
+    "calculates",
+    "counting",
+    "counts",
+    "plus",
+    "minus",
+    "sum",
+    "sums",
+    "arithmetic",
+    "times tables",
+    "number range",
+  ],
+  "General studies": [
+    "experiment",
+    "experiments",
+    "science",
+    "nature",
+    "plant",
+    "plants",
+    "animal",
+    "animals",
+    "weather",
+    "water",
+    "investigates",
+    "investigate",
+    "general studies",
+  ],
+};
+
 export const DEMO_CHAT = {
   questions: [
     {

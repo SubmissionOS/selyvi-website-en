@@ -1,6 +1,8 @@
 Tastatur-Protokoll /preview (englische Fassung)
 Reihenfolge der fokussierbaren Elemente, 1440 px
 
+Startansicht (My classes)
+-------------------------
   1. <a> Skip to main content
   2. <a> Selyvi – to the home page
   3. <a> For teachers
@@ -50,3 +52,53 @@ Reihenfolge der fokussierbaren Elemente, 1440 px
  47. <a> Meet Selyvi
  48. <a> Selyvi on LinkedIn
  49. <a> Selyvi on Instagram
+
+Bereich Live lesson
+-------------------
+  1. <a> Skip to main content
+  2. <a> Selyvi – to the home page
+  3. <a> For teachers
+  4. <a> For school leadership
+  5. <a> Research
+  6. <a> Security
+  7. <a> Our story
+  8. <a> Meet Selyvi
+  9. <button> Reset
+ 10. <button> Today, locked
+ 11. <button> My classes
+ 12. <button> Live lesson 3 observations
+ 13. <button> Timeline
+ 14. <button> Review, locked
+ 15. <button> Support plans, locked
+ 16. <button> Materials
+ 17. <button> Class analysis, locked
+ 18. <button> Leadership
+ 19. <button> Emma K.
+ 20. <button> Yusuf A.
+ 21. <button> Lotta B.
+ 22. <button> EKEmma read to the class fluently today, first t
+ 23. <button> YAYusuf works confidently with numbers to 100 an
+ 24. <button> LBLotta took charge of dividing up the tasks in 
+ 25. <button> Dictate an observation
+ 26. <textarea> Write your own observation
+ 27. <button> How has Emma come on in reading?
+ 28. <button> Who likes explaining things to other children in
+ 29. <button> Who takes on responsibility in group work?
+ 30. <input> Your own question about the sample data
+ 31. <a> Meet Selyvi
+ 32. <a> Or go straight to co-creating
+ 33. <a> Take a look
+ 34. <a> For teachers
+ 35. <a> For school leadership
+ 36. <a> Research & impact
+ 37. <a> Data protection & security
+ 38. <a> Meet Selyvi
+ 39. <a> Our story
+ 40. <a> Co-create
+ 41. <a> Meet Selyvi
+ 42. <a> Impressum
+ 43. <a> Privacy policy
+ 44. <a> selyvi.app@gmail.com
+ 45. <a> Meet Selyvi
+ 46. <a> Selyvi on LinkedIn
+ 47. <a> Selyvi on Instagram

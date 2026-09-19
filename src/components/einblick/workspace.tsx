@@ -54,8 +54,7 @@ import {
  * Tab-Reihenfolge. Und es laeuft keine Schleife – das Diktat tickt ueber
  * setTimeout und hoert nach dem letzten Wort auf.
  */
-const BANNER =
-  "Sample data, not the real application. Nothing here is saved.";
+const BANNER = "Sample data, not the real application. Nothing here is saved.";
 
 const SEATS: Seat[] = [
   { id: "s1", initials: "EK", locked: false },
@@ -70,7 +69,16 @@ const START: TourState = {
   chosen: null,
   filter: null,
   dictated: null,
+  dictating: false,
   chatOpen: null,
+  chatInput: "",
+  chatFree: null,
+  ownDraft: "",
+  ownNote: null,
+  mailChild: "emma",
+  topicInput: "",
+  topicFree: null,
+  seated: null,
   reportVariant: null,
   reportText: "",
   mailCreated: false,
@@ -128,7 +136,10 @@ export function Workspace() {
   const actions = { set, notify, reduced };
 
   /** Drei Startbeobachtungen plus die diktierte. */
-  const observationCount = 3 + (state.dictated ? 1 : 0);
+  // Der Zaehler in der Seitenleiste zaehlt, was in der Liste STEHT: drei
+  // Beispiele, das Diktat und die eigene Beobachtung. Stimmt er nicht mit der
+  // Liste ueberein, ist er schlimmer als kein Zaehler.
+  const observationCount = 3 + (state.dictated ? 1 : 0) + (state.ownNote ? 1 : 0);
 
   return (
     <div>
@@ -142,7 +153,7 @@ export function Workspace() {
             setArea("meine-klassen");
             notify("Reset");
           }}
-          className="text-sm text-brand-600 underline underline-offset-4"
+          className="inline-flex min-h-11 items-center text-sm text-brand-600 underline underline-offset-4 sm:min-h-6"
         >
           Reset
         </button>
@@ -198,7 +209,7 @@ export function Workspace() {
               onClick={() => setModeHint(true)}
               onFocus={() => setModeHint(true)}
               onBlur={() => setModeHint(false)}
-              className="inline-flex items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] text-gray-500 hover:text-brand-600"
+              className="inline-flex min-h-11 items-center gap-1.5 rounded-md px-2 py-0.5 text-[11px] text-gray-500 hover:text-brand-600 sm:min-h-6"
             >
               Leadership
               <Lock aria-hidden="true" className="size-3" />

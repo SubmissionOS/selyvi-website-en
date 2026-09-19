@@ -24,6 +24,19 @@ Es gibt keinen Merge und keine gemeinsame Sprachschicht. Wer auf selyvi.de einen
 
 **Und der HTML-Detektor allein reicht nicht:** `npm run check:animation <url>` prüft den Text, der erst durch Zeit (Animationsschritte, ohne reduced motion) oder durch Klicks (/preview) entsteht. Beide Skripte teilen sich die Muster in `scripts/lib/deutsch-muster.mjs`.
 
+## /preview: EIGENE EINGABEN, EHRLICHE GRENZEN
+Auf /preview kann getippt werden — eine freie Frage, eine eigene Beobachtung, ein eigenes Materialthema. Drei Regeln gelten dort ohne Ausnahme:
+
+1. **Nichts verlässt den Browser.** Alles lebt im React-Zustand: kein `fetch`, kein `localStorage`, keine Server Action. Das Banner sagt „nothing is saved" — diese Bauweise ist der Grund, warum das stimmt. Eingetippter Text wird als **Text-Knoten** gerendert; `dangerouslySetInnerHTML` kommt in `areas.tsx` nicht vor.
+2. **Es wird nichts erfunden.** Aus einer eigenen Beobachtung entsteht KEINE Zeugnisbemerkung und KEIN Arbeitsblatt. Ein Baukastensatz aus dem Browser würde das Versprechen vom gelernten Schreibstil in dem Moment widerlegen, in dem es gegeben wird. Stattdessen steht dort die ehrliche Zeile — und der Weg zum vollen Erlebnis.
+3. **Diese ehrlichen Zeilen sind KEIN Regel-B-Verstoß.** Sie beschreiben die Grenze der VORSCHAU, nicht die Reife des Produkts, und nennen im selben Atemzug im Präsens, was Selyvi tut. Alle drei stehen wortgleich in `ERLAUBTE_SAETZE` von `scripts/smoke-test.mjs`, damit die Gegenprobe das dauerhaft belegt statt einmalig.
+
+**Der Schlagwort-Vergleich läuft über WORTGRENZEN, nicht über Teilzeichenketten** (`normalisiere()` und `trifft()` in `areas.tsx`). Die deutsche Schwester-Website nutzt `includes()`; im Englischen ist das falsch, weil *read* in *already* steckt, *team* in *steam*, *task* in *multitasking*. Wer das zurückdreht, bekommt auf „Has Yusuf already improved?" die Lese-Antwort.
+
+**Kein freilaufender `setTimeout`.** Diktat und Sitz-Haken hängen an Effekten mit Aufräumen. Eine Kette, die sich per `setTimeout` selbst weiterruft, schreibt nach einem Bereichswechsel in einen Zustand, den es nicht mehr gibt — der Text kam Wort für Wort zurück.
+
+**Tippziele:** `TIPPZIEL` = `min-h-11 sm:min-h-6`. 44 px auf dem Telefon (WCAG 2.5.5), 24 px darüber (2.5.8, Pflicht). Niemals `sm:min-h-0` — damit standen die Chips bei 23,5 px. Eingabefelder tragen `EINGABE_SCHRIFT` (16 px mobil), sonst zoomt iOS-Safari hinein und nicht wieder heraus.
+
 **Eine einzige SEITEN-Ausnahme: /impressum.** Sie wird nicht übersprungen, sondern umgekehrt geprüft — der englische Sprachhinweis muss dort stehen. Der Unterschied zur Wort-Ausnahme ist der ganze Punkt: Eine Seite, die deutsch sein SOLL, mit einer wachsenden Liste erlaubter Wörter durchzuwinken, wäre die Bauweise, bei der irgendwann versehentlich auch anderswo Deutsch durchrutscht.
 
 ## Projekt

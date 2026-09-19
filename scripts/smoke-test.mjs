@@ -464,8 +464,9 @@ const AUSNAHMEN = [
  *
  *   1. Zu JEDER Regel steht ein Satz, den sie fangen MUSS. Faengt sie ihn
  *      nicht, ist die Regel tot und der Lauf schlaegt fehl.
- *   2. Fuenf Saetze, die von dieser Website stammen und ausdruecklich ERLAUBT
- *      sind, duerfen KEINE Regel ausloesen. Das ist die Richtung, aus der die
+ *   2. Saetze, die von dieser Website stammen und ausdruecklich ERLAUBT
+ *      sind, duerfen KEINE Regel ausloesen. Die Liste waechst mit jeder
+ *      Formulierung, die wie ein Verstoss aussieht und keiner ist. Das ist die Richtung, aus der die
  *      beiden Regel-B-Muster oben eingelaufen sind.
  *
  * Aufruf ohne Deployment: node scripts/smoke-test.mjs --gegenprobe
@@ -481,6 +482,30 @@ const ERLAUBTE_SAETZE = [
   "The analysis follows a codebook fixed in advance.",
   // Die Entstehungs-Aussage auf /research – deshalb der Lookahead im D-Muster.
   "Selyvi is being built in the middle of everyday school life.",
+
+  /* ======================================================================
+   * DIE DREI EHRLICHEN ZEILEN AUS /preview – GRENZE DER VORSCHAU, NICHT
+   * DER PRODUKTREIFE
+   * ======================================================================
+   * Sie sind beim Ausbau der Vorschau dazugekommen und stehen hier, weil
+   * genau sie wie ein Regel-B-Verstoss AUSSEHEN und keiner sind.
+   *
+   * Regel B verbietet die Selbstauskunft ueber Unwissen: „wir koennen noch
+   * nicht sagen", „wir wissen nicht, ob". Diese drei Saetze sagen etwas
+   * voellig anderes – sie beschreiben, was eine DEMO MIT DREI
+   * BEISPIELKINDERN kennt, und nennen im selben Atemzug im Praesens, was
+   * das Produkt an dieser Stelle tut. Beides ist durch den Produktstand
+   * gedeckt („Freie Fragen an die eigenen Daten — Live", „Zeugnisbemerkungen
+   * im gelernten Schreibstil — Live", „Unterrichtsmaterial aus echtem
+   * Fachwissen — Live").
+   *
+   * Der Unterschied in einem Satz: Nicht „wir koennen das nicht", sondern
+   * „hier steht das Beispiel, dort steht Ihres". Wer diese Zeilen streicht,
+   * bekommt eine Vorschau, die erfindet – und das ist der teurere Fehler.
+   */
+  "In this preview I only know the sample data for class 3b. In Selyvi, this question searches your own entries.",
+  "From your own observation, Selyvi would now draft a comment in your writing style. In this preview, drafts come from the three samples — pick one to see it.",
+  "In this preview, materials are ready for the three sample topics. In Selyvi, yours is built from the subject corpus, with its sources.",
 ];
 
 if (GEGENPROBE) {

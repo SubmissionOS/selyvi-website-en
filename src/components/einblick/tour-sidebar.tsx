@@ -120,7 +120,25 @@ export function TourSidebar({
                 onFocus={() => (isLocked ? onLock(entry.key) : onLock(null))}
                 onBlur={() => isLocked && onLock(null)}
                 aria-current={isActive ? "true" : undefined}
-                aria-describedby={isLocked ? hintId : undefined}
+                /* ==========================================================
+                   NUR VERWEISEN, SOLANGE ES DAS ZIEL GIBT
+                   ==========================================================
+                   Hier stand `isLocked ? hintId : undefined`. Der Hinweis
+                   steht aber nur im DOM, wenn er GEOEFFNET ist – im
+                   Ruhezustand zeigte das Attribut auf eine id, die es nicht
+                   gab. Vier Eintraege, auf jeder Breite, in jedem Ladevorgang.
+
+                   Ein Verweis ins Leere ist schlimmer als keiner: Ein
+                   Vorleseprogramm sucht die Beschreibung, findet nichts und
+                   sagt gar nichts – der Schalter wirkt beschreibungslos,
+                   obwohl eine Beschreibung existiert.
+
+                   Gefunden von der strukturellen Ersatzpruefung in
+                   scripts/qa-en.mjs, NICHT von axe: Dessen Laeufe meldeten
+                   auf dieser Seite 0 Verstoesse. Die Ankuendigung geht dabei
+                   nicht verloren – der Hinweis traegt role="status" und
+                   meldet sich beim Erscheinen von selbst. */
+                aria-describedby={isLocked && openLock === entry.key ? hintId : undefined}
                 /* Der Name steht im aria-label, nicht nur im sichtbaren
                    <span>: Unter 640 px ist der ausgeblendet, und das Symbol
                    ist aria-hidden – ohne dieses Attribut waere der Schalter
@@ -162,6 +180,11 @@ export function TourSidebar({
                 }
                 className={cn(
                   "relative flex w-full items-center justify-center gap-2 rounded-[var(--app-radius-nav)] px-2 py-1.5 text-left sm:justify-start",
+                  /* min-h-11 nur unterhalb von sm: Auf dem Telefon ist die
+                     Leiste eine Symbolspalte, und ein 26 px hohes Symbol
+                     trifft man mit dem Daumen nicht zuverlaessig (WCAG 2.5.8).
+                     Ab sm zeigt ein Zeiger, dort reicht die kompakte Hoehe. */
+                  "min-h-11 sm:min-h-0",
                   isActive &&
                     "bg-[var(--app-blue-soft)] font-semibold text-[var(--app-blue-on-soft)]",
                   !isActive &&

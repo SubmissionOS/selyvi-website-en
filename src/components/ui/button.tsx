@@ -39,8 +39,11 @@ const buttonVariants = cva(
         link: "text-brand-600 underline-offset-4 hover:underline",
       },
       size: {
-        sm: "h-9 px-3",
-        md: "h-10 px-4",
+        /* Auf dem Telefon mindestens 44 px hoch (WCAG 2.5.8, Target Size).
+           „md" war 40 px – in der Vorschau der Knopf „Add", gemessen bei der
+           Jank-Jagd. Ab sm bleiben die kompakten Hoehen. */
+        sm: "min-h-11 px-3 sm:h-9 sm:min-h-0",
+        md: "min-h-11 px-4 sm:h-10 sm:min-h-0",
         lg: "h-12 px-6 text-base",
         icon: "size-10",
       },
