@@ -1,3 +1,4 @@
+import { MousePointerClick } from "lucide-react";
 import Link from "next/link";
 
 import { PRODUCT_NAME } from "@/config/brand";
@@ -42,6 +43,10 @@ export function TakeALook() {
     >
       <div className="mx-auto grid w-full max-w-6xl gap-12 px-6 py-20 lg:grid-cols-2 lg:items-center lg:gap-16 lg:px-8 lg:py-24">
         <div>
+          {/* Anker fuer die Leerraum-Regel: ein Bildschirm nur Text ist
+              keiner (CLAUDE.md, Muster c). Gemessen mit qa-en.mjs. */}
+          <MousePointerClick aria-hidden="true" className="size-8 text-brand-600" />
+
           <h2
             id="einen-blick-titel"
             className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl"

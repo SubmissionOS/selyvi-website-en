@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Eye, ShieldCheck, Users } from "lucide-react";
+import { ArrowRight, Eye, GraduationCap, ShieldCheck, Users } from "lucide-react";
 
 import { PRACTICE_CLAIM } from "@/config/brand";
 import { Button } from "@/components/ui/button";
@@ -37,6 +37,33 @@ const practices = [
     description:
       "What is open we mark, in plain sight, instead of glossing over it. On this page too.",
   },
+  {
+    icon: GraduationCap,
+    /**
+     * Neu seit dem CEO-Auftrag, und bewusst in dieser Sektion: Die
+     * Zusammenarbeit mit Wissenschaft ist keine Funktion und kein
+     * Verkaufsargument, sondern eine Arbeitsweise.
+     *
+     * ======================================================================
+     * ANPASSUNG AN REGEL B – MIT BEGRUENDUNG
+     * ======================================================================
+     * Die Vorlage lautete sinngemaess „… we do not claim to know better". Der
+     * Ton-Grep faengt „we do not claim" unter Regel B, und zwar zu Recht.
+     *
+     * Inhaltlich waere der Satz verteidigbar – Regel B verbietet Unsicherheit
+     * ueber das eigene PRODUKT, und hier geht es um Fachlichkeit, nicht um
+     * Selyvi. Verteidigt wird er trotzdem nicht: Eine Ausnahme fuer „we do
+     * not claim" gaebe genau die Formulierung frei, mit der sich jede
+     * Produktunsicherheit elegant verpacken laesst.
+     *
+     * Der Satz sagt dasselbe jetzt POSITIV: Er benennt, wer es besser weiss,
+     * statt zu verneinen, dass wir es besser wuessten. Das ist die staerkere
+     * Fassung – eine Haltung zur Arbeitsteilung, kein Eingestaendnis.
+     */
+    title: "Alongside academic research",
+    description:
+      "We can build software. What makes a good school, good research and a valid measure of impact is something education researchers and school practitioners know better than we do — which is why we look for the exchange early.",
+  },
 ];
 
 export function HowWeWork() {
@@ -53,7 +80,9 @@ export function HowWeWork() {
           How we work
         </h2>
 
-        <ul className="mt-14 grid gap-6 md:grid-cols-3">
+        {/* Vier Karten: zwei mal zwei. Ein Dreier-Raster liesse die vierte
+            allein in der letzten Reihe. */}
+        <ul className="mt-14 grid gap-6 sm:grid-cols-2">
           {practices.map((practice) => {
             const Icon = practice.icon;
 

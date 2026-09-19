@@ -98,7 +98,9 @@ const PAGES = [
 /** Seiten, von denen ein Bild in den Bericht gehoert. */
 const SCREENSHOT_PAGES = [
   ["/", "startseite"],
+  ["/research", "research"],
   ["/preview", "preview"],
+  ["/co-create", "co-create"],
   ["/for-school-leadership", "for-school-leadership"],
 ];
 
@@ -291,6 +293,105 @@ const UEBERLAUF = `(() => {
  *
  * Was sie prueft, prueft sie aber vollstaendig und an beiden Breiten.
  */
+/**
+ * LEERRAUM-REGEL: kein Bildschirm nur Text (CLAUDE.md, Layout-Regel).
+ *
+ * ==========================================================================
+ * WAS GEMESSEN WIRD
+ * ==========================================================================
+ * Die Seite wird in Ausschnitten von Viewport-Hoehe durchgegangen. In jedem
+ * Ausschnitt muss etwas BILDLICHES liegen: ein Symbol, eine Illustration, ein
+ * Diagramm, ein nachgebautes Fenster. Ein Ausschnitt, der nur Text zeigt, ist
+ * ein Befund.
+ *
+ * Gemessen wird NUR auf Desktop – die Regel gilt ausdruecklich nicht mobil,
+ * wo Text und Bild ohnehin untereinander stehen.
+ *
+ * ==========================================================================
+ * WAS ALS BILDLICH ZAEHLT – UND WAS NICHT
+ * ==========================================================================
+ * Ein <svg>, <img> oder <canvas> mit sichtbarer Flaeche. NICHT: Symbole in
+ * der Kopf- oder Fusszeile. Die stehen auf jeder Seite und wuerden jeden
+ * Ausschnitt am oberen und unteren Rand gruen faerben, ohne dass im INHALT
+ * etwas zu sehen waere. Gemessen wird deshalb nur, was in <main> liegt.
+ *
+ * Ein 16 x 16 px grosses Symbol in einer Fliesstext-Zeile reicht nicht: Die
+ * Regel will einen visuellen Anker, keinen Aufzaehlungspunkt. Die Schwelle
+ * liegt bei 20 px Kantenlaenge.
+ */
+const LEERRAUM = `((schrittHoehe) => {
+  const wurzel = document.querySelector('main');
+  if (!wurzel) return { fehler: 'kein main' };
+
+  const sichtbar = (el) => {
+    const s = getComputedStyle(el);
+    if (s.display === 'none' || s.visibility === 'hidden') return false;
+    if (parseFloat(s.opacity) === 0) return false;
+    const r = el.getBoundingClientRect();
+    return r.width >= 20 && r.height >= 20;
+  };
+
+  const seitenAnfang = window.scrollY;
+  const bildlich = [];
+  /* Die nachgebauten Anwendungsfenster sind aus <div> gebaut, nicht aus SVG.
+     Sie tragen aber die --app-Variablen als inline-style – das ist ihr
+     eindeutiges Merkmal und zugleich der Grund, warum sie hier zaehlen: Ein
+     Fenster mit Seitenleiste, Chips und Kacheln ist genau das Bildliche, das
+     die Regel meint. Wer nur <svg> zaehlt, meldet eine Seite voller Szenen
+     als Textwueste – der erste Lauf hat 33 von 56 Ausschnitten so gemeldet. */
+  const AUSWAHL = 'svg, img, canvas, [style*="--app-"], [class*="rounded-xl"][class*="border"]';
+  for (const el of wurzel.querySelectorAll(AUSWAHL)) {
+    if (!sichtbar(el)) continue;
+    const r = el.getBoundingClientRect();
+    bildlich.push({ oben: r.top + seitenAnfang, unten: r.bottom + seitenAnfang });
+  }
+
+  const ueberschriften = [...wurzel.querySelectorAll("h1, h2, h3")].map((h) => ({
+    text: (h.textContent || "").replace(/\\s+/g, " ").trim().slice(0, 44),
+    y: h.getBoundingClientRect().top + seitenAnfang,
+  }));
+
+  const inhalt = wurzel.getBoundingClientRect();
+  const start = inhalt.top + seitenAnfang;
+  const ende = inhalt.bottom + seitenAnfang;
+
+  const leer = [];
+  let ausschnitte = 0;
+  for (let y = start; y < ende; y += schrittHoehe) {
+    const bis = Math.min(y + schrittHoehe, ende);
+    // Ein Reststueck unter einem Drittel Hoehe ist kein eigener Bildschirm.
+    if (bis - y < schrittHoehe / 3) break;
+    ausschnitte++;
+    const hat = bildlich.some((b) => b.unten > y + 8 && b.oben < bis - 8);
+
+    /* DIE REGEL HEISST „kein Bildschirm NUR TEXT", nicht „jeder Bildschirm
+       braucht ein Symbol". Ein Abschluss-Band mit Ueberschrift und Knopf ist
+       kein Textblock – es ist fast leer. Gezaehlt wird deshalb nur, wo
+       wirklich Text steht: mehr als 350 Zeichen im Ausschnitt.
+
+       Ohne diese Schwelle meldet der Lauf jedes CTA-Band und jede
+       Formular-Fortsetzung – acht Befunde, von denen keiner eine Textwand
+       war. Gemessen und nachgezaehlt, nicht geschaetzt. */
+    const bereich = document.createRange();
+    let zeichen = 0;
+    for (const knoten of wurzel.querySelectorAll("p, li, h1, h2, h3, h4")) {
+      const r = knoten.getBoundingClientRect();
+      const o = r.top + seitenAnfang;
+      const u = r.bottom + seitenAnfang;
+      if (u > y && o < bis) zeichen += (knoten.textContent || "").trim().length;
+    }
+    bereich.detach && bereich.detach();
+
+    if (!hat && zeichen > 350) {
+      // Welche Ueberschrift steht zuletzt VOR diesem Ausschnitt? Ohne diese
+      // Angabe ist ein Befund eine Zahl, mit ihr eine Adresse.
+      const davor = ueberschriften.filter((u) => u.y <= bis).slice(-1)[0];
+      leer.push({ y: Math.round(y - start), zeichen, sektion: davor ? davor.text : "(Seitenanfang)" });
+    }
+  }
+  return { ausschnitte, leer };
+})(ARGUMENT_HOEHE)`;
+
 const A11Y_STRUKTUR = `(() => {
   const befunde = [];
   const melde = (regel, text) => befunde.push({ regel, text: String(text).slice(0, 80) });
@@ -641,6 +742,47 @@ try {
    * die Schwelle fuer normalen Text – 4,5:1.
    */
   /* --- 3b: strukturelle Barrierefreiheit (Ersatz, solange axe fehlt) ------ */
+  /* --- 3c: Leerraum-Regel (Desktop) ---------------------------------------- */
+  console.log("\n=== Leerraum-Regel: kein Bildschirm nur Text (1440) ===");
+  await breite(BREITEN[0]);
+  {
+    let leerGesamt = 0;
+    let ausschnitteGesamt = 0;
+    /* Rechtstexte sind AUSGENOMMEN. Die Regel in CLAUDE.md spricht von
+       Inhaltsseiten: Impressum und Datenschutzerklaerung sind bewusst reiner
+       Text, und ein Symbol neben einer Pflichtangabe waere Dekoration an der
+       falschen Stelle. */
+    const INHALTSSEITEN = PAGES.filter((p) => p !== "/impressum" && p !== "/privacy");
+    for (const pfad of INHALTSSEITEN) {
+      await gehe(pfad, 2000);
+      // Einmal durchscrollen, damit die Reveal-Beobachter ausgeloest haben –
+      // sonst sind ganze Sektionen noch unsichtbar und gelten als leer.
+      const hoehe = await lies("document.body.scrollHeight");
+      for (let y = 0; y < hoehe; y += 700) {
+        await lies(`window.scrollTo(0, ${y}); true`);
+        await sleep(90);
+      }
+      await lies("window.scrollTo(0, 0); true");
+      await sleep(400);
+
+      const r = await lies(LEERRAUM.replace("ARGUMENT_HOEHE", String(BREITEN[0].height)));
+      if (r?.fehler) {
+        fail(`${pfad}: Leerraum-Messung nicht moeglich (${r.fehler})`);
+        continue;
+      }
+      ausschnitteGesamt += r.ausschnitte;
+      leerGesamt += r.leer.length;
+      if (r.leer.length > 0) {
+        fail(
+          `${pfad}: ${r.leer.length} Ausschnitt(e) ohne Bildliches – ${r.leer.map((l) => `y=${l.y} nach „${l.sektion}" (${l.zeichen} Zeichen)`).join("; ")}`,
+        );
+      }
+    }
+    console.log(
+      `  ${INHALTSSEITEN.length} Inhaltsseiten, ${ausschnitteGesamt} Ausschnitte, ${leerGesamt} ohne Bildliches`,
+    );
+  }
+
   console.log("\n=== Barrierefreiheit, strukturell (Ersatz für axe) ===");
   for (const b of BREITEN) {
     await breite(b);
@@ -833,6 +975,62 @@ try {
     console.log(`  Protokoll: ${SHOTS}/tastatur-protokoll-preview.txt`);
   }
 
+  /* --- 6b: Tastatur-Protokoll für das Forschungsformular -------------------- */
+  /* Neun Felder, zwei davon Auswahllisten, dazu Einwilligung und Absenden.
+     Ein Formular, das sich nicht mit der Tastatur ausfuellen laesst, ist fuer
+     eine Forscherin mit Bildschirmlesegeraet kein Formular. */
+  console.log("\n=== Tastatur-Protokoll /research (Projekt-Formular) ===");
+  await gehe("/research", 2600);
+  {
+    const ziele = await lies(TAB_PROTOKOLL);
+    const namenlos = ziele.filter((z) => z.namenlos);
+    for (const z of namenlos) {
+      fail(`/research: fokussierbares <${z.tag}> ohne Namen`);
+    }
+
+    // Die neun Formularfelder muessen vorkommen – ein Protokoll ohne sie
+    // haette die Seite gemessen, bevor das Formular gerendert war.
+    const FELDER = [
+      "name",
+      "school",
+      "fachgebiet",
+      "email",
+      "message",
+      "digitaler_bedarf",
+      "schulen_beteiligt",
+      "projektstatus",
+      "zeitraum",
+    ];
+    const vorhanden = await lies(
+      `(${JSON.stringify(FELDER)}).filter((n) => document.querySelector('[name="' + n + '"]')).length`,
+    );
+    if (Number(vorhanden) !== FELDER.length) {
+      fail(`/research: nur ${vorhanden} der ${FELDER.length} Formularfelder gefunden`);
+    }
+
+    console.log(
+      `  ${ziele.length} fokussierbar, ${namenlos.length} ohne Namen, ${vorhanden}/${FELDER.length} Formularfelder`,
+    );
+
+    fs.writeFileSync(
+      path.join(SHOTS, "tastatur-protokoll-research.txt"),
+      [
+        "Tastatur-Protokoll /research (Projekt-Formular)",
+        "Reihenfolge der fokussierbaren Elemente, 1440 px",
+        "",
+        ziele
+          .map(
+            (z, i) =>
+              `${String(i + 1).padStart(3)}. <${z.tag}> ${z.name || "— OHNE NAMEN —"}`,
+          )
+          .join("\n"),
+        "",
+      ].join("\n"),
+      "utf8",
+    );
+    console.log(`  Protokoll: ${SHOTS}/tastatur-protokoll-research.txt`);
+  }
+
   /* --- 7: reduced motion --------------------------------------------------- */
   console.log("\n=== prefers-reduced-motion: reduce – Hashes ===");
   await send("Emulation.setEmulatedMedia", {
@@ -882,7 +1080,9 @@ try {
     await breite(b);
     for (const [pfad, name] of SCREENSHOT_PAGES) {
       await gehe(pfad, 2500);
-      const ganz = pfad === "/";
+      // Ganzseitig fuer die Startseite UND /research: Beide sind das, was in
+      // dieser Runde abgenommen wird, und ein Ausschnitt zeigt davon nichts.
+      const ganz = pfad === "/" || pfad === "/research";
 
       /* ================================================================
          ERST DURCHSCROLLEN, DANN AUFNEHMEN

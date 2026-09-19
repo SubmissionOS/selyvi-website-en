@@ -7,6 +7,7 @@ import { ReliefReport } from "@/components/sections/schulen/relief-report";
 import { TeachingQuality } from "@/components/sections/schulen/teaching-quality";
 import { RolloutTimeline } from "@/components/sections/schulen/rollout-timeline";
 import { DpaBand } from "@/components/sections/dpa-band";
+import { ResearchOptional } from "@/components/sections/schulen/research-optional";
 import { LeadershipFaq } from "@/components/sections/schulen/leadership-faq";
 import { FinalCta } from "@/components/sections/final-cta";
 
@@ -33,6 +34,9 @@ export default function SchulenPage() {
       </Reveal>
       <Reveal>
         <DpaBand />
+      </Reveal>
+      <Reveal>
+        <ResearchOptional />
       </Reveal>
       <Reveal>
         <LeadershipFaq />

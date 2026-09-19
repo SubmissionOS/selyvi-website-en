@@ -9,6 +9,7 @@ import { FunctionBlocks } from "@/components/sections/produkt/function-blocks";
 import { ExcerptNote } from "@/components/sections/produkt/excerpt-note";
 import { EverydayExtras } from "@/components/sections/produkt/everyday-extras";
 import { CoCreateBand } from "@/components/sections/produkt/co-create-band";
+import { ResearchNote } from "@/components/sections/produkt/research-note";
 import { FinalCta } from "@/components/sections/final-cta";
 
 export const metadata: Metadata = pageMetadata("/for-teachers");
@@ -40,6 +41,9 @@ export default function ProduktPage() {
       </Reveal>
       <Reveal>
         <CoCreateBand />
+      </Reveal>
+      <Reveal>
+        <ResearchNote />
       </Reveal>
       <FinalCta />
     </>

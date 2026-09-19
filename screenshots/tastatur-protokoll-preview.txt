@@ -7,7 +7,7 @@ Startansicht (My classes)
   2. <a> Selyvi – to the home page
   3. <a> For teachers
   4. <a> For school leadership
-  5. <a> Research
+  5. <a> Research & universities
   6. <a> Security
   7. <a> Our story
   8. <a> Meet Selyvi
@@ -40,7 +40,7 @@ Startansicht (My classes)
  35. <a> Take a look
  36. <a> For teachers
  37. <a> For school leadership
- 38. <a> Research & impact
+ 38. <a> For research & universities
  39. <a> Data protection & security
  40. <a> Meet Selyvi
  41. <a> Our story
@@ -59,7 +59,7 @@ Bereich Live lesson
   2. <a> Selyvi – to the home page
   3. <a> For teachers
   4. <a> For school leadership
-  5. <a> Research
+  5. <a> Research & universities
   6. <a> Security
   7. <a> Our story
   8. <a> Meet Selyvi
@@ -90,7 +90,7 @@ Bereich Live lesson
  33. <a> Take a look
  34. <a> For teachers
  35. <a> For school leadership
- 36. <a> Research & impact
+ 36. <a> For research & universities
  37. <a> Data protection & security
  38. <a> Meet Selyvi
  39. <a> Our story

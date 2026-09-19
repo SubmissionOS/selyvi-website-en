@@ -1,3 +1,4 @@
+import { UsersRound } from "lucide-react";
 import Link from "next/link";
 
 import { PRACTICE_CLAIM, PRODUCT_NAME } from "@/config/brand";
@@ -29,6 +30,10 @@ export function WhoFor() {
     <section aria-labelledby="mitgestalten-fuer-wen-titel">
       <div className="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
         <div className="max-w-3xl">
+          {/* Anker fuer die Leerraum-Regel: ein Bildschirm nur Text ist
+              keiner (CLAUDE.md, Muster c). Gemessen mit qa-en.mjs. */}
+          <UsersRound aria-hidden="true" className="size-8 text-brand-600" />
+
           <h2
             id="mitgestalten-fuer-wen-titel"
             className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl"

@@ -1,3 +1,4 @@
+import { BadgeCheck } from "lucide-react";
 import { DECISION_PROMISE } from "@/config/product";
 
 /**
@@ -49,6 +50,10 @@ export function Promises() {
   return (
     <section aria-labelledby="versprechen-titel" className="border-b border-gray-200">
       <div className="mx-auto w-full max-w-6xl px-6 py-24 lg:px-8 lg:py-32">
+        {/* Anker fuer die Leerraum-Regel: ein Bildschirm nur Text ist
+            keiner (CLAUDE.md, Muster c). Gemessen mit qa-en.mjs. */}
+        <BadgeCheck aria-hidden="true" className="size-8 text-brand-600" />
+
         <h2
           id="versprechen-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"

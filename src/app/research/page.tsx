@@ -2,41 +2,80 @@ import { Reveal } from "@/components/motion/reveal";
 import type { Metadata } from "next";
 
 import { pageMetadata } from "@/config/seo";
-import { ResearchIntro } from "@/components/sections/forschung/research-intro";
+import { ResearchHero } from "@/components/sections/forschung/research-hero";
+import { ResearchPositioning } from "@/components/sections/forschung/research-positioning";
+import { ResearchBuildable } from "@/components/sections/forschung/research-buildable";
+import { ResearchProcess } from "@/components/sections/forschung/research-process";
+import { ResearchMutual } from "@/components/sections/forschung/research-mutual";
+import { ResearchToday } from "@/components/sections/forschung/research-today";
 import { ImpactModel } from "@/components/sections/forschung/impact-model";
 import { ImpactLineQuote } from "@/components/sections/forschung/impact-line-quote";
 import { ResearchFields } from "@/components/sections/forschung/research-fields";
 import { ResearchAccessBand } from "@/components/sections/forschung/research-access-band";
 import { ResearchFaq } from "@/components/sections/forschung/research-faq";
-import { ResearchContact } from "@/components/sections/forschung/research-contact";
+import { ResearchFunding } from "@/components/sections/forschung/research-funding";
+import { ResearchForm } from "@/components/sections/forschung/research-form";
 
 export const metadata: Metadata = pageMetadata("/research");
 
 /**
- * Seite für Forschende – die dritte Zielgruppe neben Lehrkräften und
- * Schulleitungen.
+ * Seite für Forschung und Hochschulen.
  *
- * Reine Komposition. Die Reihenfolge ist die Argumentation:
- *   1. Was wir vorhaben (Intro)
- *   2. Wie gemessen wird (Erhebungsmodell)
- *   3. Der Grundsatz, der es glaubwuerdig macht (Wirkungszeile)
- *   4. Woran gemeinsam geforscht werden koennte (Felder)
- *   5. Warum es heute trotzdem keinen Datenzugang gibt (Zugangs-Band)
- *   6. Die vier realen Rueckfragen (FAQ)
- *   7. Die Einladung (Kontakt)
+ * ==========================================================================
+ * DIE REIHENFOLGE IST DER STRATEGIEWECHSEL (CEO-Auftrag, 17.09.2026)
+ * ==========================================================================
+ * Vorher begann die Seite bei UNS: „Impact we want to evidence" – Selyvi als
+ * Gegenstand von Forschung. Jetzt beginnt sie bei der Leserin: ihre Frage,
+ * Selyvi als Infrastruktur darunter.
  *
- * Punkt 5 steht bewusst NACH den Forschungsfeldern und nicht davor: Wer bis
- * dahin gelesen hat, soll die Absage nicht als Abwehr lesen, sondern als
- * Bedingung. Umgekehrt haette die Seite mit einer Einschraenkung begonnen.
+ * Nichts von der alten Seite ist verschwunden. Das Wirkungsmodell, die neun
+ * Forschungsfelder und die Regeln zu Forschungsdaten stehen unveraendert
+ * drin – nur eine Ebene tiefer. Aus der Ankuendigung ist der Beleg geworden:
  *
- * Diese Seite hat keine Szene und keine Animation. Das ist kein Versaeumnis:
- * Sie richtet sich an Leserinnen und Leser, die pruefen – bewegte Oberflaechen
- * wirken hier wie Ablenkung von der Sache.
+ *    1. Hero               Ihre Forschungsfrage, unsere Infrastruktur
+ *    2. Positionierung     Selyvi muss nicht Ihre Forschungsfrage sein
+ *    3. Was wir bauen      zehn Leistungen, eine davon bedingt
+ *    4. Ablauf             sechs Schritte, wie auf /for-school-leadership
+ *    5. Nutzen             fuer Forschung, fuer Schulen, fuer uns
+ *    6. Heute / spaeter    was geht, und was an der Zahl der Schulen haengt
+ *    ------------------------------------------------------------------
+ *    7. Wirkungsmodell     UNVERAENDERT – der Beleg, dass wir das ernst meinen
+ *    8. Wirkungszeile      UNVERAENDERT
+ *    9. Forschungsfelder   UNVERAENDERT – neun Fragen, die uns interessieren
+ *   10. Regeln             UNVERAENDERT – die drei Bedingungen fuer Daten
+ *   11. FAQ                UNVERAENDERT
+ *    ------------------------------------------------------------------
+ *   12. Drittmittel        vor dem Antrag ist der beste Zeitpunkt
+ *   13. Formular           ersetzt das reine Kontaktband
+ *
+ * Die Regeln-Sektion (10) steht weiterhin NACH den Forschungsfeldern und nicht
+ * davor: Wer bis dahin gelesen hat, liest die Bedingungen nicht als Abwehr,
+ * sondern als Haltung. Sie ist ausserdem das Ziel des Ankers aus der
+ * Export-Karte in Sektion 3 – die einzige Leistung, die nicht zugesagt,
+ * sondern an Bedingungen geknuepft ist.
+ *
+ * Diese Seite hat weiterhin keine Szene und keine Animation. Wer prueft,
+ * liest – bewegte Oberflaechen wirken hier wie Ablenkung von der Sache.
  */
 export default function ForschungPage() {
   return (
     <>
-      <ResearchIntro />
+      <ResearchHero />
+      <Reveal>
+        <ResearchPositioning />
+      </Reveal>
+      <Reveal>
+        <ResearchBuildable />
+      </Reveal>
+      <Reveal>
+        <ResearchProcess />
+      </Reveal>
+      <Reveal>
+        <ResearchMutual />
+      </Reveal>
+      <Reveal>
+        <ResearchToday />
+      </Reveal>
       <Reveal>
         <ImpactModel />
       </Reveal>
@@ -53,7 +92,10 @@ export default function ForschungPage() {
         <ResearchFaq />
       </Reveal>
       <Reveal>
-        <ResearchContact />
+        <ResearchFunding />
+      </Reveal>
+      <Reveal>
+        <ResearchForm />
       </Reveal>
     </>
   );

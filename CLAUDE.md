@@ -139,10 +139,63 @@ Eine definitive Aussage über eine gewollte Produktgrenze bleibt: "There is deli
 **Regel C — kein Reifegrad-Geständnis.** Verboten: "no pilot schools", "no references", "we have been … only since", "small team", "young company", "early-stage", "not yet certified", "prices are being set with pilot schools".
 
 **Regel D — keine Zukunftsform über die Produktreife.** Verboten: "is planned", "planned feature", "in progress", "in development", "being built", "coming soon", "shortly", "in the near future", "in preparation", "before launch", "rollout pending", "prototype", "follows later/soon", "is pending", "will soon be".
-**ZWEI AUSNAHMEN, abschließend** — dieselben wie im Deutschen:
+**VIER AUSNAHMEN, abschließend** — dieselben wie im Deutschen:
 - `PRODUCT_HOSTING_NOTE` — enthält "in preparation". Unverändert im Wortlaut.
 - Rechtstexte (/impressum, /privacy).
-Der Satz steht wortgleich in der Ausnahmeliste von `scripts/smoke-test.mjs`. Wer ihn in `product.ts` ändert, ändert ihn dort mit. `SCHOOL_TYPE_ANSWER` ist am 2.9.2026 aus dieser Liste entfallen (siehe oben) und steht jetzt im Präsens: "Selyvi is built for all school types and forms – from year 1 to upper secondary."
+- **"in future" NUR über das Wachstum des Schul- und Praxisnetzwerks** (siehe unten).
+- **Der an die Hosting-Ausnahme gekoppelte Satz auf /co-create** (siehe unten).
+
+Der Hosting-Satz steht wortgleich in der Ausnahmeliste von `scripts/smoke-test.mjs`. Wer ihn in `product.ts` ändert, ändert ihn dort mit. `SCHOOL_TYPE_ANSWER` ist am 2.9.2026 aus dieser Liste entfallen (siehe oben) und steht jetzt im Präsens: "Selyvi is built for all school types and forms – from year 1 to upper secondary."
+
+#### Ausnahme "in future" — eng, und nur über das Netzwerk
+Erlaubt ist die Wendung ausschließlich dort, wo sie über die **Zahl der beteiligten Schulen** spricht — also über etwas, das nicht in unserer Hand liegt und keine Produktreife beschreibt. Zwei Wortlaute, mehr nicht:
+
+- "Where it fits academically and legally, we would like in future to bring projects together with schools from our growing practice network." (/research, Spalte „For schools")
+- Die Spaltenüberschrift "In future — with a growing school network" samt ihren vier Einträgen (data collection across schools, longitudinal studies, comparisons across school types and regions, larger research and practice projects). Sie beschreiben **Reichweite**, nicht Funktionen: Jede einzelne Fähigkeit dahinter ist heute vorhanden, es fehlen nur genügend Schulen. Die Fußzeile der Spalte sagt genau das und muss stehen bleiben.
+
+VERBOTEN bleibt "in future" über jede Produktfähigkeit. "Feature X is coming in future" ist ein Regel-D-Verstoß und muss im Ton-Grep anschlagen — die Gegenprobe dafür steht in `scripts/smoke-test.mjs` und wird bei jeder Änderung an dieser Ausnahme mitgeprüft.
+
+#### Ausnahme /co-create — gekoppelt, kein eigenes Versprechen
+"The step into everyday work with real class data we take together, once the server move to Germany is complete."
+
+Der Satz ist erlaubt, WEIL er an dieselbe Bedingung gekoppelt ist wie `PRODUCT_HOSTING_NOTE` — er fügt kein zweites Zukunftsversprechen hinzu, sondern benennt die Folge des bereits offengelegten. Wer den Serverumzug irgendwann streicht, streicht diesen Satz mit. Ein davon gelöstes "once feature Y is ready" bleibt verboten und schlägt im Ton-Grep an.
+
+**Er hat einen Widerspruch behoben, keinen erzeugt.** Vorher stand dort "Selyvi runs in your own class, during the school year. Not in a test environment" — und widersprach damit dem Hosting-Satz, wonach die Server VOR dem Betrieb mit echten Schülerdaten umziehen. Ausgerechnet auf der Seite, die um Vertrauen bittet.
+
+### Forschungsdaten-Export — nie ohne die drei Bedingungen
+Der Forschungsdaten-Export darf auf der Website genannt werden, aber **nur im Sichtfeld der drei Bedingungen**: geprüfte Einwilligungen, Aggregation mit Mindestfallzahlen, dokumentiertes Erhebungsmodell. Eine Seite, die "export of research data" sagt und die Bedingungen nicht nennt oder verlinkt, verspricht einen Datenzugang, den es so nicht gibt.
+
+Geprüft wird das je Seite im Smoke-Test als **Kopplung, nicht als Muster**: Wer "research data" mit "export" in einem Text hat, muss dort auch die Bedingungen führen.
+
+### Dienstleistungszusagen — der einzige Satztyp neben der Wahrheitsquelle
+Erlaubt sind Zusagen über **Arbeit, die wir leisten**: "This is what we can build for your project", "we build that feature together with you". Sie behaupten keine vorhandene Produktfunktion, sondern beschreiben, wozu ein Team sich verpflichtet — und ein Team darf sich verpflichten, ohne dass der Produktstand es vorher aufführt.
+
+Drei Bedingungen, alle drei:
+
+1. **Immer als gemeinsames Projekt.** "Together we work out", "we build with you", "can be exactly where the work together starts". Nie "Selyvi offers", nie "Selyvi already can" — das wäre wieder eine Produktaussage und bräuchte Deckung.
+2. **Konjunktiv der Möglichkeit, nicht der Zukunft.** "can be built" beschreibt Formbarkeit; "will be there soon" wäre Regel D.
+3. **Keine Zusage über Dritte.** Was Schulen, Träger oder Behörden tun werden, sagen wir nicht zu — auch nicht als Dienstleistung. Deshalb steht der Schulzugang auf /research nur in der vorsichtigen Fassung.
+
+Der Unterschied in einem Satz: Eine Produktaussage sagt, was **ist**; eine Dienstleistungszusage sagt, was **wir tun würden**. Nur die erste braucht den Produktstand.
+
+### Forschungs-Verweise — höchstens einer je Seite, im Inhalt
+Außerhalb von /research führt jede Seite **höchstens einen** Verweis auf die Forschungsseite — gezählt wird innerhalb von `<main>`. Kopf- und Fußzeile zählen nicht: Sie stehen auf jeder Seite und sind Navigation, kein Verweis.
+
+**Die Zielgruppen-Weiche der Startseite zählt ebenfalls nicht.** Sie ist die strukturelle Dreiteilung der Seite — Lehrkraft, Schulleitung, Forschung — und keine Empfehlung. Ohne diese Ausnahme wäre die Regel auf der Startseite nicht zu halten, ohne eine der drei Zielgruppen aus der Weiche zu streichen.
+
+Gemessener Stand (Verweise auf `/research` innerhalb von `<main>`):
+
+| Seite                   | Verweise | wo                            |
+| ----------------------- | -------- | ----------------------------- |
+| /                       | 2        | Zielgruppen-Weiche + Forschungsblock |
+| /for-teachers           | 1        | Fußnotiz am Seitenende        |
+| /for-school-leadership  | 1        | in der FAQ                    |
+| /co-create              | 1        | „Who this is for"             |
+| /security, /our-story, /preview, /meet | 0 | —              |
+
+Die Karte „Research – only if your school wants it" auf /for-school-leadership verlinkt **bewusst nicht**: Eine Schulleitung, die Software prüft, soll dort nicht abbiegen.
+
+Der Grund für die Regel ist nicht Sparsamkeit: Eine Seite, die dreimal auf dieselbe Unterseite zeigt, liest sich wie eine Seite, die ihr eigenes Thema nicht findet.
 
 **Und „built to grow" ist keine Zukunftsform.** Die /meet-Zeile sagt "built to grow with each country’s guidelines, country by country". Das beschreibt im Präsens, WIE das Produkt gebaut ist — nicht, was noch kommt. Der Unterschied zu einem verbotenen "support for more countries is planned" ist genau der zwischen Bauweise und Ankündigung.
 Ein temporales "follows" ist verboten, ein logisches nicht ("the analysis follows a codebook", "a mark in German does not tell you whether a child reads fluently"). "Selyvi is being built in the middle of everyday school life" auf /research beschreibt die ENTSTEHUNG und ist ausgenommen.

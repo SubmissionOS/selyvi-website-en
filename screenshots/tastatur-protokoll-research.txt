@@ -1,0 +1,48 @@
+Tastatur-Protokoll /research (Projekt-Formular)
+Reihenfolge der fokussierbaren Elemente, 1440 px
+
+  1. <a> Skip to main content
+  2. <a> Selyvi – to the home page
+  3. <a> For teachers
+  4. <a> For school leadership
+  5. <a> Research & universities
+  6. <a> Security
+  7. <a> Our story
+  8. <a> Meet Selyvi
+  9. <a> Talk through a research project
+ 10. <a> Try it yourself
+ 11. <a> The rules in full
+ 12. <button> Welchen Bezug hat Selyvi zu meiner Forschung?
+ 13. <button> What can a collaboration look like?
+ 14. <button> Which impact model do you work with?
+ 15. <a> Arrange to meet
+ 16. <input> Name *
+ 17. <input> Institution *
+ 18. <input> Field or chair (optional)
+ 19. <input> Work email *
+ 20. <textarea> Research question *
+ 21. <textarea> What would need to be built digitally? (optional
+ 22. <select> Are schools already involved? (optional)
+ 23. <select> Project stage (optional)
+ 24. <input> Timeframe (optional)
+ 25. <input> Website (please leave blank)
+ 26. <input> I agree that my details may be processed in orde
+ 27. <a> privacy policy
+ 28. <button> Tell us about the project
+ 29. <a> selyvi.app@gmail.com
+ 30. <a> or try it yourself first
+ 31. <a> Take a look
+ 32. <a> For teachers
+ 33. <a> For school leadership
+ 34. <a> For research & universities
+ 35. <a> Data protection & security
+ 36. <a> Meet Selyvi
+ 37. <a> Our story
+ 38. <a> Co-create
+ 39. <a> Meet Selyvi
+ 40. <a> Impressum
+ 41. <a> Privacy policy
+ 42. <a> selyvi.app@gmail.com
+ 43. <a> Meet Selyvi
+ 44. <a> Selyvi on LinkedIn
+ 45. <a> Selyvi on Instagram

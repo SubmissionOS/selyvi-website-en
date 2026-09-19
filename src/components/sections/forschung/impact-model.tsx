@@ -1,5 +1,7 @@
 "use client";
 
+import { Ruler } from "lucide-react";
+
 import { useRef, useState } from "react";
 
 import { useIsomorphicLayoutEffect } from "@/lib/use-isomorphic-layout-effect";
@@ -118,6 +120,10 @@ export function ImpactModel() {
   return (
     <section aria-labelledby="wirkungsmodell-titel" className="border-b border-gray-200">
       <div className="mx-auto w-full max-w-6xl px-6 py-24 lg:px-8 lg:py-32">
+        {/* Anker fuer die Leerraum-Regel: ein Bildschirm nur Text ist
+            keiner (CLAUDE.md, Muster c). Gemessen mit qa-en.mjs. */}
+        <Ruler aria-hidden="true" className="size-8 text-brand-600" />
+
         <h2
           id="wirkungsmodell-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
@@ -130,9 +136,9 @@ export function ImpactModel() {
         <div className="mt-8 grid gap-12 lg:grid-cols-12 lg:gap-14">
           <div className="space-y-4 text-lg text-gray-500 lg:col-span-5">
             <p>
-              The survey model follows the PHINEO impact staircase: input, output, outcome,
-              impact. We collect across three waves rather than once. A single snapshot
-              cannot tell relief apart from people simply getting used to a tool.
+              The survey model follows the PHINEO impact staircase: input, output,
+              outcome, impact. We collect across three waves rather than once. A single
+              snapshot cannot tell relief apart from people simply getting used to a tool.
             </p>
 
             <p>

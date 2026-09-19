@@ -31,7 +31,11 @@ export type NavItem = {
 export const mainNav: NavItem[] = [
   { label: "For teachers", href: "/for-teachers" },
   { label: "For school leadership", href: "/for-school-leadership" },
-  { label: "Research", href: "/research" },
+  /* „For research & universities" waere die Langform. Sie ist an der
+     Kopfzeile gemessen worden – Messwerte im Bericht. Gesetzt ist die
+     Kurzform; die Fusszeile traegt weiterhin die ausfuehrliche
+     Beschriftung, dort ist Platz. */
+  { label: "Research & universities", href: "/research" },
   { label: "Security", href: "/security" },
   { label: "Our story", href: "/our-story" },
 ];
@@ -71,7 +75,7 @@ export const footerColumns: FooterColumn[] = [
       { label: "Take a look", href: "/preview" },
       { label: "For teachers", href: "/for-teachers" },
       { label: "For school leadership", href: "/for-school-leadership" },
-      { label: "Research & impact", href: "/research" },
+      { label: "For research & universities", href: "/research" },
       { label: "Data protection & security", href: "/security" },
       { label: "Meet Selyvi", href: "/meet" },
     ],

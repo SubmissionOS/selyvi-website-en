@@ -43,7 +43,12 @@ const audiences = [
   },
   {
     title: "I do research",
-    description: "What we want to find out together: which parts of the job actually get lighter.",
+    /* Neu seit dem CEO-Auftrag vom 17.09.2026: Die Weiche sagt jetzt, WAS
+       Selyvi fuer Forschung ist – Infrastruktur –, statt nur, worueber wir
+       gemeinsam nachdenken. Die alte Zeile beschrieb Selyvi als GEGENSTAND
+       der Forschung; das ist seit dem Strategiewechsel die zweite Haelfte,
+       nicht die erste. */
+    description: `${PRODUCT_NAME} as the infrastructure for research in the school day.`,
     href: "/research",
   },
 ];

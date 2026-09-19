@@ -162,6 +162,33 @@ const RULES = [
     "Do you teach a primary class and lose your evenings?",
   ],
 
+  /* ====================================================================
+   * ZWEI MUSTER AUS DER FORSCHUNGS-RUNDE
+   * ====================================================================
+   * Die Vorlage fuer /research schlug „Sie planen bereits ein
+   * Forschungsprojekt?" und „Vielleicht untersuchen Sie …" vor. Beides ist
+   * Regel A: Es schreibt der Leserin zu, was sie tut – derselbe Satzbau wie
+   * „Sie wollen doch …", nur hoeflicher.
+   *
+   * Die Seite fragt deshalb nach der SACHE („A research project in the
+   * making?") und nennt Beispiele ohne Zuschreibung („Maybe it is about
+   * …"). Damit das so bleibt, faengt der Grep die Umkehrung ab.
+   *
+   * „you are planning" ist bewusst eng gefasst: „we are planning" oder „the
+   * study is planning for" sollen durchgehen. */
+  [
+    /\byou (are|were) (planning|preparing|running|designing)\b/i,
+    "A",
+    "„you are planning …“",
+    "You are planning a research project already.",
+  ],
+  [
+    /\b(maybe|perhaps) you (are|research|investigate|study|look)\b/i,
+    "A",
+    "„maybe you research …“",
+    "Maybe you research teacher workload.",
+  ],
+
   /* ---- B – klingen, als wuessten wir nicht, was das Produkt kann ---- */
   [/\bnot yet\b/i, "B", "„not yet“", "The interface is not yet finished."],
   [/\bnothing yet\b/i, "B", "„nothing yet“", "We can show nothing yet."],
@@ -506,6 +533,26 @@ const ERLAUBTE_SAETZE = [
   "In this preview I only know the sample data for class 3b. In Selyvi, this question searches your own entries.",
   "From your own observation, Selyvi would now draft a comment in your writing style. In this preview, drafts come from the three samples — pick one to see it.",
   "In this preview, materials are ready for the three sample topics. In Selyvi, yours is built from the subject corpus, with its sources.",
+
+  /* ======================================================================
+   * DIE NEUEN WORTLAUTE DER FORSCHUNGSSEITE
+   * ======================================================================
+   * Vier Saetze, die wie Regel-A- oder Regel-D-Verstoesse AUSSEHEN und
+   * keine sind. Sie stehen hier, damit die Gegenprobe das dauerhaft belegt
+   * statt einmalig – und damit jede spaetere Verschaerfung der Muster genau
+   * an ihnen auffaellt.
+   */
+  // Fragt nach der SACHE, nicht nach der Person (Regel A). „Sie planen
+  // bereits …?" waere die verbotene Fassung, und dafuer gibt es jetzt ein
+  // eigenes Muster.
+  "A research project in the making? Three sentences are enough.",
+  // Nennt Beispiele, ohne zu behaupten, woran jemand arbeitet.
+  "Maybe it is about teacher workload, lesson planning, feedback, AI literacy or support processes.",
+  // „in future" ueber das NETZWERK, nicht ueber Produktreife (Regel D,
+  // benannte Ausnahme in CLAUDE.md).
+  "Where it fits academically and legally, we would like in future to bring projects together with schools from our growing practice network.",
+  // Gekoppelt an die Hosting-Zusage – kein zweites Zukunftsversprechen.
+  "The step into everyday work with real class data we take together, once the server move to Germany is complete.",
 ];
 
 if (GEGENPROBE) {
@@ -759,6 +806,79 @@ console.log("\n=== Ton-Regeln A bis D (englisch) ===");
   }
   console.log(`  ${TON_PAGES.length} Seiten geprüft, ${RULES.length} Muster je Seite`);
   console.log(`  Treffer: ${hits}`);
+}
+
+/* ==========================================================================
+ * FORSCHUNGSDATEN-EXPORT – NIE OHNE DIE DREI BEDINGUNGEN
+ * ==========================================================================
+ * Das ist KEINE Muster-Regel, sondern eine KOPPLUNG, und deshalb steht sie
+ * hier und nicht in RULES: Ein Muster fragt „kommt dieser Ausdruck vor?", die
+ * Kopplung fragt „kommt er vor, OHNE dass etwas anderes auch vorkommt?".
+ *
+ * Wer „export" und „research data" auf einer Seite hat, verspricht einen
+ * Datenzugang. Dieser Zugang haengt an drei Bedingungen (CLAUDE.md,
+ * Forschungsdaten-Export). Stehen sie nicht auf derselben Seite, hat die
+ * Leserin eine Zusage gelesen, die es so nicht gibt.
+ */
+console.log("\n=== Forschungsdaten-Export: Bedingungen mitgeführt? ===");
+{
+  const BEDINGUNGEN = [
+    /\bconsent/i,
+    /minimum case numbers|aggregation/i,
+    /collection model/i,
+  ];
+  let geprueft = 0;
+  let verletzt = 0;
+
+  /* ====================================================================
+   * NAEHE, NICHT KOEXISTENZ – SONST MELDET DIE PRUEFUNG DAS FALSCHE
+   * ====================================================================
+   * Die erste Fassung fragte: Kommt „export" vor UND „research data"? Das
+   * hat auf /for-school-leadership angeschlagen, und zwar zu Unrecht: Dort
+   * steht „Export it as a PDF" fuer den Entlastungsbericht, und in der
+   * Forschungs-Karte steht „research data" – zwei Saetze, die nichts
+   * miteinander zu tun haben, zufaellig auf derselben Seite.
+   *
+   * Gesucht wird deshalb die WENDUNG: „export" im Umkreis von 120 Zeichen um
+   * „research data". Das ist die Formulierung, die eine Zusage macht –
+   * alles andere sind zwei Woerter in einem Dokument.
+   */
+  const NAEHE = 120;
+
+  for (const path of PAGES) {
+    const { body } = await get(path);
+    const text = body
+      .replace(/<script[\s\S]*?<\/script>/g, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/&[a-z]+;/gi, " ")
+      .replace(/\s+/g, " ");
+
+    let nenntExport = false;
+    for (const treffer of text.matchAll(/research data/gi)) {
+      const von = Math.max(0, treffer.index - NAEHE);
+      const umfeld = text.slice(von, treffer.index + NAEHE);
+      if (/\bexport/i.test(umfeld)) {
+        nenntExport = true;
+        break;
+      }
+    }
+    if (!nenntExport) continue;
+
+    geprueft++;
+    const fehlend = BEDINGUNGEN.filter((b) => !b.test(text));
+    if (fehlend.length > 0) {
+      verletzt++;
+      fail(
+        `${path}: nennt den Forschungsdaten-Export, führt aber ${fehlend.length} der drei Bedingungen nicht`,
+      );
+    }
+  }
+
+  console.log(
+    geprueft === 0
+      ? "  Keine Seite nennt den Export – nichts zu koppeln."
+      : `  ${geprueft} Seite(n) nennen ihn, davon ${geprueft - verletzt} mit allen drei Bedingungen.`,
+  );
 }
 
 console.log(

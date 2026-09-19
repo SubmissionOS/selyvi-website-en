@@ -1,3 +1,4 @@
+import { HeartHandshake } from "lucide-react";
 import { CountUpOnView } from "@/components/motion/count-up-on-view";
 import { PRODUCT_NAME } from "@/config/brand";
 
@@ -93,6 +94,10 @@ export function WhyWeExist() {
       className="border-b border-gray-200 bg-surface-alt"
     >
       <div className="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
+        {/* Anker fuer die Leerraum-Regel: ein Bildschirm nur Text ist
+            keiner (CLAUDE.md, Muster c). Gemessen mit qa-en.mjs. */}
+        <HeartHandshake aria-hidden="true" className="size-8 text-brand-600" />
+
         <h2
           id="warum-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"

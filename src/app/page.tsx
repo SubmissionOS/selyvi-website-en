@@ -10,6 +10,7 @@ import { TakeALook } from "@/components/sections/take-a-look";
 import { FromPractice } from "@/components/sections/from-practice";
 import { Features } from "@/components/sections/features";
 import { ValueForAll } from "@/components/sections/value-for-all";
+import { ResearchBand } from "@/components/sections/research-band";
 import { Privacy } from "@/components/sections/privacy";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Faq } from "@/components/sections/faq";
@@ -70,6 +71,9 @@ export default function HomePage() {
         <ValueForAll />
       </Reveal>
       <Reveal>
+        <ResearchBand />
+      </Reveal>
+      <Reveal>
         <Privacy />
       </Reveal>
       <Testimonials />
@@ -78,8 +82,8 @@ export default function HomePage() {
       </Reveal>
 
       <StoryLine>
-        We sat in those classrooms ourselves, long enough. Now we build for the people
-        who stayed late for us.
+        We sat in those classrooms ourselves, long enough. Now we build for the people who
+        stayed late for us.
       </StoryLine>
 
       <FinalCta withMission />

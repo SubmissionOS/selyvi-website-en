@@ -70,6 +70,39 @@ export async function sendLeadToCrm({
     return { ok: false, reason: "not-configured" };
   }
 
+  /* ==========================================================================
+   * FORSCHUNGSFELDER – ZUSAETZLICH, NIE STATT
+   * ==========================================================================
+   * Das CRM legt alles, was es nicht als Spalte kennt, in `raw` ab. Deshalb
+   * durfte dieser Block einfach dazukommen, ohne dass dort ein Schema bricht.
+   *
+   * `institution` und `forschungsfrage` sind dieselben Werte wie
+   * `organisation` und `message` – doppelt, und zwar mit Absicht: Die
+   * Kernspalten bleiben gefuellt (sonst waere eine Forschungsanfrage im CRM
+   * eine Zeile ohne Organisation), und daneben stehen sie unter dem Namen,
+   * unter dem ein Mensch sie dort sucht.
+   *
+   * DIE SCHLUESSEL SIND DEUTSCH, wie `source` selbst: Das CRM ist dasselbe
+   * fuer beide Websites, und eine englische Spalte daneben waere eine zweite
+   * Spalte fuer dieselbe Angabe.
+   *
+   * Bei jeder anderen Herkunft bleibt der Block LEER – kein Schluessel mit
+   * leerem Wert, kein `null`. Eine Demo-Anfrage soll im CRM nicht aussehen wie
+   * ein Forschungsprojekt ohne Angaben.
+   */
+  const forschung =
+    source === "forschung"
+      ? {
+          institution: values.school,
+          forschungsfrage: values.message,
+          fachgebiet: values.research.fachgebiet,
+          digitaler_bedarf: values.research.digitaler_bedarf,
+          schulen_beteiligt: values.research.schulen_beteiligt,
+          projektstatus: values.research.projektstatus,
+          zeitraum: values.research.zeitraum,
+        }
+      : {};
+
   // Feldnamen in der Schreibweise des CRM-Endpunkts. „organisation" statt
   // „school": Das Formular fragt nach der Schule, das CRM kennt auch andere
   // Träger – die Umbenennung gehört an genau diese eine Stelle.
@@ -94,6 +127,7 @@ export async function sendLeadToCrm({
     utm_source: origin.utm_source,
     utm_medium: origin.utm_medium,
     utm_campaign: origin.utm_campaign,
+    ...forschung,
   };
 
   const begonnen = Date.now();

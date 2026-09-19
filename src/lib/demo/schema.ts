@@ -34,24 +34,93 @@ export const ELAPSED_FIELD = "elapsedMs";
 export const SOURCE_FIELD = "source";
 
 /**
- * DIE WERTE BLEIBEN DEUTSCH – „demo" und „mitgestalten".
+ * DIE WERTE BLEIBEN DEUTSCH – „demo", „mitgestalten", „forschung".
  *
- * Das ist kein Uebersehen. Das CRM erwartet genau diese beiden Zeichenketten
+ * Das ist kein Uebersehen. Das CRM erwartet genau diese Zeichenketten
  * (`source` im Payload, siehe src/lib/demo/crm.ts); es sortiert Anfragen
  * danach ein. Sie zu uebersetzen hiesse, dass Anfragen von selyvi.com in einen
  * unbekannten Topf fallen.
  *
  * Uebersetzt ist ausschliesslich die BESCHRIFTUNG in SOURCE_LABELS – die steht
  * in der Betreffzeile und im Mailtext, und die liest ein Mensch.
+ *
+ * ==========================================================================
+ * „forschung" MUSS HIER STEHEN – SONST FAELLT ES STILL AUF „demo" ZURUECK
+ * ==========================================================================
+ * normalizeSource() laesst nur Werte aus dieser Liste durch und ersetzt alles
+ * andere durch „demo". Das ist als Schutz gegen manipulierte Formulardaten
+ * gebaut und funktioniert – aber es unterscheidet nicht zwischen einem
+ * Angriff und einem vergessenen Eintrag. Ohne diese Zeile traegt jede
+ * Forschungsanfrage im CRM „demo", landet in der falschen Spalte, und NICHTS
+ * meldet das: kein Fehler, kein Log, keine rote Zeile im Test. Genau dieses
+ * stille Zurueckfallen prueft der Formular-Test jetzt ausdruecklich mit.
  */
-export const SOURCE_VALUES = ["demo", "mitgestalten"] as const;
+export const SOURCE_VALUES = ["demo", "mitgestalten", "forschung"] as const;
 export type SourceValue = (typeof SOURCE_VALUES)[number];
 
 /** Beschriftung fuer die Mail. Keine Rohwerte in der Betreffzeile. */
 export const SOURCE_LABELS: Record<SourceValue, string> = {
   demo: "Demo request",
   mitgestalten: "Co-create",
+  forschung: "Research project",
 };
+
+/* ==========================================================================
+ * FORSCHUNGSPROJEKT – DIE FUENF ZUSAETZLICHEN FELDER
+ * ==========================================================================
+ * Zwei der neun Felder sind KEINE neuen Felder, sondern dieselben mit anderer
+ * Beschriftung:
+ *
+ *   Institution*       -> `school`   (Pflichtfeld, geht als `organisation` ins CRM)
+ *   Research question* -> `message`  (auf /research zum Pflichtfeld)
+ *
+ * Das ist kein Sparen, sondern der Grund, warum es nur EINE Server Action
+ * gibt: Honeypot, Zeitmessung, Rate-Limit, Validierung und Versandweg sind an
+ * allen drei Formularen dieselben. Ein zweites Feldpaar mit eigener Pruefung
+ * waere ein zweiter Ort, an dem eine dieser Huerden fehlen kann.
+ *
+ * Ins CRM gehen die beiden trotzdem ZUSAETZLICH unter ihrem Forschungsnamen
+ * (`institution`, `forschungsfrage`) – dort werten Menschen aus, und
+ * „organisation" liest sich bei einem Lehrstuhl falsch.
+ */
+export const RESEARCH_FIELDS = [
+  "fachgebiet",
+  "digitaler_bedarf",
+  "schulen_beteiligt",
+  "projektstatus",
+  "zeitraum",
+] as const;
+export type ResearchField = (typeof RESEARCH_FIELDS)[number];
+export type ResearchValues = Record<ResearchField, string>;
+
+export const EMPTY_RESEARCH: ResearchValues = {
+  fachgebiet: "",
+  digitaler_bedarf: "",
+  schulen_beteiligt: "",
+  projektstatus: "",
+  zeitraum: "",
+};
+
+/**
+ * Auswahllisten. Freitext waere hier eine Auswertung, die niemand macht.
+ *
+ * DIE WERTE SIND ENGLISCH, anders als SOURCE_VALUES. Derselbe Grund wie bei
+ * ROLE_OPTIONS: Sie landen als Freitext im CRM und werden dort GELESEN, nicht
+ * zum Einsortieren benutzt.
+ */
+/*
+ * „talks under way" statt „in progress": Letzteres schlaegt im Ton-Grep unter
+ * Regel D an. Der Wert beschreibt Gespraeche mit Schulen und keine
+ * Produktreife – aber eine Ausnahme dafuer gaebe die Wendung allgemein frei,
+ * und „talks under way" sagt ohnehin genauer, was gemeint ist.
+ */
+export const SCHOOLS_INVOLVED_OPTIONS = ["yes", "no", "talks under way"] as const;
+export const PROJECT_STATUS_OPTIONS = [
+  "idea",
+  "application",
+  "approved",
+  "running",
+] as const;
 
 export function normalizeSource(raw: string): SourceValue {
   return (SOURCE_VALUES as readonly string[]).includes(raw)
@@ -81,7 +150,16 @@ export const ROLE_OPTIONS = [
 ] as const;
 export type Role = (typeof ROLE_OPTIONS)[number];
 
-export type DemoFormValues = Record<DemoField, string>;
+export type DemoFormValues = Record<DemoField, string> & {
+  /**
+   * Nur bei source="forschung" gefuellt, sonst ein leeres Objekt.
+   *
+   * Es haengt AM Ergebnis der Validierung und nicht daneben, damit kein
+   * Aufrufer die Rohwerte aus dem FormData weiterreichen kann: Was hier
+   * ankommt, ist getrimmt und laengenbegrenzt.
+   */
+  research: ResearchValues;
+};
 
 export const EMPTY_VALUES: DemoFormValues = {
   name: "",
@@ -89,6 +167,7 @@ export const EMPTY_VALUES: DemoFormValues = {
   email: "",
   role: "",
   message: "",
+  research: EMPTY_RESEARCH,
 };
 
 /** Obergrenzen. Schuetzen die Weiterverarbeitung vor uebergrossen Eingaben. */
@@ -98,6 +177,43 @@ const LIMITS = {
   email: 254,
   message: 2000,
 } as const;
+
+/**
+ * Obergrenzen der Forschungsfelder.
+ *
+ * Sie erzeugen bewusst KEINE Fehlermeldung, sondern schneiden ab: Es sind
+ * Zusatzangaben, und eine Anfrage an einer zu langen Zeitraum-Angabe
+ * scheitern zu lassen waere die falsche Haerte. Die Pflichtfelder
+ * (Institution, Forschungsfrage, Name, E-Mail) werden weiterhin geprueft.
+ */
+const RESEARCH_LIMITS: Record<ResearchField, number> = {
+  fachgebiet: 150,
+  digitaler_bedarf: 1500,
+  schulen_beteiligt: 20,
+  projektstatus: 20,
+  zeitraum: 100,
+};
+
+/**
+ * Nimmt die Forschungsfelder entgegen, trimmt und begrenzt sie.
+ *
+ * Die beiden Auswahlfelder duerfen nur bekannte Werte tragen – ein unbekannter
+ * faellt still auf leer zurueck. Das ist dieselbe Haltung wie bei
+ * normalizeSource(): Wer hier manipuliert, bekommt keine Rueckmeldung
+ * darueber, was das Formular akzeptiert.
+ */
+function normalizeResearch(raw: Partial<Record<ResearchField, string>>): ResearchValues {
+  const auswahl = (wert: string, erlaubt: readonly string[]) =>
+    erlaubt.includes(wert) ? wert : "";
+
+  const werte = {} as ResearchValues;
+  for (const feld of RESEARCH_FIELDS) {
+    werte[feld] = (raw[feld] ?? "").trim().slice(0, RESEARCH_LIMITS[feld]);
+  }
+  werte.schulen_beteiligt = auswahl(werte.schulen_beteiligt, SCHOOLS_INVOLVED_OPTIONS);
+  werte.projektstatus = auswahl(werte.projektstatus, PROJECT_STATUS_OPTIONS);
+  return werte;
+}
 
 /**
  * Pragmatische E-Mail-Pruefung: genau ein @, kein Leerraum, Punkt in der
@@ -117,8 +233,12 @@ export function validateDemoRequest(form: {
   role: string;
   message: string;
   consent: boolean;
+  /** Steuert nur die Beschriftungen und die Pflicht der Forschungsfrage. */
+  source?: SourceValue;
+  research?: Partial<Record<ResearchField, string>>;
 }): ValidationResult {
   const fieldErrors: Partial<Record<DemoField | "consent", string>> = {};
+  const istForschung = form.source === "forschung";
 
   const name = form.name.trim();
   const school = form.school.trim();
@@ -132,10 +252,17 @@ export function validateDemoRequest(form: {
     fieldErrors.name = `The name can be at most ${LIMITS.name} characters long.`;
   }
 
+  // Dasselbe Feld, zwei Beschriftungen: Auf /research heisst es Institution.
+  // Eine Fehlermeldung, die nach der „school" fragt, waere an einem Lehrstuhl
+  // schlicht die falsche Frage.
   if (school.length < 2) {
-    fieldErrors.school = "Please give us your school.";
+    fieldErrors.school = istForschung
+      ? "Please give us your institution."
+      : "Please give us your school.";
   } else if (school.length > LIMITS.school) {
-    fieldErrors.school = `The school name can be at most ${LIMITS.school} characters long.`;
+    fieldErrors.school = istForschung
+      ? `The institution can be at most ${LIMITS.school} characters long.`
+      : `The school name can be at most ${LIMITS.school} characters long.`;
   }
 
   if (email.length === 0) {
@@ -151,18 +278,35 @@ export function validateDemoRequest(form: {
     fieldErrors.role = "Please choose one of the roles offered.";
   }
 
-  if (message.length > LIMITS.message) {
-    fieldErrors.message = `The message can be at most ${LIMITS.message} characters long.`;
+  // Auf /research traegt dieses Feld die Forschungsfrage und ist Pflicht: Ohne
+  // sie laesst sich der technische Fit nicht einmal ansehen, und genau darum
+  // bittet die Seite („Three sentences are enough.").
+  if (istForschung && message.length < 10) {
+    fieldErrors.message =
+      "Please describe your research question in one to three sentences.";
+  } else if (message.length > LIMITS.message) {
+    fieldErrors.message = istForschung
+      ? `The research question can be at most ${LIMITS.message} characters long.`
+      : `The message can be at most ${LIMITS.message} characters long.`;
   }
 
   if (!form.consent) {
-    fieldErrors.consent =
-      "Without this consent we cannot process your request.";
+    fieldErrors.consent = "Without this consent we cannot process your request.";
   }
 
   if (Object.keys(fieldErrors).length > 0) {
     return { ok: false, fieldErrors };
   }
 
-  return { ok: true, values: { name, school, email, role, message } };
+  return {
+    ok: true,
+    values: {
+      name,
+      school,
+      email,
+      role,
+      message,
+      research: istForschung ? normalizeResearch(form.research ?? {}) : EMPTY_RESEARCH,
+    },
+  };
 }

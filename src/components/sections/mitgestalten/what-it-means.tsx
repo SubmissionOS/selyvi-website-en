@@ -27,8 +27,30 @@ import { PRODUCT_NAME } from "@/config/brand";
 const points = [
   {
     icon: FlaskConical,
-    title: "Trying it out in real everyday work",
-    description: `${PRODUCT_NAME} runs in your own class, during the school year. Not in a test environment — where it either holds up or does not.`,
+    /**
+     * ======================================================================
+     * HIER STAND EIN WIDERSPRUCH – BEHOBEN AM 19.09.2026
+     * ======================================================================
+     * Vorher: „Selyvi runs in your own class, during the school year. Not in
+     * a test environment — where it either holds up or does not."
+     *
+     * Das war ein Versprechen, das die Website an anderer Stelle selbst
+     * widerlegt: PRODUCT_HOSTING_NOTE sagt, dass die Produktserver VOR dem
+     * Betrieb mit echten Schuelerdaten nach Deutschland umziehen. Wer heute
+     * mitgestaltet, arbeitet also mit Beispieldaten – und las auf dieser
+     * Seite das Gegenteil. Ausgerechnet auf der Seite, die um Vertrauen
+     * bittet.
+     *
+     * Die neue Fassung sagt beides: was heute geht (realitaetsnahe Umgebung,
+     * so tief wie gewuenscht) und woran der naechste Schritt haengt. Der
+     * zweite Satz ist an DIESELBE Bedingung gekoppelt wie die
+     * Hosting-Einschraenkung – er fuegt kein zweites Zukunftsversprechen
+     * hinzu, sondern benennt die Folge des bereits offengelegten. Genau so
+     * ist die Ausnahme in CLAUDE.md formuliert; ein davon geloestes „once
+     * feature Y is ready" bleibt verboten und schlaegt im Ton-Grep an.
+     */
+    title: "Trying it out, as deeply as you like",
+    description: `You put ${PRODUCT_NAME} through its paces in a true-to-life environment with sample data — as deeply as you like. The step into everyday work with real class data we take together, once the server move to Germany is complete.`,
   },
   {
     icon: MessageSquareQuote,

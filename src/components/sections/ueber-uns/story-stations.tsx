@@ -1,5 +1,7 @@
 "use client";
 
+import { Milestone } from "lucide-react";
+
 import { useRef, useState } from "react";
 
 import { useIsomorphicLayoutEffect } from "@/lib/use-isomorphic-layout-effect";
@@ -106,6 +108,11 @@ export function StoryStations({ variant = "breit" }: { variant?: StationsVariant
 
   return (
     <div ref={hostRef}>
+      {/* Anker fuer die Leerraum-Regel: Die Stationen-Linie besteht aus
+          Punkten und Zahlen – Textknoten, kein Bildliches. Gemessen mit
+          qa-en.mjs, der Ausschnitt trug 1902 Zeichen ohne ein einziges Bild. */}
+      <Milestone aria-hidden="true" className="mb-4 size-8 text-brand-600" />
+
       <h3 className="text-lg font-semibold text-ink">From the kitchen table to today</h3>
 
       <div className="relative mt-8">

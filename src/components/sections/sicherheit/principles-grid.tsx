@@ -3,6 +3,7 @@ import {
   Ban,
   Cpu,
   FileText,
+  FlaskConical,
   KeyRound,
   Lock,
   Server,
@@ -80,8 +81,7 @@ const principles = [
      */
     iconLabel: "no selling of pupil data",
     title: "Sharing of data",
-    description:
-      "Pupil data is not sold and is not processed for advertising purposes.",
+    description: "Pupil data is not sold and is not processed for advertising purposes.",
   },
   {
     icon: UserX,
@@ -170,6 +170,45 @@ export function PrinciplesGrid() {
             );
           })}
         </ul>
+
+        {/* ==================================================================
+            FORSCHUNG UND PRODUKTBETRIEB – GETRENNT
+            ==================================================================
+            Steht ueber die volle Breite statt als weitere Karte im Raster.
+            Zwei Gruende, beide zaehlen:
+
+            1. RASTER-WAISE. Die vorhandenen Karten gehen im Raster glatt auf;
+               eine weitere liesse sie allein in der letzten Reihe stehen.
+
+            2. GEWICHT. Seit die Website Forschungskooperationen anbietet, ist
+               das hier die Frage, die eine Datenschutzbeauftragte ZUERST
+               stellt. Eine Antwort darauf gehoert nicht in eine Kachel
+               zwischen andere.
+
+            Der letzte Satz ist der wichtigste: Ein Selyvi-Vertrag ist keine
+            Forschungsfreigabe. Wer das erst im Projektgespraech erfaehrt, hat
+            vorher etwas anderes unterschrieben, als er dachte. */}
+        <div className="mt-6 rounded-xl border border-brand-600 bg-surface-alt p-6 lg:p-8">
+          <div className="flex gap-4">
+            <FlaskConical aria-hidden="true" className="size-6 shrink-0 text-brand-600" />
+
+            <div className="max-w-3xl">
+              <h3 className="text-base font-semibold text-ink">
+                Research is separate from day-to-day operation
+              </h3>
+
+              <p className="mt-3 text-sm text-gray-500">
+                A school&rsquo;s data is not used for research by default. Every project
+                gets its own purpose, its own data concept and, where required, its own
+                consents. What gets collected is fixed before the project starts.
+              </p>
+
+              <p className="mt-3 text-sm text-ink">
+                A {PRODUCT_NAME} contract alone is not a research release.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,3 +1,5 @@
+import { ListChecks } from "lucide-react";
+
 /**
  * Sektion – Einführungs-Ablauf als Timeline.
  *
@@ -38,8 +40,7 @@ const steps = [
   },
   {
     title: "Roll-out across the staff",
-    description:
-      "After the pilot, Selyvi goes to the whole teaching staff.",
+    description: "After the pilot, Selyvi goes to the whole teaching staff.",
   },
 ];
 
@@ -50,6 +51,10 @@ export function RolloutTimeline() {
       className="border-b border-gray-200 bg-surface-alt"
     >
       <div className="mx-auto w-full max-w-6xl px-6 py-24 lg:px-8 lg:py-32">
+        {/* Anker fuer die Leerraum-Regel: Die Stationen sind nummerierte
+            Kreise – Textknoten, kein Bildliches. Gemessen mit qa-en.mjs. */}
+        <ListChecks aria-hidden="true" className="mb-6 size-8 text-brand-600" />
+
         <h2
           id="ablauf-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"

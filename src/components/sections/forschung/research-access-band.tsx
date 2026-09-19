@@ -30,7 +30,7 @@ export function ResearchAccessBand() {
   return (
     <section
       aria-labelledby="forschungszugang-titel"
-      className="border-b border-gray-200 bg-surface-alt"
+      className="scroll-mt-24 border-b border-gray-200 bg-surface-alt"
     >
       <div className="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
         <div className="max-w-3xl">

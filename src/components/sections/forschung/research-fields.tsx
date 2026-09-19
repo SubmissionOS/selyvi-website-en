@@ -8,6 +8,7 @@ import {
   Map,
   Microscope,
   Sprout,
+  Telescope,
   Timer,
 } from "lucide-react";
 
@@ -126,6 +127,10 @@ export function ResearchFields() {
       className="border-b border-gray-200"
     >
       <div className="mx-auto w-full max-w-6xl px-6 py-24 lg:px-8 lg:py-32">
+        {/* Anker fuer die Leerraum-Regel: Die Stationen sind nummerierte
+            Kreise – Textknoten, kein Bildliches. Gemessen mit qa-en.mjs. */}
+        <Telescope aria-hidden="true" className="mb-6 size-8 text-brand-600" />
+
         <h2
           id="forschungsfelder-titel"
           className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl"

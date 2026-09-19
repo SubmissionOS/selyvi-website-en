@@ -1,3 +1,4 @@
+import { Target } from "lucide-react";
 import Link from "next/link";
 
 import { PRODUCT_NAME } from "@/config/brand";
@@ -39,6 +40,10 @@ export function TeachingQuality() {
     >
       <div className="mx-auto w-full max-w-6xl px-6 py-16 lg:px-8 lg:py-20">
         <div className="max-w-3xl">
+          {/* Anker fuer die Leerraum-Regel: ein Bildschirm nur Text ist
+              keiner (CLAUDE.md, Muster c). Gemessen mit qa-en.mjs. */}
+          <Target aria-hidden="true" className="size-8 text-brand-600" />
+
           <h2
             id="unterrichtsqualitaet-titel"
             className="text-2xl font-semibold tracking-tight text-ink sm:text-3xl"

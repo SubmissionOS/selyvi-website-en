@@ -160,9 +160,13 @@ export const routes: RouteMeta[] = [
   {
     path: "/research",
     germanPath: "/forschung",
-    title: "Research & impact",
+    /* Titel und Beschreibung folgen dem Strategiewechsel: Die Seite beginnt
+       bei der Forschungsfrage der Leserin, nicht bei unserem Wirkungsmodell.
+       Das Wirkungsmodell steht weiterhin auf der Seite – eine Ebene tiefer –
+       und gehoert deshalb in den zweiten Satz, nicht in den ersten. */
+    title: "Research & universities",
     description:
-      "Impact is something we want to evidence, not assert: a survey model along the PHINEO impact staircase, three survey waves, consent granular by purpose. We are looking for research partners who want to look closely.",
+      "Your research question, Selyvi as the technical infrastructure: instruments in the school day, project-specific features, research and test environments. Impact model, nine research fields and our rules for research data included.",
     priority: 0.7,
   },
   {
